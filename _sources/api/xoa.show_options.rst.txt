@@ -1,0 +1,6 @@
+xoa.show\_options
+=================
+
+.. currentmodule:: xoa
+
+.. autofunction:: show_options

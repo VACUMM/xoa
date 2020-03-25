@@ -1,0 +1,25 @@
+xoa.cli
+=======
+
+.. automodule:: xoa.cli
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      get_parser
+      main
+      main_info
+   
+   
+
+   
+   
+   
+
+   
+   
+   

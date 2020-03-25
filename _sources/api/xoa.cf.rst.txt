@@ -1,0 +1,48 @@
+xoa.cf
+======
+
+.. automodule:: xoa.cf
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      are_similar
+      clean_cf_cache
+      get_cf_specs
+      register_cf_accessors
+      search_similar
+      show_cf_cache
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+   
+      CFCoordSpecs
+      CFSpecs
+      CFVarSpecs
+      DataArrayCFAccessor
+      DatasetCFAccessor
+      SGLocator
+      set_cf_specs
+   
+   
+
+   
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+      :toctree:
+   
+      XoaCFError
+   
+   

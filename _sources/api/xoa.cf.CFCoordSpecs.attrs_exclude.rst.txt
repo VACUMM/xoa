@@ -1,0 +1,6 @@
+xoa.cf.CFCoordSpecs.attrs\_exclude
+==================================
+
+.. currentmodule:: xoa.cf
+
+.. autoattribute:: CFCoordSpecs.attrs_exclude

@@ -1,0 +1,6 @@
+xoa.cf.DataArrayCFAccessor.name
+===============================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: DataArrayCFAccessor.name

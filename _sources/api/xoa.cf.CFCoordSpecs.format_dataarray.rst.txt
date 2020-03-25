@@ -1,0 +1,6 @@
+xoa.cf.CFCoordSpecs.format\_dataarray
+=====================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFCoordSpecs.format_dataarray

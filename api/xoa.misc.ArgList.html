@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>xoa.misc.ArgList &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="xoa.misc.ArgList.get" href="xoa.misc.ArgList.get.html" />
+    <link rel="prev" title="xoa.misc.match_string" href="xoa.misc.match_string.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configure.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usages.html">Usages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="xoa.html">xoa</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="xoa.misc.html">xoa.misc</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.dict_check_defaults.html">xoa.misc.dict_check_defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.dict_filter.html">xoa.misc.dict_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.dict_merge.html">xoa.misc.dict_merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.get_axis_slices.html">xoa.misc.get_axis_slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.is_empty.html">xoa.misc.is_empty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.is_iterable.html">xoa.misc.is_iterable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.match_attrs.html">xoa.misc.match_attrs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.match_string.html">xoa.misc.match_string</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">xoa.misc.ArgList</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="xoa.misc.ArgList.get.html">xoa.misc.ArgList.get</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.misc.ArgList.put.html">xoa.misc.ArgList.put</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.ArgTuple.html">xoa.misc.ArgTuple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.DefaultEnumMeta.html">xoa.misc.DefaultEnumMeta</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.cf.html">xoa.cf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.cli.html">xoa.cli</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+          <li><a href="xoa.misc.html">xoa.misc</a> &raquo;</li>
+        
+      <li>xoa.misc.ArgList</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/xoa.misc.ArgList.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="xoa-misc-arglist">
+<h1>xoa.misc.ArgList<a class="headerlink" href="#xoa-misc-arglist" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="xoa.misc.ArgList">
+<em class="property">class </em><code class="sig-prename descclassname">xoa.misc.</code><code class="sig-name descname">ArgList</code><span class="sig-paren">(</span><em class="sig-param">argsi</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/misc.html#ArgList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.misc.ArgList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility to always manage arguments as list and return results as input</p>
+<p class="rubric">Examples</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># Scalar</span>
+<span class="gp">In [1]: </span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span>
+
+<span class="gp">In [2]: </span><span class="n">al</span> <span class="o">=</span> <span class="n">ArgList</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">al</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="c1"># input for function as tuple</span>
+<span class="gh">Out[3]: </span><span class="go">[&#39;a&#39;]</span>
+
+<span class="gp">In [4]: </span><span class="n">al</span><span class="o">.</span><span class="n">put</span><span class="p">([</span><span class="s1">&#39;aa&#39;</span><span class="p">])</span> <span class="c1"># output as input</span>
+<span class="gh">Out[4]: </span><span class="go">&#39;aa&#39;</span>
+
+<span class="go"># Iterable</span>
+<span class="gp">In [5]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="gp">In [6]: </span><span class="n">al</span> <span class="o">=</span> <span class="n">ArgList</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="gp">In [7]: </span><span class="n">al</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="gh">Out[7]: </span><span class="go">[(&#39;a&#39;, &#39;b&#39;)]</span>
+
+<span class="gp">In [8]: </span><span class="n">al</span><span class="o">.</span><span class="n">put</span><span class="p">([</span><span class="s1">&#39;aa&#39;</span><span class="p">])</span>
+<span class="gh">Out[8]: </span><span class="go">&#39;aa&#39;</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="xoa.misc.ArgList.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">argsi</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/misc.html#ArgList.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.misc.ArgList.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.misc.ArgList.get.html#xoa.misc.ArgList.get" title="xoa.misc.ArgList.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.misc.ArgList.put.html#xoa.misc.ArgList.put" title="xoa.misc.ArgList.put"><code class="xref py py-obj docutils literal notranslate"><span class="pre">put</span></code></a>(argso)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="xoa.misc.ArgList.get.html" class="btn btn-neutral float-right" title="xoa.misc.ArgList.get" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="xoa.misc.match_string.html" class="btn btn-neutral float-left" title="xoa.misc.match_string" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+xoa.cfgm.VdtSizeError
+=====================
+
+.. currentmodule:: xoa.cfgm
+
+.. autoexception:: VdtSizeError

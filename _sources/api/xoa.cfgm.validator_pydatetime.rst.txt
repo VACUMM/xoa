@@ -1,0 +1,6 @@
+xoa.cfgm.validator\_pydatetime
+==============================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: validator_pydatetime

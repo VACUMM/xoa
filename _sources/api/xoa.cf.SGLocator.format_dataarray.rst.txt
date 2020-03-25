@@ -1,0 +1,6 @@
+xoa.cf.SGLocator.format\_dataarray
+==================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: SGLocator.format_dataarray

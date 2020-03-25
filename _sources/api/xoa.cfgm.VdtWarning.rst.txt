@@ -1,0 +1,6 @@
+xoa.cfgm.VdtWarning
+===================
+
+.. currentmodule:: xoa.cfgm
+
+.. autoexception:: VdtWarning

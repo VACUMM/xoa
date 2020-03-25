@@ -1,0 +1,6 @@
+xoa.cf.XoaCFError
+=================
+
+.. currentmodule:: xoa.cf
+
+.. autoexception:: XoaCFError

@@ -1,0 +1,6 @@
+xoa.cf.SGLocator.re\_match
+==========================
+
+.. currentmodule:: xoa.cf
+
+.. autoattribute:: SGLocator.re_match

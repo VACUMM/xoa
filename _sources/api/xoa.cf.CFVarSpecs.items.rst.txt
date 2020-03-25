@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.items
+=======================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFVarSpecs.items

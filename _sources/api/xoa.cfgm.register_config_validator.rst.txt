@@ -1,0 +1,6 @@
+xoa.cfgm.register\_config\_validator
+====================================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: register_config_validator

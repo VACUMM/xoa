@@ -1,0 +1,26 @@
+xoa.coords.DimFlusher1D
+=======================
+
+.. currentmodule:: xoa.coords
+
+.. autoclass:: DimFlusher1D
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~DimFlusher1D.get_back
+      
+   
+   
+
+   
+   
+   

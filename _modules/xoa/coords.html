@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>xoa.coords &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configure.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usages.html">Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../xoa.html">xoa</a> &raquo;</li>
+        
+      <li>xoa.coords</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for xoa.coords</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Coordinates and dimensions utilities</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">XoaError</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">cf</span>
+
+
+<div class="viewcode-block" id="get_lon"><a class="viewcode-back" href="../../api/xoa.coords.get_lon.html#xoa.coords.get_lon">[docs]</a><span class="k">def</span> <span class="nf">get_lon</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the longitude coordinate&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search_coord</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_lat"><a class="viewcode-back" href="../../api/xoa.coords.get_lat.html#xoa.coords.get_lat">[docs]</a><span class="k">def</span> <span class="nf">get_lat</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the latitude coordinate&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search_coord</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_depth"><a class="viewcode-back" href="../../api/xoa.coords.get_depth.html#xoa.coords.get_depth">[docs]</a><span class="k">def</span> <span class="nf">get_depth</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the depth coordinate&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search_coord</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;depth&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_altitude"><a class="viewcode-back" href="../../api/xoa.coords.get_altitude.html#xoa.coords.get_altitude">[docs]</a><span class="k">def</span> <span class="nf">get_altitude</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the altitude coordinate&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search_coord</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;altitude&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_level"><a class="viewcode-back" href="../../api/xoa.coords.get_level.html#xoa.coords.get_level">[docs]</a><span class="k">def</span> <span class="nf">get_level</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">with_level</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the level coordinate&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search_coord</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_coords"><a class="viewcode-back" href="../../api/xoa.coords.get_coords.html#xoa.coords.get_coords">[docs]</a><span class="k">def</span> <span class="nf">get_coords</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">coord_names</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get several coordinates&quot;&quot;&quot;</span>
+    <span class="n">cfspecs</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">cfspecs</span><span class="o">.</span><span class="n">search_coord</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">coord_name</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">coord_name</span> <span class="ow">in</span> <span class="n">coord_names</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="transpose_compat"><a class="viewcode-back" href="../../api/xoa.coords.transpose_compat.html#xoa.coords.transpose_compat">[docs]</a><span class="k">def</span> <span class="nf">transpose_compat</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">dims</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Transpose array with compatible dimensions</span>
+
+<span class="sd">    Incompatible dimensions are ignored</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    da: xarray.DataArray</span>
+<span class="sd">        Array to tranpose</span>
+<span class="sd">    dims: tuple(str)</span>
+<span class="sd">        Target dimensions</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    xarray.DataArray</span>
+<span class="sd">        Transposed array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">odims</span> <span class="o">=</span> <span class="p">()</span>
+    <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">dims</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+            <span class="n">odims</span> <span class="o">+=</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="k">return</span> <span class="n">da</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">*</span><span class="n">odims</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DimFlusher1D"><a class="viewcode-back" href="../../api/xoa.coords.DimFlusher1D.html#xoa.coords.DimFlusher1D">[docs]</a><span class="k">class</span> <span class="nc">DimFlusher1D</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+<div class="viewcode-block" id="DimFlusher1D.__init__"><a class="viewcode-back" href="../../api/xoa.coords.DimFlusher1D.html#xoa.coords.DimFlusher1D.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da_in</span><span class="p">,</span> <span class="n">coord_out</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">coord_in_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Right-flush the working dimension</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da_in: xarray.DataArray</span>
+<span class="sd">            Input data array</span>
+<span class="sd">        coord_out: xarray.DataArray</span>
+<span class="sd">            Output coordinate array</span>
+<span class="sd">        dim: str, tuple, None</span>
+<span class="sd">            Working dimension</span>
+<span class="sd">        coord_in_name: str, None</span>
+<span class="sd">            Input coordinate name. If not provided, it is infered.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Get the working dimensions</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+            <span class="n">dim</span> <span class="o">=</span> <span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+        <span class="n">dim0</span><span class="p">,</span> <span class="n">dim1</span> <span class="o">=</span> <span class="n">dim</span>
+        <span class="k">if</span> <span class="kc">None</span> <span class="ow">in</span> <span class="n">dim</span> <span class="ow">or</span> <span class="n">coord_in_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cfspecs</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">dim1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dim1</span> <span class="o">=</span> <span class="n">cfspecs</span><span class="o">.</span><span class="n">search_dim</span><span class="p">(</span><span class="n">coord_out</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dim1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">cf</span><span class="o">.</span><span class="n">XoaCFError</span><span class="p">(</span><span class="s2">&quot;No CF dimension found for output coord. &quot;</span>
+                                    <span class="s2">&quot;Please specifiy the working dimension.&quot;</span><span class="p">)</span>
+            <span class="n">dim1</span><span class="p">,</span> <span class="n">dim_type</span> <span class="o">=</span> <span class="n">dim1</span>
+        <span class="k">if</span> <span class="n">dim0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">c0</span> <span class="ow">in</span> <span class="n">da_in</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">dim0</span> <span class="o">=</span> <span class="n">cfspecs</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search_dim</span><span class="p">(</span><span class="n">c0</span><span class="p">,</span> <span class="n">dim_type</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">dim0</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">cf</span><span class="o">.</span><span class="n">XoaCFError</span><span class="p">(</span>
+                    <span class="s2">&quot;No CF {dim_type }dimension found for datarray. &quot;</span>
+                    <span class="s2">&quot;Please specifiy the working dimension.&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">dim0</span> <span class="ow">in</span> <span class="n">da_in</span><span class="o">.</span><span class="n">dims</span>
+        <span class="k">assert</span> <span class="n">dim1</span> <span class="ow">in</span> <span class="n">coord_out</span><span class="o">.</span><span class="n">dims</span>
+
+        <span class="c1"># Input coordinate</span>
+        <span class="k">if</span> <span class="n">coord_in_name</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">coord_in_name</span> <span class="ow">in</span> <span class="n">da_in</span><span class="o">.</span><span class="n">coords</span><span class="p">,</span> <span class="s1">&#39;Invalid coordinate&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">coord_in</span> <span class="o">=</span> <span class="n">cfspecs</span><span class="o">.</span><span class="n">search_coord_from_dim</span><span class="p">(</span><span class="n">da_in</span><span class="p">,</span> <span class="n">dim0</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">coord_in</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">cf</span><span class="o">.</span><span class="n">XoaCFError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;No coordinate found matching dimension &#39;</span><span class="si">{dim0}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+            <span class="n">coord_in_name</span> <span class="o">=</span> <span class="n">coord_in</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="c1"># Check dims</span>
+        <span class="c1"># - non-common other dimensions</span>
+        <span class="n">odims0</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">da_in</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">({</span><span class="n">dim0</span><span class="p">})</span>
+        <span class="n">odims1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">coord_out</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">({</span><span class="n">dim1</span><span class="p">})</span>
+        <span class="k">if</span> <span class="n">odims0</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">odims1</span><span class="p">)</span> <span class="ow">and</span> <span class="n">odims1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">odims0</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">XoaError</span><span class="p">(</span><span class="s2">&quot;Conflicting non working dimensions&quot;</span><span class="p">)</span>
+        <span class="c1"># - common dims, with size checking</span>
+        <span class="n">cdims</span> <span class="o">=</span> <span class="n">odims0</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">odims1</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">({</span><span class="n">dim0</span><span class="p">})</span>
+        <span class="k">for</span> <span class="n">cdim</span> <span class="ow">in</span> <span class="n">cdims</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">da_in</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="n">cdim</span><span class="p">]</span> <span class="o">==</span> <span class="n">coord_out</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="n">cdim</span><span class="p">]</span>
+        <span class="c1"># - common dims in the order of da_in</span>
+        <span class="n">cdims0</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">cdim0</span> <span class="ow">in</span> <span class="n">da_in</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cdim0</span> <span class="ow">in</span> <span class="n">cdims</span><span class="p">:</span>
+                <span class="n">cdims0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cdim0</span><span class="p">)</span>
+        <span class="c1"># - input dims with output dim</span>
+        <span class="n">dims01</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">da_in</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dim0</span> <span class="o">!=</span> <span class="n">dim1</span><span class="p">:</span>
+            <span class="n">dims01</span><span class="p">[</span><span class="n">dims01</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">dim0</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dim1</span>
+        <span class="n">dims01</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">dims01</span><span class="p">)</span>
+
+        <span class="c1"># Store</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dim0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dim1</span> <span class="o">=</span> <span class="n">dim0</span><span class="p">,</span> <span class="n">dim1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_da_in</span> <span class="o">=</span> <span class="n">da_in</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coord_out</span> <span class="o">=</span> <span class="n">transpose_compat</span><span class="p">(</span><span class="n">coord_out</span><span class="p">,</span> <span class="p">(</span><span class="bp">Ellipsis</span><span class="p">,)</span> <span class="o">+</span> <span class="n">dims01</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coord_out_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coord_out</span><span class="o">.</span><span class="n">name</span> <span class="ow">or</span> <span class="n">coord_in</span><span class="o">.</span><span class="n">name</span>
+        <span class="c1"># self._odims0 = odims0</span>
+        <span class="c1"># self._odims1 = odims1</span>
+        <span class="c1"># self._cdims0 = cdims0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">da_in</span> <span class="o">=</span> <span class="n">da_in</span>
+
+        <span class="c1"># Transpose to push work dim right</span>
+        <span class="n">da_in</span> <span class="o">=</span> <span class="n">da_in</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span>
+            <span class="bp">Ellipsis</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">cdims0</span> <span class="o">+</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_dim0</span><span class="p">]),</span> <span class="n">transpose_coords</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">coord_out</span> <span class="o">=</span> <span class="n">coord_out</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span>
+            <span class="bp">Ellipsis</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">cdims0</span> <span class="o">+</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_dim1</span><span class="p">]))</span>
+
+        <span class="c1"># Broadcast data array</span>
+        <span class="c1"># - data var</span>
+        <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">da_in</span><span class="o">.</span><span class="n">dims</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="nb">set</span><span class="p">(</span><span class="n">coord_out</span><span class="o">.</span><span class="n">dims</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">da_in</span> <span class="o">=</span> <span class="n">da_in</span><span class="o">.</span><span class="n">broadcast_like</span><span class="p">(</span><span class="n">coord_out</span><span class="p">,</span>
+                                         <span class="n">exclude</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dim0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dim1</span><span class="p">))</span>
+        <span class="c1"># - input coordinate</span>
+        <span class="c1"># if (set(coord_out.dims[:-1])set(da_in.coords[coord_in_name].dims[:-1])</span>
+        <span class="c1">#         &lt; set(coord_out.dims[:-1])):</span>
+        <span class="k">if</span> <span class="n">coord_out</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">set</span><span class="p">(</span><span class="n">coord_out</span><span class="o">.</span><span class="n">dims</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">da_in</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">coord_in_name</span><span class="p">]</span><span class="o">.</span><span class="n">dims</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+
+        <span class="c1">#set(coord_out.dims[:-1]) &gt; set(da_in.coords[coord_in_name].dims[:-1]):</span>
+            <span class="k">if</span> <span class="n">da_in</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">coord_in_name</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">coord_in_name</span><span class="p">,</span> <span class="n">old_coord_in_name</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">coord_in_name</span> <span class="o">+</span> <span class="s1">&#39;_dimflush1d&#39;</span><span class="p">,</span> <span class="n">coord_in_name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">old_coord_in_name</span> <span class="o">=</span> <span class="n">coord_in_name</span>
+            <span class="n">da_in</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">coord_in_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">da_in</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">old_coord_in_name</span><span class="p">]</span><span class="o">.</span><span class="n">broadcast_like</span><span class="p">(</span>
+                    <span class="n">coord_out</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dim0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dim1</span><span class="p">)))</span>
+        <span class="n">coord_in</span> <span class="o">=</span> <span class="n">da_in</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">coord_in_name</span><span class="p">]</span>
+        <span class="c1"># - output coordinate</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">coord_out</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span>
+                <span class="nb">set</span><span class="p">(</span><span class="n">coord_in</span><span class="o">.</span><span class="n">dims</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="nb">set</span><span class="p">(</span><span class="n">coord_out</span><span class="o">.</span><span class="n">dims</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])):</span>
+            <span class="n">coord_out</span> <span class="o">=</span> <span class="n">coord_out</span><span class="o">.</span><span class="n">broadcast_like</span><span class="p">(</span>
+                <span class="n">coord_in</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dim0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dim1</span><span class="p">))</span>
+
+        <span class="c1"># Info reverse transfoms</span>
+        <span class="c1"># - input coords that doesn&#39;t have dim0 inside and must copied</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extra_coords</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">name</span><span class="p">,</span> <span class="n">coord</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">coord</span>
+                                  <span class="ow">in</span> <span class="n">da_in</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                                  <span class="k">if</span> <span class="n">dim0</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">coord</span><span class="o">.</span><span class="n">dims</span><span class="p">])</span>
+        <span class="c1"># - da shape after reshape + broadcast</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">work_shape</span> <span class="o">=</span> <span class="n">da_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">coord_out</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="n">dim1</span><span class="p">],</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">work_dims</span> <span class="o">=</span> <span class="n">da_in</span><span class="o">.</span><span class="n">dims</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">dim1</span><span class="p">,</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">final_dims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_da_in</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>
+        <span class="n">idim0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">final_dims</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">dim0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">final_dims</span><span class="p">[</span><span class="n">idim0</span><span class="p">]</span> <span class="o">=</span> <span class="n">dim1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">final_dims</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">final_dims</span><span class="p">)</span>
+        <span class="c1"># self.final_shape = list(self._da_in.shape)</span>
+        <span class="c1"># self.final_shape[idim0] = coord_out.sizes[dim1]</span>
+
+        <span class="c1"># Convert to numpy 2D</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">da_in_data</span> <span class="o">=</span> <span class="n">da_in</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">da_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coord_in_data</span> <span class="o">=</span> <span class="n">coord_in</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">coord_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coord_out_data</span> <span class="o">=</span> <span class="n">coord_out</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">coord_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="DimFlusher1D.get_back"><a class="viewcode-back" href="../../api/xoa.coords.DimFlusher1D.get_back.html#xoa.coords.DimFlusher1D.get_back">[docs]</a>    <span class="k">def</span> <span class="nf">get_back</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_out</span><span class="p">):</span>
+
+        <span class="n">data_out</span> <span class="o">=</span> <span class="n">data_out</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">work_shape</span><span class="p">)</span>
+        <span class="n">da_out</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">data_out</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">work_dims</span><span class="p">)</span>
+        <span class="n">da_out</span> <span class="o">=</span> <span class="n">da_out</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="bp">Ellipsis</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">final_dims</span><span class="p">)</span>
+        <span class="n">da_out</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">coord_out_name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coord_out</span>
+        <span class="n">da_out</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">da_in</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="n">da_out</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_coords</span><span class="p">)</span>
+        <span class="n">da_out</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">da_in</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="k">return</span> <span class="n">da_out</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.format\_dataarray
+===================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFVarSpecs.format_dataarray

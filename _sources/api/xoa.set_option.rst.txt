@@ -1,0 +1,6 @@
+xoa.set\_option
+===============
+
+.. currentmodule:: xoa
+
+.. autofunction:: set_option

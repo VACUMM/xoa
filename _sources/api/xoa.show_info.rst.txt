@@ -1,0 +1,6 @@
+xoa.show\_info
+==============
+
+.. currentmodule:: xoa
+
+.. autofunction:: show_info

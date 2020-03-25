@@ -1,0 +1,6 @@
+xoa.misc.dict\_filter
+=====================
+
+.. currentmodule:: xoa.misc
+
+.. autofunction:: dict_filter

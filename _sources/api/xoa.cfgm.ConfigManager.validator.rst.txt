@@ -1,0 +1,6 @@
+xoa.cfgm.ConfigManager.validator
+================================
+
+.. currentmodule:: xoa.cfgm
+
+.. autoproperty:: ConfigManager.validator

@@ -1,0 +1,6 @@
+xoa.cli.main
+============
+
+.. currentmodule:: xoa.cli
+
+.. autofunction:: main

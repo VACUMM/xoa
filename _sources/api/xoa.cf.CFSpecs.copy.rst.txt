@@ -1,0 +1,6 @@
+xoa.cf.CFSpecs.copy
+===================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFSpecs.copy

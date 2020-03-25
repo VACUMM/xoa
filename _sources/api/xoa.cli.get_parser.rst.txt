@@ -1,0 +1,6 @@
+xoa.cli.get\_parser
+===================
+
+.. currentmodule:: xoa.cli
+
+.. autofunction:: get_parser

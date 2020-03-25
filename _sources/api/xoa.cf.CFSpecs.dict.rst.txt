@@ -1,0 +1,6 @@
+xoa.cf.CFSpecs.dict
+===================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: CFSpecs.dict

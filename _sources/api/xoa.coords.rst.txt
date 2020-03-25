@@ -1,0 +1,36 @@
+xoa.coords
+==========
+
+.. automodule:: xoa.coords
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      get_altitude
+      get_coords
+      get_depth
+      get_lat
+      get_level
+      get_lon
+      transpose_compat
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+   
+      DimFlusher1D
+   
+   
+
+   
+   
+   

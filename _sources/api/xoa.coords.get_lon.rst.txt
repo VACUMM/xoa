@@ -1,0 +1,6 @@
+xoa.coords.get\_lon
+===================
+
+.. currentmodule:: xoa.coords
+
+.. autofunction:: get_lon

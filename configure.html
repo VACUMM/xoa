@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usages" href="usages.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-xoa-options">List of xoa options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-options">Setting options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#permanent-settings">Permanent settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inline-settings">Inline settings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-options">Getting options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#from-commandline">From commandline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#from-python">From python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usages.html">Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/configure.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="list-of-xoa-options">
+<h2>List of xoa options<a class="headerlink" href="#list-of-xoa-options" title="Permalink to this headline">¶</a></h2>
+<p>Some options are accessible to alter the default behavior of xoa.
+These options are of particular <strong>type</strong> and have a <strong>default value</strong>,
+as shown in the following table.</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">Flat view of available xoa options</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="appendix.options.html#xoaoption-cf.accessors"><code class="xref std std-xoaoption docutils literal notranslate"><span class="pre">cf.accessors</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Automatically load the <a class="reference internal" href="api/xoa.cf.html#module-xoa.cf" title="xoa.cf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cf</span></code></a> accessors?</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="appendix.options.html#xoaoption-cf.cache"><code class="xref std std-xoaoption docutils literal notranslate"><span class="pre">cf.cache</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Use the <a class="reference internal" href="api/xoa.cf.html#module-xoa.cf" title="xoa.cf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cf</span></code></a> in memory and file caches</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="appendix.options.html#xoaoption-plot.cmapdiv"><code class="xref std std-xoaoption docutils literal notranslate"><span class="pre">plot.cmapdiv</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cmo.balance</span></code></p></td>
+<td><p>Defaut diverging colormap</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="appendix.options.html#xoaoption-plot.cmappos"><code class="xref std std-xoaoption docutils literal notranslate"><span class="pre">plot.cmappos</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cmo.amp</span></code></p></td>
+<td><p>Default positive colormap</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="appendix.options.html#xoaoption-plot.cmapneg"><code class="xref std std-xoaoption docutils literal notranslate"><span class="pre">plot.cmapneg</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cmo.tempo_r</span></code></p></td>
+<td><p>Default negative colormap</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="appendix.options.html#xoaoption-plot.cmapcyc"><code class="xref std std-xoaoption docutils literal notranslate"><span class="pre">plot.cmapcyc</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cmo.phase</span></code></p></td>
+<td><p>Default cyclic colormap</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The xoa configuration system is based on the
+<a class="reference external" href="https://configobj.readthedocs.io/en/latest/configobj.html">configobj</a>
+package.</p>
+</div>
+</div>
+<div class="section" id="setting-options">
+<h2>Setting options<a class="headerlink" href="#setting-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="permanent-settings">
+<h3>Permanent settings<a class="headerlink" href="#permanent-settings" title="Permalink to this headline">¶</a></h3>
+<p>You can permanently change default settings by editing
+the xoa user configuration file, which is typicall here on linux:
+<code class="file docutils literal notranslate"><span class="pre">~/.local/share/xoa/xoa.cfg</span></code>.
+Use the following command to see if this file is at
+this place:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ xoa info paths
+</pre></div>
+</div>
+<p>This file is organised in sections, which correspond to the
+string before the dot “.” in the flat options name.</p>
+</div>
+<div class="section" id="inline-settings">
+<h3>Inline settings<a class="headerlink" href="#inline-settings" title="Permalink to this headline">¶</a></h3>
+<p>You can change options from python with
+the <a class="reference internal" href="api/xoa.set_option.html#xoa.set_option" title="xoa.set_option"><code class="xref py py-class docutils literal notranslate"><span class="pre">xoa.set_option</span></code></a> function and the <a class="reference internal" href="api/xoa.set_options.html#xoa.set_options" title="xoa.set_options"><code class="xref py py-class docutils literal notranslate"><span class="pre">xoa.set_options</span></code></a> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xoa</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;plot.cmapdiv&quot;</span><span class="p">,</span> <span class="s2">&quot;cmo.balance&quot;</span><span class="p">)</span>  <span class="c1"># single option</span>
+<span class="n">xoa</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="s2">&quot;plot&quot;</span><span class="p">,</span> <span class="n">cmapdiv</span><span class="o">=</span><span class="s2">&quot;cmo.balance&quot;</span><span class="p">,</span> <span class="n">cmappos</span><span class="o">=</span><span class="s2">&quot;cmo.amp&quot;</span><span class="p">)</span>  <span class="c1"># several options</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="api/xoa.set_options.html#xoa.set_options" title="xoa.set_options"><code class="xref py py-class docutils literal notranslate"><span class="pre">xoa.set_options</span></code></a> can be used as a context manager to temporarily
+change options within a block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">xoa</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="s2">&quot;plot&quot;</span><span class="p">,</span> <span class="n">cmapdiv</span><span class="o">=</span><span class="s2">&quot;cmo.balance&quot;</span><span class="p">):</span>
+
+    <span class="c1"># you code with temporary settings</span>
+
+<span class="c1"># back to previous options</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-options">
+<h2>Getting options<a class="headerlink" href="#getting-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="from-commandline">
+<h3>From commandline<a class="headerlink" href="#from-commandline" title="Permalink to this headline">¶</a></h3>
+<p>Default options are printable with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ xoa info options
+</pre></div>
+</div>
+<p>Options are organised in sections.</p>
+</div>
+<div class="section" id="from-python">
+<h3>From python<a class="headerlink" href="#from-python" title="Permalink to this headline">¶</a></h3>
+<p>You can use the <a class="reference internal" href="api/xoa.get_option.html#xoa.get_option" title="xoa.get_option"><code class="xref py py-func docutils literal notranslate"><span class="pre">xoa.get_option()</span></code></a> function to access a single option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="n">xoa</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;plot.cmapdiv&#39;</span><span class="p">)</span> <span class="c1"># flat mode</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">xoa</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;plot&#39;</span><span class="p">,</span> <span class="s1">&#39;cmapdiv&#39;</span><span class="p">)</span> <span class="c1"># section mode</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="usages.html" class="btn btn-neutral float-right" title="Usages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

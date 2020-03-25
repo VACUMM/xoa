@@ -1,0 +1,6 @@
+xoa.cfgm.validator\_cdtime
+==========================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: validator_cdtime

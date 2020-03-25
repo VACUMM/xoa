@@ -1,0 +1,6 @@
+xoa.cf.SGLocator.match\_attr
+============================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: SGLocator.match_attr

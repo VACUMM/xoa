@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.set\_specs\_from\_cfg
+=======================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFVarSpecs.set_specs_from_cfg

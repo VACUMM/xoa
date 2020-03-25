@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.get\_specs
+============================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFVarSpecs.get_specs

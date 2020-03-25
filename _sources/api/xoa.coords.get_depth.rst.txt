@@ -1,0 +1,6 @@
+xoa.coords.get\_depth
+=====================
+
+.. currentmodule:: xoa.coords
+
+.. autofunction:: get_depth

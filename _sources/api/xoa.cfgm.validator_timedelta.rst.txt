@@ -1,0 +1,6 @@
+xoa.cfgm.validator\_timedelta
+=============================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: validator_timedelta

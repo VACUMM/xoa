@@ -1,0 +1,62 @@
+xoa.cf.CFVarSpecs
+=================
+
+.. currentmodule:: xoa.cf
+
+.. autoclass:: CFVarSpecs
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~CFVarSpecs.format_dataarray
+      
+      
+         ~CFVarSpecs.get_attrs
+      
+      
+         ~CFVarSpecs.get_specs
+      
+      
+         ~CFVarSpecs.items
+      
+      
+         ~CFVarSpecs.keys
+      
+      
+         ~CFVarSpecs.match
+      
+      
+         ~CFVarSpecs.search
+      
+      
+         ~CFVarSpecs.set_specs
+      
+      
+         ~CFVarSpecs.set_specs_from_cfg
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~CFVarSpecs.attrs_exclude
+      ~CFVarSpecs.attrs_first
+      ~CFVarSpecs.category
+      ~CFVarSpecs.dims
+      ~CFVarSpecs.names
+      ~CFVarSpecs.sglocator
+   
+   

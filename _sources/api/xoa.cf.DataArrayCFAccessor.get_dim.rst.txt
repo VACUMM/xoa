@@ -1,0 +1,6 @@
+xoa.cf.DataArrayCFAccessor.get\_dim
+===================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: DataArrayCFAccessor.get_dim

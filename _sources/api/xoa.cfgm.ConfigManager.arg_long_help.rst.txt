@@ -1,0 +1,6 @@
+xoa.cfgm.ConfigManager.arg\_long\_help
+======================================
+
+.. currentmodule:: xoa.cfgm
+
+.. automethod:: ConfigManager.arg_long_help

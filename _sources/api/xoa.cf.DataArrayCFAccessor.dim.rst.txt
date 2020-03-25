@@ -1,0 +1,6 @@
+xoa.cf.DataArrayCFAccessor.dim
+==============================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: DataArrayCFAccessor.dim

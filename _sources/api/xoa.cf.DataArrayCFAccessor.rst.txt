@@ -1,0 +1,47 @@
+xoa.cf.DataArrayCFAccessor
+==========================
+
+.. currentmodule:: xoa.cf
+
+.. autoclass:: DataArrayCFAccessor
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~DataArrayCFAccessor.auto_format
+      
+      
+         ~DataArrayCFAccessor.get
+      
+      
+         ~DataArrayCFAccessor.get_dim
+      
+      
+         ~DataArrayCFAccessor.set_cf_specs
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~DataArrayCFAccessor.dim
+      ~DataArrayCFAccessor.name
+      ~DataArrayCFAccessor.tdim
+      ~DataArrayCFAccessor.xdim
+      ~DataArrayCFAccessor.ydim
+      ~DataArrayCFAccessor.zdim
+   
+   

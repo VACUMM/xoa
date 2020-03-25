@@ -1,0 +1,6 @@
+xoa.cfgm.print\_short\_help
+===========================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: print_short_help

@@ -1,0 +1,6 @@
+xoa.cfgm.opt2rst
+================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: opt2rst

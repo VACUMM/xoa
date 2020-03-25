@@ -1,0 +1,6 @@
+xoa.misc.DefaultEnumMeta.default
+================================
+
+.. currentmodule:: xoa.misc
+
+.. autoattribute:: DefaultEnumMeta.default

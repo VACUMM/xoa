@@ -1,0 +1,6 @@
+xoa.cfgm.cfgargparse
+====================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: cfgargparse

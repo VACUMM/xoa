@@ -1,0 +1,6 @@
+xoa.show\_versions
+==================
+
+.. currentmodule:: xoa
+
+.. autofunction:: show_versions

@@ -1,0 +1,6 @@
+xoa.cf.CFCoordSpecs.items
+=========================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFCoordSpecs.items

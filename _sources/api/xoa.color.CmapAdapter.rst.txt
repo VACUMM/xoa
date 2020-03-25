@@ -1,0 +1,32 @@
+xoa.color.CmapAdapter
+=====================
+
+.. currentmodule:: xoa.color
+
+.. autoclass:: CmapAdapter
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~CmapAdapter.get_cmap
+      
+      
+         ~CmapAdapter.get_dict
+      
+      
+         ~CmapAdapter.set_vlim
+      
+   
+   
+
+   
+   
+   

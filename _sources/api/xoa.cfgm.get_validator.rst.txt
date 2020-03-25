@@ -1,0 +1,6 @@
+xoa.cfgm.get\_validator
+=======================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: get_validator

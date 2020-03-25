@@ -1,0 +1,6 @@
+xoa.reset\_options
+==================
+
+.. currentmodule:: xoa
+
+.. autofunction:: reset_options

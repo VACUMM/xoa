@@ -1,0 +1,6 @@
+xoa.grid.get\_edges\_2d
+=======================
+
+.. currentmodule:: xoa.grid
+
+.. autofunction:: get_edges_2d

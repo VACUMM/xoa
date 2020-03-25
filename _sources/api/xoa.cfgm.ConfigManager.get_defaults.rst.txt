@@ -1,0 +1,6 @@
+xoa.cfgm.ConfigManager.get\_defaults
+====================================
+
+.. currentmodule:: xoa.cfgm
+
+.. automethod:: ConfigManager.get_defaults

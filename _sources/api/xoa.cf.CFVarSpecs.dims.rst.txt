@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.dims
+======================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: CFVarSpecs.dims

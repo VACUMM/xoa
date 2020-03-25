@@ -1,0 +1,32 @@
+xoa.cf.DatasetCFAccessor
+========================
+
+.. currentmodule:: xoa.cf
+
+.. autoclass:: DatasetCFAccessor
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~DatasetCFAccessor.auto_format
+      
+      
+         ~DatasetCFAccessor.get
+      
+      
+         ~DatasetCFAccessor.set_cf_specs
+      
+   
+   
+
+   
+   
+   

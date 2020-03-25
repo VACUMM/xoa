@@ -1,0 +1,1174 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CF specs and defaults &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="xoa options" href="appendix.options.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configure.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usages.html">Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Release notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">Appendices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="appendix.options.html">xoa options</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CF specs and defaults</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-configuration-specifications">The configuration specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-default-configuration">The default configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="appendix.html">Appendices</a> &raquo;</li>
+        
+      <li>CF specs and defaults</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/appendix.cf.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="cf-specs-and-defaults">
+<span id="appendix-cf"></span><h1>CF specs and defaults<a class="headerlink" href="#cf-specs-and-defaults" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-configuration-specifications">
+<h2>The configuration specifications<a class="headerlink" href="#the-configuration-specifications" title="Permalink to this headline">¶</a></h2>
+<p>All configurations are validated with these specifications.</p>
+<p>See <a class="reference external" href="https://configobj.readthedocs.io/en/latest/index.html">configobj</a>.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[sglocator]</span>
+<span class="na">name_format</span><span class="o">=</span><span class="s">string(default=&quot;{root}_{loc}&quot;)</span>
+<span class="na">valid_locations</span><span class="o">=</span><span class="s">strings(default=None)</span>
+
+<span class="k">[accessors]</span>
+<span class="c1">#name=string(default=cf) # name of the dataarray and dataset accessors</span>
+
+    <span class="k">[[properties]]</span>
+    <span class="na">coords</span><span class="o">=</span><span class="s">strings(default=list(lon,lat,depth,level,altitude,time,forecast)) # coord names that are added as shortcut properties</span>
+<span class="s">    data_vars=strings(default=list(temp,sal,u,v,bathy))  # data_var names that are added as shortcut properties</span>
+
+<span class="k">[data_vars]</span>
+
+    <span class="k">[[__many__]]</span>
+
+    <span class="na">name</span><span class="o">=</span><span class="s">strings(default=list())</span>
+<span class="s">    long_name=strings(default=list())</span>
+<span class="s">    standard_name=strings(default=list())</span>
+<span class="s">    units=strings(default=list())</span>
+<span class="s">    domain=option(&#39;generic&#39;,&#39;ocean&#39;,&#39;atmos&#39;,&#39;waves&#39;,&#39;land&#39;,default=&#39;generic&#39;)</span>
+<span class="s">    cmap=string(default=None)</span>
+<span class="s">    inherit=string(default=None)</span>
+<span class="s">    squeeze=strings(default=None)</span>
+<span class="s">    search_order=string(default=ns)</span>
+
+        <span class="k">[[[select]]]</span>
+        <span class="na">__many__</span><span class="o">=</span><span class="s">eval(default=None)</span>
+
+<span class="c1">#        [[[coords]]]</span>
+<span class="c1">#        x=string(default=lon)</span>
+<span class="c1">#        y=string(default=lat)</span>
+<span class="c1">#        t=string(default=time)</span>
+
+<span class="c1">#            [[[[z]]]]</span>
+<span class="c1">#            generic=string(default=depth)</span>
+<span class="c1">#            ocean=string(default=depth)</span>
+<span class="c1">#            atmos=string(default=altitude)</span>
+
+
+<span class="k">[coords]</span>
+
+    <span class="k">[[__many__]]</span>
+
+    <span class="na">name</span><span class="o">=</span><span class="s">strings(default=list())</span>
+<span class="s">    long_name=strings(default=list())</span>
+<span class="s">    standard_name=strings(default=list())</span>
+<span class="s">    units=strings(default=list())</span>
+<span class="s">    domain=option(&#39;generic&#39;,&#39;ocean&#39;,&#39;atmos&#39;,&#39;waves&#39;,&#39;land&#39;,default=&#39;generic&#39;)</span>
+<span class="s">    inherit=string(default=None)</span>
+<span class="s">    axis=string(default=None)</span>
+<span class="s">    search_order=string(default=nsa)</span>
+
+
+<span class="c1">#        [[[dims]]]</span>
+<span class="c1">#        x=string(default=ni)</span>
+<span class="c1">#        y=string(default=nj)</span>
+<span class="c1">#        z=string(default=nk)</span>
+
+
+
+<span class="k">[dims]</span>
+    <span class="na">x</span><span class="o">=</span><span class="s">strings(default=list())</span>
+<span class="s">    y=strings(default=list())</span>
+<span class="s">    z=strings(default=list())</span>
+<span class="s">    t=strings(default=list())</span>
+<span class="s">    f=strings(default=list())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-default-configuration">
+<span id="appendix-cf-default"></span><h2>The default configuration<a class="headerlink" href="#the-default-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[data_vars]</span>
+
+    <span class="k">[[temp]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">temperature,TEMP</span>
+<span class="s">    standard_name = sea_water_temperature,sea_water_potential_temperature</span>
+<span class="s">    long_name = Temperature</span>
+<span class="s">    units = degrees_celsius</span>
+<span class="s">    cmap = cmo.thermal</span>
+
+    <span class="k">[[ptemp]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_water_potential_temperature</span>
+<span class="s">    long_name = Potential temperature</span>
+<span class="s">    units = degrees_celsius</span>
+<span class="s">    cmap = cmo.thermal</span>
+
+    <span class="k">[[sal]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">psal,salinity,SAL</span>
+<span class="s">    standard_names = sea_water_salinity</span>
+<span class="s">    long_name = Salinity</span>
+<span class="s">    units = PSU</span>
+<span class="s">    cmap = cmo.haline</span>
+
+    <span class="k">[[sst]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_surface_temperature,surface_sea_water_temperature</span>
+<span class="s">    long_name = Sea surface temperature</span>
+<span class="s">    units = degrees_celsius</span>
+<span class="s">    cmap = cmo.thermal</span>
+
+    <span class="k">[[sss]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_surface_salinity</span>
+<span class="s">    long_name = Sea surface salinity</span>
+<span class="s">    units = PSU</span>
+<span class="s">    cmap = cmo.haline</span>
+
+    <span class="k">[[dens]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_water_density</span>
+<span class="s">    long_name = Sea water density</span>
+<span class="s">    units = kg m-3</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[sigmat]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_water_sigma_t</span>
+<span class="s">    long_name = Sea water density minus 1000</span>
+<span class="s">    units = kg m-3</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[ndens]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_water_neutral_density</span>
+<span class="s">    long_name = Sea water neutral density</span>
+<span class="s">    units = kg m-3</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[sigmatheta]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_water_sigma_theta</span>
+<span class="s">    long_name = Sea water potential density minus 1000</span>
+<span class="s">    units = kg m-3</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[pdens]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">sigma0</span>
+<span class="s">    standard_name = sea_water_potential_density</span>
+<span class="s">    long_name = Sea water potential density</span>
+<span class="s">    units = kg m-3</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[sigma0]]</span>
+    <span class="na">inherit</span> <span class="o">=</span> <span class="s">pdens</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[sigma1]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_water_potential_density</span>
+<span class="s">    long_name = Sea water potential density with ref at 1000 dbar</span>
+<span class="s">    units = kg m-3</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[sigma2]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_water_potential_density</span>
+<span class="s">    long_name = Sea water potential density with ref at 2000 dbar</span>
+<span class="s">    units = kg m-3</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[sigma3]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_water_potential_density</span>
+<span class="s">    long_name = Sea water potential density with ref at 3000 dbar</span>
+<span class="s">    units = kg m-3</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[sigma4]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_water_potential_density</span>
+<span class="s">    long_name = Sea water potential density with ref at 4000 dbar</span>
+<span class="s">    units = kg m-3</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[ssd]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_surface_density</span>
+<span class="s">    long_name = Sea surface density</span>
+<span class="s">    units = PSU</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[conduct]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_water_electrical_conductivity</span>
+<span class="s">    long_name = Sea water electrial conductivity</span>
+<span class="s">    units = S m-1</span>
+
+    <span class="k">[[sndspd]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">speed_of_sound_in_sea_water</span>
+<span class="s">    long_name = Speed of sound in water</span>
+<span class="s">    units = m s-1</span>
+
+    <span class="k">[[mld]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">mixed_layer_depth</span>
+<span class="s">    long_name = Mixed layer depth</span>
+<span class="s">    units = m</span>
+
+    <span class="k">[[ped]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">potential_energy_deficit</span>
+<span class="s">    long_name = Potential energy deficit</span>
+<span class="s">    units = J m-2</span>
+
+    <span class="k">[[ohc]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">ocean_heat_content</span>
+<span class="s">    long_name = Ocean heat content</span>
+<span class="s">    units = J</span>
+<span class="s">    cmap = cmo.thermal</span>
+
+    <span class="k">[[osc]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">ocean_salt_content</span>
+<span class="s">    long_name = Ocean salt content</span>
+<span class="s">    units = kg</span>
+<span class="s">    cmap = cmo.haline</span>
+
+    <span class="k">[[cp]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">specific_heat_capacity</span>
+<span class="s">    long_name = Specific heat capacity</span>
+<span class="s">    units = J K-1</span>
+<span class="s">    cmap = cmo.thermal</span>
+
+
+    <span class="c1"># Dynamics</span>
+    <span class="k">[[ssh]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">xe,wlv</span>
+<span class="s">    standard_name = sea_surface_height_above_sea_level,sea_surface_height_above_geoid</span>
+<span class="s">    long_name = Sea surface height</span>
+<span class="s">    units = m</span>
+<span class="s">    cmap = cmo.balance:piv0</span>
+
+    <span class="k">[[u]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">uz,u3d</span>
+<span class="s">    standard_name = sea_water_x_velocity</span>
+<span class="s">    long_name = Sea water velocity along X</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[v]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">vz,v3d</span>
+<span class="s">    standard_name = sea_water_y_velocity</span>
+<span class="s">    long_name = Sea water velocity along Y</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[w]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">wz,w3d</span>
+<span class="s">    standard_name = sea_water_z_velocity_at_w_location,sea_water_z_velocity</span>
+<span class="s">    long_name = Sea water velocity along Z at W location</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[u3d]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">uz</span>
+<span class="s">    standard_name = sea_water_x_velocity</span>
+<span class="s">    long_name = Sea water velocity along X</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[v3d]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">vz</span>
+<span class="s">    standard_name = sea_water_y_velocity</span>
+<span class="s">    long_name = Sea water velocity along Y</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[w3d]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">wz</span>
+<span class="s">    standard_name = sea_water_z_velocity_at_w_location,sea_water_z_velocity</span>
+<span class="s">    long_name = Sea water velocity along Z at W location</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[ubt]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">u2d,u</span>
+<span class="s">    standard_name = barotropic_sea_water_x_velocity</span>
+<span class="s">    long_name = Sea water barotropic velocity along X</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[vbt]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">v2d,v</span>
+<span class="s">    standard_name = barotropic_sea_water_y_velocity</span>
+<span class="s">    long_name = Sea water barotropic velocity along Y</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    atlocs = t,u,v</span>
+<span class="s">    physloc = v</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[ubc]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">u</span>
+<span class="s">    standard_name = baroclinic_sea_water_x_velocity</span>
+<span class="s">    long_name = Sea water baroclinic velocity along X</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[vbc]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">v</span>
+<span class="s">    standard_name = baroclinic_sea_water_y_velocity</span>
+<span class="s">    long_name = Sea water baroclinic velocity along Y</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[usurf]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_surface_x_velocity,eastward_sea_water_velocity</span>
+<span class="s">    long_name = Sea surface velocity along X,Eastward surface current,Eastward current</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[vsurf]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_surface_y_velocity,northward_sea_water_velocity</span>
+<span class="s">    long_name = Sea surface velocity along Y,Northward surface current,Northward current</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[ugbt]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">barotropic_sea_water_x_geostrophic_velocity,eastward_geostrophic_current_velocity</span>
+<span class="s">    long_name = Sea water barotropic geostrophic velocity along X</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[vgbt]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">barotropic_sea_water_y_geostrophic_velocity,northward_geostrophic_current_velocity</span>
+<span class="s">    long_name = Sea water barotropic geostrophic velocity along Y</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[cspd]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_water_speed</span>
+<span class="s">    long_name = Sea water speed</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.amp</span>
+
+    <span class="k">[[speed]]</span>
+    <span class="na">inherit</span> <span class="o">=</span> <span class="s">cspd</span>
+
+    <span class="k">[[cdir]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">direction_of_sea_water_velocity</span>
+<span class="s">    long_name = Direction of sea water velocity</span>
+<span class="s">    units = degrees</span>
+<span class="s">    cmap = cmo.phase:cyc360</span>
+
+    <span class="k">[[ke]]</span>
+    <span class="na">standard_names</span>  <span class="o">=</span> <span class="s">kinetic_energy</span>
+<span class="s">    long_name = Kinetic energy</span>
+<span class="s">    units = m2 s-2</span>
+
+    <span class="k">[[eke]]</span>
+    <span class="na">standard_names</span>  <span class="o">=</span> <span class="s">eddy_kinetic_energy</span>
+<span class="s">    long_name = Eddy kinetic energy</span>
+<span class="s">    units = m2 s-2</span>
+
+    <span class="k">[[tke]]</span>
+    <span class="na">standard_names</span>  <span class="o">=</span> <span class="s">turbulent_kinetic_energy</span>
+<span class="s">    long_name = Turbulent kinetic energy</span>
+<span class="s">    units = m2 s-2</span>
+
+    <span class="k">[[mke]]</span>
+    <span class="na">standard_names</span>  <span class="o">=</span> <span class="s">mean_kinetic_energy</span>
+<span class="s">    long_name = Mean kinetic energy</span>
+<span class="s">    units = m2 s-2</span>
+
+    <span class="k">[[kz]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">kz,kzm</span>
+<span class="s">    standard_name = average_ocean_vertical_tracer_diffusivity</span>
+<span class="s">    long_name = Vertical diffusivity</span>
+<span class="s">    units = m2 s-1</span>
+
+
+
+    <span class="c1"># Bathymetry</span>
+    <span class="k">[[bathy]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">h0,dpt</span>
+<span class="s">    standard_name = model_sea_floor_depth_below_sea_level,model_sea_floor_depth_below_geoid,sea_floor_depth_below_geoid</span>
+<span class="s">    long_name = Bathymetry</span>
+<span class="s">    units = m</span>
+<span class="s">    cmap = cmo.deep</span>
+
+    <span class="k">[[meanlev]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">niv_moy</span>
+<span class="s">    standard_name = mean_sea_level_above_sea_floor_depth_at_lowest_astronomical_tide,mean_sea_level</span>
+<span class="s">    long_name = Mean Sea Level</span>
+<span class="s">    units = m</span>
+
+    <span class="k">[[depth]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">dep</span>
+<span class="s">    standard_name = ocean_layer_depth</span>
+<span class="s">    long_name = Depth</span>
+<span class="s">    units = m</span>
+<span class="s">    cmap = cmo.deep</span>
+
+    <span class="k">[[altitude]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">altitudet,altitudeu,altitudev</span>
+<span class="s">    standard_name = atmosphere_layer_altitude</span>
+<span class="s">    long_name = Altitude</span>
+<span class="s">    units = m</span>
+<span class="s">    cmap = cmo.deep</span>
+
+
+    <span class="c1"># Cell sizes</span>
+    <span class="k">[[dx]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">cell_x_size</span>
+<span class="s">    long_name = Mesh size along x</span>
+<span class="s">    units = m</span>
+
+    <span class="k">[[dy]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">cell_y_size</span>
+<span class="s">    long_name = Mesh size along y</span>
+<span class="s">    units = m</span>
+
+    <span class="k">[[dz]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">ocean_layer_thickness</span>
+<span class="s">    long_name = Ocean layer thickness</span>
+<span class="s">    units = m</span>
+
+    <span class="k">[[dlon]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">cell_x_size,cell_x_step</span>
+<span class="s">    long_name = Mesh size along x</span>
+<span class="s">    units = degrees</span>
+
+    <span class="k">[[dlat]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">cell_y_step,cell_y_size</span>
+<span class="s">    long_name = Mesh step along y</span>
+<span class="s">    units = degrees</span>
+
+
+    <span class="c1"># Cell volume</span>
+    <span class="k">[[cvol]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">cell_volume</span>
+<span class="s">    long_name = Volume of the cell</span>
+<span class="s">    units = m3</span>
+
+
+    <span class="c1"># Standard volume</span>
+    <span class="k">[[vol]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">seawater_volume</span>
+<span class="s">    long_name = Volume of the sea water</span>
+<span class="s">    units = m3</span>
+
+
+    <span class="c1"># Coriolis</span>
+    <span class="k">[[corio]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">f0</span>
+<span class="s">    standard_name = coriolis_parameter</span>
+<span class="s">    long_name = Coriolis parameter</span>
+<span class="s">    units = s-1</span>
+
+    <span class="k">[[beta]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">meridional_derivative_of_coriolis_parameter</span>
+<span class="s">    long_name = Meridional derivative of coriolis parameter</span>
+<span class="s">    units = m-1 s-1</span>
+
+
+    <span class="c1"># Orography</span>
+    <span class="k">[[oro]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">zs</span>
+<span class="s">    standard_name = orography</span>
+<span class="s">    long_name = Orography for SLEVE vertical coordinates</span>
+<span class="s">    units = m</span>
+
+    <span class="k">[[orosm]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">smoothed_orography</span>
+<span class="s">    long_name = Smoothed orography for SLEVE vertical coordinates</span>
+<span class="s">    units = m</span>
+
+
+    <span class="c1"># Atmosphere surface</span>
+    <span class="k">[[nethf]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">nethf</span>
+<span class="s">    standard_name = surface_net_averaged_downward_radiative_flux,surface_net_downward_radiative_flux</span>
+<span class="s">    long_name = Net radiation</span>
+<span class="s">    units = W m-2</span>
+<span class="s">    cmap = cmo.curl:piv0</span>
+
+    <span class="k">[[lwnhf]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_net_downward_longwave_flux</span>
+<span class="s">    long_name = Net longwave radiation (positive when directed downward)</span>
+<span class="s">    units = W m-2</span>
+<span class="s">    cmap = cmo.solar</span>
+
+    <span class="k">[[swnhf]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_net_downward_shortwave_flux</span>
+<span class="s">    long_name = Net shortwave radiation (positive when directed downward)</span>
+<span class="s">    units = W m-2</span>
+<span class="s">    cmap = cmo.solar</span>
+
+    <span class="k">[[ghf]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">ghf</span>
+<span class="s">    standard_name = averaged_downward_ground_heat_flux</span>
+<span class="s">    long_name = Ground heat flux (SW + LW - LE - H)</span>
+<span class="s">    units = W m-2</span>
+<span class="s">    cmap = cmo.solar</span>
+
+    <span class="k">[[lwuhf]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_upward_longwave_flux</span>
+<span class="s">    long_name = Longwave radiation (positive when directed upward)</span>
+<span class="s">    units = W m-2</span>
+<span class="s">    cmap = cmo.solar</span>
+
+    <span class="k">[[swuhf]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_upward_shortwave_flux</span>
+<span class="s">    long_name = Shortwave radiation (positive when directed upward)</span>
+<span class="s">    units = W m-2</span>
+<span class="s">    cmap = cmo.solar</span>
+
+    <span class="k">[[lwdhf]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_downward_longwave_flux</span>
+<span class="s">    long_name = Longwave radiation (positive when directed downward)</span>
+<span class="s">    units = W m-2</span>
+<span class="s">    cmap = cmo.solar</span>
+
+    <span class="k">[[swdhf]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_downward_shortwave_flux</span>
+<span class="s">    long_name = Shortwave radiation (positive when directed downward)</span>
+<span class="s">    units = W m-2</span>
+<span class="s">    cmap = cmo.solar</span>
+
+    <span class="k">[[lathf]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_downward_latent_heat_flux</span>
+<span class="s">    long_name = Latent heat flux (positive when directed downward)</span>
+<span class="s">    units = W.m-2</span>
+<span class="s">    cmap = cmo.solar</span>
+
+    <span class="k">[[hflat]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_averaged_upward_latent_heat_flux,upward_latent_heat_flux,surface_upward_latent_heat_flux</span>
+<span class="s">    long_name = Latent heat flux (positive when directed upward)</span>
+<span class="s">    units = W.m-2</span>
+<span class="s">    cmap = cmo.solar</span>
+
+    <span class="k">[[senhf]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_downward_sensible_heat_flux</span>
+<span class="s">    long_name = Sensible heat flux (positive when directed downward)</span>
+<span class="s">    units = W m-2</span>
+<span class="s">    cmap = cmo.solar</span>
+
+    <span class="k">[[hfsen]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_averaged_upward_sensible_heat_flux,upward_sensible_heat_flux,surface_upward_sensible_heat_flux,</span>
+<span class="s">    long_name = Sensible heat flux (positive when directed upward)</span>
+<span class="s">    units = W m-2</span>
+<span class="s">    cmap = cmo.solar</span>
+
+    <span class="k">[[evap]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">lwe_thickness_of_water_evaporation_amount</span>
+<span class="s">    long_name = evaporation (positive when directed downward)</span>
+<span class="s">    units = m</span>
+<span class="s">    cmap = cmo.amp</span>
+
+    <span class="k">[[rain]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">lwe_thickness_of_precipitation_amount,lwe_thickness_of_downward_precipitation_amount</span>
+<span class="s">    long_name = Precipitation [Downward (positive when it is raining)]</span>
+<span class="s">    units = m,mm</span>
+<span class="s">    cmap = cmo.rain</span>
+
+    <span class="k">[[t2m]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">air_potential_temperature_at_2_meters</span>
+<span class="s">    long_name = 2 m temperature</span>
+<span class="s">    units = K,degrees_kelvin</span>
+<span class="s">    cmap = cmo.thermal</span>
+
+    <span class="k">[[q2m]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">air_specific_humidity_at_2_meters</span>
+<span class="s">    long_name = 2 m specific humidity</span>
+<span class="s">    units = kg kg-1</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[hu2m]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">q2m</span>
+<span class="s">    standard_name = air_relative_specific_humidity_at_2_meters</span>
+<span class="s">    long_name = 2 m specific humidity</span>
+<span class="s">    units = kg kg-1</span>
+<span class="s">    cmap = cmo.dense</span>
+
+    <span class="k">[[z0a]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">z0</span>
+<span class="s">    standard_name = air_surface_roughness_length,surface_roughness_length,roughness_length</span>
+<span class="s">    long_name = Air roughness length</span>
+<span class="s">    units = m</span>
+
+    <span class="k">[[cda]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">cda,cd</span>
+<span class="s">    standard_name = averaged_drag_momentum_coefficient_in_air,drag_momentum_coefficient_in_air</span>
+<span class="s">    long_name = Averaged drag momentum coefficient,Drag momentum coefficient</span>
+<span class="s">    units = W s-2</span>
+
+    <span class="k">[[cha]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">cha,ch</span>
+<span class="s">    standard_name = averaged_drag_thermal_coefficient_in_air,drag_thermal_coefficient_in_air</span>
+<span class="s">    long_name = Averaged drag thermal coefficient,Drag thermal coefficient</span>
+<span class="s">    units = W s-2</span>
+
+    <span class="k">[[cea]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">cea,ce</span>
+<span class="s">    standard_name = averaged_latent_heat_coefficient_in_air,latent_heat_coefficient_in_air</span>
+<span class="s">    long_name = Averaged latent heat flux coefficient,Latent heat flux coefficient</span>
+<span class="s">    units = W s-2</span>
+
+
+
+    <span class="c1"># Atmosphere</span>
+    <span class="k">[[wspd]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">wind_speed</span>
+<span class="s">    long_name = Wind speed</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.speed</span>
+
+    <span class="k">[[wdir]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">wind_to_direction,wind_from_direction</span>
+<span class="s">    long_name = Wind direction</span>
+<span class="s">    units = degrees</span>
+<span class="s">    cmap = cmo.phase:cyc360</span>
+
+    <span class="k">[[wfdir]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">wind_from_direction</span>
+<span class="s">    long_name = Wind from direction</span>
+<span class="s">    units = degrees</span>
+<span class="s">    cmap = cmo.phase:cyc360</span>
+
+    <span class="k">[[wtdir]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">wind_to_direction</span>
+<span class="s">    long_name = Wind to direction</span>
+<span class="s">    units = degrees</span>
+<span class="s">    cmap = cmo.phase:cyc360</span>
+
+    <span class="k">[[uair]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">uair,ua,uwnd</span>
+<span class="s">    standard_name = eastward_wind,x_wind</span>
+<span class="s">    long_name = Zonal wind speed (westerly)</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[vair]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">vair,va,vwnd</span>
+<span class="s">    standard_name = northward_wind,y_wind</span>
+<span class="s">    long_name = Meridional wind speed (northerly)</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[wair]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">wa,wwnd</span>
+<span class="s">    standard_name = upward_wind,z_wind</span>
+<span class="s">    long_name = Upward wind speed</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.curl:piv0</span>
+
+    <span class="k">[[tair]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">temp,tht</span>
+<span class="s">    standard_name = air_potential_temperature,air_temperature</span>
+<span class="s">    long_name = Temperature</span>
+<span class="s">    units = degrees_kelvin,K</span>
+<span class="s">    cmap = cmo.thermal</span>
+
+    <span class="k">[[pa]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">pa</span>
+<span class="s">    standard_name = air_pressure_at_sea_level</span>
+<span class="s">    long_name = Absolute pressure</span>
+<span class="s">    units = Pa</span>
+
+    <span class="k">[[tkea]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">tkea</span>
+<span class="s">    standard_name = air_turbulent_kinetic_energy</span>
+<span class="s">    long_name = Turbulent Kinetic Energy</span>
+<span class="s">    units = m2 s-2</span>
+<span class="s">    cmap = cmo.amp</span>
+
+
+    <span class="c1"># Ocean Atmosphere interface</span>
+    <span class="k">[[u10m]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">x_wind_at_10m,x_wind,x_wind_at_u_location,x_wind_at_10m_at_u_location,eastward_wind</span>
+<span class="s">    long_name = 10-m zonal wind speed (westerly)</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[v10m]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">y_wind_at_10m,y_wind,y_wind_at_v_location,y_wind_at_10m_at_v_location,northward_wind</span>
+<span class="s">    long_name = 10-m meridional wind speed (northerly)</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[w10m]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">z_wind_at_10m,upward_wind_at_10m</span>
+<span class="s">    long_name = 10-m meridional wind speed (northerly)</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.curl:piv0</span>
+
+    <span class="k">[[ux10m]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">x_wind_at_10m,x_wind,grid_eastward_wind,x_wind_at_u_location,x_wind_at_10m_at_u_location</span>
+<span class="s">    long_name = 10-m wind speed along X</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+    <span class="k">[[vy10m]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">y_wind_at_10m,y_wind,grid_northward_wind,y_wind_at_v_location,y_wind_at_10m_at_v_location</span>
+<span class="s">    long_name = 10-m wind speed along Y</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.delta:piv0</span>
+
+
+    <span class="k">[[tauu]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_downward_eastward_stress,surface_eastward_stress,surface_downward_x_stress</span>
+<span class="s">    long_name = Surface eastward wind stress</span>
+<span class="s">    units = N m-2,Pa</span>
+<span class="s">    cmap = cmo.diff:piv0</span>
+
+    <span class="k">[[tauv]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_downward_northward_stress,surface_northward_stress,surface_downward_y_stress</span>
+<span class="s">    long_name = Surface northward wind stress</span>
+<span class="s">    units = N m-2,Pa</span>
+<span class="s">    cmap = cmo.diff:piv0</span>
+
+    <span class="k">[[taux]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">ustress</span>
+<span class="s">    standard_name = surface_downward_x_stress,surface_x_stress,surface_downward_x_stress_at_u_location</span>
+<span class="s">    long_name = Surface wind stress along X</span>
+<span class="s">    units = N m-2</span>
+<span class="s">    cmap = cmo.diff:piv0</span>
+
+    <span class="k">[[tauy]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">vstress</span>
+<span class="s">    standard_name = surface_downward_y_stress,surface_y_stress,surface_downward_y_stress_at_v_location</span>
+<span class="s">    long_name = Surface wind stress along Y</span>
+<span class="s">    units = N m-2</span>
+<span class="s">    cmap = cmo.diff:piv0</span>
+
+    <span class="k">[[topheight]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">maximum_height</span>
+<span class="s">    long_name = height of the top level</span>
+<span class="s">    units = m</span>
+
+
+    <span class="c1"># Surfaces waves</span>
+    <span class="k">[[hs]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">hs,hm0</span>
+<span class="s">    standard_name = sea_surface_wave_significant_height,significant_height_of_wind_and_swell_waves</span>
+<span class="s">    long_name = Significant wave height,Significant height of wind and swell waves</span>
+<span class="s">    units = m</span>
+<span class="s">    cmap = cmo.amp</span>
+
+    <span class="k">[[mssx]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">eastward_mean_square_slope,x_mean_square_slope</span>
+<span class="s">    long_name = Eastward mean square slope</span>
+<span class="s">    units = m m-1</span>
+
+    <span class="k">[[mssy]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">nortward_mean_square_slope,y_mean_square_slope</span>
+<span class="s">    long_name = Northward mean square slope</span>
+<span class="s">    units = m m-1</span>
+
+    <span class="k">[[mss]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">mss</span>
+<span class="s">    standard_name = mean_square_slope</span>
+<span class="s">    long_name = mean square slope</span>
+<span class="s">    units = m m-1</span>
+
+    <span class="k">[[mlw]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">mean_wave_length</span>
+<span class="s">    long_name = Mean wave length</span>
+<span class="s">    units = m</span>
+<span class="s">    cmap = cmo.tempo</span>
+
+    <span class="k">[[t0m1]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_surface_wind_wave_mean_period_from_variance_spectral_density_inverse_frequency_moment</span>
+<span class="s">    long_name = Mean wave period</span>
+<span class="s">    units = s</span>
+<span class="s">    cmap = cmo.tempo</span>
+
+    <span class="k">[[dp]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">dp</span>
+<span class="s">    standard_name = sea_surface_wave_peak_direction</span>
+<span class="s">    long_name = Peak direction</span>
+<span class="s">    units = degrees</span>
+<span class="s">    cmap = cmo.phase:cyc360</span>
+
+    <span class="k">[[tp]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_surface_wave_peak_period</span>
+<span class="s">    long_name = Peak period</span>
+<span class="s">    units = s</span>
+<span class="s">    cmap = cmo.tempo</span>
+
+    <span class="k">[[fp]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">peak_frequency_of_wind_and_swell_waves</span>
+<span class="s">    long_name = Peak frequency,Frequency of wind and swell waves at spectral peak</span>
+<span class="s">    units = s-1</span>
+<span class="s">    cmap = cmo.tempo</span>
+
+    <span class="k">[[th1p]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">dir</span>
+<span class="s">    standard_name = sea_surface_wave_from_direction</span>
+<span class="s">    long_name = Mean wave direction,Mean direction of wind and swell waves at spectral peak</span>
+<span class="s">    units = degree</span>
+<span class="s">    cmap = cmo.phase:cyc360</span>
+
+    <span class="k">[[char]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">cha</span>
+<span class="s">    standard_name = charnock_coefficient_for_surface_roughness_length_for_momentum_in_air</span>
+<span class="s">    long_name = Charnock coefficient for surface roughness length for momentum in air</span>
+<span class="s">    units =</span>
+
+    <span class="k">[[ubr]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">rms_amplitude_of_orbital_bottom_velocity_of_wind_and_swell_waves</span>
+<span class="s">    long_name = Near bottom rms velocities</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.amp</span>
+
+    <span class="k">[[uubr]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">rms_of_bottom_zonal_velocity_amplitude</span>
+<span class="s">    long_name = Rms of near bottom zonal velocities</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.amp</span>
+
+    <span class="k">[[vubr]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">rms_of_bottom_meridional_velocity_amplitude</span>
+<span class="s">    long_name = Rms of near bottom meridional velocities</span>
+<span class="s">    units = m s-1</span>
+<span class="s">    cmap = cmo.amp</span>
+
+    <span class="k">[[bhd]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">bernoulli_head_pressure_of_wind_and_swell_waves</span>
+<span class="s">    long_name = Radiation pressure (Bernoulli head)</span>
+<span class="s">    units = N s-1</span>
+
+    <span class="k">[[foc]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">phioc</span>
+<span class="s">    standard_name = turbulent_kinetic_energy_flux_into_sea_water_due_to_surface_dissipation_wave</span>
+<span class="s">    long_name = Wave mixing kinetic turbulent energy due to surface breaking wave</span>
+<span class="s">    units = W m-2,m3 s-3</span>
+
+    <span class="k">[[utwo]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">tauox</span>
+<span class="s">    standard_name = x_component_of_surface_wave_ocean_momentum_flux,northward_wave_to_ocean_stress</span>
+<span class="s">    long_name = Zonal component of the surface wave-ocean momentum flux</span>
+<span class="s">    units = m2 s-2</span>
+
+    <span class="k">[[vtwo]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">tauoy</span>
+<span class="s">    standard_name = y_component_of_surface_wave_ocean_momentum_flux,northward_wave_to_ocean_stress</span>
+<span class="s">    long_name = Meridional component of the surface wave-ocean momentum flux</span>
+<span class="s">    units = m2 s-2</span>
+
+    <span class="k">[[utaw]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">x_component_of_wave_supported_wind_stress</span>
+<span class="s">    long_name = Eastward wave supported wind stress,Zonal component of the atmosphere-wave momentum flux</span>
+<span class="s">    units = m2 s-2</span>
+
+    <span class="k">[[vtaw]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">y_component_of_wave_supported_wind_stress</span>
+<span class="s">    long_name = Northward wave supported wind stress,Meridional component of the atmosphere-wave momentum flux</span>
+<span class="s">    units = m2 s-2</span>
+
+    <span class="k">[[fbb]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">wave_energy_dissipation_in_bottom_boundary_layer</span>
+<span class="s">    long_name = Wave dissipation in bottom boundary layer</span>
+<span class="s">    units = W m-2</span>
+
+    <span class="k">[[utbb]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">x_component_of_bottom_wave_ocean_momentum_flux,eastward_wave_to_bottom_boundary_layer_stress</span>
+<span class="s">    long_name = Zonal component of the bottom wave-ocean momentum flux</span>
+<span class="s">    units = m2 s-2</span>
+
+    <span class="k">[[vtbb]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">y_component_of_bottom_wave_ocean_momentum_flux,northward_wave_to_bottom_boundary_layer_stress</span>
+<span class="s">    long_name = Meridional component of the bottom wave-ocean momentum flux</span>
+<span class="s">    units = m2 s-2</span>
+
+    <span class="k">[[uuss]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">eastward_surface_stokes_drift</span>
+<span class="s">    long_name = Eastward surface stokes drift</span>
+<span class="s">    units = m s-1</span>
+
+    <span class="k">[[vuss]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">northward_surface_stokes_drift</span>
+<span class="s">    long_name = Northward surface stokes drift</span>
+<span class="s">    units = m s-1</span>
+
+    <span class="k">[[utus]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">eastward_stokes_transport</span>
+<span class="s">    long_name = Eastward stokes transport</span>
+<span class="s">    units = m2 s-1</span>
+
+    <span class="k">[[vtus]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">northward_stokes_transport</span>
+<span class="s">    long_name = northward_stokes_transport</span>
+<span class="s">    units = m2 s-1</span>
+
+    <span class="k">[[mapsta]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">status_map</span>
+<span class="s">    long_name = Status map</span>
+<span class="s">    units = 1</span>
+
+    <span class="k">[[wlv]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_surface_height_above_sea_level</span>
+<span class="s">    long_name = Sea surface height above sea level</span>
+<span class="s">    units = m</span>
+
+<span class="k">[coords]</span>
+
+    <span class="k">[[time]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">time</span>
+<span class="s">    long_name = Time</span>
+<span class="s">    axis = T</span>
+
+    <span class="k">[[lon]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">longitude,nav_lon</span>
+<span class="s">    standard_name = longitude,longitudes</span>
+<span class="s">    long_name = Longitude</span>
+<span class="s">    units = degrees_east,degree_east,degree_e,degrees_e,degreee,degreese</span>
+<span class="s">    axis = X</span>
+<span class="s">    search_order = nsua</span>
+
+    <span class="k">[[lat]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">latitude,nav_lat,latitudes</span>
+<span class="s">    standard_name = latitude</span>
+<span class="s">    long_name = Latitude</span>
+<span class="s">    units = degrees_north,degree_north,degree_n,degrees_n,degreen,degreesn</span>
+<span class="s">    axis = Y</span>
+<span class="s">    search_order = nsua</span>
+
+    <span class="k">[[depth]]</span>
+    <span class="na">inherit</span> <span class="o">=</span> <span class="s">data_vars:depth</span>
+<span class="s">    axis = Z</span>
+
+    <span class="k">[[altitude]]</span>
+    <span class="na">inherit</span> <span class="o">=</span> <span class="s">data_vars:altitude</span>
+<span class="s">    axis = Z</span>
+
+    <span class="k">[[level]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">sigma_level,model_level</span>
+<span class="s">    standard_name = model_level_number,ocean_sigma_coordinate,ocean_s_coordinate,atmosphere_sigma_coordinate,atmosphere_s_coordinate</span>
+<span class="s">    long_name = Model level number,Sigma level,Sigma level at W location</span>
+<span class="s">    axis = Z</span>
+
+    <span class="k">[[forecast]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">fct,forecast_time</span>
+<span class="s">    long_name = Forecast</span>
+<span class="s">    axis = F</span>
+
+<span class="k">[dims]</span>
+    <span class="na">x</span><span class="o">=</span><span class="s">nx,ni,x,imt,ipi</span>
+<span class="s">    y=ny,nj,y,jmt,jpj</span>
+<span class="s">    z=nz,nk,z,kmt,level</span>
+<span class="s">    t=nt,t</span>
+<span class="s">    f=nf</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="appendix.options.html" class="btn btn-neutral float-left" title="xoa options" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Commandline interface &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Release notes" href="changes.html" />
+    <link rel="prev" title="xoa.cli.main_info" href="api/xoa.cli.main_info.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configure.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usages.html">Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Commandline interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#xoa"><strong class="command">xoa</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xoa-info"><strong class="command">xoa info</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Commandline interface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/cli.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="commandline-interface">
+<h1>Commandline interface<a class="headerlink" href="#commandline-interface" title="Permalink to this headline">¶</a></h1>
+<p>xoa comes with an executable script with the same name.
+Here is its help.</p>
+<div class="section" id="xoa">
+<h2><strong class="command">xoa</strong><a class="headerlink" href="#xoa" title="Permalink to this headline">¶</a></h2>
+<p><p>xoa interface</p>
+</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">xoa</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">{</span><span class="n">info</span><span class="p">}</span> <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xoa-info">
+<h2><strong class="command">xoa info</strong><a class="headerlink" href="#xoa-info" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">xoa</span> <span class="n">info</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[{</span><span class="nb">all</span><span class="p">,</span><span class="n">paths</span><span class="p">,</span><span class="n">versions</span><span class="p">,</span><span class="n">options</span><span class="p">}]</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h3>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h3>
+<dl class="option-list">
+<dt><kbd>category</kbd></dt>
+<dd><p>Possible choices: all, paths, versions, options</p>
+<p>info category</p>
+<p>Default: “all”</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>Print all info:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ xoa info
+# VERSIONS
+- xoa: 0.1.0
+- cartopy: 0.17.0
+- configobj: 5.0.6
+- matplotlib: 3.1.2
+- pandas: 0.25.3
+- python: ERROR
+- scipy: 1.4.1
+- xarray: 0.14.1
+- xesmf: 0.2.1
+
+# FILES AND DIRECTORIES
+- xoa library dir: /local/home/sraynaud/Src/xoa/xoa
+- user config file: /local/home/sraynaud/.local/share/xoa/xoa.cfg [*]
+- user CF specs file: /local/home/sraynaud/.config/xoa/cf.cfg [*]
+- user CF cache file: /local/home/sraynaud/.cache/xoa/cf.pyk
+*: file not present
+
+# OPTIONS
+[cf] # cf module
+accessors=boolean(default=True) # automatically load the :mod:`~xoa.cf` accessors?
+cache=boolean(default=True) # use the :mod:`~xoa.cf` in memory and file caches
+
+[plot] # plot parameters
+cmapdiv = string(default=&quot;cmo.balance&quot;) # defaut diverging colormap
+cmappos = string(default=&quot;cmo.amp&quot;)     # default positive colormap
+cmapneg = string(default=&quot;cmo.tempo_r&quot;) # default negative colormap
+cmapcyc = string(default=&quot;cmo.phase&quot;)   # default cyclic colormap
+</pre></div>
+</div>
+<p>Print only info about paths:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ xoa info paths
+- xoa library dir: /local/home/sraynaud/Src/xoa/xoa
+- user config file: /local/home/sraynaud/.local/share/xoa/xoa.cfg [*]
+- user CF specs file: /local/home/sraynaud/.config/xoa/cf.cfg [*]
+- user CF cache file: /local/home/sraynaud/.cache/xoa/cf.pyk
+*: file not present
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="changes.html" class="btn btn-neutral float-right" title="Release notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api/xoa.cli.main_info.html" class="btn btn-neutral float-left" title="xoa.cli.main_info" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

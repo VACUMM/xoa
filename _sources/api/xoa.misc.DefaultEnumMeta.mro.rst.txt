@@ -1,0 +1,6 @@
+xoa.misc.DefaultEnumMeta.mro
+============================
+
+.. currentmodule:: xoa.misc
+
+.. automethod:: DefaultEnumMeta.mro

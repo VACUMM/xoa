@@ -1,0 +1,6 @@
+xoa.cfgm.validator\_numerics
+============================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: validator_numerics

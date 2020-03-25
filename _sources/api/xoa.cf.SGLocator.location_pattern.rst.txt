@@ -1,0 +1,6 @@
+xoa.cf.SGLocator.location\_pattern
+==================================
+
+.. currentmodule:: xoa.cf
+
+.. autoattribute:: SGLocator.location_pattern

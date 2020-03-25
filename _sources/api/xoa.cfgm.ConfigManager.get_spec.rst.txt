@@ -1,0 +1,6 @@
+xoa.cfgm.ConfigManager.get\_spec
+================================
+
+.. currentmodule:: xoa.cfgm
+
+.. automethod:: ConfigManager.get_spec

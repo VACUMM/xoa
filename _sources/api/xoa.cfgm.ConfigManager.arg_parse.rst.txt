@@ -1,0 +1,6 @@
+xoa.cfgm.ConfigManager.arg\_parse
+=================================
+
+.. currentmodule:: xoa.cfgm
+
+.. automethod:: ConfigManager.arg_parse

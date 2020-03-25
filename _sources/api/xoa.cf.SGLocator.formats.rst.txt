@@ -1,0 +1,6 @@
+xoa.cf.SGLocator.formats
+========================
+
+.. currentmodule:: xoa.cf
+
+.. autoattribute:: SGLocator.formats

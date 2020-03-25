@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.names
+=======================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: CFVarSpecs.names

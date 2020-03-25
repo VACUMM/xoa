@@ -1,0 +1,6 @@
+xoa.cf.CFSpecs.match\_coord
+===========================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFSpecs.match_coord

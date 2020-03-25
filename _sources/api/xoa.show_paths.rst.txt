@@ -1,0 +1,6 @@
+xoa.show\_paths
+===============
+
+.. currentmodule:: xoa
+
+.. autofunction:: show_paths

@@ -1,0 +1,6 @@
+xoa.misc.match\_attrs
+=====================
+
+.. currentmodule:: xoa.misc
+
+.. autofunction:: match_attrs

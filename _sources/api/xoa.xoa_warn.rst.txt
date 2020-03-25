@@ -1,0 +1,6 @@
+xoa.xoa\_warn
+=============
+
+.. currentmodule:: xoa
+
+.. autofunction:: xoa_warn

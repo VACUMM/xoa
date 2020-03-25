@@ -1,0 +1,6 @@
+xoa.cf.CFCoordSpecs.names
+=========================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: CFCoordSpecs.names

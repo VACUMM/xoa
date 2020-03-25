@@ -1,0 +1,6 @@
+xoa.cf.show\_cf\_cache
+======================
+
+.. currentmodule:: xoa.cf
+
+.. autofunction:: show_cf_cache

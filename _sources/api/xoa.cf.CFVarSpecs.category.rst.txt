@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.category
+==========================
+
+.. currentmodule:: xoa.cf
+
+.. autoattribute:: CFVarSpecs.category

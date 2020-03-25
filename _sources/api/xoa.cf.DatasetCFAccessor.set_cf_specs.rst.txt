@@ -1,0 +1,6 @@
+xoa.cf.DatasetCFAccessor.set\_cf\_specs
+=======================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: DatasetCFAccessor.set_cf_specs

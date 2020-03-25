@@ -1,0 +1,6 @@
+xoa.cfgm.validator\_bbox
+========================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: validator_bbox

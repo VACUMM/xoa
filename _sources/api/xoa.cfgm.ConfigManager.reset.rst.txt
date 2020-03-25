@@ -1,0 +1,6 @@
+xoa.cfgm.ConfigManager.reset
+============================
+
+.. currentmodule:: xoa.cfgm
+
+.. automethod:: ConfigManager.reset

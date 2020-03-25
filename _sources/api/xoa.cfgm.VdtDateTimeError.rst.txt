@@ -1,0 +1,6 @@
+xoa.cfgm.VdtDateTimeError
+=========================
+
+.. currentmodule:: xoa.cfgm
+
+.. autoexception:: VdtDateTimeError

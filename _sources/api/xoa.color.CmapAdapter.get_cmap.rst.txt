@@ -1,0 +1,6 @@
+xoa.color.CmapAdapter.get\_cmap
+===============================
+
+.. currentmodule:: xoa.color
+
+.. automethod:: CmapAdapter.get_cmap

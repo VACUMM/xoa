@@ -1,0 +1,80 @@
+xoa.cf.CFSpecs
+==============
+
+.. currentmodule:: xoa.cf
+
+.. autoclass:: CFSpecs
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~CFSpecs.auto_format
+      
+      
+         ~CFSpecs.copy
+      
+      
+         ~CFSpecs.format_coord
+      
+      
+         ~CFSpecs.format_data_var
+      
+      
+         ~CFSpecs.format_dataset
+      
+      
+         ~CFSpecs.load_cfg
+      
+      
+         ~CFSpecs.match_coord
+      
+      
+         ~CFSpecs.match_data_var
+      
+      
+         ~CFSpecs.pprint
+      
+      
+         ~CFSpecs.search
+      
+      
+         ~CFSpecs.search_coord
+      
+      
+         ~CFSpecs.search_coord_from_dim
+      
+      
+         ~CFSpecs.search_data_var
+      
+      
+         ~CFSpecs.search_dim
+      
+      
+         ~CFSpecs.set_specs
+      
+      
+         ~CFSpecs.set_specs_from_cfg
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~CFSpecs.categories
+      ~CFSpecs.dict
+      ~CFSpecs.sglocator
+   
+   

@@ -1,0 +1,47 @@
+xoa
+===
+
+.. automodule:: xoa
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      get_option
+      load_options
+      reset_options
+      set_option
+      show_info
+      show_options
+      show_paths
+      show_versions
+      xoa_warn
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+   
+      set_options
+   
+   
+
+   
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+      :toctree:
+   
+      XoaConfigError
+      XoaError
+      XoaWarning
+   
+   

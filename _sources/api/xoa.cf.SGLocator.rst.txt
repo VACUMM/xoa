@@ -1,0 +1,49 @@
+xoa.cf.SGLocator
+================
+
+.. currentmodule:: xoa.cf
+
+.. autoclass:: SGLocator
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~SGLocator.format_attr
+      
+      
+         ~SGLocator.format_attrs
+      
+      
+         ~SGLocator.format_dataarray
+      
+      
+         ~SGLocator.match_attr
+      
+      
+         ~SGLocator.parse_attr
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~SGLocator.formats
+      ~SGLocator.location_pattern
+      ~SGLocator.re_match
+      ~SGLocator.root_patterns
+      ~SGLocator.valid_attrs
+   
+   

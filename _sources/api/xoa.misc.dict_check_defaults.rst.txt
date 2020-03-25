@@ -1,0 +1,6 @@
+xoa.misc.dict\_check\_defaults
+==============================
+
+.. currentmodule:: xoa.misc
+
+.. autofunction:: dict_check_defaults

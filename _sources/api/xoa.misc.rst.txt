@@ -1,0 +1,39 @@
+xoa.misc
+========
+
+.. automodule:: xoa.misc
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      dict_check_defaults
+      dict_filter
+      dict_merge
+      get_axis_slices
+      is_empty
+      is_iterable
+      match_attrs
+      match_string
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+   
+      ArgList
+      ArgTuple
+      DefaultEnumMeta
+   
+   
+
+   
+   
+   

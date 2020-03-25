@@ -1,0 +1,6 @@
+xoa.coords.get\_altitude
+========================
+
+.. currentmodule:: xoa.coords
+
+.. autofunction:: get_altitude

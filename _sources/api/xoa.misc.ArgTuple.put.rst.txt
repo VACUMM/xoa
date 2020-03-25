@@ -1,0 +1,6 @@
+xoa.misc.ArgTuple.put
+=====================
+
+.. currentmodule:: xoa.misc
+
+.. automethod:: ArgTuple.put

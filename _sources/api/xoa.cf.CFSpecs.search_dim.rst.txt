@@ -1,0 +1,6 @@
+xoa.cf.CFSpecs.search\_dim
+==========================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFSpecs.search_dim

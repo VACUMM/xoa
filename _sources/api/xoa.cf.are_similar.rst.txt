@@ -1,0 +1,6 @@
+xoa.cf.are\_similar
+===================
+
+.. currentmodule:: xoa.cf
+
+.. autofunction:: are_similar

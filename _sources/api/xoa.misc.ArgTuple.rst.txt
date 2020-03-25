@@ -1,0 +1,29 @@
+xoa.misc.ArgTuple
+=================
+
+.. currentmodule:: xoa.misc
+
+.. autoclass:: ArgTuple
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~ArgTuple.get
+      
+      
+         ~ArgTuple.put
+      
+   
+   
+
+   
+   
+   

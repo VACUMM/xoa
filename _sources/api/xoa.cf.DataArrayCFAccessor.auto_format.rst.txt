@@ -1,0 +1,6 @@
+xoa.cf.DataArrayCFAccessor.auto\_format
+=======================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: DataArrayCFAccessor.auto_format

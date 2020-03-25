@@ -1,0 +1,6 @@
+xoa.cfgm.filter\_section
+========================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: filter_section

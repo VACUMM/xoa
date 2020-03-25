@@ -1,0 +1,71 @@
+xoa.cf.CFCoordSpecs
+===================
+
+.. currentmodule:: xoa.cf
+
+.. autoclass:: CFCoordSpecs
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~CFCoordSpecs.format_dataarray
+      
+      
+         ~CFCoordSpecs.get_attrs
+      
+      
+         ~CFCoordSpecs.get_dim_type
+      
+      
+         ~CFCoordSpecs.get_specs
+      
+      
+         ~CFCoordSpecs.items
+      
+      
+         ~CFCoordSpecs.keys
+      
+      
+         ~CFCoordSpecs.match
+      
+      
+         ~CFCoordSpecs.search
+      
+      
+         ~CFCoordSpecs.search_dim
+      
+      
+         ~CFCoordSpecs.search_from_dim
+      
+      
+         ~CFCoordSpecs.set_specs
+      
+      
+         ~CFCoordSpecs.set_specs_from_cfg
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~CFCoordSpecs.attrs_exclude
+      ~CFCoordSpecs.attrs_first
+      ~CFCoordSpecs.category
+      ~CFCoordSpecs.dims
+      ~CFCoordSpecs.names
+      ~CFCoordSpecs.sglocator
+   
+   

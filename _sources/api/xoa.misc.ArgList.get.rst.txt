@@ -1,0 +1,6 @@
+xoa.misc.ArgList.get
+====================
+
+.. currentmodule:: xoa.misc
+
+.. automethod:: ArgList.get

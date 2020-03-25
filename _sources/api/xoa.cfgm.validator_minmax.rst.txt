@@ -1,0 +1,6 @@
+xoa.cfgm.validator\_minmax
+==========================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: validator_minmax

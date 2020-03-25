@@ -1,0 +1,6 @@
+xoa.cfgm.get\_cfg\_path
+=======================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: get_cfg_path

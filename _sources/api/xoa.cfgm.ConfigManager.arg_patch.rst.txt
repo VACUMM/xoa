@@ -1,0 +1,6 @@
+xoa.cfgm.ConfigManager.arg\_patch
+=================================
+
+.. currentmodule:: xoa.cfgm
+
+.. automethod:: ConfigManager.arg_patch

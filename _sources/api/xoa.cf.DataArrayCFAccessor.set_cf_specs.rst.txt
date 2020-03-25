@@ -1,0 +1,6 @@
+xoa.cf.DataArrayCFAccessor.set\_cf\_specs
+=========================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: DataArrayCFAccessor.set_cf_specs

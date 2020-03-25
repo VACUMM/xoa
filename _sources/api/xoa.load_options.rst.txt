@@ -1,0 +1,6 @@
+xoa.load\_options
+=================
+
+.. currentmodule:: xoa
+
+.. autofunction:: load_options

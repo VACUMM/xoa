@@ -1,0 +1,6 @@
+xoa.misc.match\_string
+======================
+
+.. currentmodule:: xoa.misc
+
+.. autofunction:: match_string

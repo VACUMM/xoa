@@ -1,0 +1,6 @@
+xoa.misc.get\_axis\_slices
+==========================
+
+.. currentmodule:: xoa.misc
+
+.. autofunction:: get_axis_slices

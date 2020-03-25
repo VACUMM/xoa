@@ -1,0 +1,6 @@
+xoa.cf.CFCoordSpecs.get\_dim\_type
+==================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFCoordSpecs.get_dim_type

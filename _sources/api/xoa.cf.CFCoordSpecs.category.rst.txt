@@ -1,0 +1,6 @@
+xoa.cf.CFCoordSpecs.category
+============================
+
+.. currentmodule:: xoa.cf
+
+.. autoattribute:: CFCoordSpecs.category

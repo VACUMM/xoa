@@ -1,0 +1,6 @@
+xoa.cfgm.ConfigManager.get\_rst
+===============================
+
+.. currentmodule:: xoa.cfgm
+
+.. automethod:: ConfigManager.get_rst

@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.search
+========================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFVarSpecs.search

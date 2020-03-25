@@ -1,0 +1,6 @@
+xoa.cfgm.ConfigManager.configspecs
+==================================
+
+.. currentmodule:: xoa.cfgm
+
+.. autoproperty:: ConfigManager.configspecs

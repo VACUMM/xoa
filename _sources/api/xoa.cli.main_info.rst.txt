@@ -1,0 +1,6 @@
+xoa.cli.main\_info
+==================
+
+.. currentmodule:: xoa.cli
+
+.. autofunction:: main_info

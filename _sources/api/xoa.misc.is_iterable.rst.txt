@@ -1,0 +1,6 @@
+xoa.misc.is\_iterable
+=====================
+
+.. currentmodule:: xoa.misc
+
+.. autofunction:: is_iterable

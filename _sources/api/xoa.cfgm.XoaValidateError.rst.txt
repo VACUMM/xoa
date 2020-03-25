@@ -1,0 +1,6 @@
+xoa.cfgm.XoaValidateError
+=========================
+
+.. currentmodule:: xoa.cfgm
+
+.. autoexception:: XoaValidateError

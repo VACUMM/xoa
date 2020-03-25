@@ -1,0 +1,1728 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>xoa.cf &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configure.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usages.html">Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../xoa.html">xoa</a> &raquo;</li>
+        
+      <li>xoa.cf</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for xoa.cf</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Naming convention tools for reading and formatting variables</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Copyright or © or Copr. Shom/Ifremer/Actimar</span>
+<span class="c1">#</span>
+<span class="c1"># stephane.raynaud@shom.fr, charria@ifremer.fr, wilkins@actimar.fr</span>
+<span class="c1">#</span>
+<span class="c1"># This software is a computer program whose purpose is to [describe</span>
+<span class="c1"># functionalities and technical features of your software].</span>
+<span class="c1">#</span>
+<span class="c1"># This software is governed by the CeCILL license under French law and</span>
+<span class="c1"># abiding by the rules of distribution of free software.  You can  use,</span>
+<span class="c1"># modify and/ or redistribute the software under the terms of the CeCILL</span>
+<span class="c1"># license as circulated by CEA, CNRS and INRIA at the following URL</span>
+<span class="c1"># &quot;http://www.cecill.info&quot;.</span>
+<span class="c1">#</span>
+<span class="c1"># As a counterpart to the access to the source code and  rights to copy,</span>
+<span class="c1"># modify and redistribute granted by the license, users are provided only</span>
+<span class="c1"># with a limited warranty  and the software&#39;s author,  the holder of the</span>
+<span class="c1"># economic rights,  and the successive licensors  have only  limited</span>
+<span class="c1"># liability.</span>
+<span class="c1">#</span>
+<span class="c1"># In this respect, the user&#39;s attention is drawn to the risks associated</span>
+<span class="c1"># with loading,  using,  modifying and/or developing or reproducing the</span>
+<span class="c1"># software by the user in light of its specific status of free software,</span>
+<span class="c1"># that may mean  that it is complicated to manipulate,  and  that  also</span>
+<span class="c1"># therefore means  that it is reserved for developers  and  experienced</span>
+<span class="c1"># professionals having in-depth computer knowledge. Users are therefore</span>
+<span class="c1"># encouraged to load and test the software&#39;s suitability as regards their</span>
+<span class="c1"># requirements in conditions enabling the security of their systems and/or</span>
+<span class="c1"># data to be ensured and,  more generally, to use and operate it in the</span>
+<span class="c1"># same conditions as regards security.</span>
+<span class="c1">#</span>
+<span class="c1"># The fact that you are presently reading this means that you have had</span>
+<span class="c1"># knowledge of the CeCILL license and that you accept its terms.</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">operator</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+
+<span class="kn">import</span> <span class="nn">appdirs</span>
+
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">XoaError</span><span class="p">,</span> <span class="n">xoa_warn</span><span class="p">,</span> <span class="n">get_option</span>
+<span class="kn">from</span> <span class="nn">.misc</span> <span class="kn">import</span> <span class="n">dict_merge</span><span class="p">,</span> <span class="n">match_string</span>
+
+<span class="n">_THISDIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+
+<span class="c1"># Joint variables and coords config specification file</span>
+<span class="n">_INIFILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_THISDIR</span><span class="p">,</span> <span class="s2">&quot;cf.ini&quot;</span><span class="p">)</span>
+
+<span class="c1"># Base config file for CF specifications</span>
+<span class="n">_CFGFILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_THISDIR</span><span class="p">,</span> <span class="s2">&quot;cf.cfg&quot;</span><span class="p">)</span>
+
+<span class="n">_user_cache_dir</span> <span class="o">=</span> <span class="n">appdirs</span><span class="o">.</span><span class="n">user_cache_dir</span><span class="p">(</span><span class="s2">&quot;xoa&quot;</span><span class="p">)</span>
+
+<span class="c1">#: User cache file for cf specs</span>
+<span class="n">USER_CF_CACHE_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_user_cache_dir</span><span class="p">,</span> <span class="s2">&quot;cf.pyk&quot;</span><span class="p">)</span>
+
+<span class="c1">#: User CF config file</span>
+<span class="n">USER_CF_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">appdirs</span><span class="o">.</span><span class="n">user_config_dir</span><span class="p">(</span><span class="s2">&quot;xoa&quot;</span><span class="p">),</span> <span class="s2">&quot;cf.cfg&quot;</span><span class="p">)</span>
+
+<span class="c1"># Argument passed to dict_merge to merge CF configs</span>
+<span class="n">_CF_DICT_MERGE_KWARGS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">mergesubdicts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">mergelists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">skipnones</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">skipempty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">overwriteempty</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">mergetuples</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">_CACHE</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<div class="viewcode-block" id="XoaCFError"><a class="viewcode-back" href="../../api/xoa.cf.XoaCFError.html#xoa.cf.XoaCFError">[docs]</a><span class="k">class</span> <span class="nc">XoaCFError</span><span class="p">(</span><span class="n">XoaError</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<span class="k">def</span> <span class="nf">_compile_sg_match_</span><span class="p">(</span><span class="n">re_match</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">formats</span><span class="p">,</span> <span class="n">root_patterns</span><span class="p">,</span>
+                       <span class="n">location_pattern</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
+        <span class="n">root_pattern</span> <span class="o">=</span> <span class="n">root_patterns</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>
+        <span class="n">re_match</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+            <span class="n">formats</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">root</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;(?P&lt;root&gt;</span><span class="si">{root_pattern}</span><span class="s2">)&quot;</span><span class="p">,</span>
+                <span class="n">loc</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;(?P&lt;loc&gt;</span><span class="si">{location_pattern}</span><span class="s2">)&quot;</span>
+            <span class="p">),</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">match</span>
+
+
+<div class="viewcode-block" id="SGLocator"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.html#xoa.cf.SGLocator">[docs]</a><span class="k">class</span> <span class="nc">SGLocator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Staggered grid location parsing and formatting utility</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name_format: str</span>
+<span class="sd">        A string containing the string patterns ``{root}`` and ``{loc}``,</span>
+<span class="sd">        which defaults to ``&quot;{root}_{loc}&quot;``</span>
+<span class="sd">    valid_locations: list(str), None</span>
+<span class="sd">        Valid location strings that are used when parsing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">valid_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;standard_name&quot;</span><span class="p">,</span> <span class="s2">&quot;long_name&quot;</span><span class="p">)</span>
+
+    <span class="n">formats</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{root}</span><span class="s2">_</span><span class="si">{loc}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;standard_name&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{root}</span><span class="s2">_at_</span><span class="si">{loc}</span><span class="s2">_location&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{root}</span><span class="s2"> at </span><span class="si">{loc}</span><span class="s2"> location&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">root_patterns</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\w+&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;standard_name&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\w+&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;[\w ]+&quot;</span>
+        <span class="p">}</span>
+
+    <span class="n">location_pattern</span> <span class="o">=</span> <span class="s2">&quot;[a-z]+&quot;</span>
+
+    <span class="n">re_match</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_compile_sg_match_</span><span class="p">(</span><span class="n">re_match</span><span class="p">,</span> <span class="n">valid_attrs</span><span class="p">,</span> <span class="n">formats</span><span class="p">,</span> <span class="n">root_patterns</span><span class="p">,</span>
+                       <span class="n">location_pattern</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SGLocator.__init__"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.html#xoa.cf.SGLocator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">valid_locations</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="c1"># Init</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">formats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">formats</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">re_match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">re_match</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name_format</span> <span class="o">=</span> <span class="n">name_format</span>
+        <span class="k">if</span> <span class="n">valid_locations</span><span class="p">:</span>
+            <span class="n">valid_locations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">valid_locations</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valid_locations</span> <span class="o">=</span> <span class="n">valid_locations</span>
+
+        <span class="c1"># Formats and regexps</span>
+        <span class="n">to_recompile</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">name_format</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">pat</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{root}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{loc}</span><span class="s2">&quot;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">pat</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name_format</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="s2">&quot;name_format must contain strings &quot;</span>
+                                     <span class="s2">&quot;</span><span class="si">{root}</span><span class="s2"> and </span><span class="si">{loc}</span><span class="s2">: &quot;</span><span class="o">+</span><span class="n">name_format</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name_format</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+                <span class="n">xoa_warn</span><span class="p">(</span><span class="s1">&#39;No separator found in &quot;name_format&quot; and &#39;</span>
+                         <span class="s1">&#39;and no &quot;valid_locations&quot; specified: &#39;</span>
+                         <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{name_format}</span><span class="s1">. This leads to ambiguity during &#39;</span>
+                         <span class="s1">&#39;regular expression parsing.&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">formats</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name_format</span>
+            <span class="n">to_recompile</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_locations</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">location_pattern</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valid_locations</span><span class="p">)</span>
+            <span class="n">to_recompile</span><span class="o">.</span><span class="n">update</span><span class="p">((</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;standard_name&quot;</span><span class="p">,</span> <span class="s2">&quot;long_name&quot;</span><span class="p">))</span>
+        <span class="n">_compile_sg_match_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">re_match</span><span class="p">,</span> <span class="n">to_recompile</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">formats</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">root_patterns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location_pattern</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SGLocator.parse_attr"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.parse_attr.html#xoa.cf.SGLocator.parse_attr">[docs]</a>    <span class="k">def</span> <span class="nf">parse_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse an attribute string to get its root and location</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        attr: {&#39;name&#39;, &#39;standard_name&#39;, &#39;long_name&#39;}</span>
+<span class="sd">            Attribute name</span>
+<span class="sd">        value: str</span>
+<span class="sd">            Attribute value</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        str</span>
+<span class="sd">            Root</span>
+<span class="sd">        str, None</span>
+<span class="sd">            Lower case location</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        .. ipython:: python</span>
+
+<span class="sd">            @suppress</span>
+<span class="sd">            from xoa.cf import SGLocator</span>
+<span class="sd">            sg = SGLocator(name_format=&quot;{root}_{loc}&quot;)</span>
+<span class="sd">            sg.parse_attr(&quot;name&quot;, &quot;super_banana_t&quot;)</span>
+<span class="sd">            sg.parse_attr(&quot;standard_name&quot;, &quot;super_banana_at_rhum_location&quot;)</span>
+<span class="sd">            sg.parse_attr(&quot;standard_name&quot;, &quot;super_banana_at_rhum_place&quot;)</span>
+
+<span class="sd">            sg = SGLocator(valid_locations=[&quot;u&quot;, &quot;rho&quot;])</span>
+<span class="sd">            sg.parse_attr(&quot;name&quot;, &quot;super_banana_t&quot;)</span>
+<span class="sd">            sg.parse_attr(&quot;name&quot;, &quot;super_banana_rho&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">re_match</span><span class="p">[</span><span class="n">attr</span><span class="p">](</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">),</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;loc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SGLocator.match_attr"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.match_attr.html#xoa.cf.SGLocator.match_attr">[docs]</a>    <span class="k">def</span> <span class="nf">match_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if an attribute is matching a location</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        attr: {&#39;name&#39;, &#39;standard_name&#39;, &#39;long_name&#39;}</span>
+<span class="sd">            Attribute name</span>
+<span class="sd">        root: str</span>
+<span class="sd">        loc: letters, {&quot;any&quot;, None} or {&quot;&quot;, False}</span>
+<span class="sd">            - letters: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&#39;: no location</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        bool or loc</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">attr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_attrs</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">vroot</span><span class="p">,</span> <span class="n">vloc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_attr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">vroot</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="n">root</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">loc</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">loc</span> <span class="o">==</span> <span class="s2">&quot;any&quot;</span><span class="p">:</span>  <span class="c1"># any loc</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">loc</span><span class="p">:</span>  <span class="c1"># not loc explicit</span>
+            <span class="k">return</span> <span class="n">vloc</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">vloc</span> <span class="ow">in</span> <span class="n">loc</span>  <span class="c1"># one of these locs</span></div>
+
+<div class="viewcode-block" id="SGLocator.format_attr"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.format_attr.html#xoa.cf.SGLocator.format_attr">[docs]</a>    <span class="k">def</span> <span class="nf">format_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Format a single attribute at a specified location</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        attr: {&#39;name&#39;, &#39;standard_name&#39;, &#39;long_name&#39;}</span>
+<span class="sd">            Attribute name</span>
+<span class="sd">        value: str</span>
+<span class="sd">            Current attribute value. It is parsed to get current ``root``.</span>
+<span class="sd">        loc: {True, None}, letter, {False, &quot;&quot;}</span>
+<span class="sd">            If None, location is left unchanged;</span>
+<span class="sd">            if a letter, it is set;</span>
+<span class="sd">            else, it is removed.</span>
+<span class="sd">        standardize: bool</span>
+<span class="sd">            If True, standardize ``root`` and ``loc`` values.</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        str</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        .. ipython:: python</span>
+
+<span class="sd">            @suppress</span>
+<span class="sd">            from xoa.cf import SGLocator</span>
+<span class="sd">            sg = SGLocator()</span>
+<span class="sd">            sg.format_attr(&#39;standard_name&#39;, &#39;sea_water_temperature&#39;, &#39;t&#39;)</span>
+<span class="sd">            sg.format_attr(&#39;standard_name&#39;, &#39;sea_water_temperature&#39;, False)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">attr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_attrs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
+        <span class="n">root</span><span class="p">,</span> <span class="n">ploc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_attr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">standardize</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="s2">&quot;long_name&quot;</span><span class="p">:</span>
+                <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="s2">&quot;standard_name&quot;</span><span class="p">:</span>
+                    <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">loc</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_locations</span>
+            <span class="ow">and</span> <span class="n">loc</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_locations</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span>
+                <span class="s2">&quot;Invalid location: </span><span class="si">{}</span><span class="s2">. Please one use of: </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">loc</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valid_locations</span><span class="p">))</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">loc</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="n">loc</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">ploc</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="n">loc</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">or</span> <span class="n">loc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="n">ploc</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">loc</span> <span class="ow">or</span> <span class="n">ploc</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">loc</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">root</span>
+        <span class="k">if</span> <span class="n">standardize</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="s2">&quot;long_name&quot;</span><span class="p">:</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">loc</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">attr</span> <span class="o">==</span> <span class="s2">&quot;standard_name&quot;</span><span class="p">:</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">loc</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">formats</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SGLocator.format_attrs"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.format_attrs.html#xoa.cf.SGLocator.format_attrs">[docs]</a>    <span class="k">def</span> <span class="nf">format_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Copy and format a dict of attributes</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        attrs: dict</span>
+<span class="sd">        loc: string, None</span>
+<span class="sd">        standardize: bool</span>
+<span class="sd">        loc: {True, None}, letter, {False, &quot;&quot;}</span>
+<span class="sd">            If None, location is left unchanged;</span>
+<span class="sd">            if a letter, it is set;</span>
+<span class="sd">            else, it is removed.</span>
+<span class="sd">        standardize: bool</span>
+<span class="sd">            If True, standardize ``root`` and ``loc`` values.</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        dict</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        .. ipython:: python</span>
+
+<span class="sd">            @suppress</span>
+<span class="sd">            from xoa.cf import SGLocator</span>
+<span class="sd">            sg = SGLocator()</span>
+<span class="sd">            attrs = dict(standard_name=&#39;sea_water_temperature_at_t_location&#39;,</span>
+<span class="sd">                         long_name=&#39;sea_water_temperature&#39;,</span>
+<span class="sd">                         other_attr=23.)</span>
+<span class="sd">            sg.format_attrs(attrs, loc=&#39;t&#39;) # force t loc</span>
+<span class="sd">            sg.format_attrs(attrs) # keep loc</span>
+<span class="sd">            sg.format_attrs(attrs, loc=False) # force no loc</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_attrs</span> <span class="ow">and</span> <span class="n">attr</span> <span class="o">!=</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span>
+                <span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_attr</span><span class="p">(</span>
+                    <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="n">attrs</span></div>
+
+<div class="viewcode-block" id="SGLocator.format_dataarray"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.format_dataarray.html#xoa.cf.SGLocator.format_dataarray">[docs]</a>    <span class="k">def</span> <span class="nf">format_dataarray</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Format name and attributes of copy of DataArray</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        loc: str, {None, False}</span>
+<span class="sd">        standardize: bool</span>
+<span class="sd">        name: str, None</span>
+<span class="sd">            Substitute for dataarray name</span>
+<span class="sd">        attrs: str, None</span>
+<span class="sd">            Substitute for dataarray attributes</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        xarray.DataArray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">attrs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">format_attrs</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+            <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_attr</span><span class="p">(</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">da</span></div></div>
+
+
+<div class="viewcode-block" id="CFSpecs"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.html#xoa.cf.CFSpecs">[docs]</a><span class="k">class</span> <span class="nc">CFSpecs</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;CF specification manager</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg: str, list, CFSpecs, dict</span>
+<span class="sd">        A config file name or string or dict or CF Specs, or a list of them.</span>
+<span class="sd">        It may contain the &quot;data_vars&quot;, &quot;coords&quot;  and &quot;sglocator&quot; sections.</span>
+<span class="sd">        When a list is provided, specs are merged with the firsts having</span>
+<span class="sd">        priority over the lasts.</span>
+<span class="sd">    default: bool</span>
+<span class="sd">        Load also the default internal specs</span>
+<span class="sd">    user: bool</span>
+<span class="sd">        Load also the user specs stored in :data:`USER_CF_FILE`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CFSpecs.__init__"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.html#xoa.cf.CFSpecs.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+        <span class="c1"># Initialiase categories</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">catcls</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data_vars&quot;</span><span class="p">:</span> <span class="n">CFVarSpecs</span><span class="p">,</span> <span class="s2">&quot;coords&quot;</span><span class="p">:</span> <span class="n">CFCoordSpecs</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">categories</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cfs</span><span class="p">[</span><span class="n">category</span><span class="p">]</span> <span class="o">=</span> <span class="n">catcls</span><span class="p">[</span><span class="n">category</span><span class="p">](</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Load config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfgspecs</span> <span class="o">=</span> <span class="n">_get_cfgm_</span><span class="p">()</span><span class="o">.</span><span class="n">specs</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfgs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_default</span> <span class="o">=</span> <span class="n">default</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_user</span> <span class="o">=</span> <span class="n">user</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_cfg</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_load_cfg_as_dict_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load a single cfg, validate it and return it as a dict</span>
+
+<span class="sd">        When the config source is a tuple or a file name, the loaded config</span>
+<span class="sd">        is in-memory cached by default. The cache key is the first item</span>
+<span class="sd">        of the tuple or the file name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cf: str, tuple, dict, CFSpecs</span>
+<span class="sd">            Config source</span>
+<span class="sd">        cache: bool</span>
+<span class="sd">            Use in-memory cache system?</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Config manager to get defaults and validation</span>
+        <span class="n">cfgm</span> <span class="o">=</span> <span class="n">_get_cfgm_</span><span class="p">()</span>
+
+        <span class="c1"># Get it from cache</span>
+        <span class="k">if</span> <span class="n">cache</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cache</span> <span class="o">=</span> <span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;cf.cache&quot;</span><span class="p">)</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="n">cache</span> <span class="ow">and</span> <span class="p">((</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cfg</span><span class="p">)</span> <span class="ow">or</span>
+                           <span class="nb">isinstance</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="c1"># Init cache</span>
+            <span class="k">if</span> <span class="s2">&quot;cfgs&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_CACHE</span><span class="p">:</span>
+                <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;cfgs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">cache_key</span> <span class="o">=</span> <span class="n">cfg</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cache_key</span><span class="p">,</span> <span class="n">cfg</span> <span class="o">=</span> <span class="n">cfg</span>
+            <span class="k">if</span> <span class="n">cache_key</span> <span class="ow">in</span> <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;cfgs&quot;</span><span class="p">]:</span>
+                <span class="c1"># print(&quot;CFG FROM CACHE: &quot; + cfg)</span>
+                <span class="k">return</span> <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;cfgs&quot;</span><span class="p">][</span><span class="n">cfg</span><span class="p">]</span>
+
+        <span class="c1"># Check input type</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">cfg</span><span class="p">:</span>
+            <span class="n">cfg</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">CFSpecs</span><span class="p">):</span>
+            <span class="n">cfg</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">_dict</span>
+
+        <span class="c1"># Load, validate and convert to dict</span>
+        <span class="n">cfg_dict</span> <span class="o">=</span> <span class="n">cfgm</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+
+        <span class="c1"># Cache it</span>
+        <span class="k">if</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;cfgs&quot;</span><span class="p">][</span><span class="n">cache_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">cfg_dict</span>
+
+        <span class="k">return</span> <span class="n">cfg_dict</span>
+
+<div class="viewcode-block" id="CFSpecs.load_cfg"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.load_cfg.html#xoa.cf.CFSpecs.load_cfg">[docs]</a>    <span class="k">def</span> <span class="nf">load_cfg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load a single or a list of configurations</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg: ConfigObj init or list</span>
+<span class="sd">            Single or a list of either:</span>
+
+<span class="sd">            - config file name,</span>
+<span class="sd">            - multiline config string,</span>
+<span class="sd">            - config dict,</span>
+<span class="sd">            - two-element tuple with the first item of one of the above types,</span>
+<span class="sd">              and second item as a cache key for faster reloading.</span>
+<span class="sd">        cache: bool, None</span>
+<span class="sd">            In in-memory cache system?</span>
+<span class="sd">            Defaults to option boolean :xoaoption:`cf.cache`.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Get the list of validated configurations</span>
+        <span class="n">to_load</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">cfg</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">cfg</span> <span class="o">=</span> <span class="p">[</span><span class="n">cfg</span><span class="p">]</span>
+            <span class="n">to_load</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cfg</span> <span class="k">if</span> <span class="n">c</span><span class="p">])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_user</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">USER_CF_FILE</span><span class="p">):</span>
+            <span class="n">to_load</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">USER_CF_FILE</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_default</span><span class="p">:</span>
+            <span class="n">to_load</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_CFGFILE</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">to_load</span><span class="p">:</span>
+            <span class="n">to_load</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+
+        <span class="c1"># Load them</span>
+        <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_cfg_as_dict_</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">cache</span><span class="p">)</span> <span class="k">for</span> <span class="n">cfg</span> <span class="ow">in</span> <span class="n">to_load</span><span class="p">]</span>
+
+        <span class="c1"># Merge them</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span> <span class="o">=</span> <span class="n">dict_merge</span><span class="p">(</span><span class="o">*</span><span class="n">dicts</span><span class="p">,</span> <span class="o">**</span><span class="n">_CF_DICT_MERGE_KWARGS</span><span class="p">)</span>
+
+        <span class="c1"># SG locator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sgl_settings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s2">&quot;sglocator&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sgl</span> <span class="o">=</span> <span class="n">SGLocator</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_sgl_settings</span><span class="p">)</span>
+
+        <span class="c1"># Post process</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_post_process_</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CFSpecs.copy"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.copy.html#xoa.cf.CFSpecs.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">CFSpecs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dictionary copy of the specs&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<div class="viewcode-block" id="CFSpecs.pprint"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.pprint.html#xoa.cf.CFSpecs.pprint">[docs]</a>    <span class="k">def</span> <span class="nf">pprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pretty print the specs as dict using :func:`pprint.pprint`&quot;&quot;&quot;</span>
+        <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of cf specs categories&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;data_vars&quot;</span><span class="p">,</span> <span class="s2">&quot;coords&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sglocator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;:class:`SGLocator` instance&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sgl</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">section</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span>
+        <span class="k">if</span> <span class="n">section</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">categories</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfs</span><span class="p">[</span><span class="n">section</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="n">section</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">category</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">categories</span>
+
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;_cfs&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;_cfs&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;_cfs&quot;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;dims&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;dims&#39;</span><span class="p">]</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+            <span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39; object has no attribute &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">name</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="c1"># def __str__(self):</span>
+    <span class="c1">#     return pformat(self._dict)</span>
+
+<div class="viewcode-block" id="CFSpecs.set_specs_from_cfg"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.set_specs_from_cfg.html#xoa.cf.CFSpecs.set_specs_from_cfg">[docs]</a>    <span class="k">def</span> <span class="nf">set_specs_from_cfg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update or create specs from a config&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_cfg</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CFSpecs.set_specs"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.set_specs.html#xoa.cf.CFSpecs.set_specs">[docs]</a>    <span class="k">def</span> <span class="nf">set_specs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">specs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update or create specs for an item&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">category</span><span class="p">:</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">specs</span><span class="p">}}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_cfg</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_post_process_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Inits</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">categories</span><span class="p">:</span>
+            <span class="n">items</span><span class="p">[</span><span class="n">category</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Process</span>
+        <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">categories</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_entry_</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">item</span><span class="p">:</span>
+                        <span class="n">pcat</span><span class="p">,</span> <span class="n">pname</span><span class="p">,</span> <span class="n">pspecs</span> <span class="o">=</span> <span class="n">item</span>
+                        <span class="n">items</span><span class="p">[</span><span class="n">pcat</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">pname</span><span class="p">,</span> <span class="n">pspecs</span><span class="p">))</span>
+
+        <span class="c1"># Refill</span>
+        <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">category</span><span class="p">])</span>
+
+        <span class="c1"># Updates valid dimensions</span>
+        <span class="k">for</span> <span class="n">coord_specs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;coords&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">coord_specs</span><span class="p">[</span><span class="s1">&#39;axis&#39;</span><span class="p">]:</span>
+                <span class="n">axis</span> <span class="o">=</span> <span class="n">coord_specs</span><span class="p">[</span><span class="s1">&#39;axis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;dims&#39;</span><span class="p">][</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">coord_specs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">_process_entry_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process an entry</span>
+
+<span class="sd">        - Makes sure to have lists, except for &#39;axis&#39; and &#39;inherit&#39;</span>
+<span class="sd">        - Check geo coords</span>
+<span class="sd">        - Check inheritance</span>
+<span class="sd">        - Makes sure that coords specs have no &#39;coords&#39; key</span>
+<span class="sd">        - Makes sure that specs key is the first entry of &#39;names&#39;</span>
+<span class="sd">        - Add standard_name to list of names</span>
+<span class="sd">        - Check duplications to other locations (&#39;toto&#39; -&gt; &#39;toto_u&#39;)</span>
+
+<span class="sd">        Yield</span>
+<span class="sd">        -----</span>
+<span class="sd">        category, name, entry</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Dict of entries for this category</span>
+        <span class="n">entries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="n">category</span><span class="p">]</span>
+
+        <span class="c1"># # Wrong entry!</span>
+        <span class="c1"># if name not in entries:</span>
+        <span class="c1">#     print(&#39;bad name&#39;, name)</span>
+        <span class="c1">#     yield</span>
+
+        <span class="c1"># # Already processed</span>
+        <span class="c1"># if &quot;processed&quot; in entries[name] and name==&#39;temp&#39;:</span>
+        <span class="c1">#     print(&#39;already processed&#39;, name)</span>
+        <span class="c1">#     yield</span>
+
+        <span class="c1"># Get the specs as pure dict</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">entries</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="s2">&quot;dict&quot;</span><span class="p">):</span>
+            <span class="n">entries</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">entries</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+        <span class="n">specs</span> <span class="o">=</span> <span class="n">entries</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+        <span class="c1"># Long name from name or standard_name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;long_name&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;standard_name&quot;</span><span class="p">]:</span>
+                <span class="n">long_name</span> <span class="o">=</span> <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;standard_name&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">long_name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+            <span class="n">long_name</span> <span class="o">=</span> <span class="n">long_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+            <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;long_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">long_name</span><span class="p">)</span>
+
+        <span class="c1"># Inherits from other specs (merge specs with dict_merge)</span>
+        <span class="k">if</span> <span class="s2">&quot;inherit&quot;</span> <span class="ow">in</span> <span class="n">specs</span> <span class="ow">and</span> <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;inherit&quot;</span><span class="p">]:</span>
+
+            <span class="c1"># From what?</span>
+            <span class="n">from_name</span> <span class="o">=</span> <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;inherit&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s2">&quot;:&quot;</span> <span class="ow">in</span> <span class="n">from_name</span><span class="p">:</span>
+                <span class="n">from_cat</span><span class="p">,</span> <span class="n">from_name</span> <span class="o">=</span> <span class="n">from_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">from_cat</span> <span class="o">=</span> <span class="n">category</span>
+            <span class="k">assert</span> <span class="p">(</span>
+                <span class="n">from_cat</span> <span class="o">!=</span> <span class="n">category</span> <span class="ow">or</span> <span class="n">name</span> <span class="o">!=</span> <span class="n">from_name</span>
+            <span class="p">),</span> <span class="s2">&quot;Cannot inherit cf specs from it self&quot;</span>
+
+            <span class="c1"># Parents must be already processed</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_entry_</span><span class="p">(</span><span class="n">from_cat</span><span class="p">,</span> <span class="n">from_name</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">item</span>
+
+            <span class="c1"># Inherit with merging</span>
+            <span class="n">entries</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">specs</span> <span class="o">=</span> <span class="n">dict_merge</span><span class="p">(</span>
+                <span class="n">specs</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="n">from_cat</span><span class="p">][</span><span class="n">from_name</span><span class="p">],</span>
+                <span class="bp">cls</span><span class="o">=</span><span class="nb">dict</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">_CF_DICT_MERGE_KWARGS</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Check compatibility of keys</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">specs</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfgspecs</span><span class="p">[</span><span class="n">category</span><span class="p">][</span><span class="s2">&quot;__many__&quot;</span><span class="p">]:</span>
+                    <span class="k">del</span> <span class="n">specs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+            <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;inherit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># switch off inheritance now</span>
+
+        <span class="c1"># Names</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span>
+            <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="c1"># Select</span>
+        <span class="k">if</span> <span class="n">specs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;select&quot;</span><span class="p">]:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;select&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">specs</span><span class="p">[</span><span class="s2">&quot;select&quot;</span><span class="p">])</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+        <span class="c1"># Standard_names in names</span>
+        <span class="k">if</span> <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;standard_name&quot;</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">standard_name</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;standard_name&quot;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">standard_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span>
+                    <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">standard_name</span><span class="p">)</span>
+
+        <span class="c1"># if name==&quot;depth&quot;:</span>
+        <span class="c1">#     print(&#39;&gt;&gt;&gt;&gt;&#39;,category, specs[&#39;name&#39;])</span>
+
+        <span class="n">specs</span><span class="p">[</span><span class="s1">&#39;processed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">yield</span> <span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">specs</span>
+
+<div class="viewcode-block" id="CFSpecs.format_coord"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.format_coord.html#xoa.cf.CFSpecs.format_coord">[docs]</a>    <span class="k">def</span> <span class="nf">format_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">rename_dim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Format a coordinate variable&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">format_dataarray</span><span class="p">(</span>
+            <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
+            <span class="n">rename_dim</span><span class="o">=</span><span class="n">rename_dim</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CFSpecs.format_data_var"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.format_data_var.html#xoa.cf.CFSpecs.format_data_var">[docs]</a>    <span class="k">def</span> <span class="nf">format_data_var</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">da</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">coords</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">format_coords</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="c1"># Data var</span>
+        <span class="n">da</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">format_dataarray</span><span class="p">(</span>
+            <span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Coordinates</span>
+        <span class="k">if</span> <span class="n">format_coords</span><span class="p">:</span>
+            <span class="n">coords</span> <span class="o">=</span> <span class="n">coords</span> <span class="ow">or</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">cname</span><span class="p">,</span> <span class="n">cda</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+                <span class="n">cda</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_coord</span><span class="p">(</span>
+                    <span class="n">cda</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">coords</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cname</span><span class="p">),</span>
+                    <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span>
+                    <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
+                    <span class="n">rename_dim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">cname</span><span class="p">]</span> <span class="o">=</span> <span class="n">cda</span>
+                <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">cname</span><span class="p">:</span> <span class="n">cda</span><span class="o">.</span><span class="n">name</span><span class="p">})</span>
+
+        <span class="k">return</span> <span class="n">da</span></div>
+
+<div class="viewcode-block" id="CFSpecs.format_dataset"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.format_dataset.html#xoa.cf.CFSpecs.format_dataset">[docs]</a>    <span class="k">def</span> <span class="nf">format_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                       <span class="n">format_coords</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Auto-format a whole xarray.Dataset&quot;&quot;&quot;</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">da</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">del</span> <span class="n">ds</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="n">da</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_data_var</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                      <span class="n">format_coords</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="c1"># print(&#39;ds&#39;,ds)</span>
+            <span class="n">ds</span><span class="p">[</span><span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">da</span>
+        <span class="k">if</span> <span class="n">format_coords</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">cname</span><span class="p">,</span> <span class="n">cda</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+                <span class="k">del</span> <span class="n">ds</span><span class="p">[</span><span class="n">cname</span><span class="p">]</span>
+                <span class="n">cda</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_coord</span><span class="p">(</span><span class="n">cda</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                        <span class="n">rename_dim</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cda</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">cname</span> <span class="o">==</span> <span class="n">cda</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">cname</span><span class="p">]</span> <span class="o">=</span> <span class="n">cda</span>
+                    <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">cname</span><span class="p">:</span> <span class="n">cda</span><span class="o">.</span><span class="n">name</span><span class="p">})</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">cda</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">cda</span>
+
+        <span class="k">return</span> <span class="n">ds</span></div>
+
+<div class="viewcode-block" id="CFSpecs.auto_format"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.auto_format.html#xoa.cf.CFSpecs.auto_format">[docs]</a>    <span class="k">def</span> <span class="nf">auto_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Auto-format the xarray.Dataset or xarray.DataArray&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="s2">&quot;data_vars&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_dataset</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
+                                       <span class="n">format_coords</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_dataarray</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CFSpecs.match_coord"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.match_coord.html#xoa.cf.CFSpecs.match_coord">[docs]</a>    <span class="k">def</span> <span class="nf">match_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CFSpecs.match_data_var"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.match_data_var.html#xoa.cf.CFSpecs.match_data_var">[docs]</a>    <span class="k">def</span> <span class="nf">match_data_var</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CFSpecs.search_coord"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search_coord.html#xoa.cf.CFSpecs.search_coord">[docs]</a>    <span class="k">def</span> <span class="nf">search_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get</span><span class="p">,</span>
+                                  <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CFSpecs.search_dim"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search_dim.html#xoa.cf.CFSpecs.search_dim">[docs]</a>    <span class="k">def</span> <span class="nf">search_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">dim_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search_dim</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">dim_type</span><span class="o">=</span><span class="n">dim_type</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CFSpecs.search_coord_from_dim"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search_coord_from_dim.html#xoa.cf.CFSpecs.search_coord_from_dim">[docs]</a>    <span class="k">def</span> <span class="nf">search_coord_from_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search_from_dim</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CFSpecs.search_data_var"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search_data_var.html#xoa.cf.CFSpecs.search_data_var">[docs]</a>    <span class="k">def</span> <span class="nf">search_data_var</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span>
+                        <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get</span><span class="p">,</span>
+                                     <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CFSpecs.search"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search.html#xoa.cf.CFSpecs.search">[docs]</a>    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span>
+               <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;data_vars&quot;</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="s2">&quot;data_vars&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;coords&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get</span><span class="p">,</span>
+                                     <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">_CFCatSpecs_</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for loading data_vars and coords CF specifications&quot;&quot;&quot;</span>
+
+    <span class="n">category</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">attrs_exclude</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;inherit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;coords&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;search_order&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cmap&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="n">attrs_first</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;standard_name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;long_name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="ow">in</span> <span class="n">parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sglocator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;:class:`SGLocator` instance&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">sglocator</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_specs</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c1"># def __len__(self):</span>
+    <span class="c1">#     return len(self._dict)</span>
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span>
+
+    <span class="c1"># def __str__(self):</span>
+    <span class="c1">#     return pformat(self._dict)</span>
+
+    <span class="k">def</span> <span class="nf">_validate_name_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">_assert_known_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid </span><span class="si">{self.category}</span><span class="s2"> CF specs name: &quot;</span><span class="o">+</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_specs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;warn&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the specs of acf item</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name: str</span>
+<span class="sd">        errors: &quot;silent&quot;, &quot;warning&quot; or &quot;error&quot;.</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        dict or None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">errors</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="s2">&quot;warn&quot;</span><span class="p">,</span> <span class="s2">&quot;raise&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t get cf specs from: &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;warn&quot;</span><span class="p">:</span>
+                <span class="n">xoa_warn</span><span class="p">(</span><span class="s2">&quot;Invalid cf name: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+            <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dims</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;dims&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">set_specs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="o">**</span><span class="n">specs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update or create specs for an item&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="p">:</span> <span class="p">{</span><span class="n">item</span><span class="p">:</span> <span class="n">specs</span><span class="p">}}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">load_cfg</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_specs_from_cfg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update or create specs for several item with a config specs&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cfg</span><span class="p">:</span>
+            <span class="n">cfg</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="p">:</span> <span class="n">cfg</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">load_cfg</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_ordered_match_specs_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="n">specs</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="n">match_specs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">sm</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">[</span><span class="s2">&quot;search_order&quot;</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">(</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;standard_name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;long_name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;axis&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;units&quot;</span><span class="p">,</span>
+            <span class="p">):</span>
+                <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">specs</span> <span class="ow">and</span> <span class="n">specs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="ow">and</span> <span class="n">attr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">sm</span><span class="p">:</span>
+                    <span class="n">match_specs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">specs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">match_specs</span>
+
+    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if da attributes match given or any specs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        name: str, dict, None</span>
+<span class="sd">        loc: str, False, &quot;any&quot;</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        bool, str</span>
+<span class="sd">            True or False if name is provided, else found name or None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_assert_known_</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span>
+        <span class="k">for</span> <span class="n">name_</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+
+            <span class="c1"># Get match specs</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name_</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">match_specs</span> <span class="o">=</span> <span class="n">name_</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">match_specs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_ordered_match_specs_</span><span class="p">(</span><span class="n">name_</span><span class="p">)</span>
+
+            <span class="c1"># Loop on match specs</span>
+            <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">refs</span> <span class="ow">in</span> <span class="n">match_specs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">refs</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span>
+                        <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">valid_attrs</span>
+                        <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">match_attr</span><span class="p">(</span>
+                            <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span> <span class="ow">or</span> <span class="n">match_string</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">ignorecase</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">name</span> <span class="k">else</span> <span class="n">name_</span>
+        <span class="k">return</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">name</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search for a data_var or coord that maches given or any specs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dsa: DataArray or Dataset</span>
+<span class="sd">        name: str, dict</span>
+<span class="sd">            A CF name. If not provided, all CF names are scaned.</span>
+<span class="sd">        loc: &quot;any&quot;, str</span>
+<span class="sd">        get: {&quot;obj&quot;, &quot;name&quot;}</span>
+<span class="sd">            When found, get the object found or its name.</span>
+<span class="sd">        single: bool</span>
+<span class="sd">            If True, return the first item found or None.</span>
+<span class="sd">            If False, return a possible empty list of found items.</span>
+<span class="sd">            A warning is emitted when set to True and multiple item are found.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None or str or object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Get target objects</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="p">:</span>
+            <span class="n">objs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">objs</span> <span class="o">=</span> <span class="n">dsa</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="s2">&quot;keys&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">dsa</span><span class="o">.</span><span class="n">coords</span>
+
+        <span class="c1"># Get match specs</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>  <span class="c1"># Explicit name so we loop on search specs</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_assert_known_</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">match_specs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">refs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_ordered_match_specs_</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">match_specs</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">attr</span><span class="p">:</span> <span class="n">refs</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">match_specs</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+
+        <span class="c1"># Loops</span>
+        <span class="k">assert</span> <span class="n">get</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="s2">&quot;both&quot;</span><span class="p">),</span> <span class="p">(</span>
+            <span class="s2">&quot;&#39;get&#39; must be either &#39;name&#39; or &#39;obj&#39; or &#39;both&#39;&quot;</span><span class="p">)</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">found_objs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">match_arg</span> <span class="ow">in</span> <span class="n">match_specs</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">match_arg</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">found_objs</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                    <span class="n">found_objs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="k">if</span> <span class="n">name</span> <span class="k">else</span> <span class="n">m</span>
+                    <span class="k">if</span> <span class="n">get</span> <span class="o">==</span> <span class="s2">&quot;both&quot;</span><span class="p">:</span>
+                        <span class="n">found</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">obj</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">found</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span> <span class="k">if</span> <span class="n">get</span> <span class="o">==</span> <span class="s2">&quot;obj&quot;</span> <span class="k">else</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="c1"># Return</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">single</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">found</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">found</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">xoa_warn</span><span class="p">(</span><span class="s2">&quot;Multiple items found while you requested a single one&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">found</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">found</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get_attrs</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">select</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;warn&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">extra</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the default attributes from cf specs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name: str</span>
+<span class="sd">            Valid CF name</span>
+<span class="sd">        select: str, list</span>
+<span class="sd">            Include only these attributes</span>
+<span class="sd">        exclude: str, list</span>
+<span class="sd">            Exclude these attributes</span>
+<span class="sd">        mode: &quot;silent&quot;, &quot;warning&quot; or &quot;error&quot;.</span>
+<span class="sd">        **extra</span>
+<span class="sd">          Extra params as included as extra attributes</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Get specs</span>
+        <span class="n">specs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_specs</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+
+        <span class="c1"># Which attributes</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">exclude</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">exclude</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">exclude</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="n">exclude</span><span class="p">]</span>
+        <span class="n">exclude</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs_exclude</span><span class="p">)</span>
+        <span class="n">exclude</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">extra</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">exclude</span><span class="p">)</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs_first</span><span class="p">)</span>
+        <span class="nb">set</span><span class="p">(</span><span class="n">specs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">keys</span> <span class="o">-=</span> <span class="n">exclude</span>
+        <span class="k">if</span> <span class="n">select</span><span class="p">:</span>
+            <span class="n">keys</span> <span class="o">=</span> <span class="n">keys</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">select</span><span class="p">)</span>
+
+        <span class="c1"># Loop</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+
+            <span class="c1"># No lists or tuples</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">specs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># Store it</span>
+            <span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="c1"># Extra attributes</span>
+        <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">extra</span><span class="p">)</span>
+
+        <span class="c1"># Finalize and optionally change location</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">format_attrs</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">attrs</span>
+
+    <span class="k">def</span> <span class="nf">format_dataarray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                         <span class="n">rename_dim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Format a DataArray&#39;s name and attributes</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        name: str, None</span>
+<span class="sd">            A CF name. If not provided, it guessed with :meth:`search`.</span>
+<span class="sd">        loc: str</span>
+<span class="sd">        standardize: bool</span>
+<span class="sd">        rename_dim: bool</span>
+<span class="sd">            For a 1D array, rename the dimension if it has the same name</span>
+<span class="sd">            as the array.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Get name</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">da</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span>
+
+        <span class="c1"># Format array</span>
+        <span class="n">new_da</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">format_dataarray</span><span class="p">(</span>
+            <span class="n">da</span><span class="p">,</span>
+            <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">),</span>
+            <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Rename dim if axis coordinate</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rename_dim</span> <span class="ow">and</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">da</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span>
+                <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">new_da</span> <span class="o">=</span> <span class="n">new_da</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">new_da</span><span class="o">.</span><span class="n">name</span><span class="p">})</span>
+        <span class="k">return</span> <span class="n">new_da</span>
+
+
+<div class="viewcode-block" id="CFVarSpecs"><a class="viewcode-back" href="../../api/xoa.cf.CFVarSpecs.html#xoa.cf.CFVarSpecs">[docs]</a><span class="k">class</span> <span class="nc">CFVarSpecs</span><span class="p">(</span><span class="n">_CFCatSpecs_</span><span class="p">):</span>
+
+    <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;data_vars&quot;</span></div>
+
+
+<div class="viewcode-block" id="CFCoordSpecs"><a class="viewcode-back" href="../../api/xoa.cf.CFCoordSpecs.html#xoa.cf.CFCoordSpecs">[docs]</a><span class="k">class</span> <span class="nc">CFCoordSpecs</span><span class="p">(</span><span class="n">_CFCatSpecs_</span><span class="p">):</span>
+
+    <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;coords&quot;</span>
+
+<div class="viewcode-block" id="CFCoordSpecs.get_dim_type"><a class="viewcode-back" href="../../api/xoa.cf.CFCoordSpecs.get_dim_type.html#xoa.cf.CFCoordSpecs.get_dim_type">[docs]</a>    <span class="k">def</span> <span class="nf">get_dim_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the dimension type, either from axis attr or from match Cf coord</span>
+
+<span class="sd">        .. note:: The ``axis`` is the uppercase version of the ``dim_type``</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        coord: xarray.DataArray</span>
+<span class="sd">        lower: bool</span>
+<span class="sd">            Lower case?</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        {&quot;x&quot;, &quot;y&quot;, &quot;z&quot;, &quot;t&quot;, &quot;f&quot;}, None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="s2">&quot;axis&quot;</span> <span class="ow">in</span> <span class="n">coord</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;axis&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cfname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">coord</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cfname</span><span class="p">:</span>
+                <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">cfname</span><span class="p">][</span><span class="s2">&quot;axis&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">axis</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">axis</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CFCoordSpecs.search_dim"><a class="viewcode-back" href="../../api/xoa.cf.CFCoordSpecs.search_dim.html#xoa.cf.CFCoordSpecs.search_dim">[docs]</a>    <span class="k">def</span> <span class="nf">search_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">dim_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search a dataarray for a dimension name according to its type</span>
+
+<span class="sd">        First, scan the dimension names.</span>
+<span class="sd">        Then, look for coordinates: either it has an &#39;axis&#39; attribute,</span>
+<span class="sd">        or it a known CF coordinate.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        dim_type: {&quot;x&quot;, &quot;y&quot;, &quot;z&quot;, &quot;t&quot;, &quot;f&quot;}, None</span>
+<span class="sd">            When</span>
+<span class="sd">        loc: &quot;any&quot;, letter</span>
+<span class="sd">            Staggered grid location</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        str, (str, str)</span>
+<span class="sd">            Dim name OR, (dim name, dim_type) if dim_type is None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">dim_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dim_type</span> <span class="o">=</span> <span class="n">dim_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">da_axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dim_type</span><span class="p">(</span><span class="n">da</span><span class="p">)</span>
+
+        <span class="c1"># From dimension names</span>
+        <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+            <span class="n">pname</span><span class="p">,</span> <span class="n">ploc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">parse_attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">loc</span> <span class="o">!=</span> <span class="s2">&quot;any&quot;</span> <span class="ow">and</span> <span class="n">ploc</span> <span class="ow">and</span> <span class="n">loc</span> <span class="ow">and</span> <span class="n">loc</span> <span class="o">!=</span> <span class="n">ploc</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">dim_types</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+                         <span class="k">if</span> <span class="ow">not</span> <span class="n">dim_type</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">da_axis</span> <span class="k">else</span>
+                         <span class="p">[</span><span class="n">dim_type</span> <span class="ow">or</span> <span class="n">da_axis</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">dt</span> <span class="ow">in</span> <span class="n">dim_types</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">pname</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="n">dt</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">dim_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">dim</span>
+                    <span class="k">if</span> <span class="n">da</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">da_axis</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">dim</span><span class="p">,</span> <span class="n">dt</span>
+
+        <span class="c1"># From coordinates</span>
+        <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">coord</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">coord</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+                <span class="n">co_axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dim_type</span><span class="p">(</span><span class="n">coord</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">co_axis</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">dim_type</span> <span class="ow">and</span> <span class="n">co_axis</span> <span class="o">==</span> <span class="n">dim_type</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">coord</span><span class="o">.</span><span class="n">name</span>
+                    <span class="k">if</span> <span class="n">dim_type</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">da_axis</span> <span class="ow">and</span> <span class="p">(</span>
+                            <span class="n">da_axis</span> <span class="o">==</span> <span class="n">co_axis</span><span class="p">):</span>
+                        <span class="k">return</span> <span class="n">coord</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">co_axis</span>
+
+        <span class="c1"># Fallback</span>
+        <span class="k">if</span> <span class="n">dim_type</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">da</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">da_axis</span></div>
+
+<div class="viewcode-block" id="CFCoordSpecs.search_from_dim"><a class="viewcode-back" href="../../api/xoa.cf.CFCoordSpecs.search_from_dim.html#xoa.cf.CFCoordSpecs.search_from_dim">[docs]</a>    <span class="k">def</span> <span class="nf">search_from_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search a dataarray for a coordinate from a dimension name</span>
+
+<span class="sd">        It first searches for a coordinate with the same name and that is</span>
+<span class="sd">        the only one having this dimension.</span>
+<span class="sd">        Then look for coordinates with the same type like x, y, etc.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        dim: str</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        xarray.DataArray, None</span>
+<span class="sd">            An coordinate array or None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">assert</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">,</span> <span class="s1">&#39;Invalid dimension&#39;</span>
+        <span class="n">dim_type</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Coord as dim only</span>
+        <span class="k">if</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+
+            <span class="c1"># Check if another coordinate has this dim</span>
+            <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">coord</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="n">dim</span> <span class="ow">and</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">coord</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span>
+
+            <span class="c1"># Get the dim_type if any</span>
+            <span class="n">dim_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dim_type</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">dim</span><span class="p">])</span>
+
+        <span class="c1"># Get dim_type from known dim name</span>
+        <span class="k">if</span> <span class="n">dim_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pname</span><span class="p">,</span> <span class="n">ploc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">parse_attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">dim_type</span><span class="p">,</span> <span class="n">dim_names</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">pname</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">dim_names</span><span class="p">:</span>
+                    <span class="k">break</span>
+
+        <span class="c1"># Nothing to do there</span>
+        <span class="k">if</span> <span class="n">dim_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Look for a coordinate with this dim_type</span>
+        <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span>
+                            <span class="n">key</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">attrgetter</span><span class="p">(</span><span class="s1">&#39;ndim&#39;</span><span class="p">),</span>
+                            <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">coord</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+                <span class="n">coord_dim_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dim_type</span><span class="p">(</span><span class="n">coord</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">coord_dim_type</span> <span class="ow">and</span> <span class="n">coord_dim_type</span> <span class="o">==</span> <span class="n">dim_type</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">coord</span></div></div>
+
+
+<span class="k">def</span> <span class="nf">_get_cfgm_</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Get a :class:`~xoa.cfgm.ConfigManager` instance to manage</span>
+<span class="sd">    coords and data_vars spécifications&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s2">&quot;cfgm&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_CACHE</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">.cfgm</span> <span class="kn">import</span> <span class="n">ConfigManager</span>
+
+        <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;cfgm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ConfigManager</span><span class="p">(</span><span class="n">_INIFILE</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;cfgm&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_same_attr_</span><span class="p">(</span><span class="n">da0</span><span class="p">,</span> <span class="n">da1</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">attr</span> <span class="ow">in</span> <span class="n">da0</span><span class="o">.</span><span class="n">attrs</span> <span class="ow">and</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">da1</span><span class="o">.</span><span class="n">attrs</span> <span class="ow">and</span>
+            <span class="n">da0</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">da1</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+
+
+<div class="viewcode-block" id="are_similar"><a class="viewcode-back" href="../../api/xoa.cf.are_similar.html#xoa.cf.are_similar">[docs]</a><span class="k">def</span> <span class="nf">are_similar</span><span class="p">(</span><span class="n">da0</span><span class="p">,</span> <span class="n">da1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if two DataArrays are similar</span>
+
+<span class="sd">    Verifications are performed in the following order:</span>
+
+<span class="sd">    - ``standard_name`` attribute,</span>
+<span class="sd">    - ``cf_name`` as the results of ``da.cf.name``.</span>
+<span class="sd">    - ``name`` attribute.</span>
+<span class="sd">    - ``long_name`` attribute.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    da0: xarray.DataArray</span>
+<span class="sd">    da1: xarray.DataArray</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Standard name</span>
+    <span class="k">if</span> <span class="n">_same_attr_</span><span class="p">(</span><span class="n">da0</span><span class="p">,</span> <span class="n">da1</span><span class="p">,</span> <span class="s2">&quot;standard_name&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># Cf name</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">da0</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">name</span> <span class="ow">and</span> <span class="n">da1</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">name</span> <span class="ow">and</span> <span class="n">da0</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">da1</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># Name</span>
+    <span class="k">if</span> <span class="n">da0</span><span class="o">.</span><span class="n">name</span> <span class="ow">and</span> <span class="n">da0</span><span class="o">.</span><span class="n">name</span> <span class="ow">and</span> <span class="n">da0</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">da1</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># Long name</span>
+    <span class="k">return</span> <span class="n">_same_attr_</span><span class="p">(</span><span class="n">da0</span><span class="p">,</span> <span class="n">da1</span><span class="p">,</span> <span class="s2">&quot;long_name&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="search_similar"><a class="viewcode-back" href="../../api/xoa.cf.search_similar.html#xoa.cf.search_similar">[docs]</a><span class="k">def</span> <span class="nf">search_similar</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">da</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Search in ds for a similar DataArray</span>
+
+<span class="sd">    See :func:`is_similar` for what means &quot;similar&quot;.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dsa: xarray.Dataset, xarray.DataArray</span>
+<span class="sd">        Dataset that must be scanned.</span>
+<span class="sd">    da: xarray.DataArray</span>
+<span class="sd">        Array that must be compared to the content of ``ds``</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    xarray.DataArray or None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">+</span> <span class="n">targets</span>
+    <span class="k">for</span> <span class="n">ds_da</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">are_similar</span><span class="p">(</span><span class="n">ds_da</span><span class="p">,</span> <span class="n">da</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">ds_da</span></div>
+
+
+<div class="viewcode-block" id="set_cf_specs"><a class="viewcode-back" href="../../api/xoa.cf.set_cf_specs.html#xoa.cf.set_cf_specs">[docs]</a><span class="k">class</span> <span class="nc">set_cf_specs</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set the current CF specs&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="set_cf_specs.__init__"><a class="viewcode-back" href="../../api/xoa.cf.set_cf_specs.html#xoa.cf.set_cf_specs.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cf_source</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cf_source</span><span class="p">,</span> <span class="n">CFSpecs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">old_specs</span> <span class="o">=</span> <span class="n">_CACHE</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;specs&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;specs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">specs</span> <span class="o">=</span> <span class="n">cf_source</span></div>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">specs</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">old_specs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;specs&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;specs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">old_specs</span></div>
+
+
+<div class="viewcode-block" id="clean_cf_cache"><a class="viewcode-back" href="../../api/xoa.cf.clean_cf_cache.html#xoa.cf.clean_cf_cache">[docs]</a><span class="k">def</span> <span class="nf">clean_cf_cache</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Remove the cf specs cache file&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">USER_CF_CACHE_FILE</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">USER_CF_CACHE_FILE</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="show_cf_cache"><a class="viewcode-back" href="../../api/xoa.cf.show_cf_cache.html#xoa.cf.show_cf_cache">[docs]</a><span class="k">def</span> <span class="nf">show_cf_cache</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Show the cf specs cache file&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">USER_CF_CACHE_FILE</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_cf_specs"><a class="viewcode-back" href="../../api/xoa.cf.get_cf_specs.html#xoa.cf.get_cf_specs">[docs]</a><span class="k">def</span> <span class="nf">get_cf_specs</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="s2">&quot;rw&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the CF specifications for a target in a category</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name: str or None</span>
+<span class="sd">        A target name like &quot;sst&quot;. If not provided, return all specs.</span>
+<span class="sd">    category: str or None</span>
+<span class="sd">        Select a category with &quot;coords&quot; or &quot;data_vars&quot;.</span>
+<span class="sd">        If not provided, search first in &quot;data_vars&quot;, then &quot;coords&quot;.</span>
+<span class="sd">    cache: str, bool, None</span>
+<span class="sd">        Cache specs on disk with pickling for fast loading.</span>
+<span class="sd">        If ``None``, it defaults to boolean option :xoaoption:`cf.cache`.</span>
+<span class="sd">        Possible string values: ``&quot;ignore&quot;``, ``&quot;rw&quot;``, ``&quot;read&quot;``,</span>
+<span class="sd">        ``&quot;write&quot;``, ``&quot;clean&quot;``.</span>
+<span class="sd">        If ``True``, it is set to ``&quot;rw&quot;``.</span>
+<span class="sd">        If ``False``, it is set to ``&quot;ignore&quot;``.</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    dict or None</span>
+<span class="sd">        None is return if no specs are found</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">cache</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;cf.cache&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cache</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="s2">&quot;rw&quot;</span>
+    <span class="k">elif</span> <span class="n">cache</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="s2">&quot;ignore&quot;</span>
+    <span class="k">assert</span> <span class="n">cache</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="s2">&quot;rw&quot;</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">,</span> <span class="s2">&quot;clean&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get the source of specs</span>
+    <span class="k">if</span> <span class="s2">&quot;specs&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_CACHE</span><span class="p">:</span>
+
+        <span class="c1"># Try from disk cache</span>
+        <span class="k">if</span> <span class="n">cache</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">USER_CF_CACHE_FILE</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">_CFGFILE</span><span class="p">)</span><span class="o">.</span><span class="n">st_mtime</span> <span class="o">&lt;</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">USER_CF_CACHE_FILE</span><span class="p">)</span><span class="o">.</span><span class="n">st_mtime</span>
+            <span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">USER_CF_CACHE_FILE</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="n">set_cf_specs</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">xoa_warn</span><span class="p">(</span>
+                        <span class="s2">&quot;Error while loading cached cf specs: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+                    <span class="p">)</span>
+
+        <span class="c1"># Compute it from scratch</span>
+        <span class="k">if</span> <span class="s2">&quot;specs&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_CACHE</span><span class="p">:</span>
+
+            <span class="c1"># Setup</span>
+            <span class="n">set_cf_specs</span><span class="p">(</span><span class="n">CFSpecs</span><span class="p">())</span>
+
+            <span class="c1"># Cache it on disk</span>
+            <span class="k">if</span> <span class="n">cache</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;write&quot;</span><span class="p">,</span> <span class="s2">&quot;rw&quot;</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">cachedir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">USER_CF_CACHE_FILE</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">cachedir</span><span class="p">):</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">cachedir</span><span class="p">)</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">USER_CF_CACHE_FILE</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;specs&quot;</span><span class="p">],</span> <span class="n">f</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">xoa_warn</span><span class="p">(</span><span class="s2">&quot;Error while caching cf specs: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">))</span>
+
+    <span class="c1"># Clean cache</span>
+    <span class="k">if</span> <span class="n">cache</span> <span class="o">==</span> <span class="s2">&quot;clean&quot;</span><span class="p">:</span>
+        <span class="n">clean_cf_cache</span><span class="p">()</span>
+
+    <span class="n">cf_source</span> <span class="o">=</span> <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;specs&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Select categories</span>
+    <span class="k">if</span> <span class="n">category</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cf_source</span><span class="p">,</span> <span class="n">CFSpecs</span><span class="p">):</span>
+            <span class="n">cf_source</span> <span class="o">=</span> <span class="n">cf_source</span><span class="p">[</span><span class="n">category</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cf_source</span>
+        <span class="n">toscan</span> <span class="o">=</span> <span class="p">[</span><span class="n">cf_source</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cf_source</span>
+        <span class="n">toscan</span> <span class="o">=</span> <span class="p">[</span><span class="n">cf_source</span><span class="p">[</span><span class="s2">&quot;data_vars&quot;</span><span class="p">],</span> <span class="n">cf_source</span><span class="p">[</span><span class="s2">&quot;coords&quot;</span><span class="p">]]</span>
+
+    <span class="c1"># Search</span>
+    <span class="k">for</span> <span class="n">ss</span> <span class="ow">in</span> <span class="n">toscan</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">ss</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ss</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div>
+
+
+<span class="c1"># def get_cf_coord_specs(name=None):</span>
+<span class="c1">#     &quot;&quot;&quot;Shortcut to ``get_cf_specs(name=name, category=&#39;coords&#39;)``&quot;&quot;&quot;</span>
+<span class="c1">#     return get_cf_specs(name=name, category=&quot;coords&quot;)</span>
+
+
+<span class="c1"># def get_cf_var_specs(name=None):</span>
+<span class="c1">#     &quot;&quot;&quot;Shortcut to ``get_cf_specs(name=name, category=&#39;data_vars&#39;)``&quot;&quot;&quot;</span>
+<span class="c1">#     return get_cf_specs(name=name, category=&quot;data_vars&quot;)</span>
+
+
+<span class="k">class</span> <span class="nc">_CFAccessor_</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">_category</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span> <span class="o">=</span> <span class="n">get_cf_specs</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span> <span class="o">=</span> <span class="n">dsa</span>
+
+    <span class="k">def</span> <span class="nf">set_cf_specs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfspecs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the :class:`CFSpecs` using by this accessor&quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cfspecs</span><span class="p">,</span> <span class="n">CFSpecs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span> <span class="o">=</span> <span class="n">cfspecs</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search for a CF item with :meth:`CFSpecs.search`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_category</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">[</span><span class="s1">&#39;accessors&#39;</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_category</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">auto_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Auto-format attributes with :meth:`CFSpecs.auto_format`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">auto_format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span>
+                                         <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="DataArrayCFAccessor"><a class="viewcode-back" href="../../api/xoa.cf.DataArrayCFAccessor.html#xoa.cf.DataArrayCFAccessor">[docs]</a><span class="k">class</span> <span class="nc">DataArrayCFAccessor</span><span class="p">(</span><span class="n">_CFAccessor_</span><span class="p">):</span>
+    <span class="n">_category</span> <span class="o">=</span> <span class="s1">&#39;coords&#39;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_name&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search_dim</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">except</span> <span class="n">XoaError</span><span class="p">:</span>
+            <span class="k">return</span>
+
+<div class="viewcode-block" id="DataArrayCFAccessor.get_dim"><a class="viewcode-back" href="../../api/xoa.cf.DataArrayCFAccessor.get_dim.html#xoa.cf.DataArrayCFAccessor.get_dim">[docs]</a>    <span class="k">def</span> <span class="nf">get_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim_type</span><span class="p">):</span>
+        <span class="n">dim_type</span> <span class="o">=</span> <span class="n">dim_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dims&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">if</span> <span class="n">dim_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">[</span><span class="n">dim_type</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search_dim</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="n">dim_type</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">[</span><span class="n">dim_type</span><span class="p">]</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">xdim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dim</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ydim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dim</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">zdim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dim</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tdim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dim</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DatasetCFAccessor"><a class="viewcode-back" href="../../api/xoa.cf.DatasetCFAccessor.html#xoa.cf.DatasetCFAccessor">[docs]</a><span class="k">class</span> <span class="nc">DatasetCFAccessor</span><span class="p">(</span><span class="n">_CFAccessor_</span><span class="p">):</span>
+    <span class="n">_category</span> <span class="o">=</span> <span class="s1">&#39;data_vars&#39;</span></div>
+
+
+<div class="viewcode-block" id="register_cf_accessors"><a class="viewcode-back" href="../../api/xoa.cf.register_cf_accessors.html#xoa.cf.register_cf_accessors">[docs]</a><span class="k">def</span> <span class="nf">register_cf_accessors</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cf&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Register xarray accessors&quot;&quot;&quot;</span>
+    <span class="c1"># cfspecs = cfspecs or get_cf_specs()</span>
+    <span class="c1"># name = cfspecs[&#39;accessors&#39;][&#39;name&#39;]</span>
+    <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span>
+            <span class="s2">&quot;ignore&quot;</span><span class="p">,</span>
+            <span class="n">xr</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">extensions</span><span class="o">.</span><span class="n">AccessorRegistrationWarning</span><span class="p">)</span>
+        <span class="n">xr</span><span class="o">.</span><span class="n">register_dataarray_accessor</span><span class="p">(</span><span class="n">name</span><span class="p">)(</span><span class="n">DataArrayCFAccessor</span><span class="p">)</span>
+        <span class="n">xr</span><span class="o">.</span><span class="n">register_dataset_accessor</span><span class="p">(</span><span class="n">name</span><span class="p">)(</span><span class="n">DatasetCFAccessor</span><span class="p">)</span></div>
+
+
+<span class="n">register_cf_accessors</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

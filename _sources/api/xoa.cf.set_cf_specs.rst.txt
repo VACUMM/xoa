@@ -1,0 +1,23 @@
+xoa.cf.set\_cf\_specs
+=====================
+
+.. currentmodule:: xoa.cf
+
+.. autoclass:: set_cf_specs
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+   
+   
+
+   
+   
+   

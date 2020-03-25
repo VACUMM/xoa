@@ -1,0 +1,6 @@
+xoa.cf.DatasetCFAccessor.auto\_format
+=====================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: DatasetCFAccessor.auto_format

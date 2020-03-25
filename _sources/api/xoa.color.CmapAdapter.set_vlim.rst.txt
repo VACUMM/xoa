@@ -1,0 +1,6 @@
+xoa.color.CmapAdapter.set\_vlim
+===============================
+
+.. currentmodule:: xoa.color
+
+.. automethod:: CmapAdapter.set_vlim

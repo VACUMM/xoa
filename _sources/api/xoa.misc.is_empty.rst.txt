@@ -1,0 +1,6 @@
+xoa.misc.is\_empty
+==================
+
+.. currentmodule:: xoa.misc
+
+.. autofunction:: is_empty

@@ -1,0 +1,6 @@
+xoa.misc.ArgTuple.get
+=====================
+
+.. currentmodule:: xoa.misc
+
+.. automethod:: ArgTuple.get

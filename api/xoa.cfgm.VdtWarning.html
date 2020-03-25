@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>xoa.cfgm.VdtWarning &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="xoa.cfgm.XoaValidateError" href="xoa.cfgm.XoaValidateError.html" />
+    <link rel="prev" title="xoa.cfgm.VdtSizeError" href="xoa.cfgm.VdtSizeError.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configure.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usages.html">Usages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="xoa.html">xoa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.cf.html">xoa.cf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.cfg2rst.html">xoa.cfgm.cfg2rst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.cfgargparse.html">xoa.cfgm.cfgargparse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.filter_section.html">xoa.cfgm.filter_section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.get_cfg_path.html">xoa.cfgm.get_cfg_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.get_sec_names.html">xoa.cfgm.get_sec_names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.get_spec.html">xoa.cfgm.get_spec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.get_validator.html">xoa.cfgm.get_validator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.opt2rst.html">xoa.cfgm.opt2rst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.print_short_help.html">xoa.cfgm.print_short_help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.register_config_validator.html">xoa.cfgm.register_config_validator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.remove_defaults.html">xoa.cfgm.remove_defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_bbox.html">xoa.cfgm.validator_bbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_cdtime.html">xoa.cfgm.validator_cdtime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_cmap.html">xoa.cfgm.validator_cmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_color.html">xoa.cfgm.validator_color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_daterange.html">xoa.cfgm.validator_daterange</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_daterange64.html">xoa.cfgm.validator_daterange64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_datetime.html">xoa.cfgm.validator_datetime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_datetime64.html">xoa.cfgm.validator_datetime64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_dict.html">xoa.cfgm.validator_dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_eval.html">xoa.cfgm.validator_eval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_figsize.html">xoa.cfgm.validator_figsize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_interval.html">xoa.cfgm.validator_interval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_minmax.html">xoa.cfgm.validator_minmax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_numerics.html">xoa.cfgm.validator_numerics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_path.html">xoa.cfgm.validator_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_pydatetime.html">xoa.cfgm.validator_pydatetime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_timedelta.html">xoa.cfgm.validator_timedelta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_timedelta64.html">xoa.cfgm.validator_timedelta64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_timestamp.html">xoa.cfgm.validator_timestamp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.ConfigManager.html">xoa.cfgm.ConfigManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.VdtDateTimeError.html">xoa.cfgm.VdtDateTimeError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.VdtSizeError.html">xoa.cfgm.VdtSizeError</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">xoa.cfgm.VdtWarning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.XoaValidateError.html">xoa.cfgm.XoaValidateError</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.cli.html">xoa.cli</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+          <li><a href="xoa.cfgm.html">xoa.cfgm</a> &raquo;</li>
+        
+      <li>xoa.cfgm.VdtWarning</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/xoa.cfgm.VdtWarning.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="xoa-cfgm-vdtwarning">
+<h1>xoa.cfgm.VdtWarning<a class="headerlink" href="#xoa-cfgm-vdtwarning" title="Permalink to this headline">¶</a></h1>
+<dl class="exception">
+<dt id="xoa.cfgm.VdtWarning">
+<em class="property">exception </em><code class="sig-prename descclassname">xoa.cfgm.</code><code class="sig-name descname">VdtWarning</code><a class="reference internal" href="../_modules/xoa/cfgm.html#VdtWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cfgm.VdtWarning" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="xoa.cfgm.XoaValidateError.html" class="btn btn-neutral float-right" title="xoa.cfgm.XoaValidateError" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="xoa.cfgm.VdtSizeError.html" class="btn btn-neutral float-left" title="xoa.cfgm.VdtSizeError" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

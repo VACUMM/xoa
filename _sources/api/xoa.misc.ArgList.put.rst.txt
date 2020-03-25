@@ -1,0 +1,6 @@
+xoa.misc.ArgList.put
+====================
+
+.. currentmodule:: xoa.misc
+
+.. automethod:: ArgList.put

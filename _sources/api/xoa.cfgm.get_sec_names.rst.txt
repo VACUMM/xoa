@@ -1,0 +1,6 @@
+xoa.cfgm.get\_sec\_names
+========================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: get_sec_names

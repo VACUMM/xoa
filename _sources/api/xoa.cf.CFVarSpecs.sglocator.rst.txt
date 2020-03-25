@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.sglocator
+===========================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: CFVarSpecs.sglocator

@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.attrs\_first
+==============================
+
+.. currentmodule:: xoa.cf
+
+.. autoattribute:: CFVarSpecs.attrs_first

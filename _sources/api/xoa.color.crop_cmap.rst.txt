@@ -1,0 +1,6 @@
+xoa.color.crop\_cmap
+====================
+
+.. currentmodule:: xoa.color
+
+.. autofunction:: crop_cmap

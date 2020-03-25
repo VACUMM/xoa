@@ -1,0 +1,6 @@
+xoa.coords.transpose\_compat
+============================
+
+.. currentmodule:: xoa.coords
+
+.. autofunction:: transpose_compat

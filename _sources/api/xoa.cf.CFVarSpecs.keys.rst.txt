@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.keys
+======================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFVarSpecs.keys

@@ -1,0 +1,6 @@
+xoa.cfgm.remove\_defaults
+=========================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: remove_defaults

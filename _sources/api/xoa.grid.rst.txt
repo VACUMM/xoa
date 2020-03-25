@@ -1,0 +1,24 @@
+xoa.grid
+========
+
+.. automodule:: xoa.grid
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      get_edges_1d
+      get_edges_2d
+   
+   
+
+   
+   
+   
+
+   
+   
+   

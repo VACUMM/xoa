@@ -1,0 +1,6 @@
+xoa.get\_option
+===============
+
+.. currentmodule:: xoa
+
+.. autofunction:: get_option

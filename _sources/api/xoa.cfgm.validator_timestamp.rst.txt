@@ -1,0 +1,6 @@
+xoa.cfgm.validator\_timestamp
+=============================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: validator_timestamp

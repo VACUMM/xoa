@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>xoa.cfgm.ConfigManager.arg_parse &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="xoa.cfgm.ConfigManager.arg_patch" href="xoa.cfgm.ConfigManager.arg_patch.html" />
+    <link rel="prev" title="xoa.cfgm.ConfigManager.arg_long_help" href="xoa.cfgm.ConfigManager.arg_long_help.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configure.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usages.html">Usages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="xoa.html">xoa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.cf.html">xoa.cf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.cfg2rst.html">xoa.cfgm.cfg2rst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.cfgargparse.html">xoa.cfgm.cfgargparse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.filter_section.html">xoa.cfgm.filter_section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.get_cfg_path.html">xoa.cfgm.get_cfg_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.get_sec_names.html">xoa.cfgm.get_sec_names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.get_spec.html">xoa.cfgm.get_spec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.get_validator.html">xoa.cfgm.get_validator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.opt2rst.html">xoa.cfgm.opt2rst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.print_short_help.html">xoa.cfgm.print_short_help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.register_config_validator.html">xoa.cfgm.register_config_validator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.remove_defaults.html">xoa.cfgm.remove_defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_bbox.html">xoa.cfgm.validator_bbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_cdtime.html">xoa.cfgm.validator_cdtime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_cmap.html">xoa.cfgm.validator_cmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_color.html">xoa.cfgm.validator_color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_daterange.html">xoa.cfgm.validator_daterange</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_daterange64.html">xoa.cfgm.validator_daterange64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_datetime.html">xoa.cfgm.validator_datetime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_datetime64.html">xoa.cfgm.validator_datetime64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_dict.html">xoa.cfgm.validator_dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_eval.html">xoa.cfgm.validator_eval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_figsize.html">xoa.cfgm.validator_figsize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_interval.html">xoa.cfgm.validator_interval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_minmax.html">xoa.cfgm.validator_minmax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_numerics.html">xoa.cfgm.validator_numerics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_path.html">xoa.cfgm.validator_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_pydatetime.html">xoa.cfgm.validator_pydatetime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_timedelta.html">xoa.cfgm.validator_timedelta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_timedelta64.html">xoa.cfgm.validator_timedelta64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.validator_timestamp.html">xoa.cfgm.validator_timestamp</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="xoa.cfgm.ConfigManager.html">xoa.cfgm.ConfigManager</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.arg_long_help.html">xoa.cfgm.ConfigManager.arg_long_help</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.cfgm.ConfigManager.arg_parse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.arg_patch.html">xoa.cfgm.ConfigManager.arg_patch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.get_defaults.html">xoa.cfgm.ConfigManager.get_defaults</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.get_rst.html">xoa.cfgm.ConfigManager.get_rst</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.get_spec.html">xoa.cfgm.ConfigManager.get_spec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.load.html">xoa.cfgm.ConfigManager.load</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.patch.html">xoa.cfgm.ConfigManager.patch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.reset.html">xoa.cfgm.ConfigManager.reset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.cfgspecs.html">xoa.cfgm.ConfigManager.cfgspecs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.configspecs.html">xoa.cfgm.ConfigManager.configspecs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.specs.html">xoa.cfgm.ConfigManager.specs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cfgm.ConfigManager.validator.html">xoa.cfgm.ConfigManager.validator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.VdtDateTimeError.html">xoa.cfgm.VdtDateTimeError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.VdtSizeError.html">xoa.cfgm.VdtSizeError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.VdtWarning.html">xoa.cfgm.VdtWarning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.XoaValidateError.html">xoa.cfgm.XoaValidateError</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.cli.html">xoa.cli</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+          <li><a href="xoa.cfgm.html">xoa.cfgm</a> &raquo;</li>
+        
+          <li><a href="xoa.cfgm.ConfigManager.html">xoa.cfgm.ConfigManager</a> &raquo;</li>
+        
+      <li>xoa.cfgm.ConfigManager.arg_parse</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/xoa.cfgm.ConfigManager.arg_parse.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="xoa-cfgm-configmanager-arg-parse">
+<h1>xoa.cfgm.ConfigManager.arg_parse<a class="headerlink" href="#xoa-cfgm-configmanager-arg-parse" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="xoa.cfgm.ConfigManager.arg_parse">
+<code class="sig-prename descclassname">ConfigManager.</code><code class="sig-name descname">arg_parse</code><span class="sig-paren">(</span><em class="sig-param">parser=None</em>, <em class="sig-param">exc=[]</em>, <em class="sig-param">parse=True</em>, <em class="sig-param">args=None</em>, <em class="sig-param">getparser=False</em>, <em class="sig-param">getargs=False</em>, <em class="sig-param">cfgfile='config.cfg'</em>, <em class="sig-param">patch=None</em>, <em class="sig-param">cfgfileopt='--cfgfile'</em>, <em class="sig-param">cfgfilepatch='before'</em>, <em class="sig-param">nested=None</em>, <em class="sig-param">extraopts=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cfgm.html#ConfigManager.arg_parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cfgm.ConfigManager.arg_parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options (<code class="xref py py-mod docutils literal notranslate"><span class="pre">argparse</span></code>) and config mixer.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Creates command-line options from config defaults</p></li>
+<li><p>Parse command-line argument and create a configuration patch</p></li>
+</ol>
+</div></blockquote>
+<p>For instance, the following config define the commandline option
+<code class="docutils literal notranslate"><span class="pre">--section1-my-section2-my-key</span></code> with <code class="docutils literal notranslate"><span class="pre">value</span></code> as a default value,
+stored in a special group of options with a short name
+and a long description:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">section1</span><span class="p">]</span> <span class="c1"># Short name : long description of the group</span>
+    <span class="p">[[</span><span class="n">my_section2</span><span class="p">]]</span>
+        <span class="n">my_key</span><span class="o">=</span><span class="n">value</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Section and option names must not contain any
+space-like character !</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to prevent conflict of options, don’t use <code class="docutils literal notranslate"><span class="pre">&quot;_&quot;</span></code> in
+section and option names.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parser</strong> – <dl class="simple">
+<dt>optional, a default one is created if not given. This can be:</dt><dd><ul>
+<li><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">OptionParser</span></code> instance</p></li>
+<li><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code> with keyword arguments for the one
+to be created</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>exc</strong> (<em>optional</em><em>, </em><em>list</em>) – List of keys to be excluded from parsing.</p></li>
+<li><p><strong>parse</strong> (<em>optional</em><em>, </em><em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, parse commande line options and arguments</p></li>
+<li><p><strong>args</strong> (<em>optional</em>) – List of arguments to parse instead of default sys.argv[1:]</p></li>
+<li><p><strong>getparser</strong> (<em>optional</em><em>, </em><em>bool</em>) – Allow getting the parser in addition to the config if parse=True</p></li>
+<li><p><strong>getargs</strong> (<em>optional</em><em>, </em><em>bool</em>) – allow getting the parsed arguments in addition to the
+config if parse=True</p></li>
+<li><p><strong>patch</strong> (<em>optional</em>) – <p>Used if parse is True.
+Can take the following values:</p>
+<ul>
+<li><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code> value indicating wheter to apply
+defaults on the returned config
+before applying the command line config</p></li>
+<li><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigObj</span></code> instance to apply on the returned config
+before applying the command line config</p></li>
+</ul>
+</p></li>
+<li><p><strong>cfgfileopt</strong> (<em>optional</em>) – If present a config file option will be added.
+Can be a <code class="xref py py-class docutils literal notranslate"><span class="pre">string</span></code> or couple of strings to use
+as the option short and/or long name</p></li>
+<li><p><strong>cfgfilepatch</strong> – <p>specify if the returned config must be patched if a
+config file command line option is provided and when to patch it.
+Can take the following values:</p>
+<ul>
+<li><p>True or ‘before’: the config file would be used before
+command line options</p></li>
+<li><p>’after’: the config file would be used after command line options</p></li>
+<li><p>Any False like value: the config file would not be used</p></li>
+</ul>
+</p></li>
+<li><p><strong>nested</strong> (<em>str</em>) – Name of a section whose defines the configuration.
+It must be used when the configuration in nested in more g
+eneral configuration.</p></li>
+<li><p><strong>extraopts</strong> (<em>dict</em>) – Extra options to declare in the form
+<code class="docutils literal notranslate"><span class="pre">[(args1,</span> <span class="pre">kwargs1),</span> <span class="pre">((args2,</span> <span class="pre">kwargs2),</span> <span class="pre">...]</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">OptionParser</span></code> – if parse is False</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigObj</span></code> – if parse is True and getparser is not True</p></li>
+<li><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigObj</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">OptionParser</span></code>) – if both parse and getparser are True</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="xoa.cfgm.ConfigManager.arg_patch.html" class="btn btn-neutral float-right" title="xoa.cfgm.ConfigManager.arg_patch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="xoa.cfgm.ConfigManager.arg_long_help.html" class="btn btn-neutral float-left" title="xoa.cfgm.ConfigManager.arg_long_help" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

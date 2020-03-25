@@ -1,0 +1,6 @@
+xoa.cf.register\_cf\_accessors
+==============================
+
+.. currentmodule:: xoa.cf
+
+.. autofunction:: register_cf_accessors

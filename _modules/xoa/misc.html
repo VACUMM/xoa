@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>xoa.misc &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configure.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usages.html">Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../xoa.html">xoa</a> &raquo;</li>
+        
+      <li>xoa.misc</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for xoa.misc</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Miscellaneaous low level utilities</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Copyright or © or Copr. Shom/Ifremer/Actimar</span>
+<span class="c1">#</span>
+<span class="c1"># stephane.raynaud@shom.fr, charria@ifremer.fr, wilkins@actimar.fr</span>
+<span class="c1">#</span>
+<span class="c1"># This software is a computer program whose purpose is to [describe</span>
+<span class="c1"># functionalities and technical features of your software].</span>
+<span class="c1">#</span>
+<span class="c1"># This software is governed by the CeCILL license under French law and</span>
+<span class="c1"># abiding by the rules of distribution of free software.  You can  use,</span>
+<span class="c1"># modify and/ or redistribute the software under the terms of the CeCILL</span>
+<span class="c1"># license as circulated by CEA, CNRS and INRIA at the following URL</span>
+<span class="c1"># &quot;http://www.cecill.info&quot;.</span>
+<span class="c1">#</span>
+<span class="c1"># As a counterpart to the access to the source code and  rights to copy,</span>
+<span class="c1"># modify and redistribute granted by the license, users are provided only</span>
+<span class="c1"># with a limited warranty  and the software&#39;s author,  the holder of the</span>
+<span class="c1"># economic rights,  and the successive licensors  have only  limited</span>
+<span class="c1"># liability.</span>
+<span class="c1">#</span>
+<span class="c1"># In this respect, the user&#39;s attention is drawn to the risks associated</span>
+<span class="c1"># with loading,  using,  modifying and/or developing or reproducing the</span>
+<span class="c1"># software by the user in light of its specific status of free software,</span>
+<span class="c1"># that may mean  that it is complicated to manipulate,  and  that  also</span>
+<span class="c1"># therefore means  that it is reserved for developers  and  experienced</span>
+<span class="c1"># professionals having in-depth computer knowledge. Users are therefore</span>
+<span class="c1"># encouraged to load and test the software&#39;s suitability as regards their</span>
+<span class="c1"># requirements in conditions enabling the security of their systems and/or</span>
+<span class="c1"># data to be ensured and,  more generally, to use and operate it in the</span>
+<span class="c1"># same conditions as regards security.</span>
+<span class="c1">#</span>
+<span class="c1"># The fact that you are presently reading this means that you have had</span>
+<span class="c1"># knowledge of the CeCILL license and that you accept its terms.</span>
+
+<span class="kn">import</span> <span class="nn">types</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">EnumMeta</span>
+
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">XoaError</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="DefaultEnumMeta"><a class="viewcode-back" href="../../api/xoa.misc.DefaultEnumMeta.html#xoa.misc.DefaultEnumMeta">[docs]</a><span class="k">class</span> <span class="nc">DefaultEnumMeta</span><span class="p">(</span><span class="n">EnumMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Enum meta-class that support default value and None</span>
+
+<span class="sd">    When the item is not provided or equal to ``None``, the first</span>
+<span class="sd">    declared item is returned</span>
+
+<span class="sd">    Inspired from: https://stackoverflow.com/questions/44867597/is-there-a-way-to-specify-a-default-value-for-python-enums</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa.misc import DefaultEnumMeta</span>
+<span class="sd">        from enum import IntEnum</span>
+
+<span class="sd">        class regrid_methods(IntEnum, metaclass=DefaultEnumMeta):</span>
+<span class="sd">            linear = 1</span>
+<span class="sd">            nearest = 0</span>
+<span class="sd">            cellave = -1</span>
+
+<span class="sd">        regrid_methods()</span>
+<span class="sd">        regrid_methods(None)</span>
+<span class="sd">        regrid_methods(1)</span>
+<span class="sd">        regrid_methods[None]</span>
+<span class="sd">        regrid_methods[&#39;linear&#39;]</span>
+<span class="sd">        regrid_methods[&#39;cellave&#39;]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_member_map_</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="get_axis_slices"><a class="viewcode-back" href="../../api/xoa.misc.get_axis_slices.html#xoa.misc.get_axis_slices">[docs]</a><span class="k">def</span> <span class="nf">get_axis_slices</span><span class="p">(</span><span class="n">ndim</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get standard slices for an axis of a ndim array</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ndim:</span>
+<span class="sd">        The number of dimensions. It can also be</span>
+<span class="sd">        a tuple (like an array shape) or an array.</span>
+<span class="sd">    axis:</span>
+<span class="sd">        Index of the axis.</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    A dictionary of tuples of slices. All tuples have a</span>
+<span class="sd">        length of ndim, and can be used has a slice for the array</span>
+<span class="sd">        (see exedges =ample).</span>
+
+<span class="sd">        - ``&quot;all&quot;``: Select everything.</span>
+<span class="sd">        - ``&quot;first&quot;``/``&quot;last&quot;``: First and last.</span>
+<span class="sd">        - ``&quot;firstp1&quot;``: Second element.</span>
+<span class="sd">        - ``&quot;firstp2&quot;``: Third element.</span>
+<span class="sd">        - ``&quot;lastm1&quot;``: Element before the last one.</span>
+<span class="sd">        - ``&quot;lastm2&quot;``: Second element before the last one.</span>
+<span class="sd">        - ``&quot;firsts&quot;``: All but the last.</span>
+<span class="sd">        - ``&quot;lasts&quot;``: All but the first.</span>
+<span class="sd">        - ``&quot;firstsm1&quot;``: All but the last two.</span>
+<span class="sd">        - ``&quot;lastsp1&quot;``: All but the first two.</span>
+<span class="sd">        - ``&quot;mid&quot;``: All but the first and last.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        import numpy as np, pprint</span>
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa.misc import get_axis_slices</span>
+
+<span class="sd">        var = np.arange(2*5*4).reshape(2, 5, 4)</span>
+<span class="sd">        pprint.pprint(get_axis_slices(var, axis=1))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ndim</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">ndim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndim</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span>
+    <span class="n">sel</span> <span class="o">=</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span><span class="o">*</span><span class="n">ndim</span>
+    <span class="n">selmid</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+    <span class="n">selmid</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">selmid</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">selmid</span><span class="p">)</span>
+    <span class="n">sellasts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+    <span class="n">sellasts</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">sellasts</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">sellasts</span><span class="p">)</span>
+    <span class="n">selfirsts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+    <span class="n">selfirsts</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">selfirsts</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">selfirsts</span><span class="p">)</span>
+    <span class="n">sellastsp1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+    <span class="n">sellastsp1</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">sellastsp1</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">sellastsp1</span><span class="p">)</span>
+    <span class="n">selfirstsm1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+    <span class="n">selfirstsm1</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">selfirstsm1</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">selfirstsm1</span><span class="p">)</span>
+    <span class="n">sellast</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+    <span class="n">sellast</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">sellast</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">sellast</span><span class="p">)</span>
+    <span class="n">selfirst</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+    <span class="n">selfirst</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">selfirst</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">selfirst</span><span class="p">)</span>
+    <span class="n">sellastm1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+    <span class="n">sellastm1</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+    <span class="n">sellastm1</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">sellastm1</span><span class="p">)</span>
+    <span class="n">sellastm2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+    <span class="n">sellastm2</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+    <span class="n">sellastm2</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">sellastm2</span><span class="p">)</span>
+    <span class="n">selfirstp1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+    <span class="n">selfirstp1</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">selfirstp1</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">selfirstp1</span><span class="p">)</span>
+    <span class="n">selfirstp2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+    <span class="n">selfirstp2</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">selfirstp2</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">selfirstp2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">ksel</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+            <span class="n">ksel</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">ksel</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="n">sel</span><span class="p">,</span> <span class="n">mid</span><span class="o">=</span><span class="n">selmid</span><span class="p">,</span> <span class="n">lasts</span><span class="o">=</span><span class="n">sellasts</span><span class="p">,</span> <span class="n">firsts</span><span class="o">=</span><span class="n">selfirsts</span><span class="p">,</span>
+                <span class="n">lastsp1</span><span class="o">=</span><span class="n">sellastsp1</span><span class="p">,</span> <span class="n">firstsm1</span><span class="o">=</span><span class="n">selfirstsm1</span><span class="p">,</span>
+                <span class="n">last</span><span class="o">=</span><span class="n">sellast</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="n">selfirst</span><span class="p">,</span> <span class="n">lastm1</span><span class="o">=</span><span class="n">sellastm1</span><span class="p">,</span>
+                <span class="n">firstp1</span><span class="o">=</span><span class="n">selfirstp1</span><span class="p">,</span>
+                <span class="n">lastm2</span><span class="o">=</span><span class="n">sellastm2</span><span class="p">,</span> <span class="n">firstp2</span><span class="o">=</span><span class="n">selfirstp2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="is_iterable"><a class="viewcode-back" href="../../api/xoa.misc.is_iterable.html#xoa.misc.is_iterable">[docs]</a><span class="k">def</span> <span class="nf">is_iterable</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">nostr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nogen</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if an object is iterable or not</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    obj:</span>
+<span class="sd">        Object to check</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">nogen</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">GeneratorType</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;__len__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="fm">__len__</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">nostr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="dict_check_defaults"><a class="viewcode-back" href="../../api/xoa.misc.dict_check_defaults.html#xoa.misc.dict_check_defaults">[docs]</a><span class="k">def</span> <span class="nf">dict_check_defaults</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="o">**</span><span class="n">defaults</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check that a dictionary has some default values</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dd: dict</span>
+<span class="sd">        Dictionary to check</span>
+<span class="sd">    **defs: dict</span>
+<span class="sd">        Dictionary of default values</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa.misc import dict_check_defaults</span>
+
+<span class="sd">        dd = dict(color=&#39;blue&#39;)</span>
+<span class="sd">        dict_check_defaults(dd, color=&#39;red&#39;, size=10)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">defaults</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">defaults</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">dd</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="o">*</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dd</span></div>
+
+
+<div class="viewcode-block" id="dict_filter"><a class="viewcode-back" href="../../api/xoa.misc.dict_filter.html#xoa.misc.dict_filter">[docs]</a><span class="k">def</span> <span class="nf">dict_filter</span><span class="p">(</span>
+    <span class="n">kwargs</span><span class="p">,</span>
+    <span class="n">filters</span><span class="p">,</span>
+    <span class="n">defaults</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">short</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwadd</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter out kwargs (typically extra calling keywords)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    kwargs:</span>
+<span class="sd">        Dictionnary to filter.</span>
+<span class="sd">    filters:</span>
+<span class="sd">        Single or list of prefixes.</span>
+<span class="sd">    defaults:</span>
+<span class="sd">        dictionnary of default values for output fictionnary.</span>
+<span class="sd">    copy:</span>
+<span class="sd">        Simply copy items, do not remove them from kwargs.</span>
+<span class="sd">    short:</span>
+<span class="sd">        Allow prefixes to not end with ``&quot;_&quot;``.</span>
+<span class="sd">    keep:</span>
+<span class="sd">        Keep prefix filter in output keys.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa.misc import dict_filter</span>
+<span class="sd">        kwargs = {&#39;basemap&#39;:&#39;f&#39;, &#39;basemap_fillcontinents&#39;:True, &#39;quiet&#39;:False,&#39;basemap_plot&#39;:False}</span>
+<span class="sd">        dict_filter(kwargs,&#39;basemap&#39;, defaults=dict(drawcoastlines=True,plot=True), good=True)</span>
+<span class="sd">        kwargs</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="n">filters</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
+        <span class="n">kwread</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">kwread</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span>
+
+    <span class="c1"># Set initial items</span>
+    <span class="n">kwout</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">filter_</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">filter_</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">filter_</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="n">filter_</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">kwout</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwread</span><span class="p">(</span><span class="n">filter_</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">kwout</span><span class="p">[</span><span class="n">filter_</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwread</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">short</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">filter_</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+            <span class="n">filter_</span> <span class="o">+=</span> <span class="s2">&quot;_&quot;</span>
+        <span class="k">for</span> <span class="n">att</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">att</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span> <span class="ow">and</span> <span class="n">att</span> <span class="o">!=</span> <span class="n">filter_</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">keep</span><span class="p">:</span>
+                    <span class="n">kwout</span><span class="p">[</span><span class="n">att</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwread</span><span class="p">(</span><span class="n">att</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">kwout</span><span class="p">[</span><span class="n">att</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">filter_</span><span class="p">):]]</span> <span class="o">=</span> <span class="n">kwread</span><span class="p">(</span><span class="n">att</span><span class="p">)</span>
+
+    <span class="c1"># Add some items</span>
+    <span class="n">kwout</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwadd</span><span class="p">)</span>
+
+    <span class="c1"># Set some default values</span>
+    <span class="k">if</span> <span class="n">defaults</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">att</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">kwout</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">att</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">kwout</span></div>
+
+
+<div class="viewcode-block" id="dict_merge"><a class="viewcode-back" href="../../api/xoa.misc.dict_merge.html#xoa.misc.dict_merge">[docs]</a><span class="k">def</span> <span class="nf">dict_merge</span><span class="p">(</span><span class="o">*</span><span class="n">dd</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Merge dictionaries</span>
+
+<span class="sd">    First dictionaries have priority over next</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dd:</span>
+<span class="sd">        Argument are interpreted as dictionary to merge.</span>
+<span class="sd">        Those who are not dictionaries are skipped.</span>
+<span class="sd">    mergesubdicts: optional</span>
+<span class="sd">        Also merge dictionary items</span>
+<span class="sd">        (like in a tree) [default: True].</span>
+<span class="sd">    mergetuples: optional</span>
+<span class="sd">        Also merge tuple items [default: False].</span>
+<span class="sd">    mergelists: optional</span>
+<span class="sd">        Also merge list items [default: False].</span>
+<span class="sd">    unique: optional</span>
+<span class="sd">        Uniquify lists and tuples [default: True].</span>
+<span class="sd">    skipnones: optional</span>
+<span class="sd">        Skip Nones [default: True].</span>
+<span class="sd">    skipempty: optional</span>
+<span class="sd">        Skip everything is not converted to False</span>
+<span class="sd">        using bool [default: False].</span>
+<span class="sd">    cls: optional</span>
+<span class="sd">        Class to use. Default to the first class found in arguments</span>
+<span class="sd">        that is not a :class:`dict`, else defaults to :class:`dict`.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa.misc import dict_merge</span>
+<span class="sd">        d1 = dict(a=3, b=5, e=[1, 2])</span>
+<span class="sd">        d2 = dict(a=5, c=7, e=[3, 4])</span>
+<span class="sd">        print(dict_merge(d1, d2, mergelists=True))</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Options</span>
+    <span class="n">mergesubdicts</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mergesubdicts&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">mergelists</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mergelists&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">mergetuples</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mergetuples&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">unique</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unique&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">skipnones</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;skipnones&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">overwriteempty</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;overwriteempty&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="bp">cls</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="p">[</span><span class="n">_f</span> <span class="k">for</span> <span class="n">_f</span> <span class="ow">in</span> <span class="n">dd</span> <span class="k">if</span> <span class="n">_f</span><span class="p">]</span>
+
+    <span class="c1"># Get the class</span>
+    <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="nb">dict</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dd</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="vm">__class__</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">dict</span><span class="p">:</span>
+                <span class="bp">cls</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="vm">__class__</span>
+                <span class="k">break</span>
+
+    <span class="c1"># Init</span>
+    <span class="kn">from</span> <span class="nn">configobj</span> <span class="kn">import</span> <span class="n">Section</span><span class="p">,</span> <span class="n">ConfigObj</span>
+
+    <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="n">Section</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dd</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Section</span><span class="p">):</span>
+                <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">XoaError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t initialise Section for merging&quot;</span><span class="p">)</span>
+        <span class="n">outd</span> <span class="o">=</span> <span class="n">Section</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">depth</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">main</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">outd</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+
+    <span class="c1"># Loop</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dd</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># Content</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">skipnones</span> <span class="ow">and</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1"># Not set so we set</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">outd</span> <span class="ow">or</span> <span class="p">(</span><span class="n">overwriteempty</span> <span class="ow">and</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">])):</span>
+                <span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+            <span class="c1"># Merge subdict</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="n">mergesubdicts</span>
+                <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="nb">dict</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dict_merge</span><span class="p">(</span><span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">val</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="c1"># Merge lists</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="n">mergelists</span>
+                <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="nb">list</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="n">val</span>
+                <span class="k">if</span> <span class="n">unique</span><span class="p">:</span>
+                    <span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">((</span><span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">])))</span>
+            <span class="c1"># Merge tuples</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="n">mergetuples</span>
+                <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="n">val</span>
+                <span class="k">if</span> <span class="n">unique</span><span class="p">:</span>
+                    <span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">outd</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+
+    <span class="c1"># Comments for ConfigObj instances</span>
+    <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="n">ConfigObj</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">outd</span><span class="o">.</span><span class="n">initial_comment</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;initial_comment&quot;</span><span class="p">):</span>
+            <span class="n">outd</span><span class="o">.</span><span class="n">initial_comment</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">initial_comment</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">outd</span><span class="o">.</span><span class="n">final_comment</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;final_comment&quot;</span><span class="p">):</span>
+            <span class="n">outd</span><span class="o">.</span><span class="n">final_comment</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">final_comment</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;inline_comments&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">d</span><span class="o">.</span><span class="n">inline_comments</span><span class="p">:</span>
+            <span class="n">outd</span><span class="o">.</span><span class="n">inline_comments</span> <span class="o">=</span> <span class="n">dict_merge</span><span class="p">(</span>
+                <span class="n">outd</span><span class="o">.</span><span class="n">inline_comments</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">inline_comments</span><span class="p">,</span> <span class="n">overwriteempty</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">outd</span></div>
+
+
+<div class="viewcode-block" id="is_empty"><a class="viewcode-back" href="../../api/xoa.misc.is_empty.html#xoa.misc.is_empty">[docs]</a><span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if empty&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="match_string"><a class="viewcode-back" href="../../api/xoa.misc.match_string.html#xoa.misc.match_string">[docs]</a><span class="k">def</span> <span class="nf">match_string</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span> <span class="n">checks</span><span class="p">,</span> <span class="n">ignorecase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check that a string verify a check list that consists of</span>
+<span class="sd">    a list of either strings or callables</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ss: str</span>
+<span class="sd">    checks: str, callable, list of {str or callable}</span>
+<span class="sd">    ignorecase: bool</span>
+<span class="sd">    transform: callable</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa.misc import match_string</span>
+<span class="sd">        import re</span>
+<span class="sd">        match_string(&#39;sst&#39;, &#39;sst&#39;)</span>
+<span class="sd">        match_string(&#39;sst&#39;, [re.compile(r&#39;ss.$&#39;).match])</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Nothing</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ss</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">checks</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># Setup</span>
+    <span class="n">ss</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ignorecase</span><span class="p">:</span>
+        <span class="n">ss</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_iterable</span><span class="p">(</span><span class="n">checks</span><span class="p">,</span> <span class="n">nogen</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">checks</span> <span class="o">=</span> <span class="p">[</span><span class="n">checks</span><span class="p">]</span>
+    <span class="n">checks</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">checks</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+
+    <span class="c1"># Callables</span>
+    <span class="n">sss</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">check</span> <span class="ow">in</span> <span class="n">checks</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">check</span><span class="p">):</span>
+            <span class="n">check</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">check</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">check</span><span class="p">)</span> <span class="ow">and</span> <span class="n">check</span><span class="p">(</span><span class="n">ss</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">check</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">sss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">check</span><span class="p">)</span>
+
+    <span class="c1"># Strings</span>
+    <span class="n">sss</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sss</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">ignorecase</span><span class="p">:</span>
+        <span class="n">sss</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sss</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">ss</span> <span class="ow">in</span> <span class="n">sss</span></div>
+
+
+<div class="viewcode-block" id="match_attrs"><a class="viewcode-back" href="../../api/xoa.misc.match_attrs.html#xoa.misc.match_attrs">[docs]</a><span class="k">def</span> <span class="nf">match_attrs</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">checks</span><span class="p">,</span> <span class="n">ignorecase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check that at least one of the attributes matches check list</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    obj: object</span>
+<span class="sd">    checks: dict</span>
+<span class="sd">        A dictionary of (attribute name, checklist), checklist being an</span>
+<span class="sd">        iterable as accepted by :func:`match_string`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">checks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">attname</span><span class="p">,</span> <span class="n">attchecks</span> <span class="ow">in</span> <span class="n">checks</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attname</span><span class="p">)</span> <span class="ow">and</span> <span class="n">match_string</span><span class="p">(</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attname</span><span class="p">),</span>
+            <span class="n">attchecks</span><span class="p">,</span>
+            <span class="n">ignorecase</span><span class="o">=</span><span class="n">ignorecase</span><span class="p">,</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="ArgList"><a class="viewcode-back" href="../../api/xoa.misc.ArgList.html#xoa.misc.ArgList">[docs]</a><span class="k">class</span> <span class="nc">ArgList</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Utility to always manage arguments as list and return results as input</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa.misc import ArgList</span>
+
+<span class="sd">        # Scalar</span>
+<span class="sd">        a = &#39;a&#39;</span>
+<span class="sd">        al = ArgList(a)</span>
+<span class="sd">        al.get() # input for function as tuple</span>
+<span class="sd">        al.put([&#39;aa&#39;]) # output as input</span>
+
+<span class="sd">        # Iterable</span>
+<span class="sd">        a = (&#39;a&#39;,&#39;b&#39;)</span>
+<span class="sd">        al = ArgList(a)</span>
+<span class="sd">        al.get()</span>
+<span class="sd">        al.put([&#39;aa&#39;])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ArgList.__init__"><a class="viewcode-back" href="../../api/xoa.misc.ArgList.html#xoa.misc.ArgList.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argsi</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">single</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argsi</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">argsi</span> <span class="o">=</span> <span class="n">argsi</span></div>
+
+<div class="viewcode-block" id="ArgList.get"><a class="viewcode-back" href="../../api/xoa.misc.ArgList.get.html#xoa.misc.ArgList.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">argsi</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">single</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">argsi</span></div>
+
+<div class="viewcode-block" id="ArgList.put"><a class="viewcode-back" href="../../api/xoa.misc.ArgList.put.html#xoa.misc.ArgList.put">[docs]</a>    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argso</span><span class="p">):</span>
+        <span class="n">so</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argso</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">so</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">single</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">so</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">single</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">argso</span>
+        <span class="k">if</span> <span class="n">so</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">single</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">argso</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">argso</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="ArgTuple"><a class="viewcode-back" href="../../api/xoa.misc.ArgTuple.html#xoa.misc.ArgTuple">[docs]</a><span class="k">class</span> <span class="nc">ArgTuple</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Utility to always manage arguments as tuple and return results as input</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa.misc import ArgTuple</span>
+
+<span class="sd">        # Scalar</span>
+<span class="sd">        a = &#39;a&#39;</span>
+<span class="sd">        al = ArgTuple(a)</span>
+<span class="sd">        al.get() # input for function as tuple</span>
+<span class="sd">        al.put((&#39;aa&#39;,)) # output as input</span>
+
+<span class="sd">        # Iterable</span>
+<span class="sd">        a = (&#39;a&#39;,&#39;b&#39;)</span>
+<span class="sd">        al = ArgTuple(a)</span>
+<span class="sd">        al.get()</span>
+<span class="sd">        al.put((&#39;aa&#39;,))</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ArgTuple.__init__"><a class="viewcode-back" href="../../api/xoa.misc.ArgTuple.html#xoa.misc.ArgTuple.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argsi</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">single</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argsi</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">argsi</span> <span class="o">=</span> <span class="n">argsi</span></div>
+
+<div class="viewcode-block" id="ArgTuple.get"><a class="viewcode-back" href="../../api/xoa.misc.ArgTuple.get.html#xoa.misc.ArgTuple.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">argsi</span><span class="p">,)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">single</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">argsi</span></div>
+
+<div class="viewcode-block" id="ArgTuple.put"><a class="viewcode-back" href="../../api/xoa.misc.ArgTuple.put.html#xoa.misc.ArgTuple.put">[docs]</a>    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argso</span><span class="p">):</span>
+        <span class="n">so</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argso</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">so</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">single</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">so</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">single</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">argso</span>
+        <span class="k">if</span> <span class="n">so</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">single</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">argso</span><span class="p">,)</span>
+        <span class="k">return</span> <span class="n">argso</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

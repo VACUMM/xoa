@@ -1,0 +1,6 @@
+xoa.XoaConfigError
+==================
+
+.. currentmodule:: xoa
+
+.. autoexception:: XoaConfigError

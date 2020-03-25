@@ -1,0 +1,33 @@
+xoa.misc.DefaultEnumMeta
+========================
+
+.. currentmodule:: xoa.misc
+
+.. autoclass:: DefaultEnumMeta
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~DefaultEnumMeta.mro
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~DefaultEnumMeta.default
+   
+   

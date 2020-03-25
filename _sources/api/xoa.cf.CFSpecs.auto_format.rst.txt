@@ -1,0 +1,6 @@
+xoa.cf.CFSpecs.auto\_format
+===========================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFSpecs.auto_format

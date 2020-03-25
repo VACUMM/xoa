@@ -1,0 +1,6 @@
+xoa.cfgm.validator\_color
+=========================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: validator_color

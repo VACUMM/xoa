@@ -1,0 +1,6 @@
+xoa.coords.get\_level
+=====================
+
+.. currentmodule:: xoa.coords
+
+.. autofunction:: get_level

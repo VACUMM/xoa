@@ -1,0 +1,6 @@
+xoa.cfgm.get\_spec
+==================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: get_spec

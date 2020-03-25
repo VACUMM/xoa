@@ -1,0 +1,29 @@
+xoa.misc.ArgList
+================
+
+.. currentmodule:: xoa.misc
+
+.. autoclass:: ArgList
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~ArgList.get
+      
+      
+         ~ArgList.put
+      
+   
+   
+
+   
+   
+   

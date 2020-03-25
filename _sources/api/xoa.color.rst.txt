@@ -1,0 +1,30 @@
+xoa.color
+=========
+
+.. automodule:: xoa.color
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      crop_cmap
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+   
+      CmapAdapter
+   
+   
+
+   
+   
+   

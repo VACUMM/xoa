@@ -1,0 +1,6 @@
+xoa.misc.dict\_merge
+====================
+
+.. currentmodule:: xoa.misc
+
+.. autofunction:: dict_merge

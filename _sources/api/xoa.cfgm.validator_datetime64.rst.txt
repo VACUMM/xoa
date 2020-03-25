@@ -1,0 +1,6 @@
+xoa.cfgm.validator\_datetime64
+==============================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: validator_datetime64

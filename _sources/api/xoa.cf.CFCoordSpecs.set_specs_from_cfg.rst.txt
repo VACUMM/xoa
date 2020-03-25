@@ -1,0 +1,6 @@
+xoa.cf.CFCoordSpecs.set\_specs\_from\_cfg
+=========================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFCoordSpecs.set_specs_from_cfg

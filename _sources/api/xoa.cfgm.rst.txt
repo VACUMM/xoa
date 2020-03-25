@@ -1,0 +1,69 @@
+xoa.cfgm
+========
+
+.. automodule:: xoa.cfgm
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      cfg2rst
+      cfgargparse
+      filter_section
+      get_cfg_path
+      get_sec_names
+      get_spec
+      get_validator
+      opt2rst
+      print_short_help
+      register_config_validator
+      remove_defaults
+      validator_bbox
+      validator_cdtime
+      validator_cmap
+      validator_color
+      validator_daterange
+      validator_daterange64
+      validator_datetime
+      validator_datetime64
+      validator_dict
+      validator_eval
+      validator_figsize
+      validator_interval
+      validator_minmax
+      validator_numerics
+      validator_path
+      validator_pydatetime
+      validator_timedelta
+      validator_timedelta64
+      validator_timestamp
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+   
+      ConfigManager
+   
+   
+
+   
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+      :toctree:
+   
+      VdtDateTimeError
+      VdtSizeError
+      VdtWarning
+      XoaValidateError
+   
+   

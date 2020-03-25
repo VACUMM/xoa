@@ -1,0 +1,6 @@
+xoa.cf.CFSpecs.categories
+=========================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: CFSpecs.categories

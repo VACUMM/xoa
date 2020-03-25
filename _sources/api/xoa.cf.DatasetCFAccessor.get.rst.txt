@@ -1,0 +1,6 @@
+xoa.cf.DatasetCFAccessor.get
+============================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: DatasetCFAccessor.get

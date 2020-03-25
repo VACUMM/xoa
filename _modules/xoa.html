@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>xoa &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configure.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usages.html">Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>xoa</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for xoa</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Xarray-base Ocean Analysis library</span>
+
+<span class="sd">The successor of Vacumm.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Copyright or © or Copr. Shom/Ifremer/Actimar</span>
+<span class="c1">#</span>
+<span class="c1"># stephane.raynaud@shom.fr, charria@ifremer.fr, wilkins@actimar.fr</span>
+<span class="c1">#</span>
+<span class="c1"># This software is a computer program whose purpose is to [describe</span>
+<span class="c1"># functionalities and technical features of your software].</span>
+<span class="c1">#</span>
+<span class="c1"># This software is governed by the CeCILL license under French law and</span>
+<span class="c1"># abiding by the rules of distribution of free software.  You can  use,</span>
+<span class="c1"># modify and/ or redistribute the software under the terms of the CeCILL</span>
+<span class="c1"># license as circulated by CEA, CNRS and INRIA at the following URL</span>
+<span class="c1"># &quot;http://www.cecill.info&quot;.</span>
+<span class="c1">#</span>
+<span class="c1"># As a counterpart to the access to the source code and  rights to copy,</span>
+<span class="c1"># modify and redistribute granted by the license, users are provided only</span>
+<span class="c1"># with a limited warranty  and the software&#39;s author,  the holder of the</span>
+<span class="c1"># economic rights,  and the successive licensors  have only  limited</span>
+<span class="c1"># liability.</span>
+<span class="c1">#</span>
+<span class="c1"># In this respect, the user&#39;s attention is drawn to the risks associated</span>
+<span class="c1"># with loading,  using,  modifying and/or developing or reproducing the</span>
+<span class="c1"># software by the user in light of its specific status of free software,</span>
+<span class="c1"># that may mean  that it is complicated to manipulate,  and  that  also</span>
+<span class="c1"># therefore means  that it is reserved for developers  and  experienced</span>
+<span class="c1"># professionals having in-depth computer knowledge. Users are therefore</span>
+<span class="c1"># encouraged to load and test the software&#39;s suitability as regards their</span>
+<span class="c1"># requirements in conditions enabling the security of their systems and/or</span>
+<span class="c1"># data to be ensured and,  more generally, to use and operate it in the</span>
+<span class="c1"># same conditions as regards security.</span>
+<span class="c1">#</span>
+<span class="c1"># The fact that you are presently reading this means that you have had</span>
+<span class="c1"># knowledge of the CeCILL license and that you accept its terms.</span>
+
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">appdirs</span>
+<span class="kn">import</span> <span class="nn">configobj</span>
+<span class="kn">import</span> <span class="nn">validate</span>
+
+<span class="n">__project__</span> <span class="o">=</span> <span class="s2">&quot;xoa&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;0.1.0&quot;</span>
+<span class="n">__release__</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
+<span class="n">__date__</span> <span class="o">=</span> <span class="s2">&quot;2020-02-04&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Shom/Ifremer/Actimar&quot;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;stephane.raynaud@shom.fr, charria@ifremer.fr, wilkins@actimar.fr&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright (c) 2020 Shom/Ifremer/Actimar&quot;</span>
+<span class="n">__description__</span> <span class="o">=</span> <span class="vm">__doc__</span>
+
+<span class="n">_RE_OPTION_MATCH</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^(\w+)\W(\w+)$&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span>
+
+<span class="c1">#: Specifications of configuration options</span>
+<span class="n">CONFIG_SPECS</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">[cf] # cf module</span>
+<span class="s2">accessors=boolean(default=True) # automatically load the :mod:`~xoa.cf` accessors?</span>
+<span class="s2">cache=boolean(default=True) # use the :mod:`~xoa.cf` in memory and file caches</span>
+
+<span class="s2">[plot] # plot parameters</span>
+<span class="s2">cmapdiv = string(default=&quot;cmo.balance&quot;) # defaut diverging colormap</span>
+<span class="s2">cmappos = string(default=&quot;cmo.amp&quot;)     # default positive colormap</span>
+<span class="s2">cmapneg = string(default=&quot;cmo.tempo_r&quot;) # default negative colormap</span>
+<span class="s2">cmapcyc = string(default=&quot;cmo.phase&quot;)   # default cyclic colormap</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1">#: Default xoa user configuration file</span>
+<span class="n">DEFAULT_USER_CONFIG_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">appdirs</span><span class="o">.</span><span class="n">user_data_dir</span><span class="p">(</span><span class="s2">&quot;xoa&quot;</span><span class="p">),</span> <span class="s2">&quot;xoa.cfg&quot;</span>
+<span class="p">)</span>
+
+<span class="n">_REQUIREMENTS_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;requirements.txt&quot;</span>
+<span class="p">)</span>
+
+<span class="n">_CACHE</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<div class="viewcode-block" id="XoaError"><a class="viewcode-back" href="../api/xoa.XoaError.html#xoa.XoaError">[docs]</a><span class="k">class</span> <span class="nc">XoaError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="XoaConfigError"><a class="viewcode-back" href="../api/xoa.XoaConfigError.html#xoa.XoaConfigError">[docs]</a><span class="k">class</span> <span class="nc">XoaConfigError</span><span class="p">(</span><span class="n">XoaError</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="XoaWarning"><a class="viewcode-back" href="../api/xoa.XoaWarning.html#xoa.XoaWarning">[docs]</a><span class="k">class</span> <span class="nc">XoaWarning</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="xoa_warn"><a class="viewcode-back" href="../api/xoa.xoa_warn.html#xoa.xoa_warn">[docs]</a><span class="k">def</span> <span class="nf">xoa_warn</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Issue a :class:`XoaWarning` warning</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+<span class="sd">        :okwarning:</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        import xoa</span>
+<span class="sd">        xoa.xoa_warn(&#39;Be careful!&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">XoaWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_options"><a class="viewcode-back" href="../api/xoa.load_options.html#xoa.load_options">[docs]</a><span class="k">def</span> <span class="nf">load_options</span><span class="p">(</span><span class="n">cfgfile</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load specified options</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfgfile: file, list(str), dict</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        import xoa</span>
+<span class="sd">        # Dict</span>
+<span class="sd">        xoa.load_options({&#39;plot&#39;: {&#39;cmappos&#39;: &#39;mycmap&#39;}})</span>
+
+<span class="sd">        # Lines</span>
+<span class="sd">        optlines = &quot;[plot]\\n cmappos=mycmap&quot;.split(&#39;\\n&#39;)</span>
+<span class="sd">        xoa.load_options(optlines)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="s2">&quot;cfgspecs&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_CACHE</span><span class="p">:</span>
+        <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;cfgspecs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">configobj</span><span class="o">.</span><span class="n">ConfigObj</span><span class="p">(</span>
+            <span class="n">CONFIG_SPECS</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">),</span>
+            <span class="n">list_values</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">interpolation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">raise_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">file_error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;options&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_CACHE</span><span class="p">:</span>
+        <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">configobj</span><span class="o">.</span><span class="n">ConfigObj</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">DEFAULT_USER_CONFIG_FILE</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">DEFAULT_USER_CONFIG_FILE</span><span class="p">)</span>
+                <span class="k">else</span> <span class="kc">None</span>
+            <span class="p">),</span>
+            <span class="n">configspec</span><span class="o">=</span><span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;cfgspecs&quot;</span><span class="p">],</span>
+            <span class="n">file_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">raise_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">list_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">cfgfile</span><span class="p">:</span>
+        <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+            <span class="n">configobj</span><span class="o">.</span><span class="n">ConfigObj</span><span class="p">(</span>
+                <span class="n">cfgfile</span><span class="p">,</span> <span class="n">file_error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">raise_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">list_values</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">validate</span><span class="o">.</span><span class="n">Validator</span><span class="p">(),</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_get_options_</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s2">&quot;options&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_CACHE</span><span class="p">:</span>
+        <span class="n">load_options</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="get_option"><a class="viewcode-back" href="../api/xoa.get_option.html#xoa.get_option">[docs]</a><span class="k">def</span> <span class="nf">get_option</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get a config option</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        import xoa</span>
+<span class="sd">        print(xoa.get_option(&#39;plot&#39;, &#39;cmapdiv&#39;))</span>
+<span class="sd">        print(xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="n">_get_options_</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">option</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">_RE_OPTION_MATCH</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+            <span class="n">section</span><span class="p">,</span> <span class="n">option</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">XoaConfigError</span><span class="p">(</span>
+                <span class="s2">&quot;You must provide an option name to get_option&quot;</span>
+            <span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="n">section</span><span class="p">][</span><span class="n">option</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">XoaConfigError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid section/option: </span><span class="si">{section}</span><span class="s2">/</span><span class="si">{option}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="set_options"><a class="viewcode-back" href="../api/xoa.set_options.html#xoa.set_options">[docs]</a><span class="k">class</span> <span class="nc">set_options</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set configuration options</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    section: str, None</span>
+<span class="sd">    **options: dict</span>
+<span class="sd">        If a key is in the format &quot;&lt;section&gt;.&lt;option&gt;&quot;, then the section</span>
+<span class="sd">        is overwritten.</span>
+
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        import xoa</span>
+
+<span class="sd">        # Classic: for the session</span>
+<span class="sd">        xoa.set_options(&#39;plot&#39;, cmapdiv=&#39;cmo.balance&#39;, cmappos=&#39;cmo.amp&#39;)</span>
+
+<span class="sd">        # With dict</span>
+<span class="sd">        opts = {&quot;plot.cmapdiv&quot;: &quot;cmo.balance&quot;}</span>
+<span class="sd">        xoa.set_options(**opts)</span>
+
+<span class="sd">        # Context: temporary</span>
+<span class="sd">        with xoa.set_options(&#39;plot&#39;, cmapdiv=&#39;cmo.delta&#39;):</span>
+<span class="sd">            print(&#39;within context:&#39;, xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
+<span class="sd">        print(&#39;after context:&#39;, xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="set_options.__init__"><a class="viewcode-back" href="../api/xoa.set_options.html#xoa.set_options.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+        <span class="c1"># Fromat before being ingested</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">old_options</span> <span class="o">=</span> <span class="n">_CACHE</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;options&quot;</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">]</span>
+        <span class="n">opts</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">option</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">_RE_OPTION_MATCH</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+                <span class="n">sec</span><span class="p">,</span> <span class="n">option</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">section</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">XoaConfigError</span><span class="p">(</span>
+                        <span class="s2">&quot;You must specify the section explicitly or &quot;</span>
+                        <span class="s2">&quot;through the the option name&quot;</span><span class="p">)</span>
+                <span class="n">sec</span> <span class="o">=</span> <span class="n">section</span>
+            <span class="n">opts</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">sec</span><span class="p">,</span> <span class="p">{})[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="c1"># Ingest options</span>
+        <span class="n">load_options</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">old_options</span><span class="p">:</span>
+            <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">old_options</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">_CACHE</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="set_option"><a class="viewcode-back" href="../api/xoa.set_option.html#xoa.set_option">[docs]</a><span class="k">def</span> <span class="nf">set_option</span><span class="p">(</span><span class="n">option</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set a single option using the flat format, i.e ``section.option``</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    option: str</span>
+<span class="sd">        Option name in the ``section.option`` format</span>
+<span class="sd">    value:</span>
+<span class="sd">        Value to set</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        import xoa</span>
+<span class="sd">        xoa.set_option(&#39;plot.cmapdiv&#39;, &#39;cmo.balance&#39;);</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">set_options</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">option</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="reset_options"><a class="viewcode-back" href="../api/xoa.reset_options.html#xoa.reset_options">[docs]</a><span class="k">def</span> <span class="nf">reset_options</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Restore options to their default values in the current session</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        import xoa</span>
+<span class="sd">        print(xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
+<span class="sd">        xoa.set_options(&#39;plot&#39;, cmapdiv=&#39;mycmap&#39;)</span>
+<span class="sd">        print(xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
+<span class="sd">        xoa.reset_options()</span>
+<span class="sd">        print(xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">del</span> <span class="n">_CACHE</span><span class="p">[</span><span class="s1">&#39;options&#39;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="show_options"><a class="viewcode-back" href="../api/xoa.show_options.html#xoa.show_options">[docs]</a><span class="k">def</span> <span class="nf">show_options</span><span class="p">(</span><span class="n">specs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Print current xoa configuration</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    specs: bool</span>
+<span class="sd">        Print option specifications instead</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        import xoa</span>
+<span class="sd">        xoa.show_options()</span>
+<span class="sd">        xoa.show_options(specs=True)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">specs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">CONFIG_SPECS</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_get_options_</span><span class="p">()</span><span class="o">.</span><span class="n">write</span><span class="p">())</span>
+              <span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="s1">&#39; #&#39;</span><span class="p">))</span></div>
+
+
+<span class="k">def</span> <span class="nf">_parse_requirements_</span><span class="p">(</span><span class="n">reqfile</span><span class="p">):</span>
+    <span class="n">re_match_specs_match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^(\w+)(\W+.+)?$&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span>
+    <span class="n">reqs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">reqfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">line</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+                <span class="n">m</span> <span class="o">=</span> <span class="n">re_match_specs_match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+                    <span class="n">reqs</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">reqs</span>
+
+
+<div class="viewcode-block" id="show_versions"><a class="viewcode-back" href="../api/xoa.show_versions.html#xoa.show_versions">[docs]</a><span class="k">def</span> <span class="nf">show_versions</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Print the versions of xoa and of some dependencies</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+<span class="sd">        :okexcept:</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        import xoa</span>
+<span class="sd">        xoa.show_versions()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- xoa:&quot;</span><span class="p">,</span> <span class="n">__version__</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">_parse_requirements_</span><span class="p">(</span><span class="n">_REQUIREMENTS_FILE</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pp</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">package</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">pp</span><span class="p">,</span> <span class="s2">&quot;__version__&quot;</span><span class="p">):</span>
+                <span class="n">version</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">__version__</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;UNKNOWN&quot;</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;ERROR&#39;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">pp</span><span class="p">,</span> <span class="s2">&quot;__version__&quot;</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{package}</span><span class="s2">: </span><span class="si">{version}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="show_paths"><a class="viewcode-back" href="../api/xoa.show_paths.html#xoa.show_paths">[docs]</a><span class="k">def</span> <span class="nf">show_paths</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Print some xoa paths&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- xoa library dir:&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+    <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">cf</span>
+    <span class="n">asterix</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">&quot;user config file&quot;</span><span class="p">,</span> <span class="n">DEFAULT_USER_CONFIG_FILE</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s2">&quot;user CF specs file&quot;</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">USER_CF_FILE</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s2">&quot;user CF cache file&quot;</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">USER_CF_CACHE_FILE</span><span class="p">)]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">asterix</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">&quot; [*]&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">+</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">asterix</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*: file not present&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="show_info"><a class="viewcode-back" href="../api/xoa.show_info.html#xoa.show_info">[docs]</a><span class="k">def</span> <span class="nf">show_info</span><span class="p">(</span><span class="n">opt_specs</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Print xoa related info</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+<span class="sd">        :okexcept:</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        import xoa</span>
+<span class="sd">        xoa.show_info()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# VERSIONS&quot;</span><span class="p">)</span>
+    <span class="n">show_versions</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"># FILES AND DIRECTORIES&quot;</span><span class="p">)</span>
+    <span class="n">show_paths</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"># OPTIONS&quot;</span><span class="p">)</span>
+    <span class="n">show_options</span><span class="p">(</span><span class="n">specs</span><span class="o">=</span><span class="n">opt_specs</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

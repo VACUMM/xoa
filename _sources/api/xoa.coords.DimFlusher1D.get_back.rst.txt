@@ -1,0 +1,6 @@
+xoa.coords.DimFlusher1D.get\_back
+=================================
+
+.. currentmodule:: xoa.coords
+
+.. automethod:: DimFlusher1D.get_back

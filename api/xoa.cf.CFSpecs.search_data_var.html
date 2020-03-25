@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>xoa.cf.CFSpecs.search_data_var &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="xoa.cf.CFSpecs.search_dim" href="xoa.cf.CFSpecs.search_dim.html" />
+    <link rel="prev" title="xoa.cf.CFSpecs.search_coord_from_dim" href="xoa.cf.CFSpecs.search_coord_from_dim.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configure.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usages.html">Usages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="xoa.html">xoa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="xoa.cf.html">xoa.cf</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.are_similar.html">xoa.cf.are_similar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.clean_cf_cache.html">xoa.cf.clean_cf_cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.get_cf_specs.html">xoa.cf.get_cf_specs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.register_cf_accessors.html">xoa.cf.register_cf_accessors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.search_similar.html">xoa.cf.search_similar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.show_cf_cache.html">xoa.cf.show_cf_cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.CFCoordSpecs.html">xoa.cf.CFCoordSpecs</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="xoa.cf.CFSpecs.html">xoa.cf.CFSpecs</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.auto_format.html">xoa.cf.CFSpecs.auto_format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.copy.html">xoa.cf.CFSpecs.copy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.format_coord.html">xoa.cf.CFSpecs.format_coord</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.format_data_var.html">xoa.cf.CFSpecs.format_data_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.format_dataset.html">xoa.cf.CFSpecs.format_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.load_cfg.html">xoa.cf.CFSpecs.load_cfg</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.match_coord.html">xoa.cf.CFSpecs.match_coord</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.match_data_var.html">xoa.cf.CFSpecs.match_data_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.pprint.html">xoa.cf.CFSpecs.pprint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.search.html">xoa.cf.CFSpecs.search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.search_coord.html">xoa.cf.CFSpecs.search_coord</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.search_coord_from_dim.html">xoa.cf.CFSpecs.search_coord_from_dim</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.cf.CFSpecs.search_data_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.search_dim.html">xoa.cf.CFSpecs.search_dim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.set_specs.html">xoa.cf.CFSpecs.set_specs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.set_specs_from_cfg.html">xoa.cf.CFSpecs.set_specs_from_cfg</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.categories.html">xoa.cf.CFSpecs.categories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.dict.html">xoa.cf.CFSpecs.dict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.CFSpecs.sglocator.html">xoa.cf.CFSpecs.sglocator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.CFVarSpecs.html">xoa.cf.CFVarSpecs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.html">xoa.cf.DataArrayCFAccessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.DatasetCFAccessor.html">xoa.cf.DatasetCFAccessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.SGLocator.html">xoa.cf.SGLocator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.set_cf_specs.html">xoa.cf.set_cf_specs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.cf.XoaCFError.html">xoa.cf.XoaCFError</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.cli.html">xoa.cli</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+          <li><a href="xoa.cf.html">xoa.cf</a> &raquo;</li>
+        
+          <li><a href="xoa.cf.CFSpecs.html">xoa.cf.CFSpecs</a> &raquo;</li>
+        
+      <li>xoa.cf.CFSpecs.search_data_var</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/xoa.cf.CFSpecs.search_data_var.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="xoa-cf-cfspecs-search-data-var">
+<h1>xoa.cf.CFSpecs.search_data_var<a class="headerlink" href="#xoa-cf-cfspecs-search-data-var" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="xoa.cf.CFSpecs.search_data_var">
+<code class="sig-prename descclassname">CFSpecs.</code><code class="sig-name descname">search_data_var</code><span class="sig-paren">(</span><em class="sig-param">dsa</em>, <em class="sig-param">name=None</em>, <em class="sig-param">loc='any'</em>, <em class="sig-param">get='obj'</em>, <em class="sig-param">single=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cf.html#CFSpecs.search_data_var"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cf.CFSpecs.search_data_var" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="xoa.cf.CFSpecs.search_dim.html" class="btn btn-neutral float-right" title="xoa.cf.CFSpecs.search_dim" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="xoa.cf.CFSpecs.search_coord_from_dim.html" class="btn btn-neutral float-left" title="xoa.cf.CFSpecs.search_coord_from_dim" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

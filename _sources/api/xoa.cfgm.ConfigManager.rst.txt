@@ -1,0 +1,60 @@
+xoa.cfgm.ConfigManager
+======================
+
+.. currentmodule:: xoa.cfgm
+
+.. autoclass:: ConfigManager
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~ConfigManager.arg_long_help
+      
+      
+         ~ConfigManager.arg_parse
+      
+      
+         ~ConfigManager.arg_patch
+      
+      
+         ~ConfigManager.get_defaults
+      
+      
+         ~ConfigManager.get_rst
+      
+      
+         ~ConfigManager.get_spec
+      
+      
+         ~ConfigManager.load
+      
+      
+         ~ConfigManager.patch
+      
+      
+         ~ConfigManager.reset
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~ConfigManager.cfgspecs
+      ~ConfigManager.configspecs
+      ~ConfigManager.specs
+      ~ConfigManager.validator
+   
+   

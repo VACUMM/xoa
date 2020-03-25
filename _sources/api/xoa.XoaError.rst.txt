@@ -1,0 +1,6 @@
+xoa.XoaError
+============
+
+.. currentmodule:: xoa
+
+.. autoexception:: XoaError

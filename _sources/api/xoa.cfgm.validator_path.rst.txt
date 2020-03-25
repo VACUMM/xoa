@@ -1,0 +1,6 @@
+xoa.cfgm.validator\_path
+========================
+
+.. currentmodule:: xoa.cfgm
+
+.. autofunction:: validator_path

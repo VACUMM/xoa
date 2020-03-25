@@ -1,0 +1,6 @@
+xoa.cf.CFVarSpecs.attrs\_exclude
+================================
+
+.. currentmodule:: xoa.cf
+
+.. autoattribute:: CFVarSpecs.attrs_exclude

@@ -1,0 +1,6 @@
+xoa.cfgm.ConfigManager.load
+===========================
+
+.. currentmodule:: xoa.cfgm
+
+.. automethod:: ConfigManager.load
