@@ -1,0 +1,6 @@
+xoa.misc.DefaultEnumMeta.get\_rst
+=================================
+
+.. currentmodule:: xoa.misc
+
+.. automethod:: DefaultEnumMeta.get_rst

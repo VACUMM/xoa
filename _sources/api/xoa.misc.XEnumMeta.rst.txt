@@ -1,0 +1,38 @@
+xoa.misc.XEnumMeta
+==================
+
+.. currentmodule:: xoa.misc
+
+.. autoclass:: XEnumMeta
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~XEnumMeta.get_rst
+      
+      
+         ~XEnumMeta.mro
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~XEnumMeta.default
+      ~XEnumMeta.rst
+      ~XEnumMeta.rst_with_links
+   
+   

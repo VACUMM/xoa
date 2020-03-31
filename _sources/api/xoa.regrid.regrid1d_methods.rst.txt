@@ -1,0 +1,26 @@
+xoa.regrid.regrid1d\_methods
+============================
+
+.. currentmodule:: xoa.regrid
+
+.. autoclass:: regrid1d_methods
+
+   
+   .. automethod:: __init__
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~regrid1d_methods.cellave
+      ~regrid1d_methods.cubic
+      ~regrid1d_methods.hermit
+      ~regrid1d_methods.linear
+   
+   

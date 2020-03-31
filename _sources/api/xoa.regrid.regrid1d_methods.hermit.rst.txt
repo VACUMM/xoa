@@ -1,0 +1,6 @@
+xoa.regrid.regrid1d\_methods.hermit
+===================================
+
+.. currentmodule:: xoa.regrid
+
+.. autoattribute:: regrid1d_methods.hermit

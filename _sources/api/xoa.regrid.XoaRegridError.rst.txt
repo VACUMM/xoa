@@ -1,0 +1,6 @@
+xoa.regrid.XoaRegridError
+=========================
+
+.. currentmodule:: xoa.regrid
+
+.. autoexception:: XoaRegridError

@@ -1,0 +1,38 @@
+xoa.regrid
+==========
+
+.. automodule:: xoa.regrid
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      regrid1d
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+   
+      extrap_modes
+      regrid1d_methods
+   
+   
+
+   
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+      :toctree:
+   
+      XoaRegridError
+   
+   

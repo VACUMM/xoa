@@ -1,0 +1,16 @@
+xoa.misc.IntEnumChoices
+=======================
+
+.. currentmodule:: xoa.misc
+
+.. autoclass:: IntEnumChoices
+
+   
+   .. automethod:: __init__
+
+   
+   
+
+   
+   
+   

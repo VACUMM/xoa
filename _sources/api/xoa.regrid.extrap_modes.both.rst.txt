@@ -1,0 +1,6 @@
+xoa.regrid.extrap\_modes.both
+=============================
+
+.. currentmodule:: xoa.regrid
+
+.. autoattribute:: extrap_modes.both

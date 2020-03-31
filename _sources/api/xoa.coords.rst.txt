@@ -13,6 +13,7 @@ xoa.coords
       get_altitude
       get_coords
       get_depth
+      get_height
       get_lat
       get_level
       get_lon

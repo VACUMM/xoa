@@ -1,0 +1,36 @@
+xoa.sigma
+=========
+
+.. automodule:: xoa.sigma
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      atmosphere_sigma_to_pressures
+      decode_cf
+      get_cs
+      get_sigma_terms
+      ocean_s_to_depths
+      ocean_sigma_to_depths
+      parse_formula_terms_attr
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+      :toctree:
+   
+      XoaCFError
+   
+   

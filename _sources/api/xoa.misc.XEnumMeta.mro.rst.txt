@@ -1,0 +1,6 @@
+xoa.misc.XEnumMeta.mro
+======================
+
+.. currentmodule:: xoa.misc
+
+.. automethod:: XEnumMeta.mro

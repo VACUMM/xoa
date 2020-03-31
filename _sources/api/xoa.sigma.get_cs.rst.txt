@@ -1,0 +1,6 @@
+xoa.sigma.get\_cs
+=================
+
+.. currentmodule:: xoa.sigma
+
+.. autofunction:: get_cs

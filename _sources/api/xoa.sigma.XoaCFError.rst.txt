@@ -1,0 +1,6 @@
+xoa.sigma.XoaCFError
+====================
+
+.. currentmodule:: xoa.sigma
+
+.. autoexception:: XoaCFError

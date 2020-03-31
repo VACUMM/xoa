@@ -1,0 +1,6 @@
+xoa.misc.XEnumMeta.default
+==========================
+
+.. currentmodule:: xoa.misc
+
+.. autoattribute:: XEnumMeta.default

@@ -16,6 +16,9 @@ xoa.misc.DefaultEnumMeta
    
       
       
+         ~DefaultEnumMeta.get_rst
+      
+      
          ~DefaultEnumMeta.mro
       
    
@@ -29,5 +32,7 @@ xoa.misc.DefaultEnumMeta
       :toctree:
    
       ~DefaultEnumMeta.default
+      ~DefaultEnumMeta.rst
+      ~DefaultEnumMeta.rst_with_links
    
    

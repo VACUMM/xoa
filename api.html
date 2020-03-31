@@ -26,6 +26,8 @@
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -88,12 +90,15 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/xoa.html">xoa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/xoa.misc.html">xoa.misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/xoa.color.html">xoa.color</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/xoa.cf.html">xoa.cf</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/xoa.coords.html">xoa.coords</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/xoa.sigma.html">xoa.sigma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/xoa.regrid.html">xoa.regrid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/xoa.cfgm.html">xoa.cfgm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/xoa.cli.html">xoa.cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/xoa._interp.html">xoa._interp</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Commandline interface</a></li>
@@ -201,29 +206,32 @@
 <tr class="row-even"><td><p><a class="reference internal" href="api/xoa.misc.html#module-xoa.misc" title="xoa.misc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.misc</span></code></a></p></td>
 <td><p>Miscellaneaous low level utilities</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/xoa.cf.html#module-xoa.cf" title="xoa.cf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.cf</span></code></a></p></td>
-<td><p>Naming convention tools for reading and formatting variables</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/xoa.coords.html#module-xoa.coords" title="xoa.coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.coords</span></code></a></p></td>
-<td><p>Coordinates and dimensions utilities</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/xoa.color.html#module-xoa.color" title="xoa.color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.color</span></code></a></p></td>
 <td><p>Colors and colormaps utilities</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/xoa.grid.html#module-xoa.grid" title="xoa.grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.grid</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/xoa.cf.html#module-xoa.cf" title="xoa.cf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.cf</span></code></a></p></td>
+<td><p>Naming convention tools for reading and formatting variables</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/xoa.coords.html#module-xoa.coords" title="xoa.coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.coords</span></code></a></p></td>
+<td><p>Coordinates and dimensions utilities</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/xoa.sigma.html#module-xoa.sigma" title="xoa.sigma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.sigma</span></code></a></p></td>
+<td><p>Terrain following parametric coordinates</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/xoa.grid.html#module-xoa.grid" title="xoa.grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.grid</span></code></a></p></td>
 <td><p>1d to nD grid utilities</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.regrid</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/xoa.regrid.html#module-xoa.regrid" title="xoa.regrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.regrid</span></code></a></p></td>
+<td><p>Regridding utilities</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/xoa.cfgm.html#module-xoa.cfgm" title="xoa.cfgm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.cfgm</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/xoa.cfgm.html#module-xoa.cfgm" title="xoa.cfgm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.cfgm</span></code></a></p></td>
 <td><p>Configuration management utilities based on <code class="xref py py-mod docutils literal notranslate"><span class="pre">configobj</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/xoa.cli.html#module-xoa.cli" title="xoa.cli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.cli</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/xoa.cli.html#module-xoa.cli" title="xoa.cli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa.cli</span></code></a></p></td>
 <td><p>Commandline interface for xoa</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa._interp</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/xoa._interp.html#module-xoa._interp" title="xoa._interp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa._interp</span></code></a></p></td>
+<td><p>This module ‘_interp’ is auto-generated with f2py (version:2).</p></td>
 </tr>
 </tbody>
 </table>

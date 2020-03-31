@@ -1,0 +1,6 @@
+xoa.sigma.sigma\_types.ocean
+============================
+
+.. currentmodule:: xoa.sigma
+
+.. autoattribute:: sigma_types.ocean

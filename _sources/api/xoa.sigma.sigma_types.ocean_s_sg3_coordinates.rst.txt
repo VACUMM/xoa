@@ -1,0 +1,6 @@
+xoa.sigma.sigma\_types.ocean\_s\_sg3\_coordinates
+=================================================
+
+.. currentmodule:: xoa.sigma
+
+.. autoattribute:: sigma_types.ocean_s_sg3_coordinates

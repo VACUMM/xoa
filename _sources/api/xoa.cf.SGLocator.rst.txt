@@ -25,6 +25,9 @@ xoa.cf.SGLocator
          ~SGLocator.format_dataarray
       
       
+         ~SGLocator.get_location
+      
+      
          ~SGLocator.match_attr
       
       

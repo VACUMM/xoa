@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -170,22 +172,31 @@
 
 <div class="viewcode-block" id="get_lat"><a class="viewcode-back" href="../../api/xoa.coords.get_lat.html#xoa.coords.get_lat">[docs]</a><span class="k">def</span> <span class="nf">get_lat</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get the latitude coordinate&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search_coord</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="get_depth"><a class="viewcode-back" href="../../api/xoa.coords.get_depth.html#xoa.coords.get_depth">[docs]</a><span class="k">def</span> <span class="nf">get_depth</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get the depth coordinate&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search_coord</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;depth&#39;</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;depth&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="get_altitude"><a class="viewcode-back" href="../../api/xoa.coords.get_altitude.html#xoa.coords.get_altitude">[docs]</a><span class="k">def</span> <span class="nf">get_altitude</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get the altitude coordinate&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search_coord</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;altitude&#39;</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;altitude&#39;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_level"><a class="viewcode-back" href="../../api/xoa.coords.get_level.html#xoa.coords.get_level">[docs]</a><span class="k">def</span> <span class="nf">get_level</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">with_level</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="get_level"><a class="viewcode-back" href="../../api/xoa.coords.get_level.html#xoa.coords.get_level">[docs]</a><span class="k">def</span> <span class="nf">get_level</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get the level coordinate&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search_coord</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_height"><a class="viewcode-back" href="../../api/xoa.coords.get_height.html#xoa.coords.get_height">[docs]</a><span class="k">def</span> <span class="nf">get_height</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get either depth or altitude&quot;&quot;&quot;</span>
+    <span class="n">cfspecs</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">cfspecs</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;depth&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">height</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">cfspecs</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="s1">&#39;altitude&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">height</span></div>
 
 
 <div class="viewcode-block" id="get_coords"><a class="viewcode-back" href="../../api/xoa.coords.get_coords.html#xoa.coords.get_coords">[docs]</a><span class="k">def</span> <span class="nf">get_coords</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">coord_names</span><span class="p">):</span>
@@ -196,7 +207,7 @@
 
 
 <div class="viewcode-block" id="transpose_compat"><a class="viewcode-back" href="../../api/xoa.coords.transpose_compat.html#xoa.coords.transpose_compat">[docs]</a><span class="k">def</span> <span class="nf">transpose_compat</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">dims</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Transpose array with compatible dimensions</span>
+    <span class="sd">&quot;&quot;&quot;Transpose an array with compatible dimensions</span>
 
 <span class="sd">    Incompatible dimensions are ignored</span>
 
@@ -204,18 +215,39 @@
 <span class="sd">    ----------</span>
 <span class="sd">    da: xarray.DataArray</span>
 <span class="sd">        Array to tranpose</span>
-<span class="sd">    dims: tuple(str)</span>
-<span class="sd">        Target dimensions</span>
+<span class="sd">    dims: tuple(str), xarray.DataArray</span>
+<span class="sd">        Target dimensions or array with dimensions</span>
 
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
 <span class="sd">    xarray.DataArray</span>
 <span class="sd">        Transposed array</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        import xarray as xr, numpy as np</span>
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa.coords import transpose_compat</span>
+<span class="sd">        a = xr.DataArray(np.ones((2, 3, 4)), dims=(&#39;y&#39;, &#39;x&#39;, &#39;t&#39;))</span>
+<span class="sd">        b = xr.DataArray(np.ones((10, 3, 2)), dims=(&#39;m&#39;, &#39;y&#39;, &#39;x&#39;))</span>
+<span class="sd">        transpose_compat(a, (&#39;y&#39;, &#39;x&#39;)).dims</span>
+<span class="sd">        transpose_compat(a, b.dims).dims</span>
+<span class="sd">        transpose_compat(a, b).dims  # same as with b.dims</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="s1">&#39;dims&#39;</span><span class="p">):</span>
+        <span class="n">dims</span> <span class="o">=</span> <span class="n">dims</span><span class="o">.</span><span class="n">dims</span>
     <span class="n">odims</span> <span class="o">=</span> <span class="p">()</span>
+    <span class="n">with_ell</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">dims</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="bp">Ellipsis</span><span class="p">:</span>
+            <span class="n">with_ell</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
             <span class="n">odims</span> <span class="o">+=</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">with_ell</span> <span class="ow">and</span> <span class="nb">set</span><span class="p">(</span><span class="n">odims</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">set</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
+        <span class="n">odims</span> <span class="o">=</span> <span class="p">(</span><span class="o">...</span><span class="p">,)</span> <span class="o">+</span> <span class="n">odims</span>
     <span class="k">return</span> <span class="n">da</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">*</span><span class="n">odims</span><span class="p">)</span></div>
 
 
@@ -266,7 +298,7 @@
             <span class="n">coord_in</span> <span class="o">=</span> <span class="n">cfspecs</span><span class="o">.</span><span class="n">search_coord_from_dim</span><span class="p">(</span><span class="n">da_in</span><span class="p">,</span> <span class="n">dim0</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">coord_in</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">cf</span><span class="o">.</span><span class="n">XoaCFError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;No coordinate found matching dimension &#39;</span><span class="si">{dim0}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+                    <span class="sa">f</span><span class="s2">&quot;No coordinate found matching dimension &#39;</span><span class="si">{</span><span class="n">dim0</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
             <span class="n">coord_in_name</span> <span class="o">=</span> <span class="n">coord_in</span><span class="o">.</span><span class="n">name</span>
 
         <span class="c1"># Check dims</span>

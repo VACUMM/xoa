@@ -1,0 +1,6 @@
+xoa.misc.XEnumMeta.get\_rst
+===========================
+
+.. currentmodule:: xoa.misc
+
+.. automethod:: XEnumMeta.get_rst

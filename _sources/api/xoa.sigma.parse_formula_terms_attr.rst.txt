@@ -1,0 +1,6 @@
+xoa.sigma.parse\_formula\_terms\_attr
+=====================================
+
+.. currentmodule:: xoa.sigma
+
+.. autofunction:: parse_formula_terms_attr

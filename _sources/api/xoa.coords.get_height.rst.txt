@@ -1,0 +1,6 @@
+xoa.coords.get\_height
+======================
+
+.. currentmodule:: xoa.coords
+
+.. autofunction:: get_height

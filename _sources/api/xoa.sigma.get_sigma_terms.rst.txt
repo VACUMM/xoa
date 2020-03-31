@@ -1,0 +1,6 @@
+xoa.sigma.get\_sigma\_terms
+===========================
+
+.. currentmodule:: xoa.sigma
+
+.. autofunction:: get_sigma_terms

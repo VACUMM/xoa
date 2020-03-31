@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -103,12 +105,15 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cf.html">xoa.cf</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.sigma.html">xoa.sigma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.regrid.html">xoa.regrid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cli.html">xoa.cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa._interp.html">xoa._interp</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
@@ -212,18 +217,21 @@
 <dt id="xoa.show_versions">
 <code class="sig-prename descclassname">xoa.</code><code class="sig-name descname">show_versions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa.html#show_versions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.show_versions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the versions of xoa and of some dependencies</p>
-<p class="rubric">Example</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">xoa</span><span class="o">.</span><span class="n">show_versions</span><span class="p">()</span>
 <span class="go">- xoa: 0.1.0</span>
+<span class="go">- appdirs: 1.4.3</span>
 <span class="go">- cartopy: 0.17.0</span>
 <span class="go">- configobj: 5.0.6</span>
 <span class="go">- matplotlib: 3.1.2</span>
-<span class="go">- pandas: 0.25.3</span>
+<span class="go">- pandas: 1.0.3</span>
 <span class="go">- python: ERROR</span>
 <span class="go">- scipy: 1.4.1</span>
-<span class="go">- xarray: 0.14.1</span>
+<span class="go">- xarray: 0.15.1</span>
 <span class="go">- xesmf: 0.2.1</span>
 </pre></div>
+</div>
 </div>
 </dd></dl>
 

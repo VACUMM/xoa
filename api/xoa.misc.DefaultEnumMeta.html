@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,7 +38,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="xoa.misc.DefaultEnumMeta.mro" href="xoa.misc.DefaultEnumMeta.mro.html" />
+    <link rel="next" title="xoa.misc.DefaultEnumMeta.get_rst" href="xoa.misc.DefaultEnumMeta.get_rst.html" />
     <link rel="prev" title="xoa.misc.ArgTuple.put" href="xoa.misc.ArgTuple.put.html" /> 
 </head>
 
@@ -99,18 +101,26 @@
 <li class="toctree-l3"><a class="reference internal" href="xoa.misc.ArgList.html">xoa.misc.ArgList</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.misc.ArgTuple.html">xoa.misc.ArgTuple</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">xoa.misc.DefaultEnumMeta</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="xoa.misc.DefaultEnumMeta.get_rst.html">xoa.misc.DefaultEnumMeta.get_rst</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.misc.DefaultEnumMeta.mro.html">xoa.misc.DefaultEnumMeta.mro</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.misc.DefaultEnumMeta.default.html">xoa.misc.DefaultEnumMeta.default</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.misc.DefaultEnumMeta.rst.html">xoa.misc.DefaultEnumMeta.rst</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.misc.DefaultEnumMeta.rst_with_links.html">xoa.misc.DefaultEnumMeta.rst_with_links</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.IntEnumChoices.html">xoa.misc.IntEnumChoices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.misc.XEnumMeta.html">xoa.misc.XEnumMeta</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cf.html">xoa.cf</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.sigma.html">xoa.sigma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.regrid.html">xoa.regrid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cli.html">xoa.cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa._interp.html">xoa._interp</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
@@ -217,25 +227,27 @@
 <p>When the item is not provided or equal to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the first
 declared item is returned</p>
 <p>Inspired from: <a class="reference external" href="https://stackoverflow.com/questions/44867597/is-there-a-way-to-specify-a-default-value-for-python-enums">https://stackoverflow.com/questions/44867597/is-there-a-way-to-specify-a-default-value-for-python-enums</a></p>
-<p class="rubric">Example</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">IntEnum</span>
 
 <span class="gp">In [2]: </span><span class="k">class</span> <span class="nc">regrid_methods</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">DefaultEnumMeta</span><span class="p">):</span>
 <span class="gp">   ...: </span>    <span class="n">linear</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">   ...: </span>    <span class="n">bilinear</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">   ...: </span>    <span class="n">nearest</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">   ...: </span>    <span class="n">cellave</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="gp">   ...: </span>
 
-<span class="gp">In [3]: </span><span class="n">regrid_methods</span><span class="p">()</span>
+<span class="gp">In [3]: </span><span class="n">regrid_methods</span><span class="p">()</span> <span class="c1"># default method</span>
 <span class="gh">Out[3]: </span><span class="go">&lt;regrid_methods.linear: 1&gt;</span>
 
-<span class="gp">In [4]: </span><span class="n">regrid_methods</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">In [4]: </span><span class="n">regrid_methods</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># default method</span>
 <span class="gh">Out[4]: </span><span class="go">&lt;regrid_methods.linear: 1&gt;</span>
 
 <span class="gp">In [5]: </span><span class="n">regrid_methods</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="gh">Out[5]: </span><span class="go">&lt;regrid_methods.linear: 1&gt;</span>
 
-<span class="gp">In [6]: </span><span class="n">regrid_methods</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+<span class="gp">In [6]: </span><span class="n">regrid_methods</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="c1"># default method</span>
 <span class="gh">Out[6]: </span><span class="go">&lt;regrid_methods.linear: 1&gt;</span>
 
 <span class="gp">In [7]: </span><span class="n">regrid_methods</span><span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">]</span>
@@ -244,6 +256,7 @@ declared item is returned</p>
 <span class="gp">In [8]: </span><span class="n">regrid_methods</span><span class="p">[</span><span class="s1">&#39;cellave&#39;</span><span class="p">]</span>
 <span class="gh">Out[8]: </span><span class="go">&lt;regrid_methods.cellave: -1&gt;</span>
 </pre></div>
+</div>
 </div>
 <dl class="method">
 <dt id="xoa.misc.DefaultEnumMeta.__init__">
@@ -258,7 +271,10 @@ declared item is returned</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="xoa.misc.DefaultEnumMeta.mro.html#xoa.misc.DefaultEnumMeta.mro" title="xoa.misc.DefaultEnumMeta.mro"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mro</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.misc.DefaultEnumMeta.get_rst.html#xoa.misc.DefaultEnumMeta.get_rst" title="xoa.misc.DefaultEnumMeta.get_rst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_rst</span></code></a>([with_links, link_module])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.misc.DefaultEnumMeta.mro.html#xoa.misc.DefaultEnumMeta.mro" title="xoa.misc.DefaultEnumMeta.mro"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mro</span></code></a></p></td>
 <td><p>Return a type’s method resolution order.</p></td>
 </tr>
 </tbody>
@@ -271,6 +287,12 @@ declared item is returned</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="xoa.misc.DefaultEnumMeta.default.html#xoa.misc.DefaultEnumMeta.default" title="xoa.misc.DefaultEnumMeta.default"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.misc.DefaultEnumMeta.rst.html#xoa.misc.DefaultEnumMeta.rst" title="xoa.misc.DefaultEnumMeta.rst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rst</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.misc.DefaultEnumMeta.rst_with_links.html#xoa.misc.DefaultEnumMeta.rst_with_links" title="xoa.misc.DefaultEnumMeta.rst_with_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rst_with_links</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -287,7 +309,7 @@ declared item is returned</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="xoa.misc.DefaultEnumMeta.mro.html" class="btn btn-neutral float-right" title="xoa.misc.DefaultEnumMeta.mro" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="xoa.misc.DefaultEnumMeta.get_rst.html" class="btn btn-neutral float-right" title="xoa.misc.DefaultEnumMeta.get_rst" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="xoa.misc.ArgTuple.put.html" class="btn btn-neutral float-left" title="xoa.misc.ArgTuple.put" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

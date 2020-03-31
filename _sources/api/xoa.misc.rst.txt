@@ -31,6 +31,8 @@ xoa.misc
       ArgList
       ArgTuple
       DefaultEnumMeta
+      IntEnumChoices
+      XEnumMeta
    
    
 

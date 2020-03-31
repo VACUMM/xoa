@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -241,8 +243,8 @@
         <span class="n">root_pattern</span> <span class="o">=</span> <span class="n">root_patterns</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>
         <span class="n">re_match</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
             <span class="n">formats</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">root</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;(?P&lt;root&gt;</span><span class="si">{root_pattern}</span><span class="s2">)&quot;</span><span class="p">,</span>
-                <span class="n">loc</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;(?P&lt;loc&gt;</span><span class="si">{location_pattern}</span><span class="s2">)&quot;</span>
+                <span class="n">root</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;(?P&lt;root&gt;</span><span class="si">{</span><span class="n">root_pattern</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+                <span class="n">loc</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;(?P&lt;loc&gt;</span><span class="si">{</span><span class="n">location_pattern</span><span class="si">}</span><span class="s2">)&quot;</span>
             <span class="p">),</span>
             <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">,</span>
         <span class="p">)</span><span class="o">.</span><span class="n">match</span>
@@ -299,7 +301,7 @@
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name_format</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
                 <span class="n">xoa_warn</span><span class="p">(</span><span class="s1">&#39;No separator found in &quot;name_format&quot; and &#39;</span>
                          <span class="s1">&#39;and no &quot;valid_locations&quot; specified: &#39;</span>
-                         <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{name_format}</span><span class="s1">. This leads to ambiguity during &#39;</span>
+                         <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name_format</span><span class="si">}</span><span class="s1">. This leads to ambiguity during &#39;</span>
                          <span class="s1">&#39;regular expression parsing.&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">formats</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name_format</span>
             <span class="n">to_recompile</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
@@ -345,6 +347,60 @@
         <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">),</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;loc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SGLocator.get_location"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.get_location.html#xoa.cf.SGLocator.get_location">[docs]</a>    <span class="k">def</span> <span class="nf">get_location</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse datarray name and attribute to find location</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">            Dataarray to scan</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        None, str</span>
+<span class="sd">            ``None`` if no location is found, else the correspoing string</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        XoaCFError</span>
+<span class="sd">            When locations parsed from name and attributes are conflicting.</span>
+<span class="sd">            Thus, this method method is a way check location consistency.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Name</span>
+        <span class="k">if</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_attr</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">src</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Standard name</span>
+        <span class="k">if</span> <span class="s2">&quot;standard_name&quot;</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="n">loc_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_attr</span><span class="p">(</span><span class="s2">&quot;standard_name&quot;</span><span class="p">,</span> <span class="n">da</span><span class="o">.</span><span class="n">standard_name</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">loc_</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">loc</span> <span class="ow">and</span> <span class="n">loc_</span> <span class="o">!=</span> <span class="n">loc</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span>
+                        <span class="s2">&quot;The location parsed from standard_name attribute &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">loc_</span><span class="si">}</span><span class="s2">] conflicts the location parsed from the &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;name [</span><span class="si">{</span><span class="n">loc</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">loc</span> <span class="o">=</span> <span class="n">loc_</span>
+                    <span class="n">src</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;standard_name&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Long name</span>
+        <span class="k">if</span> <span class="s2">&quot;long_name&quot;</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="n">loc_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_attr</span><span class="p">(</span><span class="s2">&quot;long_name&quot;</span><span class="p">,</span> <span class="n">da</span><span class="o">.</span><span class="n">long_name</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">loc_</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">loc</span> <span class="ow">and</span> <span class="n">loc_</span> <span class="o">!=</span> <span class="n">loc</span><span class="p">:</span>
+                    <span class="n">src</span> <span class="o">=</span> <span class="s1">&#39; and &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span>
+                        <span class="s2">&quot;The location parsed from long_name attribute &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">loc_</span><span class="si">}</span><span class="s2">] conflicts the location parsed from the &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">src</span><span class="si">}</span><span class="s2"> [</span><span class="si">{</span><span class="n">loc</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">loc</span> <span class="o">=</span> <span class="n">loc_</span>
+
+        <span class="k">return</span> <span class="n">loc</span></div>
 
 <div class="viewcode-block" id="SGLocator.match_attr"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.match_attr.html#xoa.cf.SGLocator.match_attr">[docs]</a>    <span class="k">def</span> <span class="nf">match_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check if an attribute is matching a location</span>
@@ -477,9 +533,13 @@
         <span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_attrs</span> <span class="ow">and</span> <span class="n">attr</span> <span class="o">!=</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span>
-                <span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_attr</span><span class="p">(</span>
-                    <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span>
-                <span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">format_attr</span><span class="p">(</span>
+                        <span class="n">attr</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_attr</span><span class="p">(</span>
+                        <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span>
+                <span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">return</span> <span class="n">attrs</span></div>
 
 <div class="viewcode-block" id="SGLocator.format_dataarray"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.format_dataarray.html#xoa.cf.SGLocator.format_dataarray">[docs]</a>    <span class="k">def</span> <span class="nf">format_dataarray</span><span class="p">(</span>
@@ -495,7 +555,10 @@
 <span class="sd">        name: str, None</span>
 <span class="sd">            Substitute for dataarray name</span>
 <span class="sd">        attrs: str, None</span>
-<span class="sd">            Substitute for dataarray attributes</span>
+<span class="sd">            Substitute for dataarray attributes.</span>
+<span class="sd">            If ``standard_name`` and ``long_name`` values are a list,</span>
+<span class="sd">            and if the dataarray has its attribute included in the list,</span>
+<span class="sd">            it is left unchanged since it is considered compatible.</span>
 
 <span class="sd">        Return</span>
 <span class="sd">        ------</span>
@@ -503,6 +566,19 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">attrs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+            <span class="c1"># List case: check if we skip, else keep the first</span>
+            <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">roots</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">roots</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">attrs</span> <span class="ow">and</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_attrs</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">root</span> <span class="ow">in</span> <span class="n">roots</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_attr</span><span class="p">(</span>
+                                    <span class="n">attr</span><span class="p">,</span> <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">],</span> <span class="n">root</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
+                                <span class="k">del</span> <span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
             <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
         <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">format_attrs</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span>
@@ -913,10 +989,18 @@
                                      <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CFSpecs.search"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search.html#xoa.cf.CFSpecs.search">[docs]</a>    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span>
-               <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;data_vars&quot;</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="s2">&quot;data_vars&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;coords&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get</span><span class="p">,</span>
-                                     <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span></div></div>
+               <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search for a dataarray with data_vars and/or coords&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">categories</span><span class="p">:</span>
+            <span class="n">categories</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">categories</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="s2">&quot;data_vars&quot;</span><span class="p">)</span>
+                          <span class="k">else</span> <span class="p">[</span><span class="s2">&quot;coords&quot;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">categories</span>
+        <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get</span><span class="p">,</span>
+                                        <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">res</span></div></div>
 
 
 <span class="k">class</span> <span class="nc">_CFCatSpecs_</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -974,7 +1058,7 @@
 
     <span class="k">def</span> <span class="nf">_assert_known_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid </span><span class="si">{self.category}</span><span class="s2"> CF specs name: &quot;</span><span class="o">+</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="si">}</span><span class="s2"> CF specs name: &quot;</span><span class="o">+</span><span class="n">name</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1126,9 +1210,9 @@
             <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
                 <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">match_arg</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">found_objs</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">id</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">in</span> <span class="n">found_objs</span><span class="p">:</span>
                         <span class="k">continue</span>
-                    <span class="n">found_objs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                    <span class="n">found_objs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
                     <span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="k">if</span> <span class="n">name</span> <span class="k">else</span> <span class="n">m</span>
                     <span class="k">if</span> <span class="n">get</span> <span class="o">==</span> <span class="s2">&quot;both&quot;</span><span class="p">:</span>
                         <span class="n">found</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">obj</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
@@ -1144,7 +1228,8 @@
             <span class="k">return</span> <span class="n">found</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">get_attrs</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">select</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;warn&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">extra</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">select</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;warn&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">multi</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">extra</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the default attributes from cf specs</span>
 
@@ -1157,6 +1242,9 @@
 <span class="sd">        exclude: str, list</span>
 <span class="sd">            Exclude these attributes</span>
 <span class="sd">        mode: &quot;silent&quot;, &quot;warning&quot; or &quot;error&quot;.</span>
+<span class="sd">        multi: bool</span>
+<span class="sd">            Get standard_name and long_name attribute as a list of possible</span>
+<span class="sd">            values</span>
 <span class="sd">        **extra</span>
 <span class="sd">          Extra params as included as extra attributes</span>
 
@@ -1188,10 +1276,11 @@
 
             <span class="c1"># No lists or tuples</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">specs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="k">continue</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">multi</span> <span class="ow">or</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;standard_name&quot;</span><span class="p">,</span> <span class="s2">&quot;long_name&quot;</span><span class="p">):</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
             <span class="c1"># Store it</span>
             <span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
@@ -1200,7 +1289,8 @@
         <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">extra</span><span class="p">)</span>
 
         <span class="c1"># Finalize and optionally change location</span>
-        <span class="n">attrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">format_attrs</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">format_attrs</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">attrs</span>
 
@@ -1232,7 +1322,8 @@
             <span class="n">da</span><span class="p">,</span>
             <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span>
             <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
-            <span class="n">attrs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">),</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span>
+                <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">multi</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
             <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
         <span class="p">)</span>
 

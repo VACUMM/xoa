@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -1652,14 +1654,14 @@
     <span class="n">rhelp</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">multiline</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">s_param</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(?:\{[\w,]+\}|\w+)&quot;</span>
-    <span class="n">s_sopt</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;(?:-\w+(?: </span><span class="si">{s_param}</span><span class="s2">)?)&quot;</span>  <span class="c1"># short option (-t)</span>
+    <span class="n">s_sopt</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;(?:-\w+(?: </span><span class="si">{</span><span class="n">s_param</span><span class="si">}</span><span class="s2">)?)&quot;</span>  <span class="c1"># short option (-t)</span>
     <span class="c1"># long option (--toto)</span>
-    <span class="n">s_lopt</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;(?:--[\w\-]+(?:[= ]+</span><span class="si">{s_param}</span><span class="s2">)?)&quot;</span>
+    <span class="n">s_lopt</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;(?:--[\w\-]+(?:[= ]+</span><span class="si">{</span><span class="n">s_param</span><span class="si">}</span><span class="s2">)?)&quot;</span>
     <span class="n">s_optsep</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(?:, +)&quot;</span>  <span class="c1"># option separator</span>
     <span class="n">s_desc</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(?:  (.+))&quot;</span>
     <span class="n">s_tot</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="sa">rf</span><span class="s2">&quot;^  (?:  )?((?:</span><span class="si">{s_sopt}</span><span class="s2">|</span><span class="si">{s_lopt}</span><span class="s2">)(?:</span><span class="si">{s_optsep}</span><span class="s2">&quot;</span>
-        <span class="sa">rf</span><span class="s2">&quot;(?:</span><span class="si">{s_sopt}</span><span class="s2">|</span><span class="si">{s_lopt}</span><span class="s2">))*)</span><span class="si">{s_desc}</span><span class="s2">?$&quot;</span>
+        <span class="sa">rf</span><span class="s2">&quot;^  (?:  )?((?:</span><span class="si">{</span><span class="n">s_sopt</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">s_lopt</span><span class="si">}</span><span class="s2">)(?:</span><span class="si">{</span><span class="n">s_optsep</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="sa">rf</span><span class="s2">&quot;(?:</span><span class="si">{</span><span class="n">s_sopt</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">s_lopt</span><span class="si">}</span><span class="s2">))*)</span><span class="si">{</span><span class="n">s_desc</span><span class="si">}</span><span class="s2">?$&quot;</span>
     <span class="p">)</span>
     <span class="n">re_opt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">s_tot</span><span class="p">)</span><span class="o">.</span><span class="n">match</span>
     <span class="n">re_sec</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^(?:  )?([\w\s]+):(?: (.+))?$&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span>
@@ -1677,7 +1679,7 @@
                 <span class="n">usage</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">prog</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">prog</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-                <span class="n">rhelp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;.. program:: </span><span class="si">{prog}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">rhelp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;.. program:: </span><span class="si">{</span><span class="n">prog</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="n">rhelp</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
                     <span class="p">[</span>
                         <span class="n">secfmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">locals</span><span class="p">()),</span>
@@ -1999,7 +2001,7 @@
 
     <span class="c1"># Force comments to end with a dot &#39;.&#39;</span>
     <span class="k">if</span> <span class="n">adddot</span><span class="p">:</span>
-        <span class="n">comments</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">c</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{c}</span><span class="s2">.&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">comments</span><span class="p">]</span>
+        <span class="n">comments</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">c</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">.&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">comments</span><span class="p">]</span>
     <span class="n">shelp</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">comments</span><span class="p">)</span>
 
     <span class="c1"># If no comments</span>

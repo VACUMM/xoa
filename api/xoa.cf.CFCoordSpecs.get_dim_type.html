@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -88,6 +90,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="xoa.html">xoa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="xoa.cf.html">xoa.cf</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="xoa.cf.are_similar.html">xoa.cf.are_similar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.cf.clean_cf_cache.html">xoa.cf.clean_cf_cache</a></li>
@@ -126,10 +129,12 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.sigma.html">xoa.sigma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.regrid.html">xoa.regrid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cli.html">xoa.cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa._interp.html">xoa._interp</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
@@ -242,7 +247,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>coord</strong> (<em>xarray.DataArray</em>) – </p></li>
+<li><p><strong>coord</strong> (<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><em>xarray.DataArray</em></a>) – </p></li>
 <li><p><strong>lower</strong> (<em>bool</em>) – Lower case?</p></li>
 </ul>
 </dd>

@@ -1,0 +1,6 @@
+xoa.regrid.regrid1d\_methods.linear
+===================================
+
+.. currentmodule:: xoa.regrid
+
+.. autoattribute:: regrid1d_methods.linear

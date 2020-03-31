@@ -1,0 +1,6 @@
+xoa.regrid.regrid1d\_methods.cubic
+==================================
+
+.. currentmodule:: xoa.regrid
+
+.. autoattribute:: regrid1d_methods.cubic

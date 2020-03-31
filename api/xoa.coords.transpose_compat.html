@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -88,11 +90,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="xoa.html">xoa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cf.html">xoa.cf</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="xoa.coords.html">xoa.coords</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="xoa.coords.get_altitude.html">xoa.coords.get_altitude</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.coords.get_coords.html">xoa.coords.get_coords</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.coords.get_depth.html">xoa.coords.get_depth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.coords.get_height.html">xoa.coords.get_height</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.coords.get_lat.html">xoa.coords.get_lat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.coords.get_level.html">xoa.coords.get_level</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.coords.get_lon.html">xoa.coords.get_lon</a></li>
@@ -100,10 +104,12 @@
 <li class="toctree-l3"><a class="reference internal" href="xoa.coords.DimFlusher1D.html">xoa.coords.DimFlusher1D</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.sigma.html">xoa.sigma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.regrid.html">xoa.regrid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cli.html">xoa.cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa._interp.html">xoa._interp</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
@@ -206,22 +212,39 @@
 <dl class="function">
 <dt id="xoa.coords.transpose_compat">
 <code class="sig-prename descclassname">xoa.coords.</code><code class="sig-name descname">transpose_compat</code><span class="sig-paren">(</span><em class="sig-param">da</em>, <em class="sig-param">dims</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/coords.html#transpose_compat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.coords.transpose_compat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transpose array with compatible dimensions</p>
+<dd><p>Transpose an array with compatible dimensions</p>
 <p>Incompatible dimensions are ignored</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>da</strong> (<em>xarray.DataArray</em>) – Array to tranpose</p></li>
-<li><p><strong>dims</strong> (<em>tuple</em><em>(</em><em>str</em><em>)</em>) – Target dimensions</p></li>
+<li><p><strong>da</strong> (<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><em>xarray.DataArray</em></a>) – Array to tranpose</p></li>
+<li><p><strong>dims</strong> (<em>tuple</em><em>(</em><em>str</em><em>)</em><em>, </em><a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><em>xarray.DataArray</em></a>) – Target dimensions or array with dimensions</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Transposed array</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>xarray.DataArray</p>
+<dd class="field-odd"><p><a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)">xarray.DataArray</a></p>
 </dd>
 </dl>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">a</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">))</span>
+
+<span class="gp">In [2]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">))</span>
+
+<span class="gp">In [3]: </span><span class="n">transpose_compat</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">dims</span>
+<span class="gh">Out[3]: </span><span class="go">(&#39;t&#39;, &#39;y&#39;, &#39;x&#39;)</span>
+
+<span class="gp">In [4]: </span><span class="n">transpose_compat</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span><span class="o">.</span><span class="n">dims</span>
+<span class="gh">Out[4]: </span><span class="go">(&#39;t&#39;, &#39;y&#39;, &#39;x&#39;)</span>
+
+<span class="gp">In [5]: </span><span class="n">transpose_compat</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">dims</span>  <span class="c1"># same as with b.dims</span>
+<span class="gh">Out[5]: </span><span class="go">(&#39;t&#39;, &#39;y&#39;, &#39;x&#39;)</span>
+</pre></div>
+</div>
+</div>
 </dd></dl>
 
 </div>

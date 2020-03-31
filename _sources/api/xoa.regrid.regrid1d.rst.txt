@@ -1,0 +1,6 @@
+xoa.regrid.regrid1d
+===================
+
+.. currentmodule:: xoa.regrid
+
+.. autofunction:: regrid1d

@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>xoa.regrid &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configure.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usages.html">Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../xoa.html">xoa</a> &raquo;</li>
+        
+      <li>xoa.regrid</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for xoa.regrid</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Regridding utilities</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">XoaError</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">misc</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">coords</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">grid</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_interp</span>
+
+
+<div class="viewcode-block" id="XoaRegridError"><a class="viewcode-back" href="../../api/xoa.regrid.XoaRegridError.html#xoa.regrid.XoaRegridError">[docs]</a><span class="k">class</span> <span class="nc">XoaRegridError</span><span class="p">(</span><span class="n">XoaError</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="regrid1d_methods"><a class="viewcode-back" href="../../api/xoa.regrid.regrid1d_methods.html#xoa.regrid.regrid1d_methods">[docs]</a><span class="k">class</span> <span class="nc">regrid1d_methods</span><span class="p">(</span><span class="n">misc</span><span class="o">.</span><span class="n">IntEnumChoices</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">misc</span><span class="o">.</span><span class="n">DefaultEnumMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Supported :func:`regrid1d` methods&quot;&quot;&quot;</span>
+    <span class="c1">#: Linear iterpolation (default)</span>
+    <span class="n">linear</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">interp</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># compat</span>
+    <span class="c1"># nearest = 0</span>
+    <span class="c1">#: Cubic iterpolation</span>
+    <span class="n">cubic</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="c1">#: Hermitian iterpolation</span>
+    <span class="n">hermit</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">hermitian</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="c1">#: Cell-averaging or conservative regridding</span>
+    <span class="n">cellave</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span></div>
+    <span class="c1"># cellerr = -2</span>
+
+
+<div class="viewcode-block" id="extrap_modes"><a class="viewcode-back" href="../../api/xoa.regrid.extrap_modes.html#xoa.regrid.extrap_modes">[docs]</a><span class="k">class</span> <span class="nc">extrap_modes</span><span class="p">(</span><span class="n">misc</span><span class="o">.</span><span class="n">IntEnumChoices</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">misc</span><span class="o">.</span><span class="n">DefaultEnumMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Supported extrapolation modes&quot;&quot;&quot;</span>
+    <span class="c1">#: No extrapolation (default)</span>
+    <span class="n">no</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">none</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">#: Above (after)</span>
+    <span class="n">above</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1">#: Below (before)</span>
+    <span class="n">below</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="c1">#: Both below and above</span>
+    <span class="n">both</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="nb">all</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="regrid1d"><a class="viewcode-back" href="../../api/xoa.regrid.regrid1d.html#xoa.regrid.regrid1d">[docs]</a><span class="k">def</span> <span class="nf">regrid1d</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">coord_in_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+             <span class="n">conserv</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">extrap</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Regrid along a single dimension</span>
+
+<span class="sd">    The input and output coordinates may vary along other dimensions,</span>
+<span class="sd">    which useful for instance for vertical interpolation in coastal</span>
+<span class="sd">    ocean models.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    da: xarray.DataArray</span>
+<span class="sd">        Array to interpolate</span>
+<span class="sd">    coord: xarray.DataArray</span>
+<span class="sd">        Output coordinate</span>
+<span class="sd">    method: str, int</span>
+<span class="sd">        Regridding method as one of the following:</span>
+<span class="sd">        {regrid1d_methods.rst_with_links}</span>
+<span class="sd">    dim:  str, tuple(str), None</span>
+<span class="sd">        Dimension on which to operate. If a string, it is expected to</span>
+<span class="sd">        be the same dimension for both input and output coordinates.</span>
+<span class="sd">        Else, provide a two-element tuple: ``(dim_coord_in, dim_coord_out)``.</span>
+<span class="sd">    coord_in_name: str, None</span>
+<span class="sd">        Name of the input coordinate array, which must be known of ``da``</span>
+<span class="sd">    conserv: bool</span>
+<span class="sd">        Use conservative regridding when using ``cellave`` method.</span>
+<span class="sd">    extrap: str, int</span>
+<span class="sd">        Extrapolation mode as one of the following:</span>
+<span class="sd">        {extrap_modes.rst_with_links}</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    xarray.DataArray</span>
+<span class="sd">        Regridded array with ``coord`` as new coordinate array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Array manager</span>
+    <span class="n">dfl</span> <span class="o">=</span> <span class="n">coords</span><span class="o">.</span><span class="n">DimFlusher1D</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
+                              <span class="n">coord_in_name</span><span class="o">=</span><span class="n">coord_in_name</span><span class="p">)</span>
+
+    <span class="c1"># Method</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="n">regrid1d_methods</span><span class="p">[</span><span class="n">method</span><span class="p">]</span>
+
+    <span class="c1"># Fortran function name and arguments</span>
+    <span class="n">func_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;1d&quot;</span>
+    <span class="n">yi</span> <span class="o">=</span> <span class="n">dfl</span><span class="o">.</span><span class="n">coord_in_data</span>
+    <span class="n">yo</span> <span class="o">=</span> <span class="n">dfl</span><span class="o">.</span><span class="n">coord_out_data</span>
+    <span class="n">func_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;vari&quot;</span><span class="p">:</span> <span class="n">dfl</span><span class="o">.</span><span class="n">da_in_data</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">dfl</span><span class="o">.</span><span class="n">coord_in_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">dfl</span><span class="o">.</span><span class="n">coord_out_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># 1d</span>
+        <span class="n">yi</span> <span class="o">=</span> <span class="n">yi</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">yo</span> <span class="o">=</span> <span class="n">yo</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># if method == regrid1d_methods.cellerr:</span>
+        <span class="c1">#     raise XoaRegridError(&quot;cellerr regrid method is works only &quot;</span>
+        <span class="c1">#                          &quot;with 1D input and output cordinates&quot;)</span>
+        <span class="k">if</span> <span class="n">dfl</span><span class="o">.</span><span class="n">coord_out_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># nd -&gt; nd</span>
+            <span class="n">func_name</span> <span class="o">+=</span> <span class="s1">&#39;xx&#39;</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># nd -&gt; 1d</span>
+            <span class="n">func_name</span> <span class="o">+=</span> <span class="s1">&#39;x&#39;</span>
+            <span class="n">yo</span> <span class="o">=</span> <span class="n">yo</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">func_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">yib</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">get_edges_1d</span><span class="p">(</span><span class="n">yi</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
+                           <span class="n">yob</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">get_edges_1d</span><span class="p">(</span><span class="n">yo</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">func_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">yi</span><span class="o">=</span><span class="n">yi</span><span class="p">,</span> <span class="n">yo</span><span class="o">=</span><span class="n">yo</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+    <span class="c1"># if method != regrid1d_methods.cellerr:</span>
+    <span class="c1">#     func_kwargs[&quot;extrap&quot;] = extrap</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">_interp</span><span class="p">,</span> <span class="n">func_name</span><span class="p">)</span>
+
+    <span class="c1"># Regrid</span>
+    <span class="n">varo</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">func_kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Reform back</span>
+    <span class="k">return</span> <span class="n">dfl</span><span class="o">.</span><span class="n">get_back</span><span class="p">(</span><span class="n">varo</span><span class="p">)</span></div>
+
+
+<span class="n">regrid1d</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">regrid1d</span><span class="o">.</span><span class="vm">__doc__</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">())</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

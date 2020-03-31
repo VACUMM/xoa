@@ -1,0 +1,26 @@
+xoa.regrid.extrap\_modes
+========================
+
+.. currentmodule:: xoa.regrid
+
+.. autoclass:: extrap_modes
+
+   
+   .. automethod:: __init__
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~extrap_modes.above
+      ~extrap_modes.below
+      ~extrap_modes.both
+      ~extrap_modes.no
+   
+   

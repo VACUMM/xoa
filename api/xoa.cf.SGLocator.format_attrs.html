@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -88,6 +90,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="xoa.html">xoa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="xoa.cf.html">xoa.cf</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="xoa.cf.are_similar.html">xoa.cf.are_similar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.cf.clean_cf_cache.html">xoa.cf.clean_cf_cache</a></li>
@@ -104,6 +107,7 @@
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.format_attr.html">xoa.cf.SGLocator.format_attr</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.cf.SGLocator.format_attrs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.format_dataarray.html">xoa.cf.SGLocator.format_dataarray</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.get_location.html">xoa.cf.SGLocator.get_location</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.match_attr.html">xoa.cf.SGLocator.match_attr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.parse_attr.html">xoa.cf.SGLocator.parse_attr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.formats.html">xoa.cf.SGLocator.formats</a></li>
@@ -118,10 +122,12 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.sigma.html">xoa.sigma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.regrid.html">xoa.regrid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cli.html">xoa.cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa._interp.html">xoa._interp</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
@@ -246,7 +252,8 @@ else, it is removed.</p></li>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
-<p class="rubric">Example</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">sg</span> <span class="o">=</span> <span class="n">SGLocator</span><span class="p">()</span>
 
 <span class="gp">In [2]: </span><span class="n">attrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">standard_name</span><span class="o">=</span><span class="s1">&#39;sea_water_temperature_at_t_location&#39;</span><span class="p">,</span>
@@ -272,6 +279,7 @@ else, it is removed.</p></li>
 <span class="go"> &#39;long_name&#39;: &#39;Sea water temperature&#39;,</span>
 <span class="go"> &#39;other_attr&#39;: 23.0}</span>
 </pre></div>
+</div>
 </div>
 </dd></dl>
 

@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,7 +38,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="xoa.cf.SGLocator.match_attr" href="xoa.cf.SGLocator.match_attr.html" />
+    <link rel="next" title="xoa.cf.SGLocator.get_location" href="xoa.cf.SGLocator.get_location.html" />
     <link rel="prev" title="xoa.cf.SGLocator.format_attrs" href="xoa.cf.SGLocator.format_attrs.html" /> 
 </head>
 
@@ -88,6 +90,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="xoa.html">xoa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="xoa.cf.html">xoa.cf</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="xoa.cf.are_similar.html">xoa.cf.are_similar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.cf.clean_cf_cache.html">xoa.cf.clean_cf_cache</a></li>
@@ -104,6 +107,7 @@
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.format_attr.html">xoa.cf.SGLocator.format_attr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.format_attrs.html">xoa.cf.SGLocator.format_attrs</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.cf.SGLocator.format_dataarray</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.get_location.html">xoa.cf.SGLocator.get_location</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.match_attr.html">xoa.cf.SGLocator.match_attr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.parse_attr.html">xoa.cf.SGLocator.parse_attr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.formats.html">xoa.cf.SGLocator.formats</a></li>
@@ -118,10 +122,12 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.sigma.html">xoa.sigma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.regrid.html">xoa.regrid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cli.html">xoa.cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa._interp.html">xoa._interp</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
@@ -230,18 +236,21 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>da</strong> (<em>xarray.DataArray</em>) – </p></li>
+<li><p><strong>da</strong> (<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><em>xarray.DataArray</em></a>) – </p></li>
 <li><p><strong>loc</strong> (<em>str</em><em>, </em><em>{None</em><em>, </em><em>False}</em>) – </p></li>
 <li><p><strong>standardize</strong> (<em>bool</em>) – </p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>None</em>) – Substitute for dataarray name</p></li>
-<li><p><strong>attrs</strong> (<em>str</em><em>, </em><em>None</em>) – Substitute for dataarray attributes</p></li>
+<li><p><strong>attrs</strong> (<em>str</em><em>, </em><em>None</em>) – Substitute for dataarray attributes.
+If <code class="docutils literal notranslate"><span class="pre">standard_name</span></code> and <code class="docutils literal notranslate"><span class="pre">long_name</span></code> values are a list,
+and if the dataarray has its attribute included in the list,
+it is left unchanged since it is considered compatible.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p></p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>xarray.DataArray</p>
+<dd class="field-odd"><p><a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)">xarray.DataArray</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -256,7 +265,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="xoa.cf.SGLocator.match_attr.html" class="btn btn-neutral float-right" title="xoa.cf.SGLocator.match_attr" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="xoa.cf.SGLocator.get_location.html" class="btn btn-neutral float-right" title="xoa.cf.SGLocator.get_location" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="xoa.cf.SGLocator.format_attrs.html" class="btn btn-neutral float-left" title="xoa.cf.SGLocator.format_attrs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

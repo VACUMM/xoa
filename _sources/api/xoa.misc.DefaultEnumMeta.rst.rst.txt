@@ -1,0 +1,6 @@
+xoa.misc.DefaultEnumMeta.rst
+============================
+
+.. currentmodule:: xoa.misc
+
+.. autoproperty:: DefaultEnumMeta.rst

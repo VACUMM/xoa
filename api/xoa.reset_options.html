@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -103,12 +105,15 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cf.html">xoa.cf</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.sigma.html">xoa.sigma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa.regrid.html">xoa.regrid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xoa.cli.html">xoa.cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xoa._interp.html">xoa._interp</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
@@ -212,12 +217,13 @@
 <dt id="xoa.reset_options">
 <code class="sig-prename descclassname">xoa.</code><code class="sig-name descname">reset_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa.html#reset_options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.reset_options" title="Permalink to this definition">¶</a></dt>
 <dd><p>Restore options to their default values in the current session</p>
-<p class="rubric">Example</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="nb">print</span><span class="p">(</span><span class="n">xoa</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;plot.cmapdiv&#39;</span><span class="p">))</span>
 <span class="go">cmo.balance</span>
 
 <span class="gp">In [2]: </span><span class="n">xoa</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="s1">&#39;plot&#39;</span><span class="p">,</span> <span class="n">cmapdiv</span><span class="o">=</span><span class="s1">&#39;mycmap&#39;</span><span class="p">)</span>
-<span class="gh">Out[2]: </span><span class="go">&lt;xoa.set_options at 0x7f42efa518d0&gt;</span>
+<span class="gh">Out[2]: </span><span class="go">&lt;xoa.set_options at 0x7f10814b02d0&gt;</span>
 
 <span class="gp">In [3]: </span><span class="nb">print</span><span class="p">(</span><span class="n">xoa</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;plot.cmapdiv&#39;</span><span class="p">))</span>
 <span class="go">mycmap</span>
@@ -227,6 +233,7 @@
 <span class="gp">In [5]: </span><span class="nb">print</span><span class="p">(</span><span class="n">xoa</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;plot.cmapdiv&#39;</span><span class="p">))</span>
 <span class="go">cmo.balance</span>
 </pre></div>
+</div>
 </div>
 </dd></dl>
 

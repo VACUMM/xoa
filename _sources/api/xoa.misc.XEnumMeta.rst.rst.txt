@@ -1,0 +1,6 @@
+xoa.misc.XEnumMeta.rst
+======================
+
+.. currentmodule:: xoa.misc
+
+.. autoproperty:: XEnumMeta.rst

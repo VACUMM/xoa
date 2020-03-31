@@ -1,0 +1,6 @@
+xoa.sigma.ocean\_sigma\_to\_depth
+=================================
+
+.. currentmodule:: xoa.sigma
+
+.. autofunction:: ocean_sigma_to_depth

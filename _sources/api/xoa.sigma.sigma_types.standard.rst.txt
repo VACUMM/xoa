@@ -1,0 +1,6 @@
+xoa.sigma.sigma\_types.standard
+===============================
+
+.. currentmodule:: xoa.sigma
+
+.. autoattribute:: sigma_types.standard

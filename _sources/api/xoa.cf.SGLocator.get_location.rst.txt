@@ -1,0 +1,6 @@
+xoa.cf.SGLocator.get\_location
+==============================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: SGLocator.get_location

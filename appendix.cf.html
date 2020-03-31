@@ -26,6 +26,8 @@
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -830,9 +832,24 @@
 <span class="s">    cmap = cmo.thermal</span>
 
     <span class="k">[[pa]]</span>
-    <span class="na">name</span> <span class="o">=</span> <span class="s">pa</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">psl</span>
 <span class="s">    standard_name = air_pressure_at_sea_level</span>
 <span class="s">    long_name = Absolute pressure</span>
+<span class="s">    units = Pa</span>
+
+    <span class="k">[[ps]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">surface_air_pressure</span>
+<span class="s">    long_name = Surface air pressure</span>
+<span class="s">    units = Pa</span>
+
+    <span class="k">[[plev]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">air_pressure</span>
+<span class="s">    long_name = Air pressure</span>
+<span class="s">    units = Pa</span>
+
+    <span class="k">[[ptop]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">air_pressure_at_top_of_atmosphere_model</span>
+<span class="s">    long_name = Air pressure at top of model</span>
 <span class="s">    units = Pa</span>
 
     <span class="k">[[tkea]]</span>
@@ -902,7 +919,7 @@
 <span class="s">    cmap = cmo.diff:piv0</span>
 
     <span class="k">[[topheight]]</span>
-    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">maximum_height</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">maximum_height,height_above_geopotential_datum_at_top_of_atmosphere_model</span>
 <span class="s">    long_name = height of the top level</span>
 <span class="s">    units = m</span>
 
@@ -1058,7 +1075,7 @@
 
     <span class="k">[[vtus]]</span>
     <span class="na">standard_name</span> <span class="o">=</span> <span class="s">northward_stokes_transport</span>
-<span class="s">    long_name = northward_stokes_transport</span>
+<span class="s">    long_name = Northward stokes transport</span>
 <span class="s">    units = m2 s-1</span>
 
     <span class="k">[[mapsta]]</span>
@@ -1067,9 +1084,31 @@
 <span class="s">    units = 1</span>
 
     <span class="k">[[wlv]]</span>
-    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">sea_surface_height_above_sea_level</span>
-<span class="s">    long_name = Sea surface height above sea level</span>
-<span class="s">    units = m</span>
+<span class="c1">#?    standard_name = sea_surface_height_above_sea_level</span>
+<span class="c1">#?    long_name = Sea surface height above sea level</span>
+    <span class="na">units</span> <span class="o">=</span> <span class="s">m</span>
+
+    <span class="c1"># Terrain-following coordinates</span>
+
+    <span class="k">[[sig]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">s_level,sigma,s,sigma_level</span>
+<span class="s">    standard_name = ocean_sigma_coordinate,ocean_s_coordinate,atmosphere_sigma_coordinate,atmosphere_s_coordinate,ocean_s_coordinate_g1,ocean_s_coordinate_g2</span>
+<span class="s">    long_name = Sigma level</span>
+
+    <span class="k">[[cs]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">ocean_s_coordinate_function</span>
+<span class="s">    long_name = S-coordinate stretching curves</span>
+
+    <span class="k">[[hc]]</span>
+    <span class="na">standard_name</span><span class="o">=</span><span class="s">ocean_s_coordinate_thick_of_surface_resolution</span>
+<span class="s">    long_name = Sigma-coordinate critical depth</span>
+
+    <span class="k">[[thetas]]</span>
+    <span class="na">standard_name</span><span class="o">=</span><span class="s">ocean_s_coordinate_surface_control</span>
+
+    <span class="k">[[thetab]]</span>
+    <span class="na">standard_name</span><span class="o">=</span><span class="s">ocean_s_coordinate_bottom_control</span>
+
 
 <span class="k">[coords]</span>
 
@@ -1102,10 +1141,15 @@
     <span class="na">inherit</span> <span class="o">=</span> <span class="s">data_vars:altitude</span>
 <span class="s">    axis = Z</span>
 
+    <span class="k">[[sig]]</span>
+    <span class="na">inherit</span><span class="o">=</span><span class="s">data_vars:sig</span>
+<span class="s">    axis=Z</span>
+
     <span class="k">[[level]]</span>
-    <span class="na">name</span> <span class="o">=</span> <span class="s">sigma_level,model_level</span>
-<span class="s">    standard_name = model_level_number,ocean_sigma_coordinate,ocean_s_coordinate,atmosphere_sigma_coordinate,atmosphere_s_coordinate</span>
-<span class="s">    long_name = Model level number,Sigma level,Sigma level at W location</span>
+    <span class="na">inherit</span><span class="o">=</span><span class="s">sig</span>
+<span class="s">    name = model_level</span>
+<span class="s">    standard_name = model_level_number</span>
+<span class="s">    long_name = Model level number</span>
 <span class="s">    axis = Z</span>
 
     <span class="k">[[forecast]]</span>
