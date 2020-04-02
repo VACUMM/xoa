@@ -1,0 +1,6 @@
+xoa.cf.DatasetCFAccessor.get\_coord
+===================================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: DatasetCFAccessor.get_coord

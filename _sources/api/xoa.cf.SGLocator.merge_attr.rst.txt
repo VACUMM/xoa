@@ -1,0 +1,6 @@
+xoa.cf.SGLocator.merge\_attr
+============================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: SGLocator.merge_attr

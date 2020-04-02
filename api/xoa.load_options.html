@@ -89,10 +89,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../usages.html">Usages</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="xoa.html">xoa</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="xoa.get_data_sample.html">xoa.get_data_sample</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.get_option.html">xoa.get_option</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">xoa.load_options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.reset_options.html">xoa.reset_options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.set_option.html">xoa.set_option</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.show_data_samples.html">xoa.show_data_samples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.show_info.html">xoa.show_info</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.show_options.html">xoa.show_options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.show_paths.html">xoa.show_paths</a></li>
@@ -225,12 +227,12 @@
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># Dict</span>
-<span class="gp">In [1]: </span><span class="n">xoa</span><span class="o">.</span><span class="n">load_options</span><span class="p">({</span><span class="s1">&#39;plot&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cmappos&#39;</span><span class="p">:</span> <span class="s1">&#39;mycmap&#39;</span><span class="p">}})</span>
+<span class="gp">In [1]: </span><span class="n">load_options</span><span class="p">({</span><span class="s1">&#39;plot&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cmappos&#39;</span><span class="p">:</span> <span class="s1">&#39;mycmap&#39;</span><span class="p">}})</span>
 
 <span class="go"># Lines</span>
 <span class="gp">In [2]: </span><span class="n">optlines</span> <span class="o">=</span> <span class="s2">&quot;[plot]</span><span class="se">\n</span><span class="s2"> cmappos=mycmap&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="gp">In [3]: </span><span class="n">xoa</span><span class="o">.</span><span class="n">load_options</span><span class="p">(</span><span class="n">optlines</span><span class="p">)</span>
+<span class="gp">In [3]: </span><span class="n">load_options</span><span class="p">(</span><span class="n">optlines</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

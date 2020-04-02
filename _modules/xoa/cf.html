@@ -461,8 +461,11 @@
 <span class="sd">            sg = SGLocator()</span>
 <span class="sd">            sg.format_attr(&#39;standard_name&#39;, &#39;sea_water_temperature&#39;, &#39;t&#39;)</span>
 <span class="sd">            sg.format_attr(&#39;standard_name&#39;, &#39;sea_water_temperature&#39;, False)</span>
+<span class="sd">            sg.format_attr(&#39;name&#39;, &#39;banana_t&#39;, None)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
         <span class="k">if</span> <span class="n">attr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_attrs</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">value</span>
         <span class="n">root</span><span class="p">,</span> <span class="n">ploc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_attr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
@@ -502,8 +505,6 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        attrs: dict</span>
-<span class="sd">        loc: string, None</span>
-<span class="sd">        standardize: bool</span>
 <span class="sd">        loc: {True, None}, letter, {False, &quot;&quot;}</span>
 <span class="sd">            If None, location is left unchanged;</span>
 <span class="sd">            if a letter, it is set;</span>
@@ -528,7 +529,6 @@
 <span class="sd">            sg.format_attrs(attrs, loc=&#39;t&#39;) # force t loc</span>
 <span class="sd">            sg.format_attrs(attrs) # keep loc</span>
 <span class="sd">            sg.format_attrs(attrs, loc=False) # force no loc</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -542,16 +542,127 @@
                 <span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">return</span> <span class="n">attrs</span></div>
 
+<div class="viewcode-block" id="SGLocator.merge_attr"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.merge_attr.html#xoa.cf.SGLocator.merge_attr">[docs]</a>    <span class="k">def</span> <span class="nf">merge_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value0</span><span class="p">,</span> <span class="n">value1</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Merge two attribute values taking care of location</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        attr: {&#39;name&#39;, &#39;standard_name&#39;, &#39;long_name&#39;}</span>
+<span class="sd">            Attribute name</span>
+<span class="sd">        value0: str, None</span>
+<span class="sd">            First attribute value</span>
+<span class="sd">        value1: str, None</span>
+<span class="sd">            Second attribute value, which is prioritary over the first one</span>
+<span class="sd">        loc: letters, {&quot;any&quot;, None} or {&quot;&quot;, False}</span>
+<span class="sd">            - letters: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&#39;: no location</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str, None</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        .. ipython:: python</span>
+
+<span class="sd">            @suppress</span>
+<span class="sd">            from xoa.cf import SGLocator</span>
+<span class="sd">            sg = SGLocator()</span>
+<span class="sd">            sg.merge_attr(&#39;name&#39;, &#39;temp_t&#39;, &#39;mytemp&#39;)</span>
+<span class="sd">            sg.merge_attr(&#39;name&#39;, &#39;temp&#39;, &#39;mytemp_t&#39;)</span>
+<span class="sd">            sg.merge_attr(&#39;name&#39;, &#39;temp_u&#39;, &#39;mytemp_t&#39;, &#39;v&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_attrs</span>
+        <span class="k">if</span> <span class="n">value0</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">value1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">value0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_attr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">value1</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_attr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">value0</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">loc</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;any&quot;</span><span class="p">):</span>
+            <span class="n">loc0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_attr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">value0</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">loc1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_attr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">value1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">loc1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">loc1</span>
+            <span class="k">elif</span> <span class="n">loc0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">loc0</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_attr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">value1</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SGLocator.patch_attrs"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.patch_attrs.html#xoa.cf.SGLocator.patch_attrs">[docs]</a>    <span class="k">def</span> <span class="nf">patch_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">patch</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Patch a dict of attribute with another dict taking care of loc</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        attrs: dict</span>
+<span class="sd">            Dictionary of attributes to patch</span>
+<span class="sd">        patch: dict</span>
+<span class="sd">            Patch to apply</span>
+<span class="sd">        loc: {None, &quot;any&quot;}, letter, {False, &quot;&quot;}</span>
+<span class="sd">            If None, location is left unchanged;</span>
+<span class="sd">            if a letter, it is set;</span>
+<span class="sd">            else, it is removed.</span>
+<span class="sd">        standardize: bool</span>
+<span class="sd">            If True, standardize ``root`` and ``loc`` values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            A new dictionary of attributes</span>
+
+<span class="sd">        See also</span>
+<span class="sd">        --------</span>
+<span class="sd">        merge_attr</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># Loop on attributes</span>
+        <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">patch</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># Attr with loc</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_attrs</span><span class="p">:</span>
+
+                <span class="c1"># List</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_attr</span><span class="p">(</span>
+                                    <span class="n">attr</span><span class="p">,</span> <span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">],</span> <span class="n">val</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                                <span class="n">value</span> <span class="o">=</span> <span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>  <span class="c1"># don&#39;t change, it&#39;s ok</span>
+                                <span class="k">break</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+                <span class="c1"># Location</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge_attr</span><span class="p">(</span>
+                    <span class="n">attr</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">value</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span>
+                    <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="k">return</span> <span class="n">attrs</span></div>
+
 <div class="viewcode-block" id="SGLocator.format_dataarray"><a class="viewcode-back" href="../../api/xoa.cf.SGLocator.format_dataarray.html#xoa.cf.SGLocator.format_dataarray">[docs]</a>    <span class="k">def</span> <span class="nf">format_dataarray</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">rename</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Format name and attributes of copy of DataArray</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        da: xarray.DataArray</span>
-<span class="sd">        loc: str, {None, False}</span>
+<span class="sd">        loc: {True, None}, letter, {False, &quot;&quot;}</span>
+<span class="sd">            If None, location is left unchanged;</span>
+<span class="sd">            if a letter, it is set;</span>
+<span class="sd">            else, it is removed.</span>
 <span class="sd">        standardize: bool</span>
+<span class="sd">            If True, standardize ``root`` and ``loc`` values.</span>
 <span class="sd">        name: str, None</span>
 <span class="sd">            Substitute for dataarray name</span>
 <span class="sd">        attrs: str, None</span>
@@ -559,35 +670,35 @@
 <span class="sd">            If ``standard_name`` and ``long_name`` values are a list,</span>
 <span class="sd">            and if the dataarray has its attribute included in the list,</span>
 <span class="sd">            it is left unchanged since it is considered compatible.</span>
+<span class="sd">        rename:</span>
+<span class="sd">            Prevent renaming the array</span>
+<span class="sd">        copy: bool</span>
+<span class="sd">            Make sure to work on a copy</span>
 
 <span class="sd">        Return</span>
 <span class="sd">        ------</span>
 <span class="sd">        xarray.DataArray</span>
+
+<span class="sd">        See also</span>
+<span class="sd">        --------</span>
+<span class="sd">        format_attrs</span>
+<span class="sd">        patch_attrs</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">attrs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
+            <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-            <span class="c1"># List case: check if we skip, else keep the first</span>
-            <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">roots</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">roots</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">attrs</span> <span class="ow">and</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_attrs</span><span class="p">:</span>
-                        <span class="k">for</span> <span class="n">root</span> <span class="ow">in</span> <span class="n">roots</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_attr</span><span class="p">(</span>
-                                    <span class="n">attr</span><span class="p">,</span> <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">],</span> <span class="n">root</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
-                                <span class="k">del</span> <span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># Attributes</span>
+        <span class="k">if</span> <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">format_attrs</span><span class="p">(</span>
+                <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">attrs</span><span class="p">:</span>
+            <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">patch_attrs</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span>
+                                             <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">))</span>
 
-            <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
-        <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">format_attrs</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
-            <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_attr</span><span class="p">(</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span>
-        <span class="p">)</span>
+        <span class="c1"># Name</span>
+        <span class="k">if</span> <span class="n">rename</span><span class="p">:</span>
+            <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge_attr</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="n">da</span></div></div>
 
 
@@ -900,63 +1011,133 @@
         <span class="n">specs</span><span class="p">[</span><span class="s1">&#39;processed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">yield</span> <span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">specs</span>
 
-<div class="viewcode-block" id="CFSpecs.format_coord"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.format_coord.html#xoa.cf.CFSpecs.format_coord">[docs]</a>    <span class="k">def</span> <span class="nf">format_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                     <span class="n">rename_dim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Format a coordinate variable&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="CFSpecs.format_coord"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.format_coord.html#xoa.cf.CFSpecs.format_coord">[docs]</a>    <span class="k">def</span> <span class="nf">format_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rename_dim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Format a coordinate variable</span>
+
+<span class="sd">        See also</span>
+<span class="sd">        --------</span>
+<span class="sd">        CFCoordSpecs.format_dataarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">format_dataarray</span><span class="p">(</span>
-            <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
-            <span class="n">rename_dim</span><span class="o">=</span><span class="n">rename_dim</span><span class="p">)</span></div>
+            <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
+            <span class="n">rename</span><span class="o">=</span><span class="n">rename</span><span class="p">,</span> <span class="n">rename_dim</span><span class="o">=</span><span class="n">rename_dim</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CFSpecs.format_data_var"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.format_data_var.html#xoa.cf.CFSpecs.format_data_var">[docs]</a>    <span class="k">def</span> <span class="nf">format_data_var</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">da</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">coords</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">rename</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">format_coords</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">coords</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">copy</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Format array name and attributes according to currents CF specs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        name: str, None</span>
+<span class="sd">            CF name. If None, it is guessed.</span>
+<span class="sd">        rename: bool</span>
+<span class="sd">            Not only format attribute, but also rename arrays,</span>
+<span class="sd">            thus making a copies.</span>
+<span class="sd">        format_coords: bool</span>
+<span class="sd">            Also format coords.</span>
+<span class="sd">        coords: dict, None</span>
+<span class="sd">            Dict whose keys are coord names, and values are CF coord names.</span>
+<span class="sd">            Used only if ``format_coords`` is True.</span>
+<span class="sd">        standardize: bool</span>
+<span class="sd">        copy: bool</span>
+<span class="sd">            Make sure to work on a copy of the array.</span>
+<span class="sd">            Note that a copy is always returned when ``rename`` is True.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        xarray.DataArray</span>
+<span class="sd">            Formatted array</span>
+
+<span class="sd">        See also</span>
+<span class="sd">        --------</span>
+<span class="sd">        CFCoordSpecs.format_dataarray</span>
+<span class="sd">        CFVarSpecs.format_dataarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Copy</span>
+        <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
+            <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># Init rename dict</span>
+        <span class="n">rename_args</span> <span class="o">=</span> <span class="p">{}</span>
+
         <span class="c1"># Data var</span>
-        <span class="n">da</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">format_dataarray</span><span class="p">(</span>
-            <span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span>
+        <span class="n">new_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">format_dataarray</span><span class="p">(</span>
+            <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
+            <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
+        <span class="k">if</span> <span class="n">rename</span> <span class="ow">and</span> <span class="n">new_name</span><span class="p">:</span>
+            <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">new_name</span>
 
         <span class="c1"># Coordinates</span>
         <span class="k">if</span> <span class="n">format_coords</span><span class="p">:</span>
             <span class="n">coords</span> <span class="o">=</span> <span class="n">coords</span> <span class="ow">or</span> <span class="p">{}</span>
             <span class="k">for</span> <span class="n">cname</span><span class="p">,</span> <span class="n">cda</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-                <span class="n">cda</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_coord</span><span class="p">(</span>
+                <span class="n">rename_args</span><span class="p">[</span><span class="n">cda</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_coord</span><span class="p">(</span>
                     <span class="n">cda</span><span class="p">,</span>
                     <span class="n">name</span><span class="o">=</span><span class="n">coords</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cname</span><span class="p">),</span>
                     <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span>
                     <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
-                    <span class="n">rename_dim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">copy</span><span class="o">=</span><span class="kc">False</span>
                 <span class="p">)</span>
-                <span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">cname</span><span class="p">]</span> <span class="o">=</span> <span class="n">cda</span>
-                <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">cname</span><span class="p">:</span> <span class="n">cda</span><span class="o">.</span><span class="n">name</span><span class="p">})</span>
+
+        <span class="c1"># Final renaming</span>
+        <span class="k">if</span> <span class="n">rename</span> <span class="ow">and</span> <span class="n">rename_args</span><span class="p">:</span>
+            <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">rename_args</span><span class="p">)</span>
+
+        <span class="c1"># Return the guessed name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rename</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">new_name</span>
 
         <span class="k">return</span> <span class="n">da</span></div>
 
-<div class="viewcode-block" id="CFSpecs.format_dataset"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.format_dataset.html#xoa.cf.CFSpecs.format_dataset">[docs]</a>    <span class="k">def</span> <span class="nf">format_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                       <span class="n">format_coords</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="CFSpecs.format_dataset"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.format_dataset.html#xoa.cf.CFSpecs.format_dataset">[docs]</a>    <span class="k">def</span> <span class="nf">format_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                       <span class="n">format_coords</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Auto-format a whole xarray.Dataset&quot;&quot;&quot;</span>
-        <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="c1"># Copy</span>
+        <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># Init rename dict</span>
+        <span class="n">rename_args</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Data arrays</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">da</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-            <span class="k">del</span> <span class="n">ds</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
-            <span class="n">da</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_data_var</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                      <span class="n">format_coords</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="c1"># print(&#39;ds&#39;,ds)</span>
-            <span class="n">ds</span><span class="p">[</span><span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">da</span>
+            <span class="n">new_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_data_var</span><span class="p">(</span>
+                <span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">format_coords</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">rename</span> <span class="ow">and</span> <span class="n">new_name</span><span class="p">:</span>
+                <span class="n">rename_args</span><span class="p">[</span><span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_name</span>
+
+        <span class="c1"># Coordinates</span>
         <span class="k">if</span> <span class="n">format_coords</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">cname</span><span class="p">,</span> <span class="n">cda</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-                <span class="k">del</span> <span class="n">ds</span><span class="p">[</span><span class="n">cname</span><span class="p">]</span>
-                <span class="n">cda</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_coord</span><span class="p">(</span><span class="n">cda</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                        <span class="n">rename_dim</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">cda</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">cname</span> <span class="o">==</span> <span class="n">cda</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-                    <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">cname</span><span class="p">]</span> <span class="o">=</span> <span class="n">cda</span>
-                    <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">cname</span><span class="p">:</span> <span class="n">cda</span><span class="o">.</span><span class="n">name</span><span class="p">})</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">cda</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">cda</span>
+                <span class="n">new_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_coord</span><span class="p">(</span>
+                    <span class="n">cda</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">rename_dim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">rename</span><span class="p">:</span>
+                    <span class="n">rename_args</span><span class="p">[</span><span class="n">cda</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_name</span>
+
+                <span class="c1"># if cda.ndim == 1 and cname == cda.dims[0]:</span>
+                <span class="c1">#     ds.coords[cname] = cda</span>
+                <span class="c1">#     ds = ds.rename({cname: cda.name})</span>
+                <span class="c1"># else:</span>
+                <span class="c1">#     ds.coords[cda.name] = cda</span>
+
+        <span class="c1"># Final renaming</span>
+        <span class="k">if</span> <span class="n">rename</span> <span class="ow">and</span> <span class="n">rename_args</span><span class="p">:</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">rename_args</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">ds</span></div>
 
@@ -966,6 +1147,8 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_dataset</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
                                        <span class="n">format_coords</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_dataarray</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span></div>
+
+    <span class="fm">__call__</span> <span class="o">=</span> <span class="n">auto_format</span>
 
 <div class="viewcode-block" id="CFSpecs.match_coord"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.match_coord.html#xoa.cf.CFSpecs.match_coord">[docs]</a>    <span class="k">def</span> <span class="nf">match_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span></div>
@@ -1294,43 +1477,69 @@
 
         <span class="k">return</span> <span class="n">attrs</span>
 
-    <span class="k">def</span> <span class="nf">format_dataarray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                         <span class="n">rename_dim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">format_dataarray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                         <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rename_dim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Format a DataArray&#39;s name and attributes</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        da: xarray.DataArray</span>
 <span class="sd">        name: str, None</span>
-<span class="sd">            A CF name. If not provided, it guessed with :meth:`search`.</span>
+<span class="sd">            A CF name. If not provided, it guessed with :meth:`match`.</span>
 <span class="sd">        loc: str</span>
+<span class="sd">        rename: bool</span>
+<span class="sd">            Rename arrays</span>
 <span class="sd">        standardize: bool</span>
 <span class="sd">        rename_dim: bool</span>
 <span class="sd">            For a 1D array, rename the dimension if it has the same name</span>
 <span class="sd">            as the array.</span>
+<span class="sd">            Note that it is set to False, if ``rename`` is False.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        xarray.DataArray, str, None</span>
+<span class="sd">            The formatted array or copy of it.</span>
+<span class="sd">            The CF name, given or matching, if rename if False; and None</span>
+<span class="sd">            if not matching.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">rename</span><span class="p">:</span>
+            <span class="n">copy</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
+            <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
         <span class="c1"># Get name</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">da</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">rename</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="k">return</span> <span class="n">da</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">copy</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="k">assert</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span>
 
         <span class="c1"># Format array</span>
+        <span class="n">old_name</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">cf_attrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span>
+            <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">multi</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">new_da</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">format_dataarray</span><span class="p">(</span>
             <span class="n">da</span><span class="p">,</span>
             <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span>
             <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
-            <span class="n">attrs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span>
-                <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">multi</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="n">cf_attrs</span><span class="p">,</span>
             <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
+            <span class="n">rename</span><span class="o">=</span><span class="n">rename</span><span class="p">,</span>
+            <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span>
 
+        <span class="c1"># Return renaming name not renaming</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rename</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">merge_attr</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+
         <span class="c1"># Rename dim if axis coordinate</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">rename_dim</span> <span class="ow">and</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">da</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span>
-                <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-            <span class="n">new_da</span> <span class="o">=</span> <span class="n">new_da</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">new_da</span><span class="o">.</span><span class="n">name</span><span class="p">})</span>
+        <span class="n">rename_dim</span> <span class="o">=</span> <span class="n">rename</span> <span class="ow">and</span> <span class="n">rename_dim</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rename_dim</span> <span class="ow">and</span> <span class="n">old_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">da</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span>
+                <span class="n">old_name</span> <span class="o">==</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">new_da</span> <span class="o">=</span> <span class="n">new_da</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">old_name</span><span class="p">:</span> <span class="n">new_da</span><span class="o">.</span><span class="n">name</span><span class="p">})</span>
         <span class="k">return</span> <span class="n">new_da</span>
 
 
@@ -1701,6 +1910,11 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_category</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">get_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search for a CF coord with :meth:`CFCoordSpecs.search`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">[</span><span class="s1">&#39;accessors&#39;</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_category</span><span class="p">]:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
@@ -1713,6 +1927,8 @@
         <span class="sd">&quot;&quot;&quot;Auto-format attributes with :meth:`CFSpecs.auto_format`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">auto_format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span>
                                          <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span>
+
+    <span class="fm">__call__</span> <span class="o">=</span> <span class="n">auto_format</span>
 
 
 <div class="viewcode-block" id="DataArrayCFAccessor"><a class="viewcode-back" href="../../api/xoa.cf.DataArrayCFAccessor.html#xoa.cf.DataArrayCFAccessor">[docs]</a><span class="k">class</span> <span class="nc">DataArrayCFAccessor</span><span class="p">(</span><span class="n">_CFAccessor_</span><span class="p">):</span>

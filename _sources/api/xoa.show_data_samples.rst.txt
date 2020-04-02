@@ -1,0 +1,6 @@
+xoa.show\_data\_samples
+=======================
+
+.. currentmodule:: xoa
+
+.. autofunction:: show_data_samples

@@ -202,7 +202,7 @@
 <span class="c1">#name=string(default=cf) # name of the dataarray and dataset accessors</span>
 
     <span class="k">[[properties]]</span>
-    <span class="na">coords</span><span class="o">=</span><span class="s">strings(default=list(lon,lat,depth,level,altitude,time,forecast)) # coord names that are added as shortcut properties</span>
+    <span class="na">coords</span><span class="o">=</span><span class="s">strings(default=list(lon,lat,depth,sig,level,altitude,time,forecast)) # coord names that are added as shortcut properties</span>
 <span class="s">    data_vars=strings(default=list(temp,sal,u,v,bathy))  # data_var names that are added as shortcut properties</span>
 
 <span class="k">[data_vars]</span>
@@ -217,7 +217,7 @@
 <span class="s">    cmap=string(default=None)</span>
 <span class="s">    inherit=string(default=None)</span>
 <span class="s">    squeeze=strings(default=None)</span>
-<span class="s">    search_order=string(default=ns)</span>
+<span class="s">    search_order=string(default=sn)</span>
 
         <span class="k">[[[select]]]</span>
         <span class="na">__many__</span><span class="o">=</span><span class="s">eval(default=None)</span>
@@ -406,7 +406,7 @@
     <span class="c1"># Dynamics</span>
     <span class="k">[[ssh]]</span>
     <span class="na">name</span> <span class="o">=</span> <span class="s">xe,wlv</span>
-<span class="s">    standard_name = sea_surface_height_above_sea_level,sea_surface_height_above_geoid</span>
+<span class="s">    standard_name = sea_surface_height,sea_surface_height_above_sea_level,sea_surface_height_above_geoid</span>
 <span class="s">    long_name = Sea surface height</span>
 <span class="s">    units = m</span>
 <span class="s">    cmap = cmo.balance:piv0</span>
@@ -589,6 +589,16 @@
     <span class="na">standard_name</span> <span class="o">=</span> <span class="s">cell_y_size</span>
 <span class="s">    long_name = Mesh size along y</span>
 <span class="s">    units = m</span>
+
+    <span class="k">[[ex]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">inverse_of_cell_x_size</span>
+<span class="s">    long_name = Inverse of mesh size along x</span>
+<span class="s">    units = m-1</span>
+
+    <span class="k">[[ey]]</span>
+    <span class="na">standard_name</span> <span class="o">=</span> <span class="s">inverse_of_cell_y_size</span>
+<span class="s">    long_name = Inverse of mesh size along y</span>
+<span class="s">    units = m-1</span>
 
     <span class="k">[[dz]]</span>
     <span class="na">standard_name</span> <span class="o">=</span> <span class="s">ocean_layer_thickness</span>
@@ -1123,7 +1133,7 @@
 <span class="s">    long_name = Longitude</span>
 <span class="s">    units = degrees_east,degree_east,degree_e,degrees_e,degreee,degreese</span>
 <span class="s">    axis = X</span>
-<span class="s">    search_order = nsua</span>
+<span class="s">    search_order = snu</span>
 
     <span class="k">[[lat]]</span>
     <span class="na">name</span> <span class="o">=</span> <span class="s">latitude,nav_lat,latitudes</span>
@@ -1131,7 +1141,17 @@
 <span class="s">    long_name = Latitude</span>
 <span class="s">    units = degrees_north,degree_north,degree_n,degrees_n,degreen,degreesn</span>
 <span class="s">    axis = Y</span>
-<span class="s">    search_order = nsua</span>
+<span class="s">    search_order = snu</span>
+
+    <span class="k">[[x]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">xi</span>
+<span class="s">    standard_name = x_grid_index</span>
+<span class="s">    long_name = X-dimension of the grid</span>
+
+    <span class="k">[[y]]</span>
+    <span class="na">name</span> <span class="o">=</span> <span class="s">yi</span>
+<span class="s">    standard_name = y_grid_index</span>
+<span class="s">    long_name = Y-dimension of the grid</span>
 
     <span class="k">[[depth]]</span>
     <span class="na">inherit</span> <span class="o">=</span> <span class="s">data_vars:depth</span>

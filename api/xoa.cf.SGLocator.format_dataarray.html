@@ -109,7 +109,9 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.cf.SGLocator.format_dataarray</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.get_location.html">xoa.cf.SGLocator.get_location</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.match_attr.html">xoa.cf.SGLocator.match_attr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.merge_attr.html">xoa.cf.SGLocator.merge_attr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.parse_attr.html">xoa.cf.SGLocator.parse_attr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.patch_attrs.html">xoa.cf.SGLocator.patch_attrs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.formats.html">xoa.cf.SGLocator.formats</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.location_pattern.html">xoa.cf.SGLocator.location_pattern</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.re_match.html">xoa.cf.SGLocator.re_match</a></li>
@@ -231,19 +233,23 @@
 <h1>xoa.cf.SGLocator.format_dataarray<a class="headerlink" href="#xoa-cf-sglocator-format-dataarray" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="xoa.cf.SGLocator.format_dataarray">
-<code class="sig-prename descclassname">SGLocator.</code><code class="sig-name descname">format_dataarray</code><span class="sig-paren">(</span><em class="sig-param">da</em>, <em class="sig-param">loc=None</em>, <em class="sig-param">standardize=True</em>, <em class="sig-param">name=None</em>, <em class="sig-param">attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cf.html#SGLocator.format_dataarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cf.SGLocator.format_dataarray" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">SGLocator.</code><code class="sig-name descname">format_dataarray</code><span class="sig-paren">(</span><em class="sig-param">da</em>, <em class="sig-param">loc=None</em>, <em class="sig-param">standardize=True</em>, <em class="sig-param">name=None</em>, <em class="sig-param">attrs=None</em>, <em class="sig-param">rename=True</em>, <em class="sig-param">copy=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cf.html#SGLocator.format_dataarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cf.SGLocator.format_dataarray" title="Permalink to this definition">¶</a></dt>
 <dd><p>Format name and attributes of copy of DataArray</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>da</strong> (<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><em>xarray.DataArray</em></a>) – </p></li>
-<li><p><strong>loc</strong> (<em>str</em><em>, </em><em>{None</em><em>, </em><em>False}</em>) – </p></li>
-<li><p><strong>standardize</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>loc</strong> (<em>{True</em><em>, </em><em>None}</em><em>, </em><em>letter</em><em>, </em><em>{False</em><em>, </em><em>&quot;&quot;}</em>) – If None, location is left unchanged;
+if a letter, it is set;
+else, it is removed.</p></li>
+<li><p><strong>standardize</strong> (<em>bool</em>) – If True, standardize <code class="docutils literal notranslate"><span class="pre">root</span></code> and <code class="docutils literal notranslate"><span class="pre">loc</span></code> values.</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>None</em>) – Substitute for dataarray name</p></li>
 <li><p><strong>attrs</strong> (<em>str</em><em>, </em><em>None</em>) – Substitute for dataarray attributes.
 If <code class="docutils literal notranslate"><span class="pre">standard_name</span></code> and <code class="docutils literal notranslate"><span class="pre">long_name</span></code> values are a list,
 and if the dataarray has its attribute included in the list,
 it is left unchanged since it is considered compatible.</p></li>
+<li><p><strong>rename</strong> – Prevent renaming the array</p></li>
+<li><p><strong>copy</strong> (<em>bool</em>) – Make sure to work on a copy</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -253,6 +259,10 @@ it is left unchanged since it is considered compatible.</p></li>
 <dd class="field-odd"><p><a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)">xarray.DataArray</a></p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="xoa.cf.SGLocator.format_attrs.html#xoa.cf.SGLocator.format_attrs" title="xoa.cf.SGLocator.format_attrs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format_attrs()</span></code></a>, <a class="reference internal" href="xoa.cf.SGLocator.patch_attrs.html#xoa.cf.SGLocator.patch_attrs" title="xoa.cf.SGLocator.patch_attrs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">patch_attrs()</span></code></a></p>
+</div>
 </dd></dl>
 
 </div>

@@ -238,18 +238,28 @@
 <h1>xoa.cf.CFCoordSpecs.format_dataarray<a class="headerlink" href="#xoa-cf-cfcoordspecs-format-dataarray" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="xoa.cf.CFCoordSpecs.format_dataarray">
-<code class="sig-prename descclassname">CFCoordSpecs.</code><code class="sig-name descname">format_dataarray</code><span class="sig-paren">(</span><em class="sig-param">da</em>, <em class="sig-param">name=None</em>, <em class="sig-param">loc=None</em>, <em class="sig-param">standardize=True</em>, <em class="sig-param">rename_dim=True</em><span class="sig-paren">)</span><a class="headerlink" href="#xoa.cf.CFCoordSpecs.format_dataarray" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">CFCoordSpecs.</code><code class="sig-name descname">format_dataarray</code><span class="sig-paren">(</span><em class="sig-param">da</em>, <em class="sig-param">name=None</em>, <em class="sig-param">loc=None</em>, <em class="sig-param">rename=True</em>, <em class="sig-param">standardize=True</em>, <em class="sig-param">rename_dim=True</em>, <em class="sig-param">copy=True</em><span class="sig-paren">)</span><a class="headerlink" href="#xoa.cf.CFCoordSpecs.format_dataarray" title="Permalink to this definition">¶</a></dt>
 <dd><p>Format a DataArray’s name and attributes</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>da</strong> (<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><em>xarray.DataArray</em></a>) – </p></li>
-<li><p><strong>name</strong> (<em>str</em><em>, </em><em>None</em>) – A CF name. If not provided, it guessed with <a class="reference internal" href="xoa.cf.CFCoordSpecs.search.html#xoa.cf.CFCoordSpecs.search" title="xoa.cf.CFCoordSpecs.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search()</span></code></a>.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>None</em>) – A CF name. If not provided, it guessed with <a class="reference internal" href="xoa.cf.CFCoordSpecs.match.html#xoa.cf.CFCoordSpecs.match" title="xoa.cf.CFCoordSpecs.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match()</span></code></a>.</p></li>
 <li><p><strong>loc</strong> (<em>str</em>) – </p></li>
+<li><p><strong>rename</strong> (<em>bool</em>) – Rename arrays</p></li>
 <li><p><strong>standardize</strong> (<em>bool</em>) – </p></li>
 <li><p><strong>rename_dim</strong> (<em>bool</em>) – For a 1D array, rename the dimension if it has the same name
-as the array.</p></li>
+as the array.
+Note that it is set to False, if <code class="docutils literal notranslate"><span class="pre">rename</span></code> is False.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The formatted array or copy of it.
+The CF name, given or matching, if rename if False; and None
+if not matching.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)">xarray.DataArray</a>, str, None</p>
 </dd>
 </dl>
 </dd></dl>

@@ -10,10 +10,12 @@ xoa
    .. autosummary::
       :toctree:
    
+      get_data_sample
       get_option
       load_options
       reset_options
       set_option
+      show_data_samples
       show_info
       show_options
       show_paths

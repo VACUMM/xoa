@@ -109,7 +109,9 @@
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.format_dataarray.html">xoa.cf.SGLocator.format_dataarray</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.get_location.html">xoa.cf.SGLocator.get_location</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.match_attr.html">xoa.cf.SGLocator.match_attr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.merge_attr.html">xoa.cf.SGLocator.merge_attr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.parse_attr.html">xoa.cf.SGLocator.parse_attr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.patch_attrs.html">xoa.cf.SGLocator.patch_attrs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.formats.html">xoa.cf.SGLocator.formats</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.location_pattern.html">xoa.cf.SGLocator.location_pattern</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.re_match.html">xoa.cf.SGLocator.re_match</a></li>
@@ -268,8 +270,14 @@ which defaults to <code class="docutils literal notranslate"><span class="pre">&
 <tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.SGLocator.match_attr.html#xoa.cf.SGLocator.match_attr" title="xoa.cf.SGLocator.match_attr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_attr</span></code></a>(attr, value, root[, loc])</p></td>
 <td><p>Check if an attribute is matching a location</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.SGLocator.parse_attr.html#xoa.cf.SGLocator.parse_attr" title="xoa.cf.SGLocator.parse_attr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_attr</span></code></a>(attr, value)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.SGLocator.merge_attr.html#xoa.cf.SGLocator.merge_attr" title="xoa.cf.SGLocator.merge_attr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_attr</span></code></a>(attr, value0, value1[, loc, …])</p></td>
+<td><p>Merge two attribute values taking care of location</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.SGLocator.parse_attr.html#xoa.cf.SGLocator.parse_attr" title="xoa.cf.SGLocator.parse_attr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_attr</span></code></a>(attr, value)</p></td>
 <td><p>Parse an attribute string to get its root and location</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.SGLocator.patch_attrs.html#xoa.cf.SGLocator.patch_attrs" title="xoa.cf.SGLocator.patch_attrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">patch_attrs</span></code></a>(attrs, patch[, loc, standardize])</p></td>
+<td><p>Patch a dict of attribute with another dict taking care of loc</p></td>
 </tr>
 </tbody>
 </table>

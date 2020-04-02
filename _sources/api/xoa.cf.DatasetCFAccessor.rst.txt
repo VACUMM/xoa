@@ -22,6 +22,9 @@ xoa.cf.DatasetCFAccessor
          ~DatasetCFAccessor.get
       
       
+         ~DatasetCFAccessor.get_coord
+      
+      
          ~DatasetCFAccessor.set_cf_specs
       
    

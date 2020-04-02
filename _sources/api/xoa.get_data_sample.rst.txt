@@ -1,0 +1,6 @@
+xoa.get\_data\_sample
+=====================
+
+.. currentmodule:: xoa
+
+.. autofunction:: get_data_sample

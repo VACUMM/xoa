@@ -109,7 +109,9 @@
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.format_dataarray.html">xoa.cf.SGLocator.format_dataarray</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.get_location.html">xoa.cf.SGLocator.get_location</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.match_attr.html">xoa.cf.SGLocator.match_attr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.merge_attr.html">xoa.cf.SGLocator.merge_attr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.parse_attr.html">xoa.cf.SGLocator.parse_attr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.patch_attrs.html">xoa.cf.SGLocator.patch_attrs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.formats.html">xoa.cf.SGLocator.formats</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.location_pattern.html">xoa.cf.SGLocator.location_pattern</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.re_match.html">xoa.cf.SGLocator.re_match</a></li>
@@ -237,12 +239,10 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>attrs</strong> (<em>dict</em>) – </p></li>
-<li><p><strong>loc</strong> (<em>{True</em><em>, </em><em>None}</em><em>, </em><em>letter</em><em>, </em><em>{False</em><em>, </em><em>&quot;&quot;}</em>) – </p></li>
-<li><p><strong>standardize</strong> (<em>bool</em>) – </p></li>
-<li><p><strong>loc</strong> – If None, location is left unchanged;
+<li><p><strong>loc</strong> (<em>{True</em><em>, </em><em>None}</em><em>, </em><em>letter</em><em>, </em><em>{False</em><em>, </em><em>&quot;&quot;}</em>) – If None, location is left unchanged;
 if a letter, it is set;
 else, it is removed.</p></li>
-<li><p><strong>standardize</strong> – If True, standardize <code class="docutils literal notranslate"><span class="pre">root</span></code> and <code class="docutils literal notranslate"><span class="pre">loc</span></code> values.</p></li>
+<li><p><strong>standardize</strong> (<em>bool</em>) – If True, standardize <code class="docutils literal notranslate"><span class="pre">root</span></code> and <code class="docutils literal notranslate"><span class="pre">loc</span></code> values.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

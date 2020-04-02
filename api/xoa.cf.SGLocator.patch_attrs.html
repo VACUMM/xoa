@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>xoa.cf.SGLocator.root_patterns &mdash; xoa 0.1.0 documentation</title>
+  <title>xoa.cf.SGLocator.patch_attrs &mdash; xoa 0.1.0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="xoa.cf.SGLocator.valid_attrs" href="xoa.cf.SGLocator.valid_attrs.html" />
-    <link rel="prev" title="xoa.cf.SGLocator.re_match" href="xoa.cf.SGLocator.re_match.html" /> 
+    <link rel="next" title="xoa.cf.SGLocator.formats" href="xoa.cf.SGLocator.formats.html" />
+    <link rel="prev" title="xoa.cf.SGLocator.parse_attr" href="xoa.cf.SGLocator.parse_attr.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -111,11 +111,11 @@
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.match_attr.html">xoa.cf.SGLocator.match_attr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.merge_attr.html">xoa.cf.SGLocator.merge_attr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.parse_attr.html">xoa.cf.SGLocator.parse_attr</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.patch_attrs.html">xoa.cf.SGLocator.patch_attrs</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.cf.SGLocator.patch_attrs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.formats.html">xoa.cf.SGLocator.formats</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.location_pattern.html">xoa.cf.SGLocator.location_pattern</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.re_match.html">xoa.cf.SGLocator.re_match</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.cf.SGLocator.root_patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.root_patterns.html">xoa.cf.SGLocator.root_patterns</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.valid_attrs.html">xoa.cf.SGLocator.valid_attrs</a></li>
 </ul>
 </li>
@@ -186,13 +186,13 @@
         
           <li><a href="xoa.cf.SGLocator.html">xoa.cf.SGLocator</a> &raquo;</li>
         
-      <li>xoa.cf.SGLocator.root_patterns</li>
+      <li>xoa.cf.SGLocator.patch_attrs</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/xoa.cf.SGLocator.root_patterns.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/xoa.cf.SGLocator.patch_attrs.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -229,12 +229,35 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="xoa-cf-sglocator-root-patterns">
-<h1>xoa.cf.SGLocator.root_patterns<a class="headerlink" href="#xoa-cf-sglocator-root-patterns" title="Permalink to this headline">¶</a></h1>
-<dl class="attribute">
-<dt id="xoa.cf.SGLocator.root_patterns">
-<code class="sig-prename descclassname">SGLocator.</code><code class="sig-name descname">root_patterns</code><em class="property"> = {'long_name': '[\\w ]+', 'name': '\\w+', 'standard_name': '\\w+'}</em><a class="headerlink" href="#xoa.cf.SGLocator.root_patterns" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<div class="section" id="xoa-cf-sglocator-patch-attrs">
+<h1>xoa.cf.SGLocator.patch_attrs<a class="headerlink" href="#xoa-cf-sglocator-patch-attrs" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="xoa.cf.SGLocator.patch_attrs">
+<code class="sig-prename descclassname">SGLocator.</code><code class="sig-name descname">patch_attrs</code><span class="sig-paren">(</span><em class="sig-param">attrs</em>, <em class="sig-param">patch</em>, <em class="sig-param">loc=None</em>, <em class="sig-param">standardize=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cf.html#SGLocator.patch_attrs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cf.SGLocator.patch_attrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Patch a dict of attribute with another dict taking care of loc</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attrs</strong> (<em>dict</em>) – Dictionary of attributes to patch</p></li>
+<li><p><strong>patch</strong> (<em>dict</em>) – Patch to apply</p></li>
+<li><p><strong>loc</strong> (<em>{None</em><em>, </em><em>&quot;any&quot;}</em><em>, </em><em>letter</em><em>, </em><em>{False</em><em>, </em><em>&quot;&quot;}</em>) – If None, location is left unchanged;
+if a letter, it is set;
+else, it is removed.</p></li>
+<li><p><strong>standardize</strong> (<em>bool</em>) – If True, standardize <code class="docutils literal notranslate"><span class="pre">root</span></code> and <code class="docutils literal notranslate"><span class="pre">loc</span></code> values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A new dictionary of attributes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="xoa.cf.SGLocator.merge_attr.html#xoa.cf.SGLocator.merge_attr" title="xoa.cf.SGLocator.merge_attr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">merge_attr()</span></code></a></p>
+</div>
+</dd></dl>
 
 </div>
 
@@ -246,10 +269,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="xoa.cf.SGLocator.valid_attrs.html" class="btn btn-neutral float-right" title="xoa.cf.SGLocator.valid_attrs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="xoa.cf.SGLocator.formats.html" class="btn btn-neutral float-right" title="xoa.cf.SGLocator.formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="xoa.cf.SGLocator.re_match.html" class="btn btn-neutral float-left" title="xoa.cf.SGLocator.re_match" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="xoa.cf.SGLocator.parse_attr.html" class="btn btn-neutral float-left" title="xoa.cf.SGLocator.parse_attr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

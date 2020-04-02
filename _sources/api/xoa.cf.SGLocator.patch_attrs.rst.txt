@@ -1,0 +1,6 @@
+xoa.cf.SGLocator.patch\_attrs
+=============================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: SGLocator.patch_attrs

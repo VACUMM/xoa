@@ -212,10 +212,10 @@
 <a class="reference external" href="http://cfconventions.org/">CF conventions</a>.
 It has two intents:</p>
 <ul class="simple">
-<li><p>Searching <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> variables or coordinates with another
-<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> or a <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v0.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>,
+<li><p>Searching <code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code> variables or coordinates with another
+<code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code> or a <code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code>,
 by scanning name and attributes like <code class="docutils literal notranslate"><span class="pre">units</span></code> and <code class="docutils literal notranslate"><span class="pre">standard_name</span></code>.</p></li>
-<li><p>Formatting <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> variables or coordinates with
+<li><p>Formatting <code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code> variables or coordinates with
 unique name and <code class="docutils literal notranslate"><span class="pre">standard_name</span></code> and <code class="docutils literal notranslate"><span class="pre">long_name</span></code> attributes,
 with support of staggered grid location syntax.</p></li>
 </ul>
@@ -256,7 +256,7 @@ and coordinates <code class="docutils literal notranslate"><span class="pre">coo
 <span class="go"> &#39;long_name&#39;: [&#39;Sea surface temperature&#39;],</span>
 <span class="go"> &#39;name&#39;: [&#39;sst&#39;, &#39;sea_surface_temperature&#39;, &#39;surface_sea_water_temperature&#39;],</span>
 <span class="go"> &#39;processed&#39;: True,</span>
-<span class="go"> &#39;search_order&#39;: &#39;ns&#39;,</span>
+<span class="go"> &#39;search_order&#39;: &#39;sn&#39;,</span>
 <span class="go"> &#39;select&#39;: {},</span>
 <span class="go"> &#39;squeeze&#39;: None,</span>
 <span class="go"> &#39;standard_name&#39;: [&#39;sea_surface_temperature&#39;, &#39;surface_sea_water_temperature&#39;],</span>
@@ -330,7 +330,7 @@ and coordinates <code class="docutils literal notranslate"><span class="pre">coo
 <span class="go"> &#39;long_name&#39;: [&#39;Longitude&#39;],</span>
 <span class="go"> &#39;name&#39;: [&#39;lon&#39;, &#39;longitude&#39;, &#39;nav_lon&#39;, &#39;longitudes&#39;],</span>
 <span class="go"> &#39;processed&#39;: True,</span>
-<span class="go"> &#39;search_order&#39;: &#39;nsua&#39;,</span>
+<span class="go"> &#39;search_order&#39;: &#39;snu&#39;,</span>
 <span class="go"> &#39;standard_name&#39;: [&#39;longitude&#39;, &#39;longitudes&#39;],</span>
 <span class="go"> &#39;units&#39;: [&#39;degrees_east&#39;,</span>
 <span class="go">           &#39;degree_east&#39;,</span>
@@ -386,7 +386,7 @@ and coordinates <code class="docutils literal notranslate"><span class="pre">coo
 </div>
 </div>
 <div class="section" id="searching-within-a-dataset-or-dataarray">
-<h2>Searching within a <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v0.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or  <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataArray</span></code></a><a class="headerlink" href="#searching-within-a-dataset-or-dataarray" title="Permalink to this headline">¶</a></h2>
+<h2>Searching within a <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code> or  <code class="xref py py-class docutils literal notranslate"><span class="pre">DataArray</span></code><a class="headerlink" href="#searching-within-a-dataset-or-dataarray" title="Permalink to this headline">¶</a></h2>
 <p>Let’s define a minimal dataset:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">nx</span> <span class="o">=</span> <span class="mi">3</span>
 
@@ -504,7 +504,7 @@ as soon as the <code class="docutils literal notranslate"><span class="pre">form
 </div>
 <div class="section" id="using-the-accessors">
 <h2>Using the accessors<a class="headerlink" href="#using-the-accessors" title="Permalink to this headline">¶</a></h2>
-<p>Accessors for <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v0.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> and <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>
+<p>Accessors for <code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code>
 can be registerd with the <a class="reference internal" href="api/xoa.cf.register_cf_accessors.html#xoa.cf.register_cf_accessors" title="xoa.cf.register_cf_accessors"><code class="xref py py-func docutils literal notranslate"><span class="pre">xoa.cf.register_cf_accessors()</span></code></a>:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="n">cf</span><span class="o">.</span><span class="n">register_cf_accessors</span><span class="p">()</span>
 </pre></div>
@@ -565,6 +565,7 @@ at the line containing “user CF specs file”:</p>
 - user config file: /local/home/sraynaud/.local/share/xoa/xoa.cfg [*]
 - user CF specs file: /local/home/sraynaud/.config/xoa/cf.cfg [*]
 - user CF cache file: /local/home/sraynaud/.cache/xoa/cf.pyk
+- data samples: croco.south-africa.nc
 *: file not present
 </pre></div>
 </div>
@@ -585,7 +586,7 @@ at the line containing “user CF specs file”:</p>
 <span class="go"> &#39;cmap&#39;: None,</span>
 <span class="go"> &#39;inherit&#39;: None,</span>
 <span class="go"> &#39;squeeze&#39;: None,</span>
-<span class="go"> &#39;search_order&#39;: &#39;ns&#39;,</span>
+<span class="go"> &#39;search_order&#39;: &#39;sn&#39;,</span>
 <span class="go"> &#39;select&#39;: {},</span>
 <span class="go"> &#39;processed&#39;: True}</span>
 </pre></div>
@@ -676,13 +677,13 @@ to be used as a fonction.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [49]: </span><span class="n">cfspecs_old</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span>
 
 <span class="gp">In [50]: </span><span class="n">cf</span><span class="o">.</span><span class="n">set_cf_specs</span><span class="p">(</span><span class="n">cfspecs_banana</span><span class="p">)</span>
-<span class="gh">Out[50]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f4d51f84e90&gt;</span>
+<span class="gh">Out[50]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f1d38ad11d0&gt;</span>
 
 <span class="gp">In [51]: </span><span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span> <span class="ow">is</span> <span class="n">cfspecs_banana</span>
 <span class="gh">Out[51]: </span><span class="go">True</span>
 
 <span class="gp">In [52]: </span><span class="n">cf</span><span class="o">.</span><span class="n">set_cf_specs</span><span class="p">(</span><span class="n">cfspecs_old</span><span class="p">)</span>
-<span class="gh">Out[52]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f4d51f849d0&gt;</span>
+<span class="gh">Out[52]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f1d38ad1290&gt;</span>
 
 <span class="gp">In [53]: </span><span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span> <span class="ow">is</span> <span class="n">cfspecs_old</span>
 <span class="gh">Out[53]: </span><span class="go">True</span>

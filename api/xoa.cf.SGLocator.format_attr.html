@@ -109,7 +109,9 @@
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.format_dataarray.html">xoa.cf.SGLocator.format_dataarray</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.get_location.html">xoa.cf.SGLocator.get_location</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.match_attr.html">xoa.cf.SGLocator.match_attr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.merge_attr.html">xoa.cf.SGLocator.merge_attr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.parse_attr.html">xoa.cf.SGLocator.parse_attr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.patch_attrs.html">xoa.cf.SGLocator.patch_attrs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.formats.html">xoa.cf.SGLocator.formats</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.location_pattern.html">xoa.cf.SGLocator.location_pattern</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.cf.SGLocator.re_match.html">xoa.cf.SGLocator.re_match</a></li>
@@ -260,6 +262,9 @@ else, it is removed.</p></li>
 
 <span class="gp">In [3]: </span><span class="n">sg</span><span class="o">.</span><span class="n">format_attr</span><span class="p">(</span><span class="s1">&#39;standard_name&#39;</span><span class="p">,</span> <span class="s1">&#39;sea_water_temperature&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 <span class="gh">Out[3]: </span><span class="go">&#39;sea_water_temperature&#39;</span>
+
+<span class="gp">In [4]: </span><span class="n">sg</span><span class="o">.</span><span class="n">format_attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;banana_t&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gh">Out[4]: </span><span class="go">&#39;banana_t&#39;</span>
 </pre></div>
 </div>
 </div>

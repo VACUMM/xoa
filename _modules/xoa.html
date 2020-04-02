@@ -235,6 +235,9 @@
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;requirements.txt&quot;</span>
 <span class="p">)</span>
 
+<span class="c1"># Directory of sample files</span>
+<span class="n">_SAMPLE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;_samples&#39;</span><span class="p">)</span>
+
 <span class="n">_CACHE</span> <span class="o">=</span> <span class="p">{}</span>
 
 
@@ -259,8 +262,8 @@
 <span class="sd">        :okwarning:</span>
 
 <span class="sd">        @suppress</span>
-<span class="sd">        import xoa</span>
-<span class="sd">        xoa.xoa_warn(&#39;Be careful!&#39;)</span>
+<span class="sd">        from xoa import xoa_warn</span>
+<span class="sd">        xoa_warn(&#39;Be careful!&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">XoaWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></div>
 
@@ -277,13 +280,13 @@
 <span class="sd">    .. ipython:: python</span>
 
 <span class="sd">        @suppress</span>
-<span class="sd">        import xoa</span>
+<span class="sd">        from xoa import load_options</span>
 <span class="sd">        # Dict</span>
-<span class="sd">        xoa.load_options({&#39;plot&#39;: {&#39;cmappos&#39;: &#39;mycmap&#39;}})</span>
+<span class="sd">        load_options({&#39;plot&#39;: {&#39;cmappos&#39;: &#39;mycmap&#39;}})</span>
 
 <span class="sd">        # Lines</span>
 <span class="sd">        optlines = &quot;[plot]\\n cmappos=mycmap&quot;.split(&#39;\\n&#39;)</span>
-<span class="sd">        xoa.load_options(optlines)</span>
+<span class="sd">        load_options(optlines)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="s2">&quot;cfgspecs&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_CACHE</span><span class="p">:</span>
@@ -329,9 +332,9 @@
 <span class="sd">    .. ipython:: python</span>
 
 <span class="sd">        @suppress</span>
-<span class="sd">        import xoa</span>
-<span class="sd">        print(xoa.get_option(&#39;plot&#39;, &#39;cmapdiv&#39;))</span>
-<span class="sd">        print(xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
+<span class="sd">        from xoa import get_option</span>
+<span class="sd">        print(get_option(&#39;plot&#39;, &#39;cmapdiv&#39;))</span>
+<span class="sd">        print(get_option(&#39;plot.cmapdiv&#39;))</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">options</span> <span class="o">=</span> <span class="n">_get_options_</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">option</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -365,19 +368,19 @@
 <span class="sd">    .. ipython:: python</span>
 
 <span class="sd">        @suppress</span>
-<span class="sd">        import xoa</span>
+<span class="sd">        from xoa import set_options, get_option</span>
 
 <span class="sd">        # Classic: for the session</span>
-<span class="sd">        xoa.set_options(&#39;plot&#39;, cmapdiv=&#39;cmo.balance&#39;, cmappos=&#39;cmo.amp&#39;)</span>
+<span class="sd">        set_options(&#39;plot&#39;, cmapdiv=&#39;cmo.balance&#39;, cmappos=&#39;cmo.amp&#39;)</span>
 
 <span class="sd">        # With dict</span>
 <span class="sd">        opts = {&quot;plot.cmapdiv&quot;: &quot;cmo.balance&quot;}</span>
-<span class="sd">        xoa.set_options(**opts)</span>
+<span class="sd">        set_options(**opts)</span>
 
 <span class="sd">        # Context: temporary</span>
-<span class="sd">        with xoa.set_options(&#39;plot&#39;, cmapdiv=&#39;cmo.delta&#39;):</span>
-<span class="sd">            print(&#39;within context:&#39;, xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
-<span class="sd">        print(&#39;after context:&#39;, xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
+<span class="sd">        with set_options(&#39;plot&#39;, cmapdiv=&#39;cmo.delta&#39;):</span>
+<span class="sd">            print(&#39;within context:&#39;, get_option(&#39;plot.cmapdiv&#39;))</span>
+<span class="sd">        print(&#39;after context:&#39;, get_option(&#39;plot.cmapdiv&#39;))</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -426,8 +429,8 @@
 <span class="sd">    .. ipython:: python</span>
 
 <span class="sd">        @suppress</span>
-<span class="sd">        import xoa</span>
-<span class="sd">        xoa.set_option(&#39;plot.cmapdiv&#39;, &#39;cmo.balance&#39;);</span>
+<span class="sd">        from xoa import set_option</span>
+<span class="sd">        set_option(&#39;plot.cmapdiv&#39;, &#39;cmo.balance&#39;);</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">set_options</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">option</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span></div>
 
@@ -440,12 +443,12 @@
 <span class="sd">    .. ipython:: python</span>
 
 <span class="sd">        @suppress</span>
-<span class="sd">        import xoa</span>
-<span class="sd">        print(xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
-<span class="sd">        xoa.set_options(&#39;plot&#39;, cmapdiv=&#39;mycmap&#39;)</span>
-<span class="sd">        print(xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
-<span class="sd">        xoa.reset_options()</span>
-<span class="sd">        print(xoa.get_option(&#39;plot.cmapdiv&#39;))</span>
+<span class="sd">        from xoa import get_option, set_options, reset_options</span>
+<span class="sd">        print(get_option(&#39;plot.cmapdiv&#39;))</span>
+<span class="sd">        set_options(&#39;plot&#39;, cmapdiv=&#39;mycmap&#39;)</span>
+<span class="sd">        print(get_option(&#39;plot.cmapdiv&#39;))</span>
+<span class="sd">        reset_options()</span>
+<span class="sd">        print(get_option(&#39;plot.cmapdiv&#39;))</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">del</span> <span class="n">_CACHE</span><span class="p">[</span><span class="s1">&#39;options&#39;</span><span class="p">]</span></div>
 
@@ -463,9 +466,9 @@
 <span class="sd">    .. ipython:: python</span>
 
 <span class="sd">        @suppress</span>
-<span class="sd">        import xoa</span>
-<span class="sd">        xoa.show_options()</span>
-<span class="sd">        xoa.show_options(specs=True)</span>
+<span class="sd">        from xoa import show_options</span>
+<span class="sd">        show_options()</span>
+<span class="sd">        show_options(specs=True)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">specs</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">CONFIG_SPECS</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
@@ -496,8 +499,8 @@
 <span class="sd">        :okexcept:</span>
 
 <span class="sd">        @suppress</span>
-<span class="sd">        import xoa</span>
-<span class="sd">        xoa.show_versions()</span>
+<span class="sd">        from xoa import show_versions</span>
+<span class="sd">        show_versions()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- xoa:&quot;</span><span class="p">,</span> <span class="n">__version__</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">_parse_requirements_</span><span class="p">(</span><span class="n">_REQUIREMENTS_FILE</span><span class="p">):</span>
@@ -514,7 +517,17 @@
 
 
 <div class="viewcode-block" id="show_paths"><a class="viewcode-back" href="../api/xoa.show_paths.html#xoa.show_paths">[docs]</a><span class="k">def</span> <span class="nf">show_paths</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Print some xoa paths&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Print some xoa paths</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+<span class="sd">        :okexcept:</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa import show_paths</span>
+<span class="sd">        show_paths()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- xoa library dir:&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
     <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">cf</span>
     <span class="n">asterix</span> <span class="o">=</span> <span class="kc">False</span>
@@ -525,6 +538,7 @@
             <span class="n">asterix</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="n">path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">&quot; [*]&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">+</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- data samples:&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_data_sample</span><span class="p">()))</span>
     <span class="k">if</span> <span class="n">asterix</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*: file not present&quot;</span><span class="p">)</span></div>
 
@@ -538,8 +552,8 @@
 <span class="sd">        :okexcept:</span>
 
 <span class="sd">        @suppress</span>
-<span class="sd">        import xoa</span>
-<span class="sd">        xoa.show_info()</span>
+<span class="sd">        from xoa import show_info</span>
+<span class="sd">        show_info()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# VERSIONS&quot;</span><span class="p">)</span>
     <span class="n">show_versions</span><span class="p">()</span>
@@ -547,6 +561,53 @@
     <span class="n">show_paths</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"># OPTIONS&quot;</span><span class="p">)</span>
     <span class="n">show_options</span><span class="p">(</span><span class="n">specs</span><span class="o">=</span><span class="n">opt_specs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_data_sample"><a class="viewcode-back" href="../api/xoa.get_data_sample.html#xoa.get_data_sample">[docs]</a><span class="k">def</span> <span class="nf">get_data_sample</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the absolute path to a sample file</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename: str, None</span>
+<span class="sd">        Sample name of the sample. If ommited, a list of available sample</span>
+<span class="sd">        name is returned.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str OR list(str)</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. .ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa import get_data_sample</span>
+<span class="sd">        get_data_sample(&quot;croco.south-africa.nc&quot;)</span>
+<span class="sd">        get_data_sample()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">_SAMPLE_DIR</span><span class="p">):</span>
+        <span class="n">filenames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">filenames</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">_SAMPLE_DIR</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">filenames</span>
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">XoaError</span><span class="p">(</span><span class="s2">&quot;Invalid data sample: &quot;</span><span class="o">+</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_SAMPLE_DIR</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="show_data_samples"><a class="viewcode-back" href="../api/xoa.show_data_samples.html#xoa.show_data_samples">[docs]</a><span class="k">def</span> <span class="nf">show_data_samples</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Print the list of data samples</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa import show_data_samples</span>
+<span class="sd">        show_data_samples()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_data_sample</span><span class="p">()))</span></div>
 </pre></div>
 
            </div>

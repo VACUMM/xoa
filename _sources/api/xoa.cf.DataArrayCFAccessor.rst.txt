@@ -22,6 +22,9 @@ xoa.cf.DataArrayCFAccessor
          ~DataArrayCFAccessor.get
       
       
+         ~DataArrayCFAccessor.get_coord
+      
+      
          ~DataArrayCFAccessor.get_dim
       
       
