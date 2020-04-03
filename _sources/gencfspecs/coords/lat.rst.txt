@@ -1,0 +1,21 @@
+:attr:`~xoa.cf.CFSpecs.coords` [``"lat"``]
+==========================================
+
+.. cfcoord:: lat
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'lat'`` ``'latitude'`` ``'nav_lat'`` ``'latitudes'``
+	    * - **standard_name**
+	      - ``'latitude'``
+	    * - **long_name**
+	      - ``'Latitude'``
+	    * - **units**
+	      - ``'degrees_north'`` ``'degree_north'`` ``'degree_n'`` ``'degrees_n'`` ``'degreen'`` ``'degreesn'``
+	    * - **axis**
+	      - ``'Y'``
+	    * - **search_order**
+	      - ``'snu'``
+	    * - **domain**
+	      - ``'generic'``

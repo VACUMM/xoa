@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"wlv"``]
+=============================================
+
+.. cfdatavar:: wlv
+
+	.. list-table::
+
+	    * - **units**
+	      - ``'m'``
+	    * - **name**
+	      - ``'wlv'``
+	    * - **long_name**
+	      - ``'Wlv'``
+	    * - **standard_name**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

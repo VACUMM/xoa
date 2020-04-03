@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"hfsen"``]
+===============================================
+
+.. cfdatavar:: hfsen
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'surface_averaged_upward_sensible_heat_flux'`` ``'upward_sensible_heat_flux'`` ``'surface_upward_sensible_heat_flux'``
+	    * - **long_name**
+	      - ``'Sensible heat flux (positive when directed upward)'``
+	    * - **units**
+	      - ``'W m-2'``
+	    * - **cmap**
+	      - ``'cmo.solar'``
+	    * - **name**
+	      - ``'hfsen'`` ``'surface_averaged_upward_sensible_heat_flux'`` ``'upward_sensible_heat_flux'`` ``'surface_upward_sensible_heat_flux'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"dens"``]
+==============================================
+
+.. cfdatavar:: dens
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_water_density'``
+	    * - **long_name**
+	      - ``'Sea water density'``
+	    * - **units**
+	      - ``'kg m-3'``
+	    * - **cmap**
+	      - ``'cmo.dense'``
+	    * - **name**
+	      - ``'dens'`` ``'sea_water_density'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

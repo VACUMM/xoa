@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ssd"``]
+=============================================
+
+.. cfdatavar:: ssd
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_surface_density'``
+	    * - **long_name**
+	      - ``'Sea surface density'``
+	    * - **units**
+	      - ``'PSU'``
+	    * - **cmap**
+	      - ``'cmo.dense'``
+	    * - **name**
+	      - ``'ssd'`` ``'sea_surface_density'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

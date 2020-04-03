@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"dy"``]
+============================================
+
+.. cfdatavar:: dy
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'cell_y_size'``
+	    * - **long_name**
+	      - ``'Mesh size along y'``
+	    * - **units**
+	      - ``'m'``
+	    * - **name**
+	      - ``'dy'`` ``'cell_y_size'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

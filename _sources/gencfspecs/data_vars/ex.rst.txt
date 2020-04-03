@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ex"``]
+============================================
+
+.. cfdatavar:: ex
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'inverse_of_cell_x_size'``
+	    * - **long_name**
+	      - ``'Inverse of mesh size along x'``
+	    * - **units**
+	      - ``'m-1'``
+	    * - **name**
+	      - ``'ex'`` ``'inverse_of_cell_x_size'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

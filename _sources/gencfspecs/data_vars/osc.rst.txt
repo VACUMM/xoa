@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"osc"``]
+=============================================
+
+.. cfdatavar:: osc
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'ocean_salt_content'``
+	    * - **long_name**
+	      - ``'Ocean salt content'``
+	    * - **units**
+	      - ``'kg'``
+	    * - **cmap**
+	      - ``'cmo.haline'``
+	    * - **name**
+	      - ``'osc'`` ``'ocean_salt_content'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

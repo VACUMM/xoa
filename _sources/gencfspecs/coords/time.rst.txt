@@ -1,0 +1,21 @@
+:attr:`~xoa.cf.CFSpecs.coords` [``"time"``]
+===========================================
+
+.. cfcoord:: time
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'time'``
+	    * - **long_name**
+	      - ``'Time'``
+	    * - **axis**
+	      - ``'T'``
+	    * - **name**
+	      - ``'time'``
+	    * - **units**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **search_order**
+	      - ``'nsa'``

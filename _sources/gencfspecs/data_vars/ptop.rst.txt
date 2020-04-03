@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ptop"``]
+==============================================
+
+.. cfdatavar:: ptop
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'air_pressure_at_top_of_atmosphere_model'``
+	    * - **long_name**
+	      - ``'Air pressure at top of model'``
+	    * - **units**
+	      - ``'Pa'``
+	    * - **name**
+	      - ``'ptop'`` ``'air_pressure_at_top_of_atmosphere_model'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

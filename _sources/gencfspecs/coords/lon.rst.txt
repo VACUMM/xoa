@@ -1,0 +1,21 @@
+:attr:`~xoa.cf.CFSpecs.coords` [``"lon"``]
+==========================================
+
+.. cfcoord:: lon
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'lon'`` ``'longitude'`` ``'nav_lon'`` ``'longitudes'``
+	    * - **standard_name**
+	      - ``'longitude'`` ``'longitudes'``
+	    * - **long_name**
+	      - ``'Longitude'``
+	    * - **units**
+	      - ``'degrees_east'`` ``'degree_east'`` ``'degree_e'`` ``'degrees_e'`` ``'degreee'`` ``'degreese'``
+	    * - **axis**
+	      - ``'X'``
+	    * - **search_order**
+	      - ``'snu'``
+	    * - **domain**
+	      - ``'generic'``

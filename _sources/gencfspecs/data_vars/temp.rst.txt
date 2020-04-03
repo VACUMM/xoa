@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"temp"``]
+==============================================
+
+.. cfdatavar:: temp
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'temp'`` ``'temperature'`` ``'TEMP'`` ``'sea_water_temperature'`` ``'sea_water_potential_temperature'``
+	    * - **standard_name**
+	      - ``'sea_water_temperature'`` ``'sea_water_potential_temperature'``
+	    * - **long_name**
+	      - ``'Temperature'``
+	    * - **units**
+	      - ``'degrees_celsius'``
+	    * - **cmap**
+	      - ``'cmo.thermal'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

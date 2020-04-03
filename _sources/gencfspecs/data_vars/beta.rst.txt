@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"beta"``]
+==============================================
+
+.. cfdatavar:: beta
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'meridional_derivative_of_coriolis_parameter'``
+	    * - **long_name**
+	      - ``'Meridional derivative of coriolis parameter'``
+	    * - **units**
+	      - ``'m-1 s-1'``
+	    * - **name**
+	      - ``'beta'`` ``'meridional_derivative_of_coriolis_parameter'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"q2m"``]
+=============================================
+
+.. cfdatavar:: q2m
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'air_specific_humidity_at_2_meters'``
+	    * - **long_name**
+	      - ``'2 m specific humidity'``
+	    * - **units**
+	      - ``'kg kg-1'``
+	    * - **cmap**
+	      - ``'cmo.dense'``
+	    * - **name**
+	      - ``'q2m'`` ``'air_specific_humidity_at_2_meters'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

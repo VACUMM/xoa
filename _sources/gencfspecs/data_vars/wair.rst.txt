@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"wair"``]
+==============================================
+
+.. cfdatavar:: wair
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'wair'`` ``'wa'`` ``'wwnd'`` ``'upward_wind'`` ``'z_wind'``
+	    * - **standard_name**
+	      - ``'upward_wind'`` ``'z_wind'``
+	    * - **long_name**
+	      - ``'Upward wind speed'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.curl:piv0'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

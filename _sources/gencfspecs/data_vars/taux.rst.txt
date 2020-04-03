@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"taux"``]
+==============================================
+
+.. cfdatavar:: taux
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'taux'`` ``'ustress'`` ``'surface_downward_x_stress'`` ``'surface_x_stress'`` ``'surface_downward_x_stress_at_u_location'``
+	    * - **standard_name**
+	      - ``'surface_downward_x_stress'`` ``'surface_x_stress'`` ``'surface_downward_x_stress_at_u_location'``
+	    * - **long_name**
+	      - ``'Surface wind stress along X'``
+	    * - **units**
+	      - ``'N m-2'``
+	    * - **cmap**
+	      - ``'cmo.diff:piv0'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

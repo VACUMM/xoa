@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"w3d"``]
+=============================================
+
+.. cfdatavar:: w3d
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'w3d'`` ``'wz'`` ``'sea_water_z_velocity_at_w_location'`` ``'sea_water_z_velocity'``
+	    * - **standard_name**
+	      - ``'sea_water_z_velocity_at_w_location'`` ``'sea_water_z_velocity'``
+	    * - **long_name**
+	      - ``'Sea water velocity along Z at W location'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.delta:piv0'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

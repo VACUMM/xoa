@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"oro"``]
+=============================================
+
+.. cfdatavar:: oro
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'oro'`` ``'zs'`` ``'orography'``
+	    * - **standard_name**
+	      - ``'orography'``
+	    * - **long_name**
+	      - ``'Orography for SLEVE vertical coordinates'``
+	    * - **units**
+	      - ``'m'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

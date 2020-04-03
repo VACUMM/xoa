@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"sndspd"``]
+================================================
+
+.. cfdatavar:: sndspd
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'speed_of_sound_in_sea_water'``
+	    * - **long_name**
+	      - ``'Speed of sound in water'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **name**
+	      - ``'sndspd'`` ``'speed_of_sound_in_sea_water'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

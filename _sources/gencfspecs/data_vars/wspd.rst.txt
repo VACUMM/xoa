@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"wspd"``]
+==============================================
+
+.. cfdatavar:: wspd
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'wind_speed'``
+	    * - **long_name**
+	      - ``'Wind speed'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.speed'``
+	    * - **name**
+	      - ``'wspd'`` ``'wind_speed'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

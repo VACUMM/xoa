@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"depth"``]
+===============================================
+
+.. cfdatavar:: depth
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'depth'`` ``'dep'`` ``'ocean_layer_depth'``
+	    * - **standard_name**
+	      - ``'ocean_layer_depth'``
+	    * - **long_name**
+	      - ``'Depth'``
+	    * - **units**
+	      - ``'m'``
+	    * - **cmap**
+	      - ``'cmo.deep'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

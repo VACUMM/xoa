@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"meanlev"``]
+=================================================
+
+.. cfdatavar:: meanlev
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'meanlev'`` ``'niv_moy'`` ``'mean_sea_level_above_sea_floor_depth_at_lowest_astronomical_tide'`` ``'mean_sea_level'``
+	    * - **standard_name**
+	      - ``'mean_sea_level_above_sea_floor_depth_at_lowest_astronomical_tide'`` ``'mean_sea_level'``
+	    * - **long_name**
+	      - ``'Mean Sea Level'``
+	    * - **units**
+	      - ``'m'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

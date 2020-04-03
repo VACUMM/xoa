@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"orosm"``]
+===============================================
+
+.. cfdatavar:: orosm
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'smoothed_orography'``
+	    * - **long_name**
+	      - ``'Smoothed orography for SLEVE vertical coordinates'``
+	    * - **units**
+	      - ``'m'``
+	    * - **name**
+	      - ``'orosm'`` ``'smoothed_orography'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

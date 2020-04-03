@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"vbc"``]
+=============================================
+
+.. cfdatavar:: vbc
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'vbc'`` ``'v'`` ``'baroclinic_sea_water_y_velocity'``
+	    * - **standard_name**
+	      - ``'baroclinic_sea_water_y_velocity'``
+	    * - **long_name**
+	      - ``'Sea water baroclinic velocity along Y'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.delta:piv0'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

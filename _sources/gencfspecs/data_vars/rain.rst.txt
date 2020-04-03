@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"rain"``]
+==============================================
+
+.. cfdatavar:: rain
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'lwe_thickness_of_precipitation_amount'`` ``'lwe_thickness_of_downward_precipitation_amount'``
+	    * - **long_name**
+	      - ``'Precipitation [Downward (positive when it is raining)]'``
+	    * - **units**
+	      - ``'m'`` ``'mm'``
+	    * - **cmap**
+	      - ``'cmo.rain'``
+	    * - **name**
+	      - ``'rain'`` ``'lwe_thickness_of_precipitation_amount'`` ``'lwe_thickness_of_downward_precipitation_amount'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

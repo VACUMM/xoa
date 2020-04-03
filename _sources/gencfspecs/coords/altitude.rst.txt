@@ -1,0 +1,21 @@
+:attr:`~xoa.cf.CFSpecs.coords` [``"altitude"``]
+===============================================
+
+.. cfcoord:: altitude
+
+	.. list-table::
+
+	    * - **axis**
+	      - ``'Z'``
+	    * - **name**
+	      - ``'altitude'`` ``'altitudet'`` ``'altitudeu'`` ``'altitudev'`` ``'atmosphere_layer_altitude'``
+	    * - **long_name**
+	      - ``'Altitude'``
+	    * - **standard_name**
+	      - ``'atmosphere_layer_altitude'``
+	    * - **units**
+	      - ``'m'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **search_order**
+	      - ``'nsa'``

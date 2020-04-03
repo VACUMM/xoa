@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"dz"``]
+============================================
+
+.. cfdatavar:: dz
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'ocean_layer_thickness'``
+	    * - **long_name**
+	      - ``'Ocean layer thickness'``
+	    * - **units**
+	      - ``'m'``
+	    * - **name**
+	      - ``'dz'`` ``'ocean_layer_thickness'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ghf"``]
+=============================================
+
+.. cfdatavar:: ghf
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'ghf'`` ``'averaged_downward_ground_heat_flux'``
+	    * - **standard_name**
+	      - ``'averaged_downward_ground_heat_flux'``
+	    * - **long_name**
+	      - ``'Ground heat flux (SW + LW - LE - H)'``
+	    * - **units**
+	      - ``'W m-2'``
+	    * - **cmap**
+	      - ``'cmo.solar'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

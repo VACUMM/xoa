@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"sigmatheta"``]
+====================================================
+
+.. cfdatavar:: sigmatheta
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_water_sigma_theta'``
+	    * - **long_name**
+	      - ``'Sea water potential density minus 1000'``
+	    * - **units**
+	      - ``'kg m-3'``
+	    * - **cmap**
+	      - ``'cmo.dense'``
+	    * - **name**
+	      - ``'sigmatheta'`` ``'sea_water_sigma_theta'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

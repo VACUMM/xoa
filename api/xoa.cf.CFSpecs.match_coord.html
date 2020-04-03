@@ -240,7 +240,29 @@
 <dl class="method">
 <dt id="xoa.cf.CFSpecs.match_coord">
 <code class="sig-prename descclassname">CFSpecs.</code><code class="sig-name descname">match_coord</code><span class="sig-paren">(</span><em class="sig-param">da</em>, <em class="sig-param">name=None</em>, <em class="sig-param">loc='any'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cf.html#CFSpecs.match_coord"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cf.CFSpecs.match_coord" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Check if an array matches a given or any coord specs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>da</strong> (<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><em>xarray.DataArray</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>dict</em><em>, </em><em>None</em>) – Cf name.
+If None, all names are used.
+If a dict, name is interpreted as an explicit set of
+specifications.</p></li>
+<li><p><strong>loc</strong> (<em>str</em><em>, </em><em>{&quot;any&quot;</em><em>, </em><em>None}</em><em>, </em><em>{&quot;&quot;</em><em>, </em><em>False}</em>) – <ul>
+<li><p>str: one of these locations</p></li>
+<li><p>None or “any”: any</p></li>
+<li><p>False or ‘””: no location</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="xoa.cf.CFCoordSpecs.match.html#xoa.cf.CFCoordSpecs.match" title="xoa.cf.CFCoordSpecs.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CFCoordSpecs.match()</span></code></a></p>
+</div>
+</dd></dl>
 
 </div>
 

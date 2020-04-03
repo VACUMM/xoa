@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"dx"``]
+============================================
+
+.. cfdatavar:: dx
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'cell_x_size'``
+	    * - **long_name**
+	      - ``'Mesh size along x'``
+	    * - **units**
+	      - ``'m'``
+	    * - **name**
+	      - ``'dx'`` ``'cell_x_size'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

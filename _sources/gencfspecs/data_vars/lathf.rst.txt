@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"lathf"``]
+===============================================
+
+.. cfdatavar:: lathf
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'surface_downward_latent_heat_flux'``
+	    * - **long_name**
+	      - ``'Latent heat flux (positive when directed downward)'``
+	    * - **units**
+	      - ``'W.m-2'``
+	    * - **cmap**
+	      - ``'cmo.solar'``
+	    * - **name**
+	      - ``'lathf'`` ``'surface_downward_latent_heat_flux'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

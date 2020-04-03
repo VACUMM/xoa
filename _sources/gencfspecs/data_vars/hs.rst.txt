@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"hs"``]
+============================================
+
+.. cfdatavar:: hs
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'hs'`` ``'hm0'`` ``'sea_surface_wave_significant_height'`` ``'significant_height_of_wind_and_swell_waves'``
+	    * - **standard_name**
+	      - ``'sea_surface_wave_significant_height'`` ``'significant_height_of_wind_and_swell_waves'``
+	    * - **long_name**
+	      - ``'Significant wave height'`` ``'Significant height of wind and swell waves'``
+	    * - **units**
+	      - ``'m'``
+	    * - **cmap**
+	      - ``'cmo.amp'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

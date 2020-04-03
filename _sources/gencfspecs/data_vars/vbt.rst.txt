@@ -1,0 +1,29 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"vbt"``]
+=============================================
+
+.. cfdatavar:: vbt
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'vbt'`` ``'v2d'`` ``'v'`` ``'barotropic_sea_water_y_velocity'``
+	    * - **standard_name**
+	      - ``'barotropic_sea_water_y_velocity'``
+	    * - **long_name**
+	      - ``'Sea water barotropic velocity along Y'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **atlocs**
+	      - ``'t'`` ``'u'`` ``'v'``
+	    * - **physloc**
+	      - ``'v'``
+	    * - **cmap**
+	      - ``'cmo.delta:piv0'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

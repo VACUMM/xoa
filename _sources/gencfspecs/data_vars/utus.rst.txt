@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"utus"``]
+==============================================
+
+.. cfdatavar:: utus
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'eastward_stokes_transport'``
+	    * - **long_name**
+	      - ``'Eastward stokes transport'``
+	    * - **units**
+	      - ``'m2 s-1'``
+	    * - **name**
+	      - ``'utus'`` ``'eastward_stokes_transport'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

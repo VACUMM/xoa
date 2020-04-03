@@ -1,0 +1,27 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"sal"``]
+=============================================
+
+.. cfdatavar:: sal
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'sal'`` ``'psal'`` ``'salinity'`` ``'SAL'``
+	    * - **standard_names**
+	      - ``'sea_water_salinity'``
+	    * - **long_name**
+	      - ``'Salinity'``
+	    * - **units**
+	      - ``'PSU'``
+	    * - **cmap**
+	      - ``'cmo.haline'``
+	    * - **standard_name**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

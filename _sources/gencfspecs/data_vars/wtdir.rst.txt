@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"wtdir"``]
+===============================================
+
+.. cfdatavar:: wtdir
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'wind_to_direction'``
+	    * - **long_name**
+	      - ``'Wind to direction'``
+	    * - **units**
+	      - ``'degrees'``
+	    * - **cmap**
+	      - ``'cmo.phase:cyc360'``
+	    * - **name**
+	      - ``'wtdir'`` ``'wind_to_direction'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

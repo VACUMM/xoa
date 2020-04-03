@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"tp"``]
+============================================
+
+.. cfdatavar:: tp
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_surface_wave_peak_period'``
+	    * - **long_name**
+	      - ``'Peak period'``
+	    * - **units**
+	      - ``'s'``
+	    * - **cmap**
+	      - ``'cmo.tempo'``
+	    * - **name**
+	      - ``'tp'`` ``'sea_surface_wave_peak_period'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

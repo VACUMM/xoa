@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"kz"``]
+============================================
+
+.. cfdatavar:: kz
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'kz'`` ``'kzm'`` ``'average_ocean_vertical_tracer_diffusivity'``
+	    * - **standard_name**
+	      - ``'average_ocean_vertical_tracer_diffusivity'``
+	    * - **long_name**
+	      - ``'Vertical diffusivity'``
+	    * - **units**
+	      - ``'m2 s-1'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

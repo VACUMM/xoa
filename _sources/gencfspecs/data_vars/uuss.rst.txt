@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"uuss"``]
+==============================================
+
+.. cfdatavar:: uuss
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'eastward_surface_stokes_drift'``
+	    * - **long_name**
+	      - ``'Eastward surface stokes drift'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **name**
+	      - ``'uuss'`` ``'eastward_surface_stokes_drift'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

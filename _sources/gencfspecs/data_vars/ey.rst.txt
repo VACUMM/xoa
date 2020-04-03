@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ey"``]
+============================================
+
+.. cfdatavar:: ey
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'inverse_of_cell_y_size'``
+	    * - **long_name**
+	      - ``'Inverse of mesh size along y'``
+	    * - **units**
+	      - ``'m-1'``
+	    * - **name**
+	      - ``'ey'`` ``'inverse_of_cell_y_size'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"t0m1"``]
+==============================================
+
+.. cfdatavar:: t0m1
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_surface_wind_wave_mean_period_from_variance_spectral_density_inverse_frequency_moment'``
+	    * - **long_name**
+	      - ``'Mean wave period'``
+	    * - **units**
+	      - ``'s'``
+	    * - **cmap**
+	      - ``'cmo.tempo'``
+	    * - **name**
+	      - ``'t0m1'`` ``'sea_surface_wind_wave_mean_period_from_variance_spectral_density_inverse_frequency_moment'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

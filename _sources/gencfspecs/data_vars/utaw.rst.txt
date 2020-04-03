@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"utaw"``]
+==============================================
+
+.. cfdatavar:: utaw
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'x_component_of_wave_supported_wind_stress'``
+	    * - **long_name**
+	      - ``'Eastward wave supported wind stress'`` ``'Zonal component of the atmosphere-wave momentum flux'``
+	    * - **units**
+	      - ``'m2 s-2'``
+	    * - **name**
+	      - ``'utaw'`` ``'x_component_of_wave_supported_wind_stress'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"sigma1"``]
+================================================
+
+.. cfdatavar:: sigma1
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_water_potential_density'``
+	    * - **long_name**
+	      - ``'Sea water potential density with ref at 1000 dbar'``
+	    * - **units**
+	      - ``'kg m-3'``
+	    * - **cmap**
+	      - ``'cmo.dense'``
+	    * - **name**
+	      - ``'sigma1'`` ``'sea_water_potential_density'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

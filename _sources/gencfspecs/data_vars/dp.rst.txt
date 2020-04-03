@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"dp"``]
+============================================
+
+.. cfdatavar:: dp
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'dp'`` ``'sea_surface_wave_peak_direction'``
+	    * - **standard_name**
+	      - ``'sea_surface_wave_peak_direction'``
+	    * - **long_name**
+	      - ``'Peak direction'``
+	    * - **units**
+	      - ``'degrees'``
+	    * - **cmap**
+	      - ``'cmo.phase:cyc360'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

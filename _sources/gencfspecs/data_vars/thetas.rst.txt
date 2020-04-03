@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"thetas"``]
+================================================
+
+.. cfdatavar:: thetas
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'ocean_s_coordinate_surface_control'``
+	    * - **name**
+	      - ``'thetas'`` ``'ocean_s_coordinate_surface_control'``
+	    * - **long_name**
+	      - ``'Ocean s coordinate surface control'``
+	    * - **units**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

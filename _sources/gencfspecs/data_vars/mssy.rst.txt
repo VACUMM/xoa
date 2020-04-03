@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"mssy"``]
+==============================================
+
+.. cfdatavar:: mssy
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'nortward_mean_square_slope'`` ``'y_mean_square_slope'``
+	    * - **long_name**
+	      - ``'Northward mean square slope'``
+	    * - **units**
+	      - ``'m m-1'``
+	    * - **name**
+	      - ``'mssy'`` ``'nortward_mean_square_slope'`` ``'y_mean_square_slope'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

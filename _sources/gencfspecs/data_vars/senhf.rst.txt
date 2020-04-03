@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"senhf"``]
+===============================================
+
+.. cfdatavar:: senhf
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'surface_downward_sensible_heat_flux'``
+	    * - **long_name**
+	      - ``'Sensible heat flux (positive when directed downward)'``
+	    * - **units**
+	      - ``'W m-2'``
+	    * - **cmap**
+	      - ``'cmo.solar'``
+	    * - **name**
+	      - ``'senhf'`` ``'surface_downward_sensible_heat_flux'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

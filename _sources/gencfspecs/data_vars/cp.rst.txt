@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"cp"``]
+============================================
+
+.. cfdatavar:: cp
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'specific_heat_capacity'``
+	    * - **long_name**
+	      - ``'Specific heat capacity'``
+	    * - **units**
+	      - ``'J K-1'``
+	    * - **cmap**
+	      - ``'cmo.thermal'``
+	    * - **name**
+	      - ``'cp'`` ``'specific_heat_capacity'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"bathy"``]
+===============================================
+
+.. cfdatavar:: bathy
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'bathy'`` ``'h0'`` ``'dpt'`` ``'model_sea_floor_depth_below_sea_level'`` ``'model_sea_floor_depth_below_geoid'`` ``'sea_floor_depth_below_geoid'``
+	    * - **standard_name**
+	      - ``'model_sea_floor_depth_below_sea_level'`` ``'model_sea_floor_depth_below_geoid'`` ``'sea_floor_depth_below_geoid'``
+	    * - **long_name**
+	      - ``'Bathymetry'``
+	    * - **units**
+	      - ``'m'``
+	    * - **cmap**
+	      - ``'cmo.deep'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

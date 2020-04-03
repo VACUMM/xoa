@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"vtaw"``]
+==============================================
+
+.. cfdatavar:: vtaw
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'y_component_of_wave_supported_wind_stress'``
+	    * - **long_name**
+	      - ``'Northward wave supported wind stress'`` ``'Meridional component of the atmosphere-wave momentum flux'``
+	    * - **units**
+	      - ``'m2 s-2'``
+	    * - **name**
+	      - ``'vtaw'`` ``'y_component_of_wave_supported_wind_stress'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

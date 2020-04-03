@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"thetab"``]
+================================================
+
+.. cfdatavar:: thetab
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'ocean_s_coordinate_bottom_control'``
+	    * - **name**
+	      - ``'thetab'`` ``'ocean_s_coordinate_bottom_control'``
+	    * - **long_name**
+	      - ``'Ocean s coordinate bottom control'``
+	    * - **units**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

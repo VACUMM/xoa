@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"evap"``]
+==============================================
+
+.. cfdatavar:: evap
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'lwe_thickness_of_water_evaporation_amount'``
+	    * - **long_name**
+	      - ``'evaporation (positive when directed downward)'``
+	    * - **units**
+	      - ``'m'``
+	    * - **cmap**
+	      - ``'cmo.amp'``
+	    * - **name**
+	      - ``'evap'`` ``'lwe_thickness_of_water_evaporation_amount'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

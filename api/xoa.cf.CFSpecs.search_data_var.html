@@ -240,7 +240,62 @@
 <dl class="method">
 <dt id="xoa.cf.CFSpecs.search_data_var">
 <code class="sig-prename descclassname">CFSpecs.</code><code class="sig-name descname">search_data_var</code><span class="sig-paren">(</span><em class="sig-param">dsa</em>, <em class="sig-param">name=None</em>, <em class="sig-param">loc='any'</em>, <em class="sig-param">get='obj'</em>, <em class="sig-param">single=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cf.html#CFSpecs.search_data_var"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cf.CFSpecs.search_data_var" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Search for a data_var that maches given or any specs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dsa</strong> (<em>DataArray</em><em> or </em><em>Dataset</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>dict</em>) – A CF name. If not provided, all CF names are scaned.</p></li>
+<li><p><strong>loc</strong> (<em>str</em><em>, </em><em>{&quot;any&quot;</em><em>, </em><em>None}</em><em>, </em><em>{&quot;&quot;</em><em>, </em><em>False}</em>) – <ul>
+<li><p>str: one of these locations</p></li>
+<li><p>None or “any”: any</p></li>
+<li><p>False or ‘””: no location</p></li>
+</ul>
+</p></li>
+<li><p><strong>get</strong> (<em>{&quot;obj&quot;</em><em>, </em><em>&quot;name&quot;}</em>) – When found, get the object found or its name.</p></li>
+<li><p><strong>single</strong> (<em>bool</em>) – If True, return the first item found or None.
+If False, return a possible empty list of found items.
+A warning is emitted when set to True and multiple item are found.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None or str or object</p>
+</dd>
+</dl>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+<span class="gp">   ...: </span>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span>
+<span class="gp">   ...: </span>    <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;standard_name&#39;</span><span class="p">:</span> <span class="s1">&#39;sea_water_temperature&#39;</span><span class="p">})</span>
+<span class="gp">   ...: </span>
+
+<span class="gp">In [2]: </span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">})</span>
+
+<span class="gp">In [3]: </span><span class="n">cfspecs</span> <span class="o">=</span> <span class="n">get_cf_specs</span><span class="p">()</span>
+
+<span class="gp">In [4]: </span><span class="n">cfspecs</span><span class="o">.</span><span class="n">search_data_var</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">)</span>
+<span class="gh">Out[4]: </span><span class="go"></span>
+<span class="go">&lt;xarray.DataArray &#39;foo&#39; (x: 2)&gt;</span>
+<span class="go">array([0, 1])</span>
+<span class="go">Dimensions without coordinates: x</span>
+<span class="go">Attributes:</span>
+<span class="go">    standard_name:  sea_water_temperature</span>
+
+<span class="gp">In [5]: </span><span class="n">cfspecs</span><span class="o">.</span><span class="n">search_data_var</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<span class="gh">Out[5]: </span><span class="go">&#39;temp&#39;</span>
+
+<span class="gp">In [6]: </span><span class="n">cfspecs</span><span class="o">.</span><span class="n">search_data_var</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;sal&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="xoa.cf.CFSpecs.search_coord.html#xoa.cf.CFSpecs.search_coord" title="xoa.cf.CFSpecs.search_coord"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search_coord()</span></code></a>, <a class="reference internal" href="xoa.cf.CFVarSpecs.search.html#xoa.cf.CFVarSpecs.search" title="xoa.cf.CFVarSpecs.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CFVarSpecs.search()</span></code></a></p>
+</div>
+</dd></dl>
 
 </div>
 

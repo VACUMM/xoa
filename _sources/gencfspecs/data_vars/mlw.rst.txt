@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"mlw"``]
+=============================================
+
+.. cfdatavar:: mlw
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'mean_wave_length'``
+	    * - **long_name**
+	      - ``'Mean wave length'``
+	    * - **units**
+	      - ``'m'``
+	    * - **cmap**
+	      - ``'cmo.tempo'``
+	    * - **name**
+	      - ``'mlw'`` ``'mean_wave_length'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"vy10m"``]
+===============================================
+
+.. cfdatavar:: vy10m
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'y_wind_at_10m'`` ``'y_wind'`` ``'grid_northward_wind'`` ``'y_wind_at_v_location'`` ``'y_wind_at_10m_at_v_location'``
+	    * - **long_name**
+	      - ``'10-m wind speed along Y'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.delta:piv0'``
+	    * - **name**
+	      - ``'vy10m'`` ``'y_wind_at_10m'`` ``'y_wind'`` ``'grid_northward_wind'`` ``'y_wind_at_v_location'`` ``'y_wind_at_10m_at_v_location'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

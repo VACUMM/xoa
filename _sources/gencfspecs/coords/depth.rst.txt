@@ -1,0 +1,21 @@
+:attr:`~xoa.cf.CFSpecs.coords` [``"depth"``]
+============================================
+
+.. cfcoord:: depth
+
+	.. list-table::
+
+	    * - **axis**
+	      - ``'Z'``
+	    * - **name**
+	      - ``'depth'`` ``'dep'`` ``'ocean_layer_depth'``
+	    * - **long_name**
+	      - ``'Depth'``
+	    * - **standard_name**
+	      - ``'ocean_layer_depth'``
+	    * - **units**
+	      - ``'m'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **search_order**
+	      - ``'nsa'``

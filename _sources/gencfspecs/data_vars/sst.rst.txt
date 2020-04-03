@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"sst"``]
+=============================================
+
+.. cfdatavar:: sst
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_surface_temperature'`` ``'surface_sea_water_temperature'``
+	    * - **long_name**
+	      - ``'Sea surface temperature'``
+	    * - **units**
+	      - ``'degrees_celsius'``
+	    * - **cmap**
+	      - ``'cmo.thermal'``
+	    * - **name**
+	      - ``'sst'`` ``'sea_surface_temperature'`` ``'surface_sea_water_temperature'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ps"``]
+============================================
+
+.. cfdatavar:: ps
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'surface_air_pressure'``
+	    * - **long_name**
+	      - ``'Surface air pressure'``
+	    * - **units**
+	      - ``'Pa'``
+	    * - **name**
+	      - ``'ps'`` ``'surface_air_pressure'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

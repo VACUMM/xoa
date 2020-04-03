@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ubr"``]
+=============================================
+
+.. cfdatavar:: ubr
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'rms_amplitude_of_orbital_bottom_velocity_of_wind_and_swell_waves'``
+	    * - **long_name**
+	      - ``'Near bottom rms velocities'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.amp'``
+	    * - **name**
+	      - ``'ubr'`` ``'rms_amplitude_of_orbital_bottom_velocity_of_wind_and_swell_waves'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

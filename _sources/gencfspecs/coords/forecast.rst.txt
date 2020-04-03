@@ -1,0 +1,21 @@
+:attr:`~xoa.cf.CFSpecs.coords` [``"forecast"``]
+===============================================
+
+.. cfcoord:: forecast
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'fct'`` ``'forecast_time'``
+	    * - **long_name**
+	      - ``'Forecast'``
+	    * - **axis**
+	      - ``'F'``
+	    * - **name**
+	      - ``'forecast'`` ``'fct'`` ``'forecast_time'``
+	    * - **units**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **search_order**
+	      - ``'nsa'``

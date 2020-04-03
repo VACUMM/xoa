@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"swuhf"``]
+===============================================
+
+.. cfdatavar:: swuhf
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'surface_upward_shortwave_flux'``
+	    * - **long_name**
+	      - ``'Shortwave radiation (positive when directed upward)'``
+	    * - **units**
+	      - ``'W m-2'``
+	    * - **cmap**
+	      - ``'cmo.solar'``
+	    * - **name**
+	      - ``'swuhf'`` ``'surface_upward_shortwave_flux'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

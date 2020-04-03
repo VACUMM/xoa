@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"th1p"``]
+==============================================
+
+.. cfdatavar:: th1p
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'th1p'`` ``'dir'`` ``'sea_surface_wave_from_direction'``
+	    * - **standard_name**
+	      - ``'sea_surface_wave_from_direction'``
+	    * - **long_name**
+	      - ``'Mean wave direction'`` ``'Mean direction of wind and swell waves at spectral peak'``
+	    * - **units**
+	      - ``'degree'``
+	    * - **cmap**
+	      - ``'cmo.phase:cyc360'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

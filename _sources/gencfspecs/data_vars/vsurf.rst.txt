@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"vsurf"``]
+===============================================
+
+.. cfdatavar:: vsurf
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_surface_y_velocity'`` ``'northward_sea_water_velocity'``
+	    * - **long_name**
+	      - ``'Sea surface velocity along Y'`` ``'Northward surface current'`` ``'Northward current'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.delta:piv0'``
+	    * - **name**
+	      - ``'vsurf'`` ``'sea_surface_y_velocity'`` ``'northward_sea_water_velocity'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

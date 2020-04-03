@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"swnhf"``]
+===============================================
+
+.. cfdatavar:: swnhf
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'surface_net_downward_shortwave_flux'``
+	    * - **long_name**
+	      - ``'Net shortwave radiation (positive when directed downward)'``
+	    * - **units**
+	      - ``'W m-2'``
+	    * - **cmap**
+	      - ``'cmo.solar'``
+	    * - **name**
+	      - ``'swnhf'`` ``'surface_net_downward_shortwave_flux'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="data_vars [&#34;temp&#34;]" href="gencfspecs/data_vars/temp.html" />
     <link rel="prev" title="xoa options" href="appendix.options.html" /> 
 </head>
 
@@ -92,8 +93,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="appendix.html">Appendices</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="appendix.options.html">xoa options</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">CF specs and defaults</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-default-configuration">The default configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-variables-data-vars">Data variables (<code class="xref py py-attr docutils literal notranslate"><span class="pre">data_vars</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinates-coords">Coordinates (<code class="xref py py-attr docutils literal notranslate"><span class="pre">coords</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#as-a-cfg-file">As a <code class="file docutils literal notranslate"><span class="pre">.cfg</span></code> file</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#the-configuration-specifications">The configuration specifications</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-default-configuration">The default configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -190,81 +196,493 @@
 </style>
 <div class="section" id="cf-specs-and-defaults">
 <span id="appendix-cf"></span><h1>CF specs and defaults<a class="headerlink" href="#cf-specs-and-defaults" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="the-configuration-specifications">
-<h2>The configuration specifications<a class="headerlink" href="#the-configuration-specifications" title="Permalink to this headline">¶</a></h2>
-<p>All configurations are validated with these specifications.</p>
-<p>See <a class="reference external" href="https://configobj.readthedocs.io/en/latest/index.html">configobj</a>.</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[sglocator]</span>
-<span class="na">name_format</span><span class="o">=</span><span class="s">string(default=&quot;{root}_{loc}&quot;)</span>
-<span class="na">valid_locations</span><span class="o">=</span><span class="s">strings(default=None)</span>
-
-<span class="k">[accessors]</span>
-<span class="c1">#name=string(default=cf) # name of the dataarray and dataset accessors</span>
-
-    <span class="k">[[properties]]</span>
-    <span class="na">coords</span><span class="o">=</span><span class="s">strings(default=list(lon,lat,depth,sig,level,altitude,time,forecast)) # coord names that are added as shortcut properties</span>
-<span class="s">    data_vars=strings(default=list(temp,sal,u,v,bathy))  # data_var names that are added as shortcut properties</span>
-
-<span class="k">[data_vars]</span>
-
-    <span class="k">[[__many__]]</span>
-
-    <span class="na">name</span><span class="o">=</span><span class="s">strings(default=list())</span>
-<span class="s">    long_name=strings(default=list())</span>
-<span class="s">    standard_name=strings(default=list())</span>
-<span class="s">    units=strings(default=list())</span>
-<span class="s">    domain=option(&#39;generic&#39;,&#39;ocean&#39;,&#39;atmos&#39;,&#39;waves&#39;,&#39;land&#39;,default=&#39;generic&#39;)</span>
-<span class="s">    cmap=string(default=None)</span>
-<span class="s">    inherit=string(default=None)</span>
-<span class="s">    squeeze=strings(default=None)</span>
-<span class="s">    search_order=string(default=sn)</span>
-
-        <span class="k">[[[select]]]</span>
-        <span class="na">__many__</span><span class="o">=</span><span class="s">eval(default=None)</span>
-
-<span class="c1">#        [[[coords]]]</span>
-<span class="c1">#        x=string(default=lon)</span>
-<span class="c1">#        y=string(default=lat)</span>
-<span class="c1">#        t=string(default=time)</span>
-
-<span class="c1">#            [[[[z]]]]</span>
-<span class="c1">#            generic=string(default=depth)</span>
-<span class="c1">#            ocean=string(default=depth)</span>
-<span class="c1">#            atmos=string(default=altitude)</span>
-
-
-<span class="k">[coords]</span>
-
-    <span class="k">[[__many__]]</span>
-
-    <span class="na">name</span><span class="o">=</span><span class="s">strings(default=list())</span>
-<span class="s">    long_name=strings(default=list())</span>
-<span class="s">    standard_name=strings(default=list())</span>
-<span class="s">    units=strings(default=list())</span>
-<span class="s">    domain=option(&#39;generic&#39;,&#39;ocean&#39;,&#39;atmos&#39;,&#39;waves&#39;,&#39;land&#39;,default=&#39;generic&#39;)</span>
-<span class="s">    inherit=string(default=None)</span>
-<span class="s">    axis=string(default=None)</span>
-<span class="s">    search_order=string(default=nsa)</span>
-
-
-<span class="c1">#        [[[dims]]]</span>
-<span class="c1">#        x=string(default=ni)</span>
-<span class="c1">#        y=string(default=nj)</span>
-<span class="c1">#        z=string(default=nk)</span>
-
-
-
-<span class="k">[dims]</span>
-    <span class="na">x</span><span class="o">=</span><span class="s">strings(default=list())</span>
-<span class="s">    y=strings(default=list())</span>
-<span class="s">    z=strings(default=list())</span>
-<span class="s">    t=strings(default=list())</span>
-<span class="s">    f=strings(default=list())</span>
-</pre></div>
-</div>
-</div>
+<p>This appendix refers to the searching and formatting specifications
+for data variables and coordinates, and related tools,
+available in the <a class="reference internal" href="api/xoa.cf.html#module-xoa.cf" title="xoa.cf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code></a> module.
+Their usage is introduced in the <a class="reference internal" href="usages.cf.html#usages-cf"><span class="std std-ref">Using the xoa.cf module</span></a> section.</p>
 <div class="section" id="the-default-configuration">
 <span id="appendix-cf-default"></span><h2>The default configuration<a class="headerlink" href="#the-default-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-variables-data-vars">
+<span id="appendix-cf-data-vars"></span><h3>Data variables (<code class="xref py py-attr docutils literal notranslate"><span class="pre">data_vars</span></code>)<a class="headerlink" href="#data-variables-data-vars" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/temp.html#cfdatavar-temp"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">temp</span></code></a></p></td>
+<td><p>Temperature</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/ptemp.html#cfdatavar-ptemp"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ptemp</span></code></a></p></td>
+<td><p>Potential temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/sal.html#cfdatavar-sal"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sal</span></code></a></p></td>
+<td><p>Salinity</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/sst.html#cfdatavar-sst"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sst</span></code></a></p></td>
+<td><p>Sea surface temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/sss.html#cfdatavar-sss"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sss</span></code></a></p></td>
+<td><p>Sea surface salinity</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/dens.html#cfdatavar-dens"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">dens</span></code></a></p></td>
+<td><p>Sea water density</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/sigmat.html#cfdatavar-sigmat"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sigmat</span></code></a></p></td>
+<td><p>Sea water density minus 1000</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/ndens.html#cfdatavar-ndens"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ndens</span></code></a></p></td>
+<td><p>Sea water neutral density</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/sigmatheta.html#cfdatavar-sigmatheta"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sigmatheta</span></code></a></p></td>
+<td><p>Sea water potential density minus 1000</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/pdens.html#cfdatavar-pdens"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">pdens</span></code></a></p></td>
+<td><p>Sea water potential density</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/sigma0.html#cfdatavar-sigma0"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sigma0</span></code></a></p></td>
+<td><p>Sea water potential density</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/sigma1.html#cfdatavar-sigma1"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sigma1</span></code></a></p></td>
+<td><p>Sea water potential density with ref at 1000 dbar</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/sigma2.html#cfdatavar-sigma2"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sigma2</span></code></a></p></td>
+<td><p>Sea water potential density with ref at 2000 dbar</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/sigma3.html#cfdatavar-sigma3"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sigma3</span></code></a></p></td>
+<td><p>Sea water potential density with ref at 3000 dbar</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/sigma4.html#cfdatavar-sigma4"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sigma4</span></code></a></p></td>
+<td><p>Sea water potential density with ref at 4000 dbar</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/ssd.html#cfdatavar-ssd"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ssd</span></code></a></p></td>
+<td><p>Sea surface density</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/conduct.html#cfdatavar-conduct"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">conduct</span></code></a></p></td>
+<td><p>Sea water electrial conductivity</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/sndspd.html#cfdatavar-sndspd"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sndspd</span></code></a></p></td>
+<td><p>Speed of sound in water</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/mld.html#cfdatavar-mld"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">mld</span></code></a></p></td>
+<td><p>Mixed layer depth</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/ped.html#cfdatavar-ped"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ped</span></code></a></p></td>
+<td><p>Potential energy deficit</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/ohc.html#cfdatavar-ohc"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ohc</span></code></a></p></td>
+<td><p>Ocean heat content</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/osc.html#cfdatavar-osc"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">osc</span></code></a></p></td>
+<td><p>Ocean salt content</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/cp.html#cfdatavar-cp"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">cp</span></code></a></p></td>
+<td><p>Specific heat capacity</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/ssh.html#cfdatavar-ssh"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ssh</span></code></a></p></td>
+<td><p>Sea surface height</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/u.html#cfdatavar-u"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">u</span></code></a></p></td>
+<td><p>Sea water velocity along X</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/v.html#cfdatavar-v"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">v</span></code></a></p></td>
+<td><p>Sea water velocity along Y</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/w.html#cfdatavar-w"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">w</span></code></a></p></td>
+<td><p>Sea water velocity along Z at W location</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/u3d.html#cfdatavar-u3d"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">u3d</span></code></a></p></td>
+<td><p>Sea water velocity along X</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/v3d.html#cfdatavar-v3d"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">v3d</span></code></a></p></td>
+<td><p>Sea water velocity along Y</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/w3d.html#cfdatavar-w3d"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">w3d</span></code></a></p></td>
+<td><p>Sea water velocity along Z at W location</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/ubt.html#cfdatavar-ubt"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ubt</span></code></a></p></td>
+<td><p>Sea water barotropic velocity along X</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/vbt.html#cfdatavar-vbt"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vbt</span></code></a></p></td>
+<td><p>Sea water barotropic velocity along Y</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/ubc.html#cfdatavar-ubc"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ubc</span></code></a></p></td>
+<td><p>Sea water baroclinic velocity along X</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/vbc.html#cfdatavar-vbc"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vbc</span></code></a></p></td>
+<td><p>Sea water baroclinic velocity along Y</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/usurf.html#cfdatavar-usurf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">usurf</span></code></a></p></td>
+<td><p>Sea surface velocity along X</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/vsurf.html#cfdatavar-vsurf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vsurf</span></code></a></p></td>
+<td><p>Sea surface velocity along Y</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/ugbt.html#cfdatavar-ugbt"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ugbt</span></code></a></p></td>
+<td><p>Sea water barotropic geostrophic velocity along X</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/vgbt.html#cfdatavar-vgbt"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vgbt</span></code></a></p></td>
+<td><p>Sea water barotropic geostrophic velocity along Y</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/cspd.html#cfdatavar-cspd"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">cspd</span></code></a></p></td>
+<td><p>Sea water speed</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/speed.html#cfdatavar-speed"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">speed</span></code></a></p></td>
+<td><p>Sea water speed</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/cdir.html#cfdatavar-cdir"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">cdir</span></code></a></p></td>
+<td><p>Direction of sea water velocity</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/ke.html#cfdatavar-ke"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ke</span></code></a></p></td>
+<td><p>Kinetic energy</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/eke.html#cfdatavar-eke"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">eke</span></code></a></p></td>
+<td><p>Eddy kinetic energy</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/tke.html#cfdatavar-tke"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">tke</span></code></a></p></td>
+<td><p>Turbulent kinetic energy</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/mke.html#cfdatavar-mke"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">mke</span></code></a></p></td>
+<td><p>Mean kinetic energy</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/kz.html#cfdatavar-kz"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">kz</span></code></a></p></td>
+<td><p>Vertical diffusivity</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/bathy.html#cfdatavar-bathy"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">bathy</span></code></a></p></td>
+<td><p>Bathymetry</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/meanlev.html#cfdatavar-meanlev"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">meanlev</span></code></a></p></td>
+<td><p>Mean Sea Level</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/depth.html#cfdatavar-depth"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">depth</span></code></a></p></td>
+<td><p>Depth</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/altitude.html#cfdatavar-altitude"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">altitude</span></code></a></p></td>
+<td><p>Altitude</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/dx.html#cfdatavar-dx"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">dx</span></code></a></p></td>
+<td><p>Mesh size along x</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/dy.html#cfdatavar-dy"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">dy</span></code></a></p></td>
+<td><p>Mesh size along y</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/ex.html#cfdatavar-ex"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ex</span></code></a></p></td>
+<td><p>Inverse of mesh size along x</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/ey.html#cfdatavar-ey"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ey</span></code></a></p></td>
+<td><p>Inverse of mesh size along y</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/dz.html#cfdatavar-dz"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">dz</span></code></a></p></td>
+<td><p>Ocean layer thickness</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/dlon.html#cfdatavar-dlon"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">dlon</span></code></a></p></td>
+<td><p>Mesh size along x</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/dlat.html#cfdatavar-dlat"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">dlat</span></code></a></p></td>
+<td><p>Mesh step along y</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/cvol.html#cfdatavar-cvol"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">cvol</span></code></a></p></td>
+<td><p>Volume of the cell</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/vol.html#cfdatavar-vol"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vol</span></code></a></p></td>
+<td><p>Volume of the sea water</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/corio.html#cfdatavar-corio"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">corio</span></code></a></p></td>
+<td><p>Coriolis parameter</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/beta.html#cfdatavar-beta"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">beta</span></code></a></p></td>
+<td><p>Meridional derivative of coriolis parameter</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/oro.html#cfdatavar-oro"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">oro</span></code></a></p></td>
+<td><p>Orography for SLEVE vertical coordinates</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/orosm.html#cfdatavar-orosm"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">orosm</span></code></a></p></td>
+<td><p>Smoothed orography for SLEVE vertical coordinates</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/nethf.html#cfdatavar-nethf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">nethf</span></code></a></p></td>
+<td><p>Net radiation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/lwnhf.html#cfdatavar-lwnhf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">lwnhf</span></code></a></p></td>
+<td><p>Net longwave radiation (positive when directed downward)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/swnhf.html#cfdatavar-swnhf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">swnhf</span></code></a></p></td>
+<td><p>Net shortwave radiation (positive when directed downward)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/ghf.html#cfdatavar-ghf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ghf</span></code></a></p></td>
+<td><p>Ground heat flux (SW + LW - LE - H)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/lwuhf.html#cfdatavar-lwuhf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">lwuhf</span></code></a></p></td>
+<td><p>Longwave radiation (positive when directed upward)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/swuhf.html#cfdatavar-swuhf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">swuhf</span></code></a></p></td>
+<td><p>Shortwave radiation (positive when directed upward)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/lwdhf.html#cfdatavar-lwdhf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">lwdhf</span></code></a></p></td>
+<td><p>Longwave radiation (positive when directed downward)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/swdhf.html#cfdatavar-swdhf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">swdhf</span></code></a></p></td>
+<td><p>Shortwave radiation (positive when directed downward)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/lathf.html#cfdatavar-lathf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">lathf</span></code></a></p></td>
+<td><p>Latent heat flux (positive when directed downward)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/hflat.html#cfdatavar-hflat"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">hflat</span></code></a></p></td>
+<td><p>Latent heat flux (positive when directed upward)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/senhf.html#cfdatavar-senhf"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">senhf</span></code></a></p></td>
+<td><p>Sensible heat flux (positive when directed downward)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/hfsen.html#cfdatavar-hfsen"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">hfsen</span></code></a></p></td>
+<td><p>Sensible heat flux (positive when directed upward)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/evap.html#cfdatavar-evap"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">evap</span></code></a></p></td>
+<td><p>evaporation (positive when directed downward)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/rain.html#cfdatavar-rain"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">rain</span></code></a></p></td>
+<td><p>Precipitation [Downward (positive when it is raining)]</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/t2m.html#cfdatavar-t2m"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">t2m</span></code></a></p></td>
+<td><p>2 m temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/q2m.html#cfdatavar-q2m"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">q2m</span></code></a></p></td>
+<td><p>2 m specific humidity</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/hu2m.html#cfdatavar-hu2m"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">hu2m</span></code></a></p></td>
+<td><p>2 m specific humidity</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/z0a.html#cfdatavar-z0a"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">z0a</span></code></a></p></td>
+<td><p>Air roughness length</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/cda.html#cfdatavar-cda"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">cda</span></code></a></p></td>
+<td><p>Averaged drag momentum coefficient</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/cha.html#cfdatavar-cha"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">cha</span></code></a></p></td>
+<td><p>Averaged drag thermal coefficient</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/cea.html#cfdatavar-cea"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">cea</span></code></a></p></td>
+<td><p>Averaged latent heat flux coefficient</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/wspd.html#cfdatavar-wspd"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">wspd</span></code></a></p></td>
+<td><p>Wind speed</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/wdir.html#cfdatavar-wdir"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">wdir</span></code></a></p></td>
+<td><p>Wind direction</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/wfdir.html#cfdatavar-wfdir"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">wfdir</span></code></a></p></td>
+<td><p>Wind from direction</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/wtdir.html#cfdatavar-wtdir"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">wtdir</span></code></a></p></td>
+<td><p>Wind to direction</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/uair.html#cfdatavar-uair"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">uair</span></code></a></p></td>
+<td><p>Zonal wind speed (westerly)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/vair.html#cfdatavar-vair"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vair</span></code></a></p></td>
+<td><p>Meridional wind speed (northerly)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/wair.html#cfdatavar-wair"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">wair</span></code></a></p></td>
+<td><p>Upward wind speed</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/tair.html#cfdatavar-tair"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">tair</span></code></a></p></td>
+<td><p>Temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/pa.html#cfdatavar-pa"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">pa</span></code></a></p></td>
+<td><p>Absolute pressure</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/ps.html#cfdatavar-ps"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ps</span></code></a></p></td>
+<td><p>Surface air pressure</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/plev.html#cfdatavar-plev"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">plev</span></code></a></p></td>
+<td><p>Air pressure</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/ptop.html#cfdatavar-ptop"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ptop</span></code></a></p></td>
+<td><p>Air pressure at top of model</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/tkea.html#cfdatavar-tkea"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">tkea</span></code></a></p></td>
+<td><p>Turbulent Kinetic Energy</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/u10m.html#cfdatavar-u10m"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">u10m</span></code></a></p></td>
+<td><p>10-m zonal wind speed (westerly)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/v10m.html#cfdatavar-v10m"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">v10m</span></code></a></p></td>
+<td><p>10-m meridional wind speed (northerly)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/w10m.html#cfdatavar-w10m"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">w10m</span></code></a></p></td>
+<td><p>10-m meridional wind speed (northerly)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/ux10m.html#cfdatavar-ux10m"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ux10m</span></code></a></p></td>
+<td><p>10-m wind speed along X</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/vy10m.html#cfdatavar-vy10m"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vy10m</span></code></a></p></td>
+<td><p>10-m wind speed along Y</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/tauu.html#cfdatavar-tauu"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">tauu</span></code></a></p></td>
+<td><p>Surface eastward wind stress</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/tauv.html#cfdatavar-tauv"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">tauv</span></code></a></p></td>
+<td><p>Surface northward wind stress</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/taux.html#cfdatavar-taux"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">taux</span></code></a></p></td>
+<td><p>Surface wind stress along X</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/tauy.html#cfdatavar-tauy"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">tauy</span></code></a></p></td>
+<td><p>Surface wind stress along Y</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/topheight.html#cfdatavar-topheight"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">topheight</span></code></a></p></td>
+<td><p>height of the top level</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/hs.html#cfdatavar-hs"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">hs</span></code></a></p></td>
+<td><p>Significant wave height</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/mssx.html#cfdatavar-mssx"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">mssx</span></code></a></p></td>
+<td><p>Eastward mean square slope</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/mssy.html#cfdatavar-mssy"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">mssy</span></code></a></p></td>
+<td><p>Northward mean square slope</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/mss.html#cfdatavar-mss"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">mss</span></code></a></p></td>
+<td><p>mean square slope</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/mlw.html#cfdatavar-mlw"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">mlw</span></code></a></p></td>
+<td><p>Mean wave length</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/t0m1.html#cfdatavar-t0m1"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">t0m1</span></code></a></p></td>
+<td><p>Mean wave period</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/dp.html#cfdatavar-dp"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">dp</span></code></a></p></td>
+<td><p>Peak direction</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/tp.html#cfdatavar-tp"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">tp</span></code></a></p></td>
+<td><p>Peak period</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/fp.html#cfdatavar-fp"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">fp</span></code></a></p></td>
+<td><p>Peak frequency</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/th1p.html#cfdatavar-th1p"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">th1p</span></code></a></p></td>
+<td><p>Mean wave direction</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/char.html#cfdatavar-char"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">char</span></code></a></p></td>
+<td><p>Charnock coefficient for surface roughness length for momentum in air</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/ubr.html#cfdatavar-ubr"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">ubr</span></code></a></p></td>
+<td><p>Near bottom rms velocities</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/uubr.html#cfdatavar-uubr"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">uubr</span></code></a></p></td>
+<td><p>Rms of near bottom zonal velocities</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/vubr.html#cfdatavar-vubr"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vubr</span></code></a></p></td>
+<td><p>Rms of near bottom meridional velocities</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/bhd.html#cfdatavar-bhd"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">bhd</span></code></a></p></td>
+<td><p>Radiation pressure (Bernoulli head)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/foc.html#cfdatavar-foc"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">foc</span></code></a></p></td>
+<td><p>Wave mixing kinetic turbulent energy due to surface breaking wave</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/utwo.html#cfdatavar-utwo"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">utwo</span></code></a></p></td>
+<td><p>Zonal component of the surface wave-ocean momentum flux</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/vtwo.html#cfdatavar-vtwo"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vtwo</span></code></a></p></td>
+<td><p>Meridional component of the surface wave-ocean momentum flux</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/utaw.html#cfdatavar-utaw"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">utaw</span></code></a></p></td>
+<td><p>Eastward wave supported wind stress</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/vtaw.html#cfdatavar-vtaw"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vtaw</span></code></a></p></td>
+<td><p>Northward wave supported wind stress</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/fbb.html#cfdatavar-fbb"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">fbb</span></code></a></p></td>
+<td><p>Wave dissipation in bottom boundary layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/utbb.html#cfdatavar-utbb"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">utbb</span></code></a></p></td>
+<td><p>Zonal component of the bottom wave-ocean momentum flux</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/vtbb.html#cfdatavar-vtbb"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vtbb</span></code></a></p></td>
+<td><p>Meridional component of the bottom wave-ocean momentum flux</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/uuss.html#cfdatavar-uuss"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">uuss</span></code></a></p></td>
+<td><p>Eastward surface stokes drift</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/vuss.html#cfdatavar-vuss"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vuss</span></code></a></p></td>
+<td><p>Northward surface stokes drift</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/utus.html#cfdatavar-utus"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">utus</span></code></a></p></td>
+<td><p>Eastward stokes transport</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/vtus.html#cfdatavar-vtus"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">vtus</span></code></a></p></td>
+<td><p>Northward stokes transport</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/mapsta.html#cfdatavar-mapsta"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">mapsta</span></code></a></p></td>
+<td><p>Status map</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/wlv.html#cfdatavar-wlv"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">wlv</span></code></a></p></td>
+<td><p>Wlv</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/sig.html#cfdatavar-sig"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">sig</span></code></a></p></td>
+<td><p>Sigma level</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/cs.html#cfdatavar-cs"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">cs</span></code></a></p></td>
+<td><p>S-coordinate stretching curves</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/hc.html#cfdatavar-hc"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">hc</span></code></a></p></td>
+<td><p>Sigma-coordinate critical depth</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/data_vars/thetas.html#cfdatavar-thetas"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">thetas</span></code></a></p></td>
+<td><p>Ocean s coordinate surface control</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/data_vars/thetab.html#cfdatavar-thetab"><code class="xref std std-cfdatavar docutils literal notranslate"><span class="pre">thetab</span></code></a></p></td>
+<td><p>Ocean s coordinate bottom control</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="coordinates-coords">
+<span id="appendix-cf-coords"></span><h3>Coordinates (<code class="xref py py-attr docutils literal notranslate"><span class="pre">coords</span></code>)<a class="headerlink" href="#coordinates-coords" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/coords/time.html#cfcoord-time"><code class="xref std std-cfcoord docutils literal notranslate"><span class="pre">time</span></code></a></p></td>
+<td><p>Time</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/coords/lon.html#cfcoord-lon"><code class="xref std std-cfcoord docutils literal notranslate"><span class="pre">lon</span></code></a></p></td>
+<td><p>Longitude</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/coords/lat.html#cfcoord-lat"><code class="xref std std-cfcoord docutils literal notranslate"><span class="pre">lat</span></code></a></p></td>
+<td><p>Latitude</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/coords/x.html#cfcoord-x"><code class="xref std std-cfcoord docutils literal notranslate"><span class="pre">x</span></code></a></p></td>
+<td><p>X-dimension of the grid</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/coords/y.html#cfcoord-y"><code class="xref std std-cfcoord docutils literal notranslate"><span class="pre">y</span></code></a></p></td>
+<td><p>Y-dimension of the grid</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/coords/depth.html#cfcoord-depth"><code class="xref std std-cfcoord docutils literal notranslate"><span class="pre">depth</span></code></a></p></td>
+<td><p>Depth</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/coords/altitude.html#cfcoord-altitude"><code class="xref std std-cfcoord docutils literal notranslate"><span class="pre">altitude</span></code></a></p></td>
+<td><p>Altitude</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/coords/sig.html#cfcoord-sig"><code class="xref std std-cfcoord docutils literal notranslate"><span class="pre">sig</span></code></a></p></td>
+<td><p>Sig</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gencfspecs/coords/level.html#cfcoord-level"><code class="xref std std-cfcoord docutils literal notranslate"><span class="pre">level</span></code></a></p></td>
+<td><p>Sig</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gencfspecs/coords/forecast.html#cfcoord-forecast"><code class="xref std std-cfcoord docutils literal notranslate"><span class="pre">forecast</span></code></a></p></td>
+<td><p>Forecast</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="as-a-cfg-file">
+<h3>As a <code class="file docutils literal notranslate"><span class="pre">.cfg</span></code> file<a class="headerlink" href="#as-a-cfg-file" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[data_vars]</span>
 
     <span class="k">[[temp]]</span>
@@ -1187,6 +1605,80 @@
 </div>
 </div>
 </div>
+<div class="section" id="the-configuration-specifications">
+<h2>The configuration specifications<a class="headerlink" href="#the-configuration-specifications" title="Permalink to this headline">¶</a></h2>
+<p>All configurations are validated with these specifications.</p>
+<p>See <a class="reference external" href="https://configobj.readthedocs.io/en/latest/index.html">configobj</a>.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[sglocator]</span>
+<span class="na">name_format</span><span class="o">=</span><span class="s">string(default=&quot;{root}_{loc}&quot;)</span>
+<span class="na">valid_locations</span><span class="o">=</span><span class="s">strings(default=None)</span>
+
+<span class="k">[accessors]</span>
+<span class="c1">#name=string(default=cf) # name of the dataarray and dataset accessors</span>
+
+    <span class="k">[[properties]]</span>
+    <span class="na">coords</span><span class="o">=</span><span class="s">strings(default=list(lon,lat,depth,sig,level,altitude,time,forecast)) # coord names that are added as shortcut properties</span>
+<span class="s">    data_vars=strings(default=list(temp,sal,u,v,bathy))  # data_var names that are added as shortcut properties</span>
+
+<span class="k">[data_vars]</span>
+
+    <span class="k">[[__many__]]</span>
+
+    <span class="na">name</span><span class="o">=</span><span class="s">strings(default=list())</span>
+<span class="s">    long_name=strings(default=list())</span>
+<span class="s">    standard_name=strings(default=list())</span>
+<span class="s">    units=strings(default=list())</span>
+<span class="s">    domain=option(&#39;generic&#39;,&#39;ocean&#39;,&#39;atmos&#39;,&#39;waves&#39;,&#39;land&#39;,default=&#39;generic&#39;)</span>
+<span class="s">    cmap=string(default=None)</span>
+<span class="s">    inherit=string(default=None)</span>
+<span class="s">    squeeze=strings(default=None)</span>
+<span class="s">    search_order=string(default=sn)</span>
+
+        <span class="k">[[[select]]]</span>
+        <span class="na">__many__</span><span class="o">=</span><span class="s">eval(default=None)</span>
+
+<span class="c1">#        [[[coords]]]</span>
+<span class="c1">#        x=string(default=lon)</span>
+<span class="c1">#        y=string(default=lat)</span>
+<span class="c1">#        t=string(default=time)</span>
+
+<span class="c1">#            [[[[z]]]]</span>
+<span class="c1">#            generic=string(default=depth)</span>
+<span class="c1">#            ocean=string(default=depth)</span>
+<span class="c1">#            atmos=string(default=altitude)</span>
+
+
+<span class="k">[coords]</span>
+
+    <span class="k">[[__many__]]</span>
+
+    <span class="na">name</span><span class="o">=</span><span class="s">strings(default=list())</span>
+<span class="s">    long_name=strings(default=list())</span>
+<span class="s">    standard_name=strings(default=list())</span>
+<span class="s">    units=strings(default=list())</span>
+<span class="s">    domain=option(&#39;generic&#39;,&#39;ocean&#39;,&#39;atmos&#39;,&#39;waves&#39;,&#39;land&#39;,default=&#39;generic&#39;)</span>
+<span class="s">    inherit=string(default=None)</span>
+<span class="s">    axis=string(default=None)</span>
+<span class="s">    search_order=string(default=nsa)</span>
+
+
+<span class="c1">#        [[[dims]]]</span>
+<span class="c1">#        x=string(default=ni)</span>
+<span class="c1">#        y=string(default=nj)</span>
+<span class="c1">#        z=string(default=nk)</span>
+
+
+
+<span class="k">[dims]</span>
+    <span class="na">x</span><span class="o">=</span><span class="s">strings(default=list())</span>
+<span class="s">    y=strings(default=list())</span>
+<span class="s">    z=strings(default=list())</span>
+<span class="s">    t=strings(default=list())</span>
+<span class="s">    f=strings(default=list())</span>
+</pre></div>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -1195,6 +1687,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gencfspecs/data_vars/temp.html" class="btn btn-neutral float-right" title="data_vars [&#34;temp&#34;]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="appendix.options.html" class="btn btn-neutral float-left" title="xoa options" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"z0a"``]
+=============================================
+
+.. cfdatavar:: z0a
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'z0a'`` ``'z0'`` ``'air_surface_roughness_length'`` ``'surface_roughness_length'`` ``'roughness_length'``
+	    * - **standard_name**
+	      - ``'air_surface_roughness_length'`` ``'surface_roughness_length'`` ``'roughness_length'``
+	    * - **long_name**
+	      - ``'Air roughness length'``
+	    * - **units**
+	      - ``'m'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

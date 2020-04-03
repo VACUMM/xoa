@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"tair"``]
+==============================================
+
+.. cfdatavar:: tair
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'tair'`` ``'temp'`` ``'tht'`` ``'air_potential_temperature'`` ``'air_temperature'``
+	    * - **standard_name**
+	      - ``'air_potential_temperature'`` ``'air_temperature'``
+	    * - **long_name**
+	      - ``'Temperature'``
+	    * - **units**
+	      - ``'degrees_kelvin'`` ``'K'``
+	    * - **cmap**
+	      - ``'cmo.thermal'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

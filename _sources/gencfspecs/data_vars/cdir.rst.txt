@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"cdir"``]
+==============================================
+
+.. cfdatavar:: cdir
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'direction_of_sea_water_velocity'``
+	    * - **long_name**
+	      - ``'Direction of sea water velocity'``
+	    * - **units**
+	      - ``'degrees'``
+	    * - **cmap**
+	      - ``'cmo.phase:cyc360'``
+	    * - **name**
+	      - ``'cdir'`` ``'direction_of_sea_water_velocity'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

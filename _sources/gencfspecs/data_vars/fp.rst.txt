@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"fp"``]
+============================================
+
+.. cfdatavar:: fp
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'peak_frequency_of_wind_and_swell_waves'``
+	    * - **long_name**
+	      - ``'Peak frequency'`` ``'Frequency of wind and swell waves at spectral peak'``
+	    * - **units**
+	      - ``'s-1'``
+	    * - **cmap**
+	      - ``'cmo.tempo'``
+	    * - **name**
+	      - ``'fp'`` ``'peak_frequency_of_wind_and_swell_waves'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

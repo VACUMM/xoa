@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"hflat"``]
+===============================================
+
+.. cfdatavar:: hflat
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'surface_averaged_upward_latent_heat_flux'`` ``'upward_latent_heat_flux'`` ``'surface_upward_latent_heat_flux'``
+	    * - **long_name**
+	      - ``'Latent heat flux (positive when directed upward)'``
+	    * - **units**
+	      - ``'W.m-2'``
+	    * - **cmap**
+	      - ``'cmo.solar'``
+	    * - **name**
+	      - ``'hflat'`` ``'surface_averaged_upward_latent_heat_flux'`` ``'upward_latent_heat_flux'`` ``'surface_upward_latent_heat_flux'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -271,7 +271,7 @@ priority over the lasts.</p></li>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.format_coord.html#xoa.cf.CFSpecs.format_coord" title="xoa.cf.CFSpecs.format_coord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_coord</span></code></a>(da[, name, loc, copy, …])</p></td>
-<td><p>Format a coordinate variable</p></td>
+<td><p>Format a coordinate array</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.format_data_var.html#xoa.cf.CFSpecs.format_data_var" title="xoa.cf.CFSpecs.format_data_var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_data_var</span></code></a>(da[, name, rename, …])</p></td>
 <td><p>Format array name and attributes according to currents CF specs</p></td>
@@ -283,28 +283,28 @@ priority over the lasts.</p></li>
 <td><p>Load a single or a list of configurations</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.match_coord.html#xoa.cf.CFSpecs.match_coord" title="xoa.cf.CFSpecs.match_coord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_coord</span></code></a>(da[, name, loc])</p></td>
-<td><p></p></td>
+<td><p>Check if an array matches a given or any coord specs</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.match_data_var.html#xoa.cf.CFSpecs.match_data_var" title="xoa.cf.CFSpecs.match_data_var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_data_var</span></code></a>(da[, name, loc])</p></td>
-<td><p></p></td>
+<td><p>Check if an array matches given or any data_var specs</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.pprint.html#xoa.cf.CFSpecs.pprint" title="xoa.cf.CFSpecs.pprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pprint</span></code></a>(**kwargs)</p></td>
 <td><p>Pretty print the specs as dict using <code class="xref py py-func docutils literal notranslate"><span class="pre">pprint.pprint()</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.search.html#xoa.cf.CFSpecs.search" title="xoa.cf.CFSpecs.search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">search</span></code></a>(dsa[, name, loc, get, single, categories])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.search.html#xoa.cf.CFSpecs.search" title="xoa.cf.CFSpecs.search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">search</span></code></a>(dsa[, name, loc, get, single, …])</p></td>
 <td><p>Search for a dataarray with data_vars and/or coords</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.search_coord.html#xoa.cf.CFSpecs.search_coord" title="xoa.cf.CFSpecs.search_coord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">search_coord</span></code></a>(dsa[, name, loc, get, single])</p></td>
-<td><p></p></td>
+<td><p>Search for a coord that maches given or any specs</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.search_coord_from_dim.html#xoa.cf.CFSpecs.search_coord_from_dim" title="xoa.cf.CFSpecs.search_coord_from_dim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">search_coord_from_dim</span></code></a>(da, dim)</p></td>
-<td><p></p></td>
+<td><p>Search a dataarray for a coordinate from a dimension name</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.search_data_var.html#xoa.cf.CFSpecs.search_data_var" title="xoa.cf.CFSpecs.search_data_var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">search_data_var</span></code></a>(dsa[, name, loc, get, single])</p></td>
-<td><p></p></td>
+<td><p>Search for a data_var that maches given or any specs</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.search_dim.html#xoa.cf.CFSpecs.search_dim" title="xoa.cf.CFSpecs.search_dim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">search_dim</span></code></a>(da[, dim_type, loc])</p></td>
-<td><p></p></td>
+<td><p>Search for a dimension from its type</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.CFSpecs.set_specs.html#xoa.cf.CFSpecs.set_specs" title="xoa.cf.CFSpecs.set_specs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_specs</span></code></a>(category, name, **specs)</p></td>
 <td><p>Update or create specs for an item</p></td>

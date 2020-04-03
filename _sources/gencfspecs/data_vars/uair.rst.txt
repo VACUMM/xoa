@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"uair"``]
+==============================================
+
+.. cfdatavar:: uair
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'uair'`` ``'ua'`` ``'uwnd'`` ``'eastward_wind'`` ``'x_wind'``
+	    * - **standard_name**
+	      - ``'eastward_wind'`` ``'x_wind'``
+	    * - **long_name**
+	      - ``'Zonal wind speed (westerly)'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.delta:piv0'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

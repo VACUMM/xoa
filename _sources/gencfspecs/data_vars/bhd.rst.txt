@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"bhd"``]
+=============================================
+
+.. cfdatavar:: bhd
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'bernoulli_head_pressure_of_wind_and_swell_waves'``
+	    * - **long_name**
+	      - ``'Radiation pressure (Bernoulli head)'``
+	    * - **units**
+	      - ``'N s-1'``
+	    * - **name**
+	      - ``'bhd'`` ``'bernoulli_head_pressure_of_wind_and_swell_waves'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

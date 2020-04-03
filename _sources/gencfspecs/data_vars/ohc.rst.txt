@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ohc"``]
+=============================================
+
+.. cfdatavar:: ohc
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'ocean_heat_content'``
+	    * - **long_name**
+	      - ``'Ocean heat content'``
+	    * - **units**
+	      - ``'J'``
+	    * - **cmap**
+	      - ``'cmo.thermal'``
+	    * - **name**
+	      - ``'ohc'`` ``'ocean_heat_content'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -244,8 +244,16 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>da</strong> (<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><em>xarray.DataArray</em></a>) – </p></li>
-<li><p><strong>name</strong> (<em>str</em><em>, </em><em>dict</em><em>, </em><em>None</em>) – </p></li>
-<li><p><strong>loc</strong> (<em>str</em><em>, </em><em>False</em><em>, </em><em>&quot;any&quot;</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>dict</em><em>, </em><em>None</em>) – Cf name.
+If None, all names are used.
+If a dict, name is interpreted as an explicit set of
+specifications.</p></li>
+<li><p><strong>loc</strong> (<em>str</em><em>, </em><em>{&quot;any&quot;</em><em>, </em><em>None}</em><em>, </em><em>{&quot;&quot;</em><em>, </em><em>False}</em>) – <ul>
+<li><p>str: one of these locations</p></li>
+<li><p>None or “any”: any</p></li>
+<li><p>False or ‘””: no location</p></li>
+</ul>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

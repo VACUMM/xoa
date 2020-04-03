@@ -1,0 +1,21 @@
+:attr:`~xoa.cf.CFSpecs.coords` [``"y"``]
+========================================
+
+.. cfcoord:: y
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'y'`` ``'yi'`` ``'y_grid_index'``
+	    * - **standard_name**
+	      - ``'y_grid_index'``
+	    * - **long_name**
+	      - ``'Y-dimension of the grid'``
+	    * - **units**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **axis**
+	      - ``None``
+	    * - **search_order**
+	      - ``'nsa'``

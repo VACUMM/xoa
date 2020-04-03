@@ -240,7 +240,25 @@
 <dl class="method">
 <dt id="xoa.cf.CFSpecs.search_coord_from_dim">
 <code class="sig-prename descclassname">CFSpecs.</code><code class="sig-name descname">search_coord_from_dim</code><span class="sig-paren">(</span><em class="sig-param">da</em>, <em class="sig-param">dim</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cf.html#CFSpecs.search_coord_from_dim"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cf.CFSpecs.search_coord_from_dim" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Search a dataarray for a coordinate from a dimension name</p>
+<p>It first searches for a coordinate with the same name and that is
+the only one having this dimension.
+Then look for coordinates with the same type like x, y, etc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>da</strong> (<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><em>xarray.DataArray</em></a>) – </p></li>
+<li><p><strong>dim</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An coordinate array or None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)">xarray.DataArray</a>, None</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"cs"``]
+============================================
+
+.. cfdatavar:: cs
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'ocean_s_coordinate_function'``
+	    * - **long_name**
+	      - ``'S-coordinate stretching curves'``
+	    * - **name**
+	      - ``'cs'`` ``'ocean_s_coordinate_function'``
+	    * - **units**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

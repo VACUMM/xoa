@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"cvol"``]
+==============================================
+
+.. cfdatavar:: cvol
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'cell_volume'``
+	    * - **long_name**
+	      - ``'Volume of the cell'``
+	    * - **units**
+	      - ``'m3'``
+	    * - **name**
+	      - ``'cvol'`` ``'cell_volume'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

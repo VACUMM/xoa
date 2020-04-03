@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"plev"``]
+==============================================
+
+.. cfdatavar:: plev
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'air_pressure'``
+	    * - **long_name**
+	      - ``'Air pressure'``
+	    * - **units**
+	      - ``'Pa'``
+	    * - **name**
+	      - ``'plev'`` ``'air_pressure'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

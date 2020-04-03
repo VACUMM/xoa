@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"tauu"``]
+==============================================
+
+.. cfdatavar:: tauu
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'surface_downward_eastward_stress'`` ``'surface_eastward_stress'`` ``'surface_downward_x_stress'``
+	    * - **long_name**
+	      - ``'Surface eastward wind stress'``
+	    * - **units**
+	      - ``'N m-2'`` ``'Pa'``
+	    * - **cmap**
+	      - ``'cmo.diff:piv0'``
+	    * - **name**
+	      - ``'tauu'`` ``'surface_downward_eastward_stress'`` ``'surface_eastward_stress'`` ``'surface_downward_x_stress'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

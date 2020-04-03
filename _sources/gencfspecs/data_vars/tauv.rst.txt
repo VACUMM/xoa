@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"tauv"``]
+==============================================
+
+.. cfdatavar:: tauv
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'surface_downward_northward_stress'`` ``'surface_northward_stress'`` ``'surface_downward_y_stress'``
+	    * - **long_name**
+	      - ``'Surface northward wind stress'``
+	    * - **units**
+	      - ``'N m-2'`` ``'Pa'``
+	    * - **cmap**
+	      - ``'cmo.diff:piv0'``
+	    * - **name**
+	      - ``'tauv'`` ``'surface_downward_northward_stress'`` ``'surface_northward_stress'`` ``'surface_downward_y_stress'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

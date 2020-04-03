@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"w10m"``]
+==============================================
+
+.. cfdatavar:: w10m
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'z_wind_at_10m'`` ``'upward_wind_at_10m'``
+	    * - **long_name**
+	      - ``'10-m meridional wind speed (northerly)'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.curl:piv0'``
+	    * - **name**
+	      - ``'w10m'`` ``'z_wind_at_10m'`` ``'upward_wind_at_10m'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

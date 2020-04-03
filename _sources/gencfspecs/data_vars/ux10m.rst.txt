@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ux10m"``]
+===============================================
+
+.. cfdatavar:: ux10m
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'x_wind_at_10m'`` ``'x_wind'`` ``'grid_eastward_wind'`` ``'x_wind_at_u_location'`` ``'x_wind_at_10m_at_u_location'``
+	    * - **long_name**
+	      - ``'10-m wind speed along X'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.delta:piv0'``
+	    * - **name**
+	      - ``'ux10m'`` ``'x_wind_at_10m'`` ``'x_wind'`` ``'grid_eastward_wind'`` ``'x_wind_at_u_location'`` ``'x_wind_at_10m_at_u_location'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

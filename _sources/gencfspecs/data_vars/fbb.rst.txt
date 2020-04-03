@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"fbb"``]
+=============================================
+
+.. cfdatavar:: fbb
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'wave_energy_dissipation_in_bottom_boundary_layer'``
+	    * - **long_name**
+	      - ``'Wave dissipation in bottom boundary layer'``
+	    * - **units**
+	      - ``'W m-2'``
+	    * - **name**
+	      - ``'fbb'`` ``'wave_energy_dissipation_in_bottom_boundary_layer'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

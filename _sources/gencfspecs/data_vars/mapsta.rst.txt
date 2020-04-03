@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"mapsta"``]
+================================================
+
+.. cfdatavar:: mapsta
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'status_map'``
+	    * - **long_name**
+	      - ``'Status map'``
+	    * - **units**
+	      - ``'1'``
+	    * - **name**
+	      - ``'mapsta'`` ``'status_map'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

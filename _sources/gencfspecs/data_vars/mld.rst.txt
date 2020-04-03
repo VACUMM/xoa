@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"mld"``]
+=============================================
+
+.. cfdatavar:: mld
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'mixed_layer_depth'``
+	    * - **long_name**
+	      - ``'Mixed layer depth'``
+	    * - **units**
+	      - ``'m'``
+	    * - **name**
+	      - ``'mld'`` ``'mixed_layer_depth'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

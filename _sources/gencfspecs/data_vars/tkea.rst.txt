@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"tkea"``]
+==============================================
+
+.. cfdatavar:: tkea
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'tkea'`` ``'air_turbulent_kinetic_energy'``
+	    * - **standard_name**
+	      - ``'air_turbulent_kinetic_energy'``
+	    * - **long_name**
+	      - ``'Turbulent Kinetic Energy'``
+	    * - **units**
+	      - ``'m2 s-2'``
+	    * - **cmap**
+	      - ``'cmo.amp'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

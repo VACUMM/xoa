@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"conduct"``]
+=================================================
+
+.. cfdatavar:: conduct
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_water_electrical_conductivity'``
+	    * - **long_name**
+	      - ``'Sea water electrial conductivity'``
+	    * - **units**
+	      - ``'S m-1'``
+	    * - **name**
+	      - ``'conduct'`` ``'sea_water_electrical_conductivity'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

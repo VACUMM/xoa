@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"cspd"``]
+==============================================
+
+.. cfdatavar:: cspd
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_water_speed'``
+	    * - **long_name**
+	      - ``'Sea water speed'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.amp'``
+	    * - **name**
+	      - ``'speed'`` ``'cspd'`` ``'sea_water_speed'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

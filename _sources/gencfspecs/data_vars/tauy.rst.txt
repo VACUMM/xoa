@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"tauy"``]
+==============================================
+
+.. cfdatavar:: tauy
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'tauy'`` ``'vstress'`` ``'surface_downward_y_stress'`` ``'surface_y_stress'`` ``'surface_downward_y_stress_at_v_location'``
+	    * - **standard_name**
+	      - ``'surface_downward_y_stress'`` ``'surface_y_stress'`` ``'surface_downward_y_stress_at_v_location'``
+	    * - **long_name**
+	      - ``'Surface wind stress along Y'``
+	    * - **units**
+	      - ``'N m-2'``
+	    * - **cmap**
+	      - ``'cmo.diff:piv0'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

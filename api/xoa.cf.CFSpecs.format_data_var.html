@@ -246,6 +246,12 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>da</strong> (<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><em>xarray.DataArray</em></a>) – </p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>None</em>) – CF name. If None, it is guessed.</p></li>
+<li><p><strong>loc</strong> (<em>str</em><em>, </em><em>{&quot;any&quot;</em><em>, </em><em>None}</em><em>, </em><em>{&quot;&quot;</em><em>, </em><em>False}</em>) – <ul>
+<li><p>str: one of these locations</p></li>
+<li><p>None or “any”: any</p></li>
+<li><p>False or ‘””: no location</p></li>
+</ul>
+</p></li>
 <li><p><strong>rename</strong> (<em>bool</em>) – Not only format attribute, but also rename arrays,
 thus making a copies.</p></li>
 <li><p><strong>format_coords</strong> (<em>bool</em>) – Also format coords.</p></li>

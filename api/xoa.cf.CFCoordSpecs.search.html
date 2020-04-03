@@ -238,18 +238,24 @@
 <h1>xoa.cf.CFCoordSpecs.search<a class="headerlink" href="#xoa-cf-cfcoordspecs-search" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="xoa.cf.CFCoordSpecs.search">
-<code class="sig-prename descclassname">CFCoordSpecs.</code><code class="sig-name descname">search</code><span class="sig-paren">(</span><em class="sig-param">dsa</em>, <em class="sig-param">name=None</em>, <em class="sig-param">loc='any'</em>, <em class="sig-param">get='obj'</em>, <em class="sig-param">single=True</em><span class="sig-paren">)</span><a class="headerlink" href="#xoa.cf.CFCoordSpecs.search" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">CFCoordSpecs.</code><code class="sig-name descname">search</code><span class="sig-paren">(</span><em class="sig-param">dsa</em>, <em class="sig-param">name=None</em>, <em class="sig-param">loc='any'</em>, <em class="sig-param">get='obj'</em>, <em class="sig-param">single=True</em>, <em class="sig-param">errors='raise'</em><span class="sig-paren">)</span><a class="headerlink" href="#xoa.cf.CFCoordSpecs.search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Search for a data_var or coord that maches given or any specs</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dsa</strong> (<em>DataArray</em><em> or </em><em>Dataset</em>) – </p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>dict</em>) – A CF name. If not provided, all CF names are scaned.</p></li>
-<li><p><strong>loc</strong> (<em>&quot;any&quot;</em><em>, </em><em>str</em>) – </p></li>
+<li><p><strong>loc</strong> (<em>str</em><em>, </em><em>{&quot;any&quot;</em><em>, </em><em>None}</em><em>, </em><em>{&quot;&quot;</em><em>, </em><em>False}</em>) – <ul>
+<li><p>str: one of these locations</p></li>
+<li><p>None or “any”: any</p></li>
+<li><p>False or ‘””: no location</p></li>
+</ul>
+</p></li>
 <li><p><strong>get</strong> (<em>{&quot;obj&quot;</em><em>, </em><em>&quot;name&quot;}</em>) – When found, get the object found or its name.</p></li>
 <li><p><strong>single</strong> (<em>bool</em>) – If True, return the first item found or None.
 If False, return a possible empty list of found items.
 A warning is emitted when set to True and multiple item are found.</p></li>
+<li><p><strong>errors</strong> (<em>{&quot;raise&quot;</em><em>, </em><em>&quot;ignore&quot;}</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

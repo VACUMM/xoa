@@ -158,6 +158,11 @@
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Naming convention tools for reading and formatting variables</span>
+
+<span class="sd">.. rubric:: Usage</span>
+
+<span class="sd">See the :ref:`usages.cf` section.</span>
+
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Copyright or © or Copr. Shom/Ifremer/Actimar</span>
 <span class="c1">#</span>
@@ -410,10 +415,10 @@
 <span class="sd">        attr: {&#39;name&#39;, &#39;standard_name&#39;, &#39;long_name&#39;}</span>
 <span class="sd">            Attribute name</span>
 <span class="sd">        root: str</span>
-<span class="sd">        loc: letters, {&quot;any&quot;, None} or {&quot;&quot;, False}</span>
-<span class="sd">            - letters: one of these locations</span>
+<span class="sd">        loc: str, {&quot;any&quot;, None}, {&quot;&quot;, False}</span>
+<span class="sd">            - str: one of these locations</span>
 <span class="sd">            - None or &quot;any&quot;: any</span>
-<span class="sd">            - False or &#39;&#39;: no location</span>
+<span class="sd">            - False or &#39;&quot;&quot;: no location</span>
 
 <span class="sd">        Return</span>
 <span class="sd">        ------</span>
@@ -441,9 +446,9 @@
 <span class="sd">            Attribute name</span>
 <span class="sd">        value: str</span>
 <span class="sd">            Current attribute value. It is parsed to get current ``root``.</span>
-<span class="sd">        loc: {True, None}, letter, {False, &quot;&quot;}</span>
+<span class="sd">        loc: {True, None}, str, {False, &quot;&quot;}</span>
 <span class="sd">            If None, location is left unchanged;</span>
-<span class="sd">            if a letter, it is set;</span>
+<span class="sd">            if a str, it is set;</span>
 <span class="sd">            else, it is removed.</span>
 <span class="sd">        standardize: bool</span>
 <span class="sd">            If True, standardize ``root`` and ``loc`` values.</span>
@@ -1013,7 +1018,31 @@
 
 <div class="viewcode-block" id="CFSpecs.format_coord"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.format_coord.html#xoa.cf.CFSpecs.format_coord">[docs]</a>    <span class="k">def</span> <span class="nf">format_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                      <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rename_dim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Format a coordinate variable</span>
+        <span class="sd">&quot;&quot;&quot;Format a coordinate array</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        name: str, None</span>
+<span class="sd">            A CF name. If not provided, it guessed with :meth:`match`.</span>
+<span class="sd">        loc: str, {&quot;any&quot;, None}, {&quot;&quot;, False}</span>
+<span class="sd">            - str: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&quot;&quot;: no location</span>
+<span class="sd">        rename: bool</span>
+<span class="sd">            Rename arrays</span>
+<span class="sd">        standardize: bool</span>
+<span class="sd">        rename_dim: bool</span>
+<span class="sd">            For a 1D array, rename the dimension if it has the same name</span>
+<span class="sd">            as the array.</span>
+<span class="sd">            Note that it is set to False, if ``rename`` is False.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        xarray.DataArray, str, None</span>
+<span class="sd">            The formatted array or copy of it.</span>
+<span class="sd">            The CF name, given or matching, if rename if False; and None</span>
+<span class="sd">            if not matching.</span>
 
 <span class="sd">        See also</span>
 <span class="sd">        --------</span>
@@ -1041,6 +1070,10 @@
 <span class="sd">        da: xarray.DataArray</span>
 <span class="sd">        name: str, None</span>
 <span class="sd">            CF name. If None, it is guessed.</span>
+<span class="sd">        loc: str, {&quot;any&quot;, None}, {&quot;&quot;, False}</span>
+<span class="sd">            - str: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&quot;&quot;: no location</span>
 <span class="sd">        rename: bool</span>
 <span class="sd">            Not only format attribute, but also rename arrays,</span>
 <span class="sd">            thus making a copies.</span>
@@ -1142,7 +1175,13 @@
         <span class="k">return</span> <span class="n">ds</span></div>
 
 <div class="viewcode-block" id="CFSpecs.auto_format"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.auto_format.html#xoa.cf.CFSpecs.auto_format">[docs]</a>    <span class="k">def</span> <span class="nf">auto_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Auto-format the xarray.Dataset or xarray.DataArray&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Auto-format the xarray.Dataset or xarray.DataArray</span>
+
+<span class="sd">        See also</span>
+<span class="sd">        --------</span>
+<span class="sd">        format_dataarray</span>
+<span class="sd">        format_dataset</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="s2">&quot;data_vars&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_dataset</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
                                        <span class="n">format_coords</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1151,28 +1190,183 @@
     <span class="fm">__call__</span> <span class="o">=</span> <span class="n">auto_format</span>
 
 <div class="viewcode-block" id="CFSpecs.match_coord"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.match_coord.html#xoa.cf.CFSpecs.match_coord">[docs]</a>    <span class="k">def</span> <span class="nf">match_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if an array matches a given or any coord specs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        name: str, dict, None</span>
+<span class="sd">            Cf name.</span>
+<span class="sd">            If None, all names are used.</span>
+<span class="sd">            If a dict, name is interpreted as an explicit set of</span>
+<span class="sd">            specifications.</span>
+<span class="sd">        loc: str, {&quot;any&quot;, None}, {&quot;&quot;, False}</span>
+<span class="sd">            - str: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&quot;&quot;: no location</span>
+
+<span class="sd">        See also</span>
+<span class="sd">        --------</span>
+<span class="sd">        CFCoordSpecs.match</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CFSpecs.match_data_var"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.match_data_var.html#xoa.cf.CFSpecs.match_data_var">[docs]</a>    <span class="k">def</span> <span class="nf">match_data_var</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if an array matches given or any data_var specs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        name: str, dict, None</span>
+<span class="sd">            Cf name.</span>
+<span class="sd">            If None, all names are used.</span>
+<span class="sd">            If a dict, name is interpreted as an explicit set of</span>
+<span class="sd">            specifications.</span>
+<span class="sd">        loc: str, {&quot;any&quot;, None}, {&quot;&quot;, False}</span>
+<span class="sd">            - str: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&quot;&quot;: no location</span>
+
+<span class="sd">        See also</span>
+<span class="sd">        --------</span>
+<span class="sd">        CFVarSpecs.match</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CFSpecs.search_coord"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search_coord.html#xoa.cf.CFSpecs.search_coord">[docs]</a>    <span class="k">def</span> <span class="nf">search_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search for a coord that maches given or any specs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dsa: DataArray or Dataset</span>
+<span class="sd">        name: str, dict</span>
+<span class="sd">            A CF name. If not provided, all CF names are scaned.</span>
+<span class="sd">        loc: str, {&quot;any&quot;, None}, {&quot;&quot;, False}</span>
+<span class="sd">            - str: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&quot;&quot;: no location</span>
+<span class="sd">        get: {&quot;obj&quot;, &quot;name&quot;}</span>
+<span class="sd">            When found, get the object found or its name.</span>
+<span class="sd">        single: bool</span>
+<span class="sd">            If True, return the first item found or None.</span>
+<span class="sd">            If False, return a possible empty list of found items.</span>
+<span class="sd">            A warning is emitted when set to True and multiple item are found.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None or str or object</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        .. ipython:: python</span>
+
+<span class="sd">            @suppress</span>
+<span class="sd">            from xoa.cf import get_cf_specs</span>
+<span class="sd">            @suppress</span>
+<span class="sd">            import xarray as xr, numpy as np</span>
+<span class="sd">            lon = xr.DataArray([2, 3], dims=&#39;foo&#39;,</span>
+<span class="sd">                               attrs={&#39;standard_name&#39;: &#39;longitude&#39;})</span>
+<span class="sd">            data = xr.DataArray([0, 1], dims=(&#39;foo&#39;), coords=[lon])</span>
+<span class="sd">            cfspecs = get_cf_specs()</span>
+<span class="sd">            cfspecs.search_coord(data, &quot;lon&quot;)</span>
+<span class="sd">            cfspecs.search_coord(data, &quot;lon&quot;, get=&quot;name&quot;)</span>
+<span class="sd">            cfspecs.search_coord(data, &quot;lat&quot;)</span>
+
+<span class="sd">        See also</span>
+<span class="sd">        --------</span>
+<span class="sd">        search_data_var</span>
+<span class="sd">        CFCoordSpecs.search</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get</span><span class="p">,</span>
                                   <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CFSpecs.search_dim"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search_dim.html#xoa.cf.CFSpecs.search_dim">[docs]</a>    <span class="k">def</span> <span class="nf">search_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">dim_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search for a dimension from its type</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        dim_type: None, {&quot;x&quot;, &quot;y&quot;, &quot;z&quot;, &quot;t&quot;, &quot;f&quot;}</span>
+<span class="sd">            Dimension type</span>
+<span class="sd">        loc:</span>
+<span class="sd">            Location</span>
+
+<span class="sd">        See also</span>
+<span class="sd">        --------</span>
+<span class="sd">        CFCoordSpecs.search_dim</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search_dim</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">dim_type</span><span class="o">=</span><span class="n">dim_type</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CFSpecs.search_coord_from_dim"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search_coord_from_dim.html#xoa.cf.CFSpecs.search_coord_from_dim">[docs]</a>    <span class="k">def</span> <span class="nf">search_coord_from_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search a dataarray for a coordinate from a dimension name</span>
+
+<span class="sd">        It first searches for a coordinate with the same name and that is</span>
+<span class="sd">        the only one having this dimension.</span>
+<span class="sd">        Then look for coordinates with the same type like x, y, etc.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        dim: str</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        xarray.DataArray, None</span>
+<span class="sd">            An coordinate array or None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search_from_dim</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CFSpecs.search_data_var"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search_data_var.html#xoa.cf.CFSpecs.search_data_var">[docs]</a>    <span class="k">def</span> <span class="nf">search_data_var</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span>
                         <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search for a data_var that maches given or any specs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dsa: DataArray or Dataset</span>
+<span class="sd">        name: str, dict</span>
+<span class="sd">            A CF name. If not provided, all CF names are scaned.</span>
+<span class="sd">        loc: str, {&quot;any&quot;, None}, {&quot;&quot;, False}</span>
+<span class="sd">            - str: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&quot;&quot;: no location</span>
+<span class="sd">        get: {&quot;obj&quot;, &quot;name&quot;}</span>
+<span class="sd">            When found, get the object found or its name.</span>
+<span class="sd">        single: bool</span>
+<span class="sd">            If True, return the first item found or None.</span>
+<span class="sd">            If False, return a possible empty list of found items.</span>
+<span class="sd">            A warning is emitted when set to True and multiple item are found.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None or str or object</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        .. ipython:: python</span>
+
+<span class="sd">            @suppress</span>
+<span class="sd">            from xoa.cf import get_cf_specs</span>
+<span class="sd">            @suppress</span>
+<span class="sd">            import xarray as xr, numpy as np</span>
+<span class="sd">            data = xr.DataArray(</span>
+<span class="sd">                [0, 1], dims=(&#39;x&#39;),</span>
+<span class="sd">                attrs={&#39;standard_name&#39;: &#39;sea_water_temperature&#39;})</span>
+<span class="sd">            ds = xr.Dataset({&#39;foo&#39;: data})</span>
+<span class="sd">            cfspecs = get_cf_specs()</span>
+<span class="sd">            cfspecs.search_data_var(ds, &quot;temp&quot;)</span>
+<span class="sd">            cfspecs.search_data_var(ds, &quot;temp&quot;, get=&quot;name&quot;)</span>
+<span class="sd">            cfspecs.search_data_var(ds, &quot;sal&quot;)</span>
+
+<span class="sd">        See also</span>
+<span class="sd">        --------</span>
+<span class="sd">        search_coord</span>
+<span class="sd">        CFVarSpecs.search</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get</span><span class="p">,</span>
                                      <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CFSpecs.search"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search.html#xoa.cf.CFSpecs.search">[docs]</a>    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span>
-               <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+               <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;raise&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Search for a dataarray with data_vars and/or coords&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">categories</span><span class="p">:</span>
             <span class="n">categories</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">categories</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="s2">&quot;data_vars&quot;</span><span class="p">)</span>
@@ -1181,9 +1375,13 @@
             <span class="n">categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">categories</span>
         <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get</span><span class="p">,</span>
-                                        <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span>
+                                        <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">res</span></div></div>
+                <span class="k">return</span> <span class="n">res</span></div>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A shortcut to :meth:`search` with an explicit name&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
 
 
 <span class="k">class</span> <span class="nc">_CFCatSpecs_</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -1224,10 +1422,10 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_specs</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">values</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">)</span>
 
-    <span class="c1"># def __len__(self):</span>
-    <span class="c1">#     return len(self._dict)</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span>
@@ -1239,9 +1437,13 @@
         <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">name</span>
 
-    <span class="k">def</span> <span class="nf">_assert_known_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_assert_known_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;raise&quot;</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="si">}</span><span class="s2"> CF specs name: &quot;</span><span class="o">+</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Invalid </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="si">}</span><span class="s2"> CF specs name: &quot;</span><span class="o">+</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1311,7 +1513,14 @@
 <span class="sd">        ----------</span>
 <span class="sd">        da: xarray.DataArray</span>
 <span class="sd">        name: str, dict, None</span>
-<span class="sd">        loc: str, False, &quot;any&quot;</span>
+<span class="sd">            Cf name.</span>
+<span class="sd">            If None, all names are used.</span>
+<span class="sd">            If a dict, name is interpreted as an explicit set of</span>
+<span class="sd">            specifications.</span>
+<span class="sd">        loc: str, {&quot;any&quot;, None}, {&quot;&quot;, False}</span>
+<span class="sd">            - str: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&quot;&quot;: no location</span>
 
 <span class="sd">        Return</span>
 <span class="sd">        ------</span>
@@ -1347,7 +1556,8 @@
                         <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">name</span> <span class="k">else</span> <span class="n">name_</span>
         <span class="k">return</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">name</span> <span class="k">else</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;raise&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Search for a data_var or coord that maches given or any specs</span>
 
 <span class="sd">        Parameters</span>
@@ -1355,13 +1565,17 @@
 <span class="sd">        dsa: DataArray or Dataset</span>
 <span class="sd">        name: str, dict</span>
 <span class="sd">            A CF name. If not provided, all CF names are scaned.</span>
-<span class="sd">        loc: &quot;any&quot;, str</span>
+<span class="sd">        loc: str, {&quot;any&quot;, None}, {&quot;&quot;, False}</span>
+<span class="sd">            - str: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&quot;&quot;: no location</span>
 <span class="sd">        get: {&quot;obj&quot;, &quot;name&quot;}</span>
 <span class="sd">            When found, get the object found or its name.</span>
 <span class="sd">        single: bool</span>
 <span class="sd">            If True, return the first item found or None.</span>
 <span class="sd">            If False, return a possible empty list of found items.</span>
 <span class="sd">            A warning is emitted when set to True and multiple item are found.</span>
+<span class="sd">        errors: {&quot;raise&quot;, &quot;ignore&quot;}</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1377,7 +1591,8 @@
         <span class="c1"># Get match specs</span>
         <span class="k">if</span> <span class="n">name</span><span class="p">:</span>  <span class="c1"># Explicit name so we loop on search specs</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_assert_known_</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assert_known_</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">errors</span><span class="p">):</span>
+                    <span class="k">return</span>
             <span class="n">match_specs</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">refs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_ordered_match_specs_</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="n">match_specs</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">attr</span><span class="p">:</span> <span class="n">refs</span><span class="p">})</span>
@@ -1409,6 +1624,10 @@
             <span class="n">xoa_warn</span><span class="p">(</span><span class="s2">&quot;Multiple items found while you requested a single one&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">found</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">found</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call to :meth:`search` with an explicit name and ignoring errors&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_attrs</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">select</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;warn&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1486,7 +1705,10 @@
 <span class="sd">        da: xarray.DataArray</span>
 <span class="sd">        name: str, None</span>
 <span class="sd">            A CF name. If not provided, it guessed with :meth:`match`.</span>
-<span class="sd">        loc: str</span>
+<span class="sd">        loc: str, {&quot;any&quot;, None}, {&quot;&quot;, False}</span>
+<span class="sd">            - str: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&quot;&quot;: no location</span>
 <span class="sd">        rename: bool</span>
 <span class="sd">            Rename arrays</span>
 <span class="sd">        standardize: bool</span>
@@ -1544,11 +1766,13 @@
 
 
 <div class="viewcode-block" id="CFVarSpecs"><a class="viewcode-back" href="../../api/xoa.cf.CFVarSpecs.html#xoa.cf.CFVarSpecs">[docs]</a><span class="k">class</span> <span class="nc">CFVarSpecs</span><span class="p">(</span><span class="n">_CFCatSpecs_</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;CF specification for data_vars&quot;&quot;&quot;</span>
 
     <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;data_vars&quot;</span></div>
 
 
 <div class="viewcode-block" id="CFCoordSpecs"><a class="viewcode-back" href="../../api/xoa.cf.CFCoordSpecs.html#xoa.cf.CFCoordSpecs">[docs]</a><span class="k">class</span> <span class="nc">CFCoordSpecs</span><span class="p">(</span><span class="n">_CFCatSpecs_</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;CF specification for coords&quot;&quot;&quot;</span>
 
     <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;coords&quot;</span>
 
@@ -1899,6 +2123,8 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span> <span class="o">=</span> <span class="n">get_cf_specs</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span> <span class="o">=</span> <span class="n">dsa</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_coords</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_vars</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">set_cf_specs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfspecs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set the :class:`CFSpecs` using by this accessor&quot;&quot;&quot;</span>
@@ -1907,18 +2133,20 @@
 
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Search for a CF item with :meth:`CFSpecs.search`&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_category</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">,</span>
+                      <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_category</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_category</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Search for a CF coord with :meth:`CFCoordSpecs.search`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">,</span>
+            <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">[</span><span class="s1">&#39;accessors&#39;</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_category</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
@@ -1930,8 +2158,24 @@
 
     <span class="fm">__call__</span> <span class="o">=</span> <span class="n">auto_format</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">coords</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sub-accessor for coords only&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coords</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_coords</span> <span class="o">=</span> <span class="n">_CoordAccessor_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_coords</span><span class="o">.</span><span class="n">set_cf_specs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coords</span>
 
-<div class="viewcode-block" id="DataArrayCFAccessor"><a class="viewcode-back" href="../../api/xoa.cf.DataArrayCFAccessor.html#xoa.cf.DataArrayCFAccessor">[docs]</a><span class="k">class</span> <span class="nc">DataArrayCFAccessor</span><span class="p">(</span><span class="n">_CFAccessor_</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sub-accessor for data_vars only&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_vars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data_vars</span> <span class="o">=</span> <span class="n">_DataVarAccessor__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data_vars</span><span class="o">.</span><span class="n">set_cf_specs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_vars</span>
+
+
+<span class="k">class</span> <span class="nc">_CoordAccessor_</span><span class="p">(</span><span class="n">_CFAccessor_</span><span class="p">):</span>
     <span class="n">_category</span> <span class="o">=</span> <span class="s1">&#39;coords&#39;</span>
 
     <span class="nd">@property</span>
@@ -1947,14 +2191,14 @@
         <span class="k">except</span> <span class="n">XoaError</span><span class="p">:</span>
             <span class="k">return</span>
 
-<div class="viewcode-block" id="DataArrayCFAccessor.get_dim"><a class="viewcode-back" href="../../api/xoa.cf.DataArrayCFAccessor.get_dim.html#xoa.cf.DataArrayCFAccessor.get_dim">[docs]</a>    <span class="k">def</span> <span class="nf">get_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim_type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim_type</span><span class="p">):</span>
         <span class="n">dim_type</span> <span class="o">=</span> <span class="n">dim_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dims&#39;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="k">if</span> <span class="n">dim_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">[</span><span class="n">dim_type</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">search_dim</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="n">dim_type</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">[</span><span class="n">dim_type</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">[</span><span class="n">dim_type</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">xdim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1970,11 +2214,19 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tdim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dim</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dim</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_DataVarAccessor__</span><span class="p">(</span><span class="n">_CFAccessor_</span><span class="p">):</span>
+    <span class="n">_category</span> <span class="o">=</span> <span class="s2">&quot;data_vars&quot;</span>
 
 
 <div class="viewcode-block" id="DatasetCFAccessor"><a class="viewcode-back" href="../../api/xoa.cf.DatasetCFAccessor.html#xoa.cf.DatasetCFAccessor">[docs]</a><span class="k">class</span> <span class="nc">DatasetCFAccessor</span><span class="p">(</span><span class="n">_CFAccessor_</span><span class="p">):</span>
-    <span class="n">_category</span> <span class="o">=</span> <span class="s1">&#39;data_vars&#39;</span></div>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="DataArrayCFAccessor"><a class="viewcode-back" href="../../api/xoa.cf.DataArrayCFAccessor.html#xoa.cf.DataArrayCFAccessor">[docs]</a><span class="k">class</span> <span class="nc">DataArrayCFAccessor</span><span class="p">(</span><span class="n">_CoordAccessor_</span><span class="p">):</span>
+    <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="register_cf_accessors"><a class="viewcode-back" href="../../api/xoa.cf.register_cf_accessors.html#xoa.cf.register_cf_accessors">[docs]</a><span class="k">def</span> <span class="nf">register_cf_accessors</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cf&#39;</span><span class="p">):</span>

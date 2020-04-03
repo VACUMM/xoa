@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ssh"``]
+=============================================
+
+.. cfdatavar:: ssh
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'ssh'`` ``'xe'`` ``'wlv'`` ``'sea_surface_height'`` ``'sea_surface_height_above_sea_level'`` ``'sea_surface_height_above_geoid'``
+	    * - **standard_name**
+	      - ``'sea_surface_height'`` ``'sea_surface_height_above_sea_level'`` ``'sea_surface_height_above_geoid'``
+	    * - **long_name**
+	      - ``'Sea surface height'``
+	    * - **units**
+	      - ``'m'``
+	    * - **cmap**
+	      - ``'cmo.balance:piv0'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

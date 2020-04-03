@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"t2m"``]
+=============================================
+
+.. cfdatavar:: t2m
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'air_potential_temperature_at_2_meters'``
+	    * - **long_name**
+	      - ``'2 m temperature'``
+	    * - **units**
+	      - ``'K'`` ``'degrees_kelvin'``
+	    * - **cmap**
+	      - ``'cmo.thermal'``
+	    * - **name**
+	      - ``'t2m'`` ``'air_potential_temperature_at_2_meters'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

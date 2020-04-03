@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"altitude"``]
+==================================================
+
+.. cfdatavar:: altitude
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'altitude'`` ``'altitudet'`` ``'altitudeu'`` ``'altitudev'`` ``'atmosphere_layer_altitude'``
+	    * - **standard_name**
+	      - ``'atmosphere_layer_altitude'``
+	    * - **long_name**
+	      - ``'Altitude'``
+	    * - **units**
+	      - ``'m'``
+	    * - **cmap**
+	      - ``'cmo.deep'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"corio"``]
+===============================================
+
+.. cfdatavar:: corio
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'corio'`` ``'f0'`` ``'coriolis_parameter'``
+	    * - **standard_name**
+	      - ``'coriolis_parameter'``
+	    * - **long_name**
+	      - ``'Coriolis parameter'``
+	    * - **units**
+	      - ``'s-1'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

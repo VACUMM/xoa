@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"lwuhf"``]
+===============================================
+
+.. cfdatavar:: lwuhf
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'surface_upward_longwave_flux'``
+	    * - **long_name**
+	      - ``'Longwave radiation (positive when directed upward)'``
+	    * - **units**
+	      - ``'W m-2'``
+	    * - **cmap**
+	      - ``'cmo.solar'``
+	    * - **name**
+	      - ``'lwuhf'`` ``'surface_upward_longwave_flux'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

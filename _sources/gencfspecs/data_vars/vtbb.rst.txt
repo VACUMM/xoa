@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"vtbb"``]
+==============================================
+
+.. cfdatavar:: vtbb
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'y_component_of_bottom_wave_ocean_momentum_flux'`` ``'northward_wave_to_bottom_boundary_layer_stress'``
+	    * - **long_name**
+	      - ``'Meridional component of the bottom wave-ocean momentum flux'``
+	    * - **units**
+	      - ``'m2 s-2'``
+	    * - **name**
+	      - ``'vtbb'`` ``'y_component_of_bottom_wave_ocean_momentum_flux'`` ``'northward_wave_to_bottom_boundary_layer_stress'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

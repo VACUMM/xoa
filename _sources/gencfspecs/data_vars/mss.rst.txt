@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"mss"``]
+=============================================
+
+.. cfdatavar:: mss
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'mss'`` ``'mean_square_slope'``
+	    * - **standard_name**
+	      - ``'mean_square_slope'``
+	    * - **long_name**
+	      - ``'mean square slope'``
+	    * - **units**
+	      - ``'m m-1'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

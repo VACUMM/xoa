@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"vgbt"``]
+==============================================
+
+.. cfdatavar:: vgbt
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'barotropic_sea_water_y_geostrophic_velocity'`` ``'northward_geostrophic_current_velocity'``
+	    * - **long_name**
+	      - ``'Sea water barotropic geostrophic velocity along Y'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.delta:piv0'``
+	    * - **name**
+	      - ``'vgbt'`` ``'barotropic_sea_water_y_geostrophic_velocity'`` ``'northward_geostrophic_current_velocity'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

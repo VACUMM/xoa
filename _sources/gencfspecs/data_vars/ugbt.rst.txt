@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ugbt"``]
+==============================================
+
+.. cfdatavar:: ugbt
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'barotropic_sea_water_x_geostrophic_velocity'`` ``'eastward_geostrophic_current_velocity'``
+	    * - **long_name**
+	      - ``'Sea water barotropic geostrophic velocity along X'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.delta:piv0'``
+	    * - **name**
+	      - ``'ugbt'`` ``'barotropic_sea_water_x_geostrophic_velocity'`` ``'eastward_geostrophic_current_velocity'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,27 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"eke"``]
+=============================================
+
+.. cfdatavar:: eke
+
+	.. list-table::
+
+	    * - **standard_names**
+	      - ``'eddy_kinetic_energy'``
+	    * - **long_name**
+	      - ``'Eddy kinetic energy'``
+	    * - **units**
+	      - ``'m2 s-2'``
+	    * - **name**
+	      - ``'eke'``
+	    * - **standard_name**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

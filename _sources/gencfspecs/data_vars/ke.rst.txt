@@ -1,0 +1,27 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ke"``]
+============================================
+
+.. cfdatavar:: ke
+
+	.. list-table::
+
+	    * - **standard_names**
+	      - ``'kinetic_energy'``
+	    * - **long_name**
+	      - ``'Kinetic energy'``
+	    * - **units**
+	      - ``'m2 s-2'``
+	    * - **name**
+	      - ``'ke'``
+	    * - **standard_name**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

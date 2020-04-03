@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"hc"``]
+============================================
+
+.. cfdatavar:: hc
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'ocean_s_coordinate_thick_of_surface_resolution'``
+	    * - **long_name**
+	      - ``'Sigma-coordinate critical depth'``
+	    * - **name**
+	      - ``'hc'`` ``'ocean_s_coordinate_thick_of_surface_resolution'``
+	    * - **units**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

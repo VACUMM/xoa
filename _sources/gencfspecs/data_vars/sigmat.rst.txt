@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"sigmat"``]
+================================================
+
+.. cfdatavar:: sigmat
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_water_sigma_t'``
+	    * - **long_name**
+	      - ``'Sea water density minus 1000'``
+	    * - **units**
+	      - ``'kg m-3'``
+	    * - **cmap**
+	      - ``'cmo.dense'``
+	    * - **name**
+	      - ``'sigmat'`` ``'sea_water_sigma_t'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

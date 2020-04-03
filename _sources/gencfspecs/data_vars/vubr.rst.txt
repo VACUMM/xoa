@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"vubr"``]
+==============================================
+
+.. cfdatavar:: vubr
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'rms_of_bottom_meridional_velocity_amplitude'``
+	    * - **long_name**
+	      - ``'Rms of near bottom meridional velocities'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.amp'``
+	    * - **name**
+	      - ``'vubr'`` ``'rms_of_bottom_meridional_velocity_amplitude'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

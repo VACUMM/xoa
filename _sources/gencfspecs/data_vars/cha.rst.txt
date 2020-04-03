@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"cha"``]
+=============================================
+
+.. cfdatavar:: cha
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'cha'`` ``'ch'`` ``'averaged_drag_thermal_coefficient_in_air'`` ``'drag_thermal_coefficient_in_air'``
+	    * - **standard_name**
+	      - ``'averaged_drag_thermal_coefficient_in_air'`` ``'drag_thermal_coefficient_in_air'``
+	    * - **long_name**
+	      - ``'Averaged drag thermal coefficient'`` ``'Drag thermal coefficient'``
+	    * - **units**
+	      - ``'W s-2'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

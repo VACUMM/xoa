@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"dlat"``]
+==============================================
+
+.. cfdatavar:: dlat
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'cell_y_step'`` ``'cell_y_size'``
+	    * - **long_name**
+	      - ``'Mesh step along y'``
+	    * - **units**
+	      - ``'degrees'``
+	    * - **name**
+	      - ``'dlat'`` ``'cell_y_step'`` ``'cell_y_size'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

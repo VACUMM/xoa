@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"ptemp"``]
+===============================================
+
+.. cfdatavar:: ptemp
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'sea_water_potential_temperature'``
+	    * - **long_name**
+	      - ``'Potential temperature'``
+	    * - **units**
+	      - ``'degrees_celsius'``
+	    * - **cmap**
+	      - ``'cmo.thermal'``
+	    * - **name**
+	      - ``'ptemp'`` ``'sea_water_potential_temperature'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"pa"``]
+============================================
+
+.. cfdatavar:: pa
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'pa'`` ``'psl'`` ``'air_pressure_at_sea_level'``
+	    * - **standard_name**
+	      - ``'air_pressure_at_sea_level'``
+	    * - **long_name**
+	      - ``'Absolute pressure'``
+	    * - **units**
+	      - ``'Pa'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

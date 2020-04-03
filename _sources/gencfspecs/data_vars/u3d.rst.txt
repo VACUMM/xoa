@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"u3d"``]
+=============================================
+
+.. cfdatavar:: u3d
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'u3d'`` ``'uz'`` ``'sea_water_x_velocity'``
+	    * - **standard_name**
+	      - ``'sea_water_x_velocity'``
+	    * - **long_name**
+	      - ``'Sea water velocity along X'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.delta:piv0'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

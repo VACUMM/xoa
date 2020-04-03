@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"nethf"``]
+===============================================
+
+.. cfdatavar:: nethf
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'nethf'`` ``'surface_net_averaged_downward_radiative_flux'`` ``'surface_net_downward_radiative_flux'``
+	    * - **standard_name**
+	      - ``'surface_net_averaged_downward_radiative_flux'`` ``'surface_net_downward_radiative_flux'``
+	    * - **long_name**
+	      - ``'Net radiation'``
+	    * - **units**
+	      - ``'W m-2'``
+	    * - **cmap**
+	      - ``'cmo.curl:piv0'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

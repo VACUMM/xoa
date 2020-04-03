@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"vol"``]
+=============================================
+
+.. cfdatavar:: vol
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'seawater_volume'``
+	    * - **long_name**
+	      - ``'Volume of the sea water'``
+	    * - **units**
+	      - ``'m3'``
+	    * - **name**
+	      - ``'vol'`` ``'seawater_volume'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

@@ -1,0 +1,21 @@
+:attr:`~xoa.cf.CFSpecs.coords` [``"sig"``]
+==========================================
+
+.. cfcoord:: sig
+
+	.. list-table::
+
+	    * - **axis**
+	      - ``'Z'``
+	    * - **name**
+	      - ``'sig'`` ``'s_level'`` ``'sigma'`` ``'s'`` ``'sigma_level'`` ``'ocean_sigma_coordinate'`` ``'ocean_s_coordinate'`` ``'atmosphere_sigma_coordinate'`` ``'atmosphere_s_coordinate'`` ``'ocean_s_coordinate_g1'`` ``'ocean_s_coordinate_g2'``
+	    * - **long_name**
+	      - ``'Sig'`` ``'Sigma level'``
+	    * - **standard_name**
+	      - ``'ocean_sigma_coordinate'`` ``'ocean_s_coordinate'`` ``'atmosphere_sigma_coordinate'`` ``'atmosphere_s_coordinate'`` ``'ocean_s_coordinate_g1'`` ``'ocean_s_coordinate_g2'``
+	    * - **units**
+	      - 
+	    * - **domain**
+	      - ``'generic'``
+	    * - **search_order**
+	      - ``'nsa'``

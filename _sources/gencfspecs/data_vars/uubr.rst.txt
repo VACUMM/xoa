@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"uubr"``]
+==============================================
+
+.. cfdatavar:: uubr
+
+	.. list-table::
+
+	    * - **standard_name**
+	      - ``'rms_of_bottom_zonal_velocity_amplitude'``
+	    * - **long_name**
+	      - ``'Rms of near bottom zonal velocities'``
+	    * - **units**
+	      - ``'m s-1'``
+	    * - **cmap**
+	      - ``'cmo.amp'``
+	    * - **name**
+	      - ``'uubr'`` ``'rms_of_bottom_zonal_velocity_amplitude'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``

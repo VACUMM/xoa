@@ -1,0 +1,25 @@
+:attr:`~xoa.cf.CFSpecs.data_vars` [``"foc"``]
+=============================================
+
+.. cfdatavar:: foc
+
+	.. list-table::
+
+	    * - **name**
+	      - ``'foc'`` ``'phioc'`` ``'turbulent_kinetic_energy_flux_into_sea_water_due_to_surface_dissipation_wave'``
+	    * - **standard_name**
+	      - ``'turbulent_kinetic_energy_flux_into_sea_water_due_to_surface_dissipation_wave'``
+	    * - **long_name**
+	      - ``'Wave mixing kinetic turbulent energy due to surface breaking wave'``
+	    * - **units**
+	      - ``'W m-2'`` ``'m3 s-3'``
+	    * - **domain**
+	      - ``'generic'``
+	    * - **cmap**
+	      - ``None``
+	    * - **squeeze**
+	      - ``None``
+	    * - **search_order**
+	      - ``'sn'``
+	    * - **select**
+	      - ``{}``
