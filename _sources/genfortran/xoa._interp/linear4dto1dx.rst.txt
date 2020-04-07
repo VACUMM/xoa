@@ -1,0 +1,7 @@
+linear4dto1dx
+=============
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  linear4dto1dx(xi,yi,zi,ti,vi,xo,yo,zo,to,[nex,nxi,nyi,nzi,nti,no])
+

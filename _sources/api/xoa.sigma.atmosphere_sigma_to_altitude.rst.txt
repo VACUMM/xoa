@@ -1,6 +1,0 @@
-xoa.sigma.atmosphere\_sigma\_to\_altitude
-=========================================
-
-.. currentmodule:: xoa.sigma
-
-.. autofunction:: atmosphere_sigma_to_altitude

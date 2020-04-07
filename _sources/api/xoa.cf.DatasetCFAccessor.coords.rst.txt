@@ -1,0 +1,6 @@
+xoa.cf.DatasetCFAccessor.coords
+===============================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: DatasetCFAccessor.coords

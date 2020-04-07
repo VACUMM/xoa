@@ -1,0 +1,7 @@
+dstpt2line
+==========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  dstpt2line(x,y,x1,x2,y1,y2)
+

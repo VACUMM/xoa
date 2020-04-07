@@ -1,0 +1,7 @@
+curv2rel
+========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  curv2rel(xxi,yyi,xo,yo,[nxi,nyi,no])
+

@@ -1,0 +1,7 @@
+extrap1d
+========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  extrap1d(vari,[extrap,nx,ny])
+

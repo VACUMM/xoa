@@ -471,8 +471,8 @@ as soon as the <code class="docutils literal notranslate"><span class="pre">form
 <span class="go">Dimensions without coordinates: mylon</span>
 <span class="go">Attributes:</span>
 <span class="go">    standard_name:  longitude</span>
-<span class="go">    units:          degrees_east</span>
 <span class="go">    long_name:      Longitude</span>
+<span class="go">    units:          degrees_east</span>
 
 <span class="gp">In [25]: </span><span class="n">cfspecs</span><span class="o">.</span><span class="n">format_data_var</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">)</span>
 <span class="gh">Out[25]: </span><span class="go"></span>
@@ -482,8 +482,8 @@ as soon as the <code class="docutils literal notranslate"><span class="pre">form
 <span class="go">  * lon      (lon) float64 0.0 1.0 2.0</span>
 <span class="go">Attributes:</span>
 <span class="go">    standard_name:  sea_water_temperature</span>
-<span class="go">    units:          degrees_celsius</span>
 <span class="go">    long_name:      Temperature</span>
+<span class="go">    units:          degrees_celsius</span>
 </pre></div>
 </div>
 <p><strong>Auto-formatting:</strong></p>
@@ -497,8 +497,8 @@ as soon as the <code class="docutils literal notranslate"><span class="pre">form
 <span class="go">  * lon      (lon) float64 0.0 1.0 2.0</span>
 <span class="go">Attributes:</span>
 <span class="go">    standard_name:  sea_water_temperature</span>
-<span class="go">    units:          degrees_celsius</span>
 <span class="go">    long_name:      Temperature</span>
+<span class="go">    units:          degrees_celsius</span>
 
 <span class="gp">In [28]: </span><span class="n">ds2</span><span class="o">.</span><span class="n">lon</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
@@ -508,8 +508,8 @@ as soon as the <code class="docutils literal notranslate"><span class="pre">form
 <span class="go">  * lon      (lon) float64 0.0 1.0 2.0</span>
 <span class="go">Attributes:</span>
 <span class="go">    standard_name:  longitude</span>
-<span class="go">    units:          degrees_east</span>
 <span class="go">    long_name:      Longitude</span>
+<span class="go">    units:          degrees_east</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -609,8 +609,8 @@ Here are some example of usage:</p>
 <p>As you can see, accessing an accessor attribute or item make an
 implicit call to <a class="reference internal" href="api/xoa.cf.DataArrayCFAccessor.get.html#xoa.cf.DataArrayCFAccessor.get" title="xoa.cf.DataArrayCFAccessor.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">get</span></code></a>.
 The root accessor attr:<cite>cf</cite> agive accessor to
-two sub-accessors, <code class="xref py py-attr docutils literal notranslate"><span class="pre">data_vars</span></code>
-and <code class="xref py py-attr docutils literal notranslate"><span class="pre">coords</span></code>,
+two sub-accessors, <a class="reference internal" href="api/xoa.cf.DatasetCFAccessor.data_vars.html#xoa.cf.DatasetCFAccessor.data_vars" title="xoa.cf.DatasetCFAccessor.data_vars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">data_vars</span></code></a>
+and <a class="reference internal" href="api/xoa.cf.DatasetCFAccessor.coords.html#xoa.cf.DatasetCFAccessor.coords" title="xoa.cf.DatasetCFAccessor.coords"><code class="xref py py-attr docutils literal notranslate"><span class="pre">coords</span></code></a>,
 for being able to specialize the searches.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -744,13 +744,13 @@ to be used as a fonction.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [56]: </span><span class="n">cfspecs_old</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span>
 
 <span class="gp">In [57]: </span><span class="n">cf</span><span class="o">.</span><span class="n">set_cf_specs</span><span class="p">(</span><span class="n">cfspecs_banana</span><span class="p">)</span>
-<span class="gh">Out[57]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7ff0f9c6f350&gt;</span>
+<span class="gh">Out[57]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f8adc1e4fd0&gt;</span>
 
 <span class="gp">In [58]: </span><span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span> <span class="ow">is</span> <span class="n">cfspecs_banana</span>
 <span class="gh">Out[58]: </span><span class="go">True</span>
 
 <span class="gp">In [59]: </span><span class="n">cf</span><span class="o">.</span><span class="n">set_cf_specs</span><span class="p">(</span><span class="n">cfspecs_old</span><span class="p">)</span>
-<span class="gh">Out[59]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7ff0f9c6fdd0&gt;</span>
+<span class="gh">Out[59]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f8adc175190&gt;</span>
 
 <span class="gp">In [60]: </span><span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span> <span class="ow">is</span> <span class="n">cfspecs_old</span>
 <span class="gh">Out[60]: </span><span class="go">True</span>

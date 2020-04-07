@@ -19,6 +19,9 @@ xoa.cf.CFVarSpecs
          ~CFVarSpecs.format_dataarray
       
       
+         ~CFVarSpecs.get
+      
+      
          ~CFVarSpecs.get_attrs
       
       

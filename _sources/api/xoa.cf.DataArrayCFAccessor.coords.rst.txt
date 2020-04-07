@@ -1,0 +1,6 @@
+xoa.cf.DataArrayCFAccessor.coords
+=================================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: DataArrayCFAccessor.coords

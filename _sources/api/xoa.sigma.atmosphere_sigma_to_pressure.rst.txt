@@ -1,6 +1,0 @@
-xoa.sigma.atmosphere\_sigma\_to\_pressure
-=========================================
-
-.. currentmodule:: xoa.sigma
-
-.. autofunction:: atmosphere_sigma_to_pressure

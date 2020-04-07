@@ -1,0 +1,7 @@
+dstwgt2d
+========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  dstwgt2d(vari,xi,yi,xo,yo,[nogeo,nxi,nyi,nxo,nyo,nz])
+

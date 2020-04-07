@@ -1,0 +1,7 @@
+linear1dx
+=========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  linear1dx(vari,yi,yo,method,[nx,nxb,nyi,nyo,extrap,bias,tension])
+

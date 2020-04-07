@@ -1,6 +1,0 @@
-xoa.sigma.sigma\_to\_altitude
-=============================
-
-.. currentmodule:: xoa.sigma
-
-.. autofunction:: sigma_to_altitude

@@ -1,0 +1,6 @@
+xoa.cf.DataArrayCFAccessor.data\_vars
+=====================================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: DataArrayCFAccessor.data_vars

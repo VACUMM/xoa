@@ -1,0 +1,7 @@
+nearest2dto1d
+=============
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  nearest2dto1d(xi,yi,zi,xo,yo,[nxi,nyi,no,nz])
+

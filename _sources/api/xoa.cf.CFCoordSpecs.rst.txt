@@ -19,6 +19,9 @@ xoa.cf.CFCoordSpecs
          ~CFCoordSpecs.format_dataarray
       
       
+         ~CFCoordSpecs.get
+      
+      
          ~CFCoordSpecs.get_attrs
       
       

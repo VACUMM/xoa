@@ -1,0 +1,7 @@
+nearest4dto1d
+=============
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  nearest4dto1d(xi,yi,zi,ti,vi,xo,yo,zo,to,[nxi,nyi,nzi,nti,no])
+

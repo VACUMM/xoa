@@ -1,0 +1,7 @@
+nearest2dto1dc_reduc
+====================
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  nearest2dto1dc_reduc(p,q,zzi,[nxi,nyi,no,nz])
+

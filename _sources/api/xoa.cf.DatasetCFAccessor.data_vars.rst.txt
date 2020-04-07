@@ -1,0 +1,6 @@
+xoa.cf.DatasetCFAccessor.data\_vars
+===================================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: DatasetCFAccessor.data_vars

@@ -1,0 +1,7 @@
+linear2dto1dc_reduc
+===================
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  linear2dto1dc_reduc(p,q,zzi,[nxi,nyi,no,nz])
+

@@ -1,0 +1,7 @@
+linear2d
+========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  linear2d(vari,xi,yi,xo,yo,[nogeo,nxi,nyi,nxo,nyo,nz])
+

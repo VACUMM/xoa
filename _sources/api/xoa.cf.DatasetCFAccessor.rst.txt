@@ -32,4 +32,12 @@ xoa.cf.DatasetCFAccessor
 
    
    
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~DatasetCFAccessor.coords
+      ~DatasetCFAccessor.data_vars
+   
    

@@ -1,0 +1,7 @@
+nearest4dto1dxx
+===============
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  nearest4dto1dxx(xxi,yyi,zzi,ti,vi,xo,yo,zo,to,[nxi,nyi,nyix,nxiy,nyiz,nxiz,nzi,nti,ntiz,no,nex,nexz])
+

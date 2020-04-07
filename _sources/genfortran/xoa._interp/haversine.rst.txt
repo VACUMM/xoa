@@ -1,0 +1,7 @@
+haversine
+=========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  haversine(lon0,lat0,lon1,lat1)
+

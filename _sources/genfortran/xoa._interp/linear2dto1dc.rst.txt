@@ -1,0 +1,7 @@
+linear2dto1dc
+=============
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  linear2dto1dc(xxi,yyi,zzi,xo,yo,[nxi,nyi,no,nz])
+

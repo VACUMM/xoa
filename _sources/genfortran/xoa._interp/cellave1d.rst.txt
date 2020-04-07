@@ -1,0 +1,7 @@
+cellave1d
+=========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  cellave1d(vari,yib,yob,conserv,[nx,nyi,nyo,extrap])
+

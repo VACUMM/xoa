@@ -1,0 +1,7 @@
+curv2rectss
+===========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  curv2rectss(xx1,xx2,xx3,xx4,yy1,yy2,yy3,yy4,xx,yy,[np])
+

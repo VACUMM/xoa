@@ -1,0 +1,7 @@
+dstwgt2dto1dc
+=============
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  dstwgt2dto1dc(xxi,yyi,zzi,xo,yo,[nxi,nyi,no,nz])
+

@@ -1,0 +1,134 @@
+xoa._interp
+===========
+
+Interpolation routines
+
+.. module:: xoa._interp
+
+.. toctree::
+	:hidden:
+
+	cellave1d
+	cellave1dx
+	cellave1dxx
+	cellerr1d
+	cellerr1dx
+	cellerr1dxx
+	closest2d
+	curv2rect
+	curv2rectss
+	curv2rel
+	curv2rel_single
+	dstpt2line
+	dstpts2line
+	dstpts2lines
+	dstwgt2d
+	dstwgt2dto1d
+	dstwgt2dto1dc
+	dstwgt2dto1dc_reduc
+	extrap1d
+	haversine
+	linear1d
+	linear1dx
+	linear1dxx
+	linear2d
+	linear2dto1d
+	linear2dto1dc
+	linear2dto1dc_reduc
+	linear4dto1d
+	linear4dto1dx
+	linear4dto1dxx
+	linept
+	linepts
+	lineptss
+	mlinear2d
+	nearest2d
+	nearest2dto1d
+	nearest2dto1dc
+	nearest2dto1dc_reduc
+	nearest4dto1d
+	nearest4dto1dxx
+
+
+.. list-table::
+
+	* - :func:`xoa._interp.cellave1d`
+	  - varo = cellave1d(vari,yib,yob,conserv,[nx,nyi,nyo,extrap])
+	* - :func:`xoa._interp.cellave1dx`
+	  - varo = cellave1dx(vari,yib,yob,conserv,[nx,nxb,nyi,nyo,extrap])
+	* - :func:`xoa._interp.cellave1dxx`
+	  - varo = cellave1dxx(vari,yib,yob,conserv,[nx,nxb,nyi,nyo,extrap])
+	* - :func:`xoa._interp.cellerr1d`
+	  - varo,erro = cellerr1d(vari,yi,yo,yob,errm,errl,[nx,nxb,nyi,nyo])
+	* - :func:`xoa._interp.cellerr1dx`
+	  - varo,erro = cellerr1dx(vari,yi,yo,yob,errm,errl,[nx,nxb,nyi,nyo])
+	* - :func:`xoa._interp.cellerr1dxx`
+	  - varo,erro = cellerr1dxx(vari,yi,yo,yob,errm,errl,[nx,nxb,nyi,nyo])
+	* - :func:`xoa._interp.closest2d`
+	  - i,j = closest2d(xxi,yyi,xo,yo,nogeo,[nxi,nyi])
+	* - :func:`xoa._interp.curv2rect`
+	  - p,q = curv2rect(x1,x2,x3,x4,y1,y2,y3,y4,x,y)
+	* - :func:`xoa._interp.curv2rectss`
+	  - pp,qq = curv2rectss(xx1,xx2,xx3,xx4,yy1,yy2,yy3,yy4,xx,yy,[np])
+	* - :func:`xoa._interp.curv2rel`
+	  - p,q = curv2rel(xxi,yyi,xo,yo,[nxi,nyi,no])
+	* - :func:`xoa._interp.curv2rel_single`
+	  - p,q = curv2rel_single(xxi,yyi,xo,yo,[nxi,nyi])
+	* - :func:`xoa._interp.dstpt2line`
+	  - d = dstpt2line(x,y,x1,x2,y1,y2)
+	* - :func:`xoa._interp.dstpts2line`
+	  - d = dstpts2line(x,y,x1,x2,y1,y2,[np])
+	* - :func:`xoa._interp.dstpts2lines`
+	  - d = dstpts2lines(x,y,x1,x2,y1,y2,[np])
+	* - :func:`xoa._interp.dstwgt2d`
+	  - varo = dstwgt2d(vari,xi,yi,xo,yo,[nogeo,nxi,nyi,nxo,nyo,nz])
+	* - :func:`xoa._interp.dstwgt2dto1d`
+	  - zo = dstwgt2dto1d(xi,yi,zi,xo,yo,[nxi,nyi,no,nz])
+	* - :func:`xoa._interp.dstwgt2dto1dc`
+	  - zo = dstwgt2dto1dc(xxi,yyi,zzi,xo,yo,[nxi,nyi,no,nz])
+	* - :func:`xoa._interp.dstwgt2dto1dc_reduc`
+	  - zo = dstwgt2dto1dc_reduc(p,q,zzi,[nxi,nyi,no,nz])
+	* - :func:`xoa._interp.extrap1d`
+	  - varo = extrap1d(vari,[extrap,nx,ny])
+	* - :func:`xoa._interp.haversine`
+	  - dist = haversine(lon0,lat0,lon1,lat1)
+	* - :func:`xoa._interp.linear1d`
+	  - varo = linear1d(vari,yi,yo,method,[nx,nyi,nyo,extrap,bias,tension])
+	* - :func:`xoa._interp.linear1dx`
+	  - varo = linear1dx(vari,yi,yo,method,[nx,nxb,nyi,nyo,extrap,bias,tension])
+	* - :func:`xoa._interp.linear1dxx`
+	  - varo = linear1dxx(vari,yi,yo,method,[nx,nxb,nyi,nyo,extrap,bias,tension])
+	* - :func:`xoa._interp.linear2d`
+	  - varo = linear2d(vari,xi,yi,xo,yo,[nogeo,nxi,nyi,nxo,nyo,nz])
+	* - :func:`xoa._interp.linear2dto1d`
+	  - zo = linear2dto1d(xi,yi,zi,xo,yo,[nxi,nyi,no,nz])
+	* - :func:`xoa._interp.linear2dto1dc`
+	  - zo = linear2dto1dc(xxi,yyi,zzi,xo,yo,[nxi,nyi,no,nz])
+	* - :func:`xoa._interp.linear2dto1dc_reduc`
+	  - zo = linear2dto1dc_reduc(p,q,zzi,[nxi,nyi,no,nz])
+	* - :func:`xoa._interp.linear4dto1d`
+	  - vo = linear4dto1d(xi,yi,zi,ti,vi,xo,yo,zo,to,[nxi,nyi,nzi,nti,no])
+	* - :func:`xoa._interp.linear4dto1dx`
+	  - vo = linear4dto1dx(xi,yi,zi,ti,vi,xo,yo,zo,to,[nex,nxi,nyi,nzi,nti,no])
+	* - :func:`xoa._interp.linear4dto1dxx`
+	  - vo = linear4dto1dxx(xxi,yyi,zzi,ti,vi,xo,yo,zo,to,[nxi,nyi,nyix,nxiy,nyiz,nxiz,nzi,nti,ntiz,no,nex,nexz])
+	* - :func:`xoa._interp.linept`
+	  - xc,yc = linept(x,y,x1,x2,y1,y2)
+	* - :func:`xoa._interp.linepts`
+	  - xxc,yyc = linepts(xx,yy,x1,x2,y1,y2,[np])
+	* - :func:`xoa._interp.lineptss`
+	  - xxc,yyc = lineptss(xx,yy,xx1,xx2,yy1,yy2,[np])
+	* - :func:`xoa._interp.mlinear2d`
+	  - varo = mlinear2d(vari,xi,yi,xo,yo,ext,[nxi,nyi,no,nogeo])
+	* - :func:`xoa._interp.nearest2d`
+	  - varo = nearest2d(vari,xxi,yyi,xxo,yyo,nb,[nogeo,nxi,nyi,nxo,nyo,nz])
+	* - :func:`xoa._interp.nearest2dto1d`
+	  - zo = nearest2dto1d(xi,yi,zi,xo,yo,[nxi,nyi,no,nz])
+	* - :func:`xoa._interp.nearest2dto1dc`
+	  - zo = nearest2dto1dc(xxi,yyi,zzi,xo,yo,[nxi,nyi,no,nz])
+	* - :func:`xoa._interp.nearest2dto1dc_reduc`
+	  - zo = nearest2dto1dc_reduc(p,q,zzi,[nxi,nyi,no,nz])
+	* - :func:`xoa._interp.nearest4dto1d`
+	  - vo = nearest4dto1d(xi,yi,zi,ti,vi,xo,yo,zo,to,[nxi,nyi,nzi,nti,no])
+	* - :func:`xoa._interp.nearest4dto1dxx`
+	  - vo = nearest4dto1dxx(xxi,yyi,zzi,ti,vi,xo,yo,zo,to,[nxi,nyi,nyix,nxiy,nyiz,nxiz,nzi,nti,ntiz,no,nex,nexz])

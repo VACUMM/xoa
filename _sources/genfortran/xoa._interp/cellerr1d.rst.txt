@@ -1,0 +1,7 @@
+cellerr1d
+=========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  cellerr1d(vari,yi,yo,yob,errm,errl,[nx,nxb,nyi,nyo])
+

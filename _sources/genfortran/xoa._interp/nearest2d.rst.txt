@@ -1,0 +1,7 @@
+nearest2d
+=========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  nearest2d(vari,xxi,yyi,xxo,yyo,nb,[nogeo,nxi,nyi,nxo,nyo,nz])
+

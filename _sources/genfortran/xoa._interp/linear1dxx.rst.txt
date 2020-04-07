@@ -1,0 +1,7 @@
+linear1dxx
+==========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  linear1dxx(vari,yi,yo,method,[nx,nxb,nyi,nyo,extrap,bias,tension])
+

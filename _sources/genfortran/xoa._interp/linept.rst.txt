@@ -1,0 +1,7 @@
+linept
+======
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  linept(x,y,x1,x2,y1,y2)
+

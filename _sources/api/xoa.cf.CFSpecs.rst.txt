@@ -31,6 +31,9 @@ xoa.cf.CFSpecs
          ~CFSpecs.format_dataset
       
       
+         ~CFSpecs.get
+      
+      
          ~CFSpecs.load_cfg
       
       

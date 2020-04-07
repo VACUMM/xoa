@@ -1,6 +1,0 @@
-xoa.sigma.sigma\_types.atmosphere\_sigma
-========================================
-
-.. currentmodule:: xoa.sigma
-
-.. autoattribute:: sigma_types.atmosphere_sigma

@@ -1,0 +1,7 @@
+closest2d
+=========
+
+.. currentmodule:: xoa._interp
+
+.. autofunction::  closest2d(xxi,yyi,xo,yo,nogeo,[nxi,nyi])
+
