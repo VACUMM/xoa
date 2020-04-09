@@ -36,6 +36,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 </head>
@@ -620,7 +621,11 @@
 <span class="sd">        --------</span>
 <span class="sd">        merge_attr</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Reloc if needed</span>
         <span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">attrs</span><span class="p">:</span>
+            <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">format_attrs</span><span class="p">(</span>
+                <span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">))</span>
 
         <span class="c1"># Loop on attributes</span>
         <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">patch</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -693,12 +698,12 @@
             <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
         <span class="c1"># Attributes</span>
-        <span class="k">if</span> <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
-            <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">format_attrs</span><span class="p">(</span>
-                <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">attrs</span><span class="p">:</span>
             <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">patch_attrs</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span>
                                              <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">format_attrs</span><span class="p">(</span>
+                <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">))</span>
 
         <span class="c1"># Name</span>
         <span class="k">if</span> <span class="n">rename</span><span class="p">:</span>
@@ -858,6 +863,10 @@
     <span class="k">def</span> <span class="nf">sglocator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;:class:`SGLocator` instance&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sgl</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cfgspecs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfgspecs</span>
 
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">section</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span>
@@ -1185,7 +1194,7 @@
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="s2">&quot;data_vars&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_dataset</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">,</span>
                                        <span class="n">format_coords</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_dataarray</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_data_var</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="n">standardize</span><span class="p">)</span></div>
 
     <span class="fm">__call__</span> <span class="o">=</span> <span class="n">auto_format</span>
 
@@ -1204,6 +1213,11 @@
 <span class="sd">            - str: one of these locations</span>
 <span class="sd">            - None or &quot;any&quot;: any</span>
 <span class="sd">            - False or &#39;&quot;&quot;: no location</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool, str</span>
+<span class="sd">            True or False if name is provided, else found name or None</span>
 
 <span class="sd">        See also</span>
 <span class="sd">        --------</span>
@@ -1227,11 +1241,64 @@
 <span class="sd">            - None or &quot;any&quot;: any</span>
 <span class="sd">            - False or &#39;&quot;&quot;: no location</span>
 
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool, str</span>
+<span class="sd">            True or False if name is provided, else found name or None</span>
+
 <span class="sd">        See also</span>
 <span class="sd">        --------</span>
 <span class="sd">        CFVarSpecs.match</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_category</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Guess if a datarray belongs to data_vars or coords</span>
+
+<span class="sd">        It belongs to coords if one of its dimensions or</span>
+<span class="sd">        coordinates has its name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span> <span class="ow">or</span>
+                                    <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;coords&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;data_vars&quot;</span>
+
+    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if an array matches any data_var or coord specs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        da: xarray.DataArray</span>
+<span class="sd">        loc: str, {&quot;any&quot;, None}, {&quot;&quot;, False}</span>
+<span class="sd">            - str: one of these locations</span>
+<span class="sd">            - None or &quot;any&quot;: any</span>
+<span class="sd">            - False or &#39;&quot;&quot;: no location</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        str, None</span>
+<span class="sd">            Category</span>
+<span class="sd">        str, None</span>
+<span class="sd">            Name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_category</span><span class="p">(</span><span class="n">da</span><span class="p">)</span>
+        <span class="n">categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">categories</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">category</span> <span class="o">!=</span> <span class="n">categories</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">categories</span> <span class="o">=</span> <span class="n">categories</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">category</span><span class="p">,</span> <span class="n">name</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="CFSpecs.search_coord"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search_coord.html#xoa.cf.CFSpecs.search_coord">[docs]</a>    <span class="k">def</span> <span class="nf">search_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Search for a coord that maches given or any specs</span>
@@ -2118,13 +2185,14 @@
 
 
 <span class="k">class</span> <span class="nc">_CFAccessor_</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="n">_category</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_search_category</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span> <span class="o">=</span> <span class="n">get_cf_specs</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span> <span class="o">=</span> <span class="n">dsa</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_coords</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data_vars</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span> <span class="nf">set_cf_specs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfspecs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set the :class:`CFSpecs` using by this accessor&quot;&quot;&quot;</span>
@@ -2135,9 +2203,9 @@
         <span class="sd">&quot;&quot;&quot;Search for a CF item with :meth:`CFSpecs.search`&quot;&quot;&quot;</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">,</span>
                       <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_category</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_category</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_category</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_search_category</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Search for a CF coord with :meth:`CFCoordSpecs.search`&quot;&quot;&quot;</span>
@@ -2176,13 +2244,7 @@
 
 
 <span class="k">class</span> <span class="nc">_CoordAccessor_</span><span class="p">(</span><span class="n">_CFAccessor_</span><span class="p">):</span>
-    <span class="n">_category</span> <span class="o">=</span> <span class="s1">&#39;coords&#39;</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_name&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+    <span class="n">_search_category</span> <span class="o">=</span> <span class="s1">&#39;coords&#39;</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -2218,7 +2280,7 @@
 
 
 <span class="k">class</span> <span class="nc">_DataVarAccessor__</span><span class="p">(</span><span class="n">_CFAccessor_</span><span class="p">):</span>
-    <span class="n">_category</span> <span class="o">=</span> <span class="s2">&quot;data_vars&quot;</span>
+    <span class="n">_search_category</span> <span class="o">=</span> <span class="s2">&quot;data_vars&quot;</span>
 
 
 <div class="viewcode-block" id="DatasetCFAccessor"><a class="viewcode-back" href="../../api/xoa.cf.DatasetCFAccessor.html#xoa.cf.DatasetCFAccessor">[docs]</a><span class="k">class</span> <span class="nc">DatasetCFAccessor</span><span class="p">(</span><span class="n">_CFAccessor_</span><span class="p">):</span>
@@ -2226,7 +2288,31 @@
 
 
 <div class="viewcode-block" id="DataArrayCFAccessor"><a class="viewcode-back" href="../../api/xoa.cf.DataArrayCFAccessor.html#xoa.cf.DataArrayCFAccessor">[docs]</a><span class="k">class</span> <span class="nc">DataArrayCFAccessor</span><span class="p">(</span><span class="n">_CoordAccessor_</span><span class="p">):</span>
-    <span class="k">pass</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">:</span>
+            <span class="n">category</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">category</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;attrs&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+                <span class="n">cf_attrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">multi</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="s2">&quot;attrs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfspecs</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">patch_attrs</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_dsa</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">cf_attrs</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="s2">&quot;attrs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="s2">&quot;attrs&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span> <span class="ow">and</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="s2">&quot;attrs&quot;</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">_CoordAccessor_</span><span class="o">.</span><span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="register_cf_accessors"><a class="viewcode-back" href="../../api/xoa.cf.register_cf_accessors.html#xoa.cf.register_cf_accessors">[docs]</a><span class="k">def</span> <span class="nf">register_cf_accessors</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cf&#39;</span><span class="p">):</span>
@@ -2240,9 +2326,6 @@
             <span class="n">xr</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">extensions</span><span class="o">.</span><span class="n">AccessorRegistrationWarning</span><span class="p">)</span>
         <span class="n">xr</span><span class="o">.</span><span class="n">register_dataarray_accessor</span><span class="p">(</span><span class="n">name</span><span class="p">)(</span><span class="n">DataArrayCFAccessor</span><span class="p">)</span>
         <span class="n">xr</span><span class="o">.</span><span class="n">register_dataset_accessor</span><span class="p">(</span><span class="n">name</span><span class="p">)(</span><span class="n">DatasetCFAccessor</span><span class="p">)</span></div>
-
-
-<span class="n">register_cf_accessors</span><span class="p">()</span>
 </pre></div>
 
            </div>

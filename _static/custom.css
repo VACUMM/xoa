@@ -1,0 +1,15 @@
+.wy-side-nav-search, .wy-nav-top {
+    /*background: #2980B9;*/
+    background: #28B934; /*hue 125 */
+}
+
+
+.rst-content dl:not(.docutils) dt {
+	/*background: #e7f2fa;
+	color: #2980B9;
+	border-top: solid 3px #6ab0de;*/
+	background: #E8FAE9; /*hue 270 */
+	/*color: #59E965; hue 270 */
+	color: #51D05B; /* same as top */
+	border-top-color: #51D05B; /*hue 270 */
+}
