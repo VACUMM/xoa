@@ -84,9 +84,13 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configure.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help and reference</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="usages.html">Usages</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
@@ -111,6 +115,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Commandline interface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">More</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendices</a></li>
 </ul>
@@ -770,13 +777,13 @@ to be used as a fonction.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [60]: </span><span class="n">cfspecs_old</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span>
 
 <span class="gp">In [61]: </span><span class="n">cf</span><span class="o">.</span><span class="n">set_cf_specs</span><span class="p">(</span><span class="n">cfspecs_banana</span><span class="p">)</span>
-<span class="gh">Out[61]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f49c0861a50&gt;</span>
+<span class="gh">Out[61]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f8769878f50&gt;</span>
 
 <span class="gp">In [62]: </span><span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span> <span class="ow">is</span> <span class="n">cfspecs_banana</span>
 <span class="gh">Out[62]: </span><span class="go">True</span>
 
 <span class="gp">In [63]: </span><span class="n">cf</span><span class="o">.</span><span class="n">set_cf_specs</span><span class="p">(</span><span class="n">cfspecs_old</span><span class="p">)</span>
-<span class="gh">Out[63]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f49c0861a90&gt;</span>
+<span class="gh">Out[63]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f87698830d0&gt;</span>
 
 <span class="gp">In [64]: </span><span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span> <span class="ow">is</span> <span class="n">cfspecs_old</span>
 <span class="gh">Out[64]: </span><span class="go">True</span>

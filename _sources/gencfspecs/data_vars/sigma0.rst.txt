@@ -10,7 +10,7 @@
 	    * - **name**
 	      - ``'sigma0'`` ``'pdens'`` ``'sea_water_potential_density'``
 	    * - **long_name**
-	      - ``'Sigma0'`` ``'Sea water potential density'``
+	      - ``'Sea water potential density'`` ``'Sigma0'``
 	    * - **standard_name**
 	      - ``'sea_water_potential_density'``
 	    * - **units**
