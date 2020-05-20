@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Commandline interface" href="../../cli.html" />
+    <link rel="next" title="Release notes" href="../../changes.html" />
     <link rel="prev" title="nearest4dto1d" href="nearest4dto1d.html" /> 
 </head>
 
@@ -84,15 +84,20 @@
               
             
             
-              <p class="caption"><span class="caption-text">Setup</span></p>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configure.html">Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Help and reference</span></p>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usages.cf.html">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Practical examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../usages.html">Usages</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../api.html#python">Python</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../api.html#fortran-wrappers">Fortran wrappers</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">xoa._interp</a><ul class="current">
@@ -142,11 +147,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../cli.html">Commandline interface</a></li>
-</ul>
-<p class="caption"><span class="caption-text">More</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Development roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../appendix.html">Appendices</a></li>
 </ul>
 
@@ -193,7 +195,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../../api.html">API</a> &raquo;</li>
+          <li><a href="../../api.html">API Reference</a> &raquo;</li>
         
           <li><a href="index.html">xoa._interp</a> &raquo;</li>
         
@@ -242,7 +244,7 @@
 </style>
 <div class="section" id="nearest4dto1dxx">
 <h1>nearest4dto1dxx<a class="headerlink" href="#nearest4dto1dxx" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="xoa._interp.nearest4dto1dxx">
 <code class="sig-prename descclassname">xoa._interp.</code><code class="sig-name descname">nearest4dto1dxx</code><span class="sig-paren">(</span><em class="sig-param">xxi</em>, <em class="sig-param">yyi</em>, <em class="sig-param">zzi</em>, <em class="sig-param">ti</em>, <em class="sig-param">vi</em>, <em class="sig-param">xo</em>, <em class="sig-param">yo</em>, <em class="sig-param">zo</em>, <em class="sig-param">to</em><span class="optional">[</span>, <em class="sig-param">nxi</em>, <em class="sig-param">nyi</em>, <em class="sig-param">nyix</em>, <em class="sig-param">nxiy</em>, <em class="sig-param">nyiz</em>, <em class="sig-param">nxiz</em>, <em class="sig-param">nzi</em>, <em class="sig-param">nti</em>, <em class="sig-param">ntiz</em>, <em class="sig-param">no</em>, <em class="sig-param">nex</em>, <em class="sig-param">nexz</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#xoa._interp.nearest4dto1dxx" title="Permalink to this definition">¶</a></dt>
 <dd><p>vo = nearest4dto1dxx(xxi,yyi,zzi,ti,vi,xo,yo,zo,to,[nxi,nyi,nyix,nxiy,nyiz,nxiz,nzi,nti,ntiz,no,nex,nexz])</p>
@@ -296,7 +298,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../cli.html" class="btn btn-neutral float-right" title="Commandline interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../changes.html" class="btn btn-neutral float-right" title="Release notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="nearest4dto1d.html" class="btn btn-neutral float-left" title="nearest4dto1d" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

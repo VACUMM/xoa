@@ -1,0 +1,6 @@
+xoa.cf.CFSpecs.match
+====================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFSpecs.match

@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="xoa.sigma.ocean_s_to_depths" href="xoa.sigma.ocean_s_to_depths.html" />
+    <link rel="next" title="xoa.sigma.ocean_s_coordinate" href="xoa.sigma.ocean_s_coordinate.html" />
     <link rel="prev" title="xoa.sigma.get_cs" href="xoa.sigma.get_cs.html" /> 
 </head>
 
@@ -84,15 +84,20 @@
               
             
             
-              <p class="caption"><span class="caption-text">Setup</span></p>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configure.html">Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Help and reference</span></p>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usages.cf.html">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Practical examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../usages.html">Usages</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#python">Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="xoa.html">xoa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
@@ -100,13 +105,17 @@
 <li class="toctree-l3"><a class="reference internal" href="xoa.cf.html">xoa.cf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="xoa.sigma.html">xoa.sigma</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.atmosphere_sigma_to_pressures.html">xoa.sigma.atmosphere_sigma_to_pressures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.decode_cf.html">xoa.sigma.decode_cf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.atmosphere_sigma_coordinate.html">xoa.sigma.atmosphere_sigma_coordinate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.decode_cf_sigma.html">xoa.sigma.decode_cf_sigma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.decode_formula_terms.html">xoa.sigma.decode_formula_terms</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.sigma.get_cs.html">xoa.sigma.get_cs</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.sigma.get_sigma_terms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_s_to_depths.html">xoa.sigma.ocean_s_to_depths</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_sigma_to_depths.html">xoa.sigma.ocean_sigma_to_depths</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.parse_formula_terms_attr.html">xoa.sigma.parse_formula_terms_attr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_s_coordinate.html">xoa.sigma.ocean_s_coordinate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_s_coordinate_g1.html">xoa.sigma.ocean_s_coordinate_g1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_s_coordinate_g2.html">xoa.sigma.ocean_s_coordinate_g2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_sigma_coordinate.html">xoa.sigma.ocean_sigma_coordinate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.register_sigma_accessors.html">xoa.sigma.register_sigma_accessors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.SigmaAccessor.html">xoa.sigma.SigmaAccessor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.sigma.XoaCFError.html">xoa.sigma.XoaCFError</a></li>
 </ul>
 </li>
@@ -119,11 +128,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../api.html#fortran-wrappers">Fortran wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
-</ul>
-<p class="caption"><span class="caption-text">More</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Development roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendices</a></li>
 </ul>
 
@@ -170,7 +176,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../api.html">API</a> &raquo;</li>
+          <li><a href="../api.html">API Reference</a> &raquo;</li>
         
           <li><a href="xoa.sigma.html">xoa.sigma</a> &raquo;</li>
         
@@ -219,9 +225,9 @@
 </style>
 <div class="section" id="xoa-sigma-get-sigma-terms">
 <h1>xoa.sigma.get_sigma_terms<a class="headerlink" href="#xoa-sigma-get-sigma-terms" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="xoa.sigma.get_sigma_terms">
-<code class="sig-prename descclassname">xoa.sigma.</code><code class="sig-name descname">get_sigma_terms</code><span class="sig-paren">(</span><em class="sig-param">ds</em>, <em class="sig-param">loc=None</em>, <em class="sig-param">rename=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/sigma.html#get_sigma_terms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.sigma.get_sigma_terms" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">xoa.sigma.</code><code class="sig-name descname">get_sigma_terms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ds</span></em>, <em class="sig-param"><span class="n">loc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">rename</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/sigma.html#get_sigma_terms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.sigma.get_sigma_terms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get sigma terms from a dataset as another dataset</p>
 <p>It operates like this:</p>
 <ol class="arabic simple">
@@ -243,6 +249,9 @@ If any or None, results for all locations are returned.</p></li>
 <dd class="field-even"><p>A dict is generated for a given sigma variable,
 whose keys are array names, like <code class="docutils literal notranslate"><span class="pre">&quot;sc_r&quot;</span></code>,
 and values are <a class="reference internal" href="xoa.cf.html#module-xoa.cf" title="xoa.cf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cf</span></code></a> names, like <code class="docutils literal notranslate"><span class="pre">&quot;sig&quot;</span></code>.
+A special key is the <code class="docutils literal notranslate"><span class="pre">&quot;type&quot;</span></code> whose corresponding value
+is the <code class="docutils literal notranslate"><span class="pre">standard_name</span></code>, stripped from its potential staggered grid
+location indicator.
 If <code class="docutils literal notranslate"><span class="pre">loc</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;any&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code>,
 each dict is embedded in a master dict
 whose keys are staggered grid location. If no location is found,
@@ -274,7 +283,7 @@ the key is set <code class="docutils literal notranslate"><span class="pre">None
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="xoa.sigma.ocean_s_to_depths.html" class="btn btn-neutral float-right" title="xoa.sigma.ocean_s_to_depths" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="xoa.sigma.ocean_s_coordinate.html" class="btn btn-neutral float-right" title="xoa.sigma.ocean_s_coordinate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="xoa.sigma.get_cs.html" class="btn btn-neutral float-left" title="xoa.sigma.get_cs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

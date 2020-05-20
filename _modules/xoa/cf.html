@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -82,20 +82,22 @@
               
             
             
-              <p class="caption"><span class="caption-text">Setup</span></p>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configure.html">Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Help and reference</span></p>
+<p class="caption"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../usages.html">Usages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usages.cf.html">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Practical examples</a></li>
 </ul>
-<p class="caption"><span class="caption-text">More</span></p>
+<p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Development roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../appendix.html">Appendices</a></li>
 </ul>
 
@@ -1259,7 +1261,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="CFSpecs.get_category"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.get_category.html#xoa.cf.CFSpecs.get_category">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_category</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Guess if a datarray belongs to data_vars or coords</span>
 
@@ -1277,9 +1279,9 @@
         <span class="k">if</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span> <span class="ow">or</span>
                                     <span class="n">da</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="p">):</span>
             <span class="k">return</span> <span class="s2">&quot;coords&quot;</span>
-        <span class="k">return</span> <span class="s2">&quot;data_vars&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;data_vars&quot;</span></div>
 
-    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="CFSpecs.match"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.match.html#xoa.cf.CFSpecs.match">[docs]</a>    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check if an array matches any data_var or coord specs</span>
 
 <span class="sd">        Parameters</span>
@@ -1305,7 +1307,7 @@
             <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">category</span><span class="p">,</span> <span class="n">name</span>
-        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="CFSpecs.search_coord"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.search_coord.html#xoa.cf.CFSpecs.search_coord">[docs]</a>    <span class="k">def</span> <span class="nf">search_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Search for a coord that maches given or any specs</span>
@@ -1447,11 +1449,18 @@
                           <span class="k">else</span> <span class="p">[</span><span class="s2">&quot;coords&quot;</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">categories</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">single</span><span class="p">:</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get</span><span class="p">,</span>
                                         <span class="n">single</span><span class="o">=</span><span class="n">single</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">res</span></div>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">single</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">res</span> <span class="k">if</span> <span class="n">r</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">found</span><span class="p">]</span>
+                <span class="n">found</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">res</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">single</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">found</span></div>
 
 <div class="viewcode-block" id="CFSpecs.get"><a class="viewcode-back" href="../../api/xoa.cf.CFSpecs.get.html#xoa.cf.CFSpecs.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsa</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;A shortcut to :meth:`search` with an explicit name&quot;&quot;&quot;</span>

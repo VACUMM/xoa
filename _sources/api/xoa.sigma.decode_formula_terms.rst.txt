@@ -1,0 +1,6 @@
+xoa.sigma.decode\_formula\_terms
+================================
+
+.. currentmodule:: xoa.sigma
+
+.. autofunction:: decode_formula_terms

@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Development roadmap &mdash; xoa 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Appendices" href="appendix.html" />
+    <link rel="prev" title="Release notes" href="changes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> xoa
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configure.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usages.cf.html">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Practical examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Release notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-base">The base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extension-of-the-climate-and-forecast-cf-conventions">Extension of the Climate and Forecast (CF) conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interpolations">Interpolations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphics">Graphics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">xoa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Development roadmap</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/roadmap.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="development-roadmap">
+<span id="roadmap"></span><h1>Development roadmap<a class="headerlink" href="#development-roadmap" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-base">
+<h2>The base<a class="headerlink" href="#the-base" title="Permalink to this headline">¶</a></h2>
+<p>The fundamental objective of xoa is to facilitate the analysis,
+transformation and comparison of ocean data.
+Facilitate here means that it must be possible to perform
+complex operations in a few lines, without having to know all the
+API and all the parameters to obtain a suitable and accurate result.
+To this end, the library relies on the following libraries, among others:</p>
+<dl class="simple">
+<dt><a class="reference external" href="http://xarray.pydata.org">xarray</a></dt><dd><p>All numerical vectors are by default supposed to be of
+<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> type, i.e. with numerical values, attributes and
+potentially multi-dimensional coordinates.
+The library adds some <a class="reference internal" href="usages.cf.html#usages-cf"><span class="std std-ref">CF support</span></a>
+to identify known data arrays and coordinates in datasets.</p>
+</dd>
+<dt><a class="reference external" href="https://matplotlib.org">matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">cartopy</a></dt><dd><p>All plots are made with them, with an extra layer that
+prevents the user from making certain choices or
+explicitly providing certain parameters.</p>
+</dd>
+<dt><a class="reference external" href="https://xesmf.readthedocs.io/en/latest/">xesmf</a> and <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/interpolate.html">scipy.interpolate</a></dt><dd><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">xesmf</span></code> is used to perform efficient and valid regridding between
+structured grids.
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/interpolate.html#module-scipy.interpolate" title="(in SciPy v1.4.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.interpolate</span></code></a> helps performing interpolations
+between unstructured data.
+<a class="reference internal" href="api/xoa.regrid.html#module-xoa.regrid" title="xoa.regrid"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.regrid</span></code></a> is a convenient interface to these libraries.
+xoa adds missing capabilities such as the ability to make 1D interpolations
+with coordinates that varies along other dimensions, which is often
+the case for the vertical coordinate of ocean models.</p>
+</dd>
+</dl>
+<p>For those who know <a class="reference external" href="https://github.com/VACUMM/vacumm">vacumm</a>,
+xoa a light weight, faster and more flexible version,
+now in python 3, and based on the xarray data model instead of
+CDAT.
+vacumm provide alot of facilities that are now available in other packages,
+thus no longer needed.</p>
+</div>
+<div class="section" id="extension-of-the-climate-and-forecast-cf-conventions">
+<h2>Extension of the Climate and Forecast (CF) conventions<a class="headerlink" href="#extension-of-the-climate-and-forecast-cf-conventions" title="Permalink to this headline">¶</a></h2>
+<p>It is essential to easily find longitude and latitude coordinates
+to make a map, or temperature and salinity to make a TS diagram.
+The <a class="reference internal" href="api/xoa.cf.html#module-xoa.cf" title="xoa.cf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code></a> module helps finding numerous variables in data arrays
+and datasets thanks to their attributes, the most important one being
+the standard_name.</p>
+<ul class="simple">
+<li><p>Not all known variables with a standard name have been declared,
+but the list can be completed.</p></li>
+<li><p>Variables are organised by their short name which must be unique,
+and is generally chosen from an ocean point of view.</p></li>
+</ul>
+<p>In addition to variable identification, xoa is intended to
+facilitate depth and altitude calculations based on sigma coordinates,
+with the <a class="reference internal" href="api/xoa.sigma.html#module-xoa.sigma" title="xoa.sigma"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.sigma</span></code></a> module.</p>
+</div>
+<div class="section" id="interpolations">
+<h2>Interpolations<a class="headerlink" href="#interpolations" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="genfortran/xoa._interp/index.html#module-xoa._interp" title="xoa._interp"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fortran</span> <span class="pre">interpolation</span> <span class="pre">routines</span></code></a> are implemented.
+Calling python routines such as <a class="reference internal" href="api/xoa.regrid.regrid1d.html#xoa.regrid.regrid1d" title="xoa.regrid.regrid1d"><code class="xref py py-func docutils literal notranslate"><span class="pre">xoa.regrid.regrid1d()</span></code></a> still have to be
+implemented.
+The interpolation engine must always be these xoa fortran routines by default
+because they fulfill all basic requirements.
+One can however imagine the possibility of using scipy’s
+abilities when it is appropriate to do so.</p>
+</div>
+<div class="section" id="graphics">
+<h2>Graphics<a class="headerlink" href="#graphics" title="Permalink to this headline">¶</a></h2>
+<p>The idea is to guess how to plot a variable
+from its attributes and coordinates.
+For example, know that we draw a hovmoeller diagram of the temperature,
+with depths as the y-axis, and a cmo.thermal palette.</p>
+<p>In addition, most of convenient graphic routines of <a class="reference external" href="https://github.com/VACUMM/vacumm">vacumm</a>
+are now implemented by <a class="reference external" href="https://proplot.readthedocs.io/en/latest/">proplot</a>
+in a nice way.
+The xoa graphic routines will probably make an intensive usage of
+this package for core operations.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="appendix.html" class="btn btn-neutral float-right" title="Appendices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="changes.html" class="btn btn-neutral float-left" title="Release notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Shom/Ifremer/Actimar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

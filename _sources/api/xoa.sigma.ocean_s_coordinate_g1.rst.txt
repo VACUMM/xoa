@@ -1,0 +1,6 @@
+xoa.sigma.ocean\_s\_coordinate\_g1
+==================================
+
+.. currentmodule:: xoa.sigma
+
+.. autofunction:: ocean_s_coordinate_g1

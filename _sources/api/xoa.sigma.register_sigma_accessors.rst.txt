@@ -1,0 +1,6 @@
+xoa.sigma.register\_sigma\_accessors
+====================================
+
+.. currentmodule:: xoa.sigma
+
+.. autofunction:: register_sigma_accessors

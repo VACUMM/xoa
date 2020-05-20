@@ -1,0 +1,6 @@
+xoa.coords.get\_vertical
+========================
+
+.. currentmodule:: xoa.coords
+
+.. autofunction:: get_vertical

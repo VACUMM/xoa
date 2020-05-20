@@ -1,0 +1,6 @@
+xoa.sigma.decode\_cf\_sigma
+===========================
+
+.. currentmodule:: xoa.sigma
+
+.. autofunction:: decode_cf_sigma

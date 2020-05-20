@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="xoa.coords.get_height" href="xoa.coords.get_height.html" />
+    <link rel="next" title="xoa.coords.get_lat" href="xoa.coords.get_lat.html" />
     <link rel="prev" title="xoa.coords.get_coords" href="xoa.coords.get_coords.html" /> 
 </head>
 
@@ -84,11 +84,20 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configure.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usages.html">Usages</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usages.cf.html">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Practical examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#python">Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="xoa.html">xoa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
@@ -98,10 +107,10 @@
 <li class="toctree-l4"><a class="reference internal" href="xoa.coords.get_altitude.html">xoa.coords.get_altitude</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.coords.get_coords.html">xoa.coords.get_coords</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.coords.get_depth</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.coords.get_height.html">xoa.coords.get_height</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.coords.get_lat.html">xoa.coords.get_lat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.coords.get_level.html">xoa.coords.get_level</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.coords.get_lon.html">xoa.coords.get_lon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.coords.get_vertical.html">xoa.coords.get_vertical</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.coords.transpose_compat.html">xoa.coords.transpose_compat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.coords.DimFlusher1D.html">xoa.coords.DimFlusher1D</a></li>
 </ul>
@@ -116,8 +125,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../api.html#fortran-wrappers">Fortran wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Development roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendices</a></li>
 </ul>
 
@@ -164,7 +173,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../api.html">API</a> &raquo;</li>
+          <li><a href="../api.html">API Reference</a> &raquo;</li>
         
           <li><a href="xoa.coords.html">xoa.coords</a> &raquo;</li>
         
@@ -213,9 +222,9 @@
 </style>
 <div class="section" id="xoa-coords-get-depth">
 <h1>xoa.coords.get_depth<a class="headerlink" href="#xoa-coords-get-depth" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="xoa.coords.get_depth">
-<code class="sig-prename descclassname">xoa.coords.</code><code class="sig-name descname">get_depth</code><span class="sig-paren">(</span><em class="sig-param">da</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/coords.html#get_depth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.coords.get_depth" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">xoa.coords.</code><code class="sig-name descname">get_depth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">da</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/coords.html#get_depth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.coords.get_depth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the depth coordinate</p>
 </dd></dl>
 
@@ -229,7 +238,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="xoa.coords.get_height.html" class="btn btn-neutral float-right" title="xoa.coords.get_height" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="xoa.coords.get_lat.html" class="btn btn-neutral float-right" title="xoa.coords.get_lat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="xoa.coords.get_coords.html" class="btn btn-neutral float-left" title="xoa.coords.get_coords" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

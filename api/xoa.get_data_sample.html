@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -84,16 +84,26 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configure.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usages.html">Usages</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usages.cf.html">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Practical examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#python">Python</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="xoa.html">xoa</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.get_data_sample</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.get_option.html">xoa.get_option</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.load_options.html">xoa.load_options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.register_accessors.html">xoa.register_accessors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.reset_options.html">xoa.reset_options</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.set_option.html">xoa.set_option</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.show_data_samples.html">xoa.show_data_samples</a></li>
@@ -122,8 +132,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../api.html#fortran-wrappers">Fortran wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Development roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendices</a></li>
 </ul>
 
@@ -170,7 +180,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../api.html">API</a> &raquo;</li>
+          <li><a href="../api.html">API Reference</a> &raquo;</li>
         
           <li><a href="xoa.html">xoa</a> &raquo;</li>
         
@@ -219,9 +229,9 @@
 </style>
 <div class="section" id="xoa-get-data-sample">
 <h1>xoa.get_data_sample<a class="headerlink" href="#xoa-get-data-sample" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="xoa.get_data_sample">
-<code class="sig-prename descclassname">xoa.</code><code class="sig-name descname">get_data_sample</code><span class="sig-paren">(</span><em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa.html#get_data_sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.get_data_sample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">xoa.</code><code class="sig-name descname">get_data_sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa.html#get_data_sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.get_data_sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the absolute path to a sample file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

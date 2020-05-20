@@ -1,0 +1,6 @@
+xoa.cf.DataArrayCFAccessor.attrs
+================================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: DataArrayCFAccessor.attrs

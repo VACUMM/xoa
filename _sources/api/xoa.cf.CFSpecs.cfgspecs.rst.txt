@@ -1,0 +1,6 @@
+xoa.cf.CFSpecs.cfgspecs
+=======================
+
+.. currentmodule:: xoa.cf
+
+.. autoproperty:: CFSpecs.cfgspecs

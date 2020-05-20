@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -84,11 +84,20 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configure.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usages.html">Usages</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usages.cf.html">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Practical examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#python">Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="xoa.html">xoa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
@@ -121,8 +130,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../api.html#fortran-wrappers">Fortran wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Development roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendices</a></li>
 </ul>
 
@@ -169,7 +178,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../api.html">API</a> &raquo;</li>
+          <li><a href="../api.html">API Reference</a> &raquo;</li>
         
           <li><a href="xoa.cf.html">xoa.cf</a> &raquo;</li>
         
@@ -218,12 +227,12 @@
 </style>
 <div class="section" id="xoa-cf-dataarraycfaccessor">
 <h1>xoa.cf.DataArrayCFAccessor<a class="headerlink" href="#xoa-cf-dataarraycfaccessor" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="xoa.cf.DataArrayCFAccessor">
-<em class="property">class </em><code class="sig-prename descclassname">xoa.cf.</code><code class="sig-name descname">DataArrayCFAccessor</code><span class="sig-paren">(</span><em class="sig-param">dsa</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cf.html#DataArrayCFAccessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cf.DataArrayCFAccessor" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<em class="property">class </em><code class="sig-prename descclassname">xoa.cf.</code><code class="sig-name descname">DataArrayCFAccessor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dsa</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cf.html#DataArrayCFAccessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cf.DataArrayCFAccessor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
 <dt id="xoa.cf.DataArrayCFAccessor.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">dsa</em><span class="sig-paren">)</span><a class="headerlink" href="#xoa.cf.DataArrayCFAccessor.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dsa</span></em><span class="sig-paren">)</span><a class="headerlink" href="#xoa.cf.DataArrayCFAccessor.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
@@ -258,28 +267,31 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.coords.html#xoa.cf.DataArrayCFAccessor.coords" title="xoa.cf.DataArrayCFAccessor.coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coords</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.attrs.html#xoa.cf.DataArrayCFAccessor.attrs" title="xoa.cf.DataArrayCFAccessor.attrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attrs</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.coords.html#xoa.cf.DataArrayCFAccessor.coords" title="xoa.cf.DataArrayCFAccessor.coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coords</span></code></a></p></td>
 <td><p>Sub-accessor for coords only</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.data_vars.html#xoa.cf.DataArrayCFAccessor.data_vars" title="xoa.cf.DataArrayCFAccessor.data_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_vars</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.data_vars.html#xoa.cf.DataArrayCFAccessor.data_vars" title="xoa.cf.DataArrayCFAccessor.data_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_vars</span></code></a></p></td>
 <td><p>Sub-accessor for data_vars only</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.dim.html#xoa.cf.DataArrayCFAccessor.dim" title="xoa.cf.DataArrayCFAccessor.dim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dim</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.dim.html#xoa.cf.DataArrayCFAccessor.dim" title="xoa.cf.DataArrayCFAccessor.dim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dim</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.name.html#xoa.cf.DataArrayCFAccessor.name" title="xoa.cf.DataArrayCFAccessor.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.name.html#xoa.cf.DataArrayCFAccessor.name" title="xoa.cf.DataArrayCFAccessor.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.tdim.html#xoa.cf.DataArrayCFAccessor.tdim" title="xoa.cf.DataArrayCFAccessor.tdim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tdim</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.tdim.html#xoa.cf.DataArrayCFAccessor.tdim" title="xoa.cf.DataArrayCFAccessor.tdim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tdim</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.xdim.html#xoa.cf.DataArrayCFAccessor.xdim" title="xoa.cf.DataArrayCFAccessor.xdim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xdim</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.xdim.html#xoa.cf.DataArrayCFAccessor.xdim" title="xoa.cf.DataArrayCFAccessor.xdim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xdim</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.ydim.html#xoa.cf.DataArrayCFAccessor.ydim" title="xoa.cf.DataArrayCFAccessor.ydim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ydim</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.ydim.html#xoa.cf.DataArrayCFAccessor.ydim" title="xoa.cf.DataArrayCFAccessor.ydim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ydim</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.zdim.html#xoa.cf.DataArrayCFAccessor.zdim" title="xoa.cf.DataArrayCFAccessor.zdim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zdim</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.cf.DataArrayCFAccessor.zdim.html#xoa.cf.DataArrayCFAccessor.zdim" title="xoa.cf.DataArrayCFAccessor.zdim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zdim</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>

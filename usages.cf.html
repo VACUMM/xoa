@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API" href="api.html" />
-    <link rel="prev" title="Usages" href="usages.html" /> 
+    <link rel="next" title="Commandline interface" href="cli.html" />
+    <link rel="prev" title="Configuration" href="configure.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,41 +84,40 @@
               
             
             
-              <p class="caption"><span class="caption-text">Setup</span></p>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configure.html">Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Help and reference</span></p>
+<p class="caption"><span class="caption-text">User Guide</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="usages.html">Usages</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-the-current-specifications">Accessing the current specifications</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#data-variables">Data variables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#coordinates">Coordinates</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-the-current-specifications">Accessing the current specifications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-variables">Data variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coordinates">Coordinates</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#searching-within-a-dataset-or-dataarray">Searching within a <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code> or  <code class="xref py py-class docutils literal notranslate"><span class="pre">DataArray</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#formatting">Formatting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-accessors">Using the accessors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#changing-the-cf-specs">Changing the CF specs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#default-user-file">Default user file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#update-the-current-specs">Update the current specs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#create-new-specs-from-scratch">Create new specs from scratch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#replacing-the-currents-cf-specs">Replacing the currents CF specs</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#searching-within-a-dataset-or-dataarray">Searching within a <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code> or  <code class="xref py py-class docutils literal notranslate"><span class="pre">DataArray</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formatting">Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-accessors">Using the accessors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-the-cf-specs">Changing the CF specs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#default-user-file">Default user file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-the-current-specs">Update the current specs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-new-specs-from-scratch">Create new specs from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#replacing-the-currents-cf-specs">Replacing the currents CF specs</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Practical examples</a></li>
 </ul>
-<p class="caption"><span class="caption-text">More</span></p>
+<p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">Development roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendices</a></li>
 </ul>
 
@@ -164,8 +163,6 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="usages.html">Usages</a> &raquo;</li>
         
       <li>Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</li>
     
@@ -438,8 +435,10 @@ list of available default specifications.</p>
 </div>
 <p>Search for known CF items:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="n">mytemp</span> <span class="o">=</span> <span class="n">cfspecs</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">)</span>
+<span class="go">catsss [&#39;data_vars&#39;, &#39;coords&#39;]</span>
 
 <span class="gp">In [22]: </span><span class="n">mylon</span> <span class="o">=</span> <span class="n">cfspecs</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">mytemp</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">)</span>
+<span class="go">catsss [&#39;coords&#39;]</span>
 </pre></div>
 </div>
 <p>Datasets are searched for data variables (“data_vars”) and
@@ -558,6 +557,7 @@ Here are examples of use:</p>
 <span class="go">    standard_name:  longitude</span>
 
 <span class="gp">In [32]: </span><span class="n">ds</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;temp&quot;</span><span class="p">)</span> <span class="c1"># access by .get</span>
+<span class="go">catsss [&#39;data_vars&#39;, &#39;coords&#39;]</span>
 <span class="gh">Out[32]: </span><span class="go"></span>
 <span class="go">&lt;xarray.DataArray &#39;mytemp&#39; (mylon: 3)&gt;</span>
 <span class="go">array([20., 21., 22.])</span>
@@ -567,6 +567,7 @@ Here are examples of use:</p>
 <span class="go">    standard_name:  sea_water_temperature</span>
 
 <span class="gp">In [33]: </span><span class="n">ds</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">lon</span> <span class="c1"># access by attribute</span>
+<span class="go">catsss [&#39;data_vars&#39;, &#39;coords&#39;]</span>
 <span class="gh">Out[33]: </span><span class="go"></span>
 <span class="go">&lt;xarray.DataArray &#39;mylon&#39; (mylon: 3)&gt;</span>
 <span class="go">array([0., 1., 2.])</span>
@@ -585,6 +586,7 @@ Here are examples of use:</p>
 <span class="go">    standard_name:  longitude</span>
 
 <span class="gp">In [35]: </span><span class="n">ds</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">temp</span> <span class="c1"># access by attribute</span>
+<span class="go">catsss [&#39;data_vars&#39;, &#39;coords&#39;]</span>
 <span class="gh">Out[35]: </span><span class="go"></span>
 <span class="go">&lt;xarray.DataArray &#39;mytemp&#39; (mylon: 3)&gt;</span>
 <span class="go">array([20., 21., 22.])</span>
@@ -594,6 +596,7 @@ Here are examples of use:</p>
 <span class="go">    standard_name:  sea_water_temperature</span>
 
 <span class="gp">In [36]: </span><span class="n">ds</span><span class="o">.</span><span class="n">cf</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="c1"># access by item</span>
+<span class="go">catsss [&#39;data_vars&#39;, &#39;coords&#39;]</span>
 <span class="gh">Out[36]: </span><span class="go">&#39;mytemp&#39;</span>
 
 <span class="gp">In [37]: </span><span class="n">ds</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">name</span>  <span class="c1"># specific search = ds.cf.coords.get(&quot;temp&quot;)</span>
@@ -603,18 +606,22 @@ Here are examples of use:</p>
 <span class="gh">Out[38]: </span><span class="go">True</span>
 
 <span class="gp">In [39]: </span><span class="n">ds</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">name</span>  <span class="c1"># chaining</span>
+<span class="go">catsss [&#39;data_vars&#39;, &#39;coords&#39;]</span>
 <span class="gh">Out[39]: </span><span class="go">&#39;mylon&#39;</span>
 
 <span class="gp">In [40]: </span><span class="n">ds</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">name</span> <span class="c1"># CF name, not real name</span>
+<span class="go">catsss [&#39;data_vars&#39;, &#39;coords&#39;]</span>
 <span class="gh">Out[40]: </span><span class="go">&#39;temp&#39;</span>
 
 <span class="gp">In [41]: </span><span class="n">ds</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">attrs</span> <span class="c1"># attributes, merged with CF attrs</span>
+<span class="go">catsss [&#39;data_vars&#39;, &#39;coords&#39;]</span>
 <span class="gh">Out[41]: </span><span class="go"></span>
 <span class="go">{&#39;standard_name&#39;: &#39;sea_water_temperature&#39;,</span>
 <span class="go"> &#39;units&#39;: &#39;degrees_celsius&#39;,</span>
 <span class="go"> &#39;long_name&#39;: &#39;Temperature&#39;}</span>
 
 <span class="gp">In [42]: </span><span class="n">ds</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">standard_name</span> <span class="c1"># single attribute</span>
+<span class="go">catsss [&#39;data_vars&#39;, &#39;coords&#39;]</span>
 <span class="gh">Out[42]: </span><span class="go">&#39;sea_water_temperature&#39;</span>
 
 <span class="gp">In [43]: </span><span class="n">ds</span><span class="o">.</span><span class="n">mytemp</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">auto_format</span><span class="p">()</span> <span class="c1"># or ds.temp.cf()</span>
@@ -777,13 +784,13 @@ to be used as a fonction.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [60]: </span><span class="n">cfspecs_old</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span>
 
 <span class="gp">In [61]: </span><span class="n">cf</span><span class="o">.</span><span class="n">set_cf_specs</span><span class="p">(</span><span class="n">cfspecs_banana</span><span class="p">)</span>
-<span class="gh">Out[61]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f8769878f50&gt;</span>
+<span class="gh">Out[61]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f50ea369f90&gt;</span>
 
 <span class="gp">In [62]: </span><span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span> <span class="ow">is</span> <span class="n">cfspecs_banana</span>
 <span class="gh">Out[62]: </span><span class="go">True</span>
 
 <span class="gp">In [63]: </span><span class="n">cf</span><span class="o">.</span><span class="n">set_cf_specs</span><span class="p">(</span><span class="n">cfspecs_old</span><span class="p">)</span>
-<span class="gh">Out[63]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f87698830d0&gt;</span>
+<span class="gh">Out[63]: </span><span class="go">&lt;xoa.cf.set_cf_specs at 0x7f50ea369050&gt;</span>
 
 <span class="gp">In [64]: </span><span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span> <span class="ow">is</span> <span class="n">cfspecs_old</span>
 <span class="gh">Out[64]: </span><span class="go">True</span>
@@ -814,6 +821,7 @@ in a context statement:</p>
 <span class="gp">In [70]: </span><span class="k">with</span> <span class="n">cf</span><span class="o">.</span><span class="n">set_cf_specs</span><span class="p">(</span><span class="n">mycfspecs</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">cf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ssb&quot;</span><span class="p">))</span>
 <span class="gp">   ....: </span>
+<span class="go">catsss [&#39;data_vars&#39;, &#39;coords&#39;]</span>
 <span class="go">&lt;xarray.DataArray &#39;toto&#39; (dim_0: 1)&gt;</span>
 <span class="go">array([5])</span>
 <span class="go">Dimensions without coordinates: dim_0</span>
@@ -833,10 +841,10 @@ in a context statement:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="cli.html" class="btn btn-neutral float-right" title="Commandline interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="usages.html" class="btn btn-neutral float-left" title="Usages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="configure.html" class="btn btn-neutral float-left" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -82,20 +82,22 @@
               
             
             
-              <p class="caption"><span class="caption-text">Setup</span></p>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configure.html">Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Help and reference</span></p>
+<p class="caption"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../usages.html">Usages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usages.cf.html">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Practical examples</a></li>
 </ul>
-<p class="caption"><span class="caption-text">More</span></p>
+<p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Development roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../appendix.html">Appendices</a></li>
 </ul>
 
@@ -172,11 +174,11 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">XoaError</span><span class="p">,</span> <span class="n">xoa_warn</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">misc</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">cf</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">coords</span> <span class="k">as</span> <span class="n">xcoords</span>
 
@@ -191,62 +193,41 @@
     <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;thetab&#39;</span>
     <span class="p">}</span>
 
+<span class="c1">#: Supported sigma coordinates</span>
+<span class="n">SIGMA_COORDINATE_TYPES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;atmosphere_sigma_coordinate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ocean_sigma_coordinate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ocean_s_coordinate&quot;</span>
+    <span class="s2">&quot;ocean_s_coordinate_g1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ocean_s_coordinate_g2&quot;</span>
+    <span class="p">)</span>
+
 
 <div class="viewcode-block" id="XoaCFError"><a class="viewcode-back" href="../../api/xoa.sigma.XoaCFError.html#xoa.sigma.XoaCFError">[docs]</a><span class="k">class</span> <span class="nc">XoaCFError</span><span class="p">(</span><span class="n">XoaError</span><span class="p">):</span>
     <span class="k">pass</span></div>
 
-<span class="c1"># def atmosphere_sigma_to_altitude(sig, oro, topheight):</span>
-<span class="c1">#     &quot;&quot;&quot;Convert from sigma [0, 1] to altitude in an atmopsheric model</span>
 
-<span class="c1">#     Formula:</span>
-
-<span class="c1">#     .. math::</span>
-
-<span class="c1">#         h_{bot} + \sigma * (h_{top}-h_{bot}) / h_{top}</span>
-
-<span class="c1">#     Parameters</span>
-<span class="c1">#     ----------</span>
-<span class="c1">#     sig: xarray.DataArray</span>
-<span class="c1">#         Sigma coordinates range from 0 to 1 (:math:`\sigma`)</span>
-<span class="c1">#     oro:: xarray.DataArray</span>
-<span class="c1">#         Orographie, i.e altitude of the ground (:math:`h_{bot}`)</span>
-<span class="c1">#     topheight:: xarray.DataArray</span>
-<span class="c1">#         Height of the top of the model (:math:`h_{top}`)</span>
-
-<span class="c1">#     Returns</span>
-<span class="c1">#     -------</span>
-<span class="c1">#     xarray.DataArray</span>
-<span class="c1">#         Altitudes in meters (:math:`Z`)</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     # Compute</span>
-<span class="c1">#     altitude = sig * (topheight - oro)</span>
-<span class="c1">#     altitude /= topheight</span>
-<span class="c1">#     altitude += oro</span>
-
-<span class="c1">#     # Format</span>
-<span class="c1">#     return cf.get_cf_specs().format_data_var(</span>
-<span class="c1">#         altitude, &quot;altitude&quot;, format_coords=False)</span>
-
-
-<div class="viewcode-block" id="atmosphere_sigma_to_pressures"><a class="viewcode-back" href="../../api/xoa.sigma.atmosphere_sigma_to_pressures.html#xoa.sigma.atmosphere_sigma_to_pressures">[docs]</a><span class="k">def</span> <span class="nf">atmosphere_sigma_to_pressures</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ptop</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="atmosphere_sigma_coordinate"><a class="viewcode-back" href="../../api/xoa.sigma.atmosphere_sigma_coordinate.html#xoa.sigma.atmosphere_sigma_coordinate">[docs]</a><span class="k">def</span> <span class="nf">atmosphere_sigma_coordinate</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ptop</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Convert from sigma [0, 1] to altitude in an atmopsheric model</span>
 
-<span class="sd">    Source: `Ocean sigma coordinate  &lt;http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html#_atmosphere_sigma_coordinate&gt;`_</span>
+<span class="sd">    Source:</span>
+<span class="sd">        `Ocean sigma coordinate  &lt;http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html#_atmosphere_sigma_coordinate&gt;`_</span>
 
 <span class="sd">    Formula:</span>
+<span class="sd">        .. math::</span>
 
-<span class="sd">    .. math::</span>
+<span class="sd">            p = p_{top} + \\sigma * (p_{surf}-p_{top})</span>
 
-<span class="sd">        p = p_{top} + \sigma * (p_{surf}-p_{top})</span>
+<span class="sd">    Sigma standard name:</span>
+<span class="sd">        ``atmosphere_sigma_coordinate``</span>
 
-<span class="sd">    Sigma standard name: ``atmosphere_sigma_coordinate``</span>
-
-<span class="sd">    Formula terms: ``sigma: var1 ps: var2 ptop: var3``</span>
+<span class="sd">    Formula terms:</span>
+<span class="sd">        ``sigma: var1 ps: var2 ptop: var3``</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    sig: xarray.DataArray</span>
-<span class="sd">        Sigma coordinates range from 0 to 1 (:math:`\sigma` | ``sigma``)</span>
+<span class="sd">        Sigma coordinates range from 0 to 1 (:math:`\\sigma` | ``sigma``)</span>
 <span class="sd">    ps: xarray.DataArray</span>
 <span class="sd">        Surface air pressure (:math:`p_{surf}` | ``ps``)</span>
 <span class="sd">    ptop: xarray.DataArray</span>
@@ -265,27 +246,29 @@
     <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">format_data_var</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;plev&quot;</span><span class="p">,</span> <span class="n">format_coords</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ocean_sigma_to_depths"><a class="viewcode-back" href="../../api/xoa.sigma.ocean_sigma_to_depths.html#xoa.sigma.ocean_sigma_to_depths">[docs]</a><span class="k">def</span> <span class="nf">ocean_sigma_to_depths</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">ssh</span><span class="p">,</span> <span class="n">bathy</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ocean_sigma_coordinate"><a class="viewcode-back" href="../../api/xoa.sigma.ocean_sigma_coordinate.html#xoa.sigma.ocean_sigma_coordinate">[docs]</a><span class="k">def</span> <span class="nf">ocean_sigma_coordinate</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">ssh</span><span class="p">,</span> <span class="n">bathy</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Convert from sigma [-1, 0] to negative depths in an ocean model</span>
 
-<span class="sd">    Source: `Ocean sigma coordinate &lt;http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html#_ocean_sigma_coordinate&gt;`_</span>
+<span class="sd">    Source:</span>
+<span class="sd">        `Ocean sigma coordinate &lt;http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html#_ocean_sigma_coordinate&gt;`_</span>
 
 <span class="sd">    Formula:</span>
+<span class="sd">        .. math::</span>
 
-<span class="sd">    .. math::</span>
+<span class="sd">            z = \\eta + \\sigma * (\\eta+h)</span>
 
-<span class="sd">        z = \eta + \sigma * (\eta+h)</span>
+<span class="sd">    Sigma standard name:</span>
+<span class="sd">        ``ocean_sigma_coordinate``</span>
 
-<span class="sd">    Sigma standard name: ``ocean_sigma_coordinate``</span>
-
-<span class="sd">    Formula terms: ``sigma: var1 eta: var2 depth: var3``</span>
+<span class="sd">    Formula terms:</span>
+<span class="sd">        ``sigma: var1 eta: var2 depth: var3``</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    sig: xarray.DataArray</span>
-<span class="sd">        Sigma coordinates range from 0 to 1 (:math:`\sigma` | ``sigma``)</span>
+<span class="sd">        Sigma coordinates range from 0 to 1 (:math:`\\sigma` | ``sigma``)</span>
 <span class="sd">    ssh: xarray.DataArray</span>
-<span class="sd">        Surface air pressure (:math:`\eta` | ``eta``)</span>
+<span class="sd">        Surface air pressure (:math:`\\eta` | ``eta``)</span>
 <span class="sd">    bathy: xarray.DataArray</span>
 <span class="sd">        Positive sea floor depth (:math:`h` | ``depth``)</span>
 
@@ -332,32 +315,32 @@
     <span class="k">return</span> <span class="n">cs</span></div>
 
 
-<div class="viewcode-block" id="ocean_s_to_depths"><a class="viewcode-back" href="../../api/xoa.sigma.ocean_s_to_depths.html#xoa.sigma.ocean_s_to_depths">[docs]</a><span class="k">def</span> <span class="nf">ocean_s_to_depths</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">ssh</span><span class="p">,</span> <span class="n">bathy</span><span class="p">,</span> <span class="n">hc</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">thetab</span><span class="p">,</span> <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                      <span class="n">cs_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ocean_s_coordinate"><a class="viewcode-back" href="../../api/xoa.sigma.ocean_s_coordinate.html#xoa.sigma.ocean_s_coordinate">[docs]</a><span class="k">def</span> <span class="nf">ocean_s_coordinate</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">ssh</span><span class="p">,</span> <span class="n">bathy</span><span class="p">,</span> <span class="n">hc</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">thetab</span><span class="p">,</span> <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                       <span class="n">cs_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Convert from s [-1, 0] to depths in an ocean model</span>
 
-<span class="sd">    Source: `Ocean s-coordinate &lt;http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html#_ocean_s_coordinate&gt;`_</span>
+<span class="sd">    Source:</span>
+<span class="sd">        `Ocean s-coordinate &lt;http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html#_ocean_s_coordinate&gt;`_</span>
 
 <span class="sd">    Formula:</span>
+<span class="sd">        .. math::</span>
 
-<span class="sd">    .. math::</span>
+<span class="sd">            z &amp; = \\eta*(1+s) + h_c*s + (h-h_c)*C</span>
 
-<span class="sd">        z &amp; = \\eta*(1+s) + h_c*s + (h-h_c)*C</span>
+<span class="sd">            C &amp; = (1-b)*\\frac{\\sinh(a*s)}{\\sinh(a)} +  b*\\left[\\frac{\\tanh(a*(s+0.5))}{2*\\tanh(0.5*a)} - 0.5\\right]</span>
 
-<span class="sd">        C &amp; = (1-b)*\\frac{\\sinh(a*s)}{\\sinh(a)} +  b*\\left[\\frac{\\tanh(a*(s+0.5))}{2*\\tanh(0.5*a)} - 0.5\\right]</span>
+<span class="sd">    Sigma standard name:</span>
+<span class="sd">        ``ocean_s_coordinate``</span>
 
-
-
-<span class="sd">    Sigma standard name: ``ocean_sigma_coordinate``</span>
-
-<span class="sd">    Formula terms: ``s: var1 eta: var2 depth: var3 a: var4 b: var5 depth_c: var6``</span>
+<span class="sd">    Formula terms:</span>
+<span class="sd">        ``s: var1 eta: var2 depth: var3 a: var4 b: var5 depth_c: var6``</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    sig: xarray.DataArray</span>
 <span class="sd">        Sigma coordinates range from 0 to 1 (:math:`s` | ``s``)</span>
 <span class="sd">    ssh: xarray.DataArray</span>
-<span class="sd">        Surface air pressure (:math:`\eta` | ``eta``)</span>
+<span class="sd">        Surface air pressure (:math:`\\eta` | ``eta``)</span>
 <span class="sd">    bathy: xarray.DataArray</span>
 <span class="sd">        Positive sea floor depth (:math:`h` | ``depth``)</span>
 <span class="sd">    hc: xarray.DataArray</span>
@@ -380,11 +363,8 @@
 <span class="sd">    xarray.DataArray</span>
 <span class="sd">        Negative depth below surface in m (:math:`z`)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">sig</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">thetab</span>
-
     <span class="c1"># Check cache first</span>
     <span class="k">if</span> <span class="n">cache</span><span class="p">:</span>
-        <span class="n">cs</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;cs&#39;</span><span class="p">]</span>
         <span class="n">zconst</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;zconst&#39;</span><span class="p">]</span>
 
     <span class="k">else</span><span class="p">:</span>  <span class="c1"># Compute</span>
@@ -399,10 +379,180 @@
 
         <span class="c1"># Store in cache</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cache</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="n">cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">cs</span><span class="o">=</span><span class="n">cs</span><span class="p">,</span> <span class="n">zconst</span><span class="o">=</span><span class="n">zconst</span><span class="p">)</span>
+            <span class="n">cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">zconst</span><span class="o">=</span><span class="n">zconst</span><span class="p">)</span>
 
     <span class="c1"># Final computation</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">sig</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">ssh</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">sig</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">ssh</span> <span class="o">+</span> <span class="n">zconst</span>
+
+    <span class="c1"># Format</span>
+    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">format_data_var</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="s2">&quot;depth&quot;</span><span class="p">,</span> <span class="n">format_coords</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ocean_s_coordinate_g1"><a class="viewcode-back" href="../../api/xoa.sigma.ocean_s_coordinate_g1.html#xoa.sigma.ocean_s_coordinate_g1">[docs]</a><span class="k">def</span> <span class="nf">ocean_s_coordinate_g1</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">ssh</span><span class="p">,</span> <span class="n">bathy</span><span class="p">,</span> <span class="n">hc</span><span class="p">,</span> <span class="n">thetas</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thetab</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                          <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cs_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert from s [-1, 0] generic form 1 to depths in an ocean model</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">        `Ocean s-coordinate, generic form 1 &lt;http://cfconventions.org/cf-conventions/cf-conventions.html#_ocean_s_coordinate_generic_form_1&gt;`_</span>
+
+<span class="sd">    Formula:</span>
+<span class="sd">        .. math::</span>
+
+<span class="sd">            z &amp; = \\eta*(1+s) + (\\eta + h * S)</span>
+
+<span class="sd">            S &amp; = \\frac{h_c s + h C}{h_c + h}</span>
+
+<span class="sd">            C &amp; = (1-b)*\\frac{\\sinh(a*s)}{\\sinh(a)} +  b*\\left[\\frac{\\tanh(a*(s+0.5))}{2*\\tanh(0.5*a)} - 0.5\\right]</span>
+
+
+
+<span class="sd">    Sigma standard name:</span>
+<span class="sd">        ``ocean_s_coordinate_g2``</span>
+
+<span class="sd">    Formula terms:</span>
+<span class="sd">        ``s: var1 C: var2 eta: var3 depth: var4 depth_c: var5``</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sig: xarray.DataArray</span>
+<span class="sd">        Sigma coordinates range from 0 to 1 (:math:`s` | ``s``)</span>
+<span class="sd">    ssh: xarray.DataArray</span>
+<span class="sd">        Surface air pressure (:math:`\\eta` | ``eta``)</span>
+<span class="sd">    bathy: xarray.DataArray</span>
+<span class="sd">        Positive sea floor depth (:math:`h` | ``depth``)</span>
+<span class="sd">    hc: xarray.DataArray</span>
+<span class="sd">        Positive critical depth (:math:`h_c` | ``depth_c``)</span>
+<span class="sd">    thetas: xarray.DataArray</span>
+<span class="sd">        Surface control parameter (:math:`a` | ``a``)</span>
+<span class="sd">        Optional if `cs` is provided.</span>
+<span class="sd">    thetab: xarray.DataArray</span>
+<span class="sd">        Bottom control parameter (:math:`b` | ``b``)</span>
+<span class="sd">        Optional if `cs` is provided.</span>
+<span class="sd">    cs: xarray.DataArray, None</span>
+<span class="sd">        Stretching curve, which defaults to the formula above</span>
+<span class="sd">        computed by :func:`get_cs` (:math:`C` | ``C``)</span>
+<span class="sd">    cs_type: str, None</span>
+<span class="sd">        Stretching type (see :func:`get_cs`)</span>
+<span class="sd">    cache: dict</span>
+<span class="sd">        Dict variable that stores intermediate results to be used</span>
+<span class="sd">        from call to call.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    xarray.DataArray</span>
+<span class="sd">        Negative depth below surface in m (:math:`z`)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">sig</span><span class="p">,</span> <span class="n">bathy</span>
+
+    <span class="c1"># Check cache first</span>
+    <span class="k">if</span> <span class="n">cache</span><span class="p">:</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">]</span>
+        <span class="n">Sh1</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;Sh1&#39;</span><span class="p">]</span>
+
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># Compute</span>
+
+        <span class="c1"># Stetching curve</span>
+        <span class="k">if</span> <span class="n">cs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="kc">None</span> <span class="ow">in</span> <span class="p">(</span><span class="n">thetas</span><span class="p">,</span> <span class="n">thetab</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="s2">&quot;thetas and thetas must be provided when &quot;</span>
+                                 <span class="s2">&quot;cs is not&quot;</span><span class="p">)</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="n">get_cs</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">thetab</span><span class="p">,</span> <span class="n">cs_type</span><span class="p">)</span>
+
+        <span class="c1"># Constant part of the formula</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="n">s</span> <span class="o">*</span> <span class="n">hc</span> <span class="o">+</span> <span class="n">cs</span> <span class="o">*</span> <span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="n">hc</span><span class="p">)</span>
+        <span class="n">Sh1</span> <span class="o">=</span> <span class="n">S</span> <span class="o">/</span> <span class="n">h</span>
+        <span class="n">Sh1</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Store in cache</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cache</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">S</span><span class="o">=</span><span class="n">S</span><span class="p">,</span> <span class="n">Sh1</span><span class="o">=</span><span class="n">Sh1</span><span class="p">)</span>
+
+    <span class="c1"># Final computation</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">S</span> <span class="o">+</span> <span class="n">Sh1</span> <span class="o">*</span> <span class="n">ssh</span>
+
+    <span class="c1"># Format</span>
+    <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">format_data_var</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="s2">&quot;depth&quot;</span><span class="p">,</span> <span class="n">format_coords</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ocean_s_coordinate_g2"><a class="viewcode-back" href="../../api/xoa.sigma.ocean_s_coordinate_g2.html#xoa.sigma.ocean_s_coordinate_g2">[docs]</a><span class="k">def</span> <span class="nf">ocean_s_coordinate_g2</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">ssh</span><span class="p">,</span> <span class="n">bathy</span><span class="p">,</span> <span class="n">hc</span><span class="p">,</span> <span class="n">thetas</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thetab</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                          <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cs_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert from s [-1, 0] generic form 2 to depths in an ocean model</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">        `Ocean s-coordinate, generic form 2 &lt;http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html#_ocean_s_coordinate_generic_form_2&gt;`_</span>
+
+<span class="sd">    Formula:</span>
+<span class="sd">        .. math::</span>
+
+<span class="sd">            z &amp; = \\eta*(1+s) + (\\eta + h * S)</span>
+
+<span class="sd">            S &amp; = \\frac{h_c s + h C}{h_c + h}</span>
+
+<span class="sd">            C &amp; = (1-b)*\\frac{\\sinh(a*s)}{\\sinh(a)} +  b*\\left[\\frac{\\tanh(a*(s+0.5))}{2*\\tanh(0.5*a)} - 0.5\\right]</span>
+
+<span class="sd">    Sigma standard name:</span>
+<span class="sd">        ``ocean_s_coordinate_g2``</span>
+
+<span class="sd">    Formula terms:</span>
+<span class="sd">        ``s: var1 C: var2 eta: var3 depth: var4 depth_c: var5``</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sig: xarray.DataArray</span>
+<span class="sd">        Sigma coordinates range from 0 to 1 (:math:`s` | ``s``)</span>
+<span class="sd">    ssh: xarray.DataArray</span>
+<span class="sd">        Surface air pressure (:math:`\\eta` | ``eta``)</span>
+<span class="sd">    bathy: xarray.DataArray</span>
+<span class="sd">        Positive sea floor depth (:math:`h` | ``depth``)</span>
+<span class="sd">    hc: xarray.DataArray</span>
+<span class="sd">        Positive critical depth (:math:`h_c` | ``depth_c``)</span>
+<span class="sd">    thetas: xarray.DataArray</span>
+<span class="sd">        Surface control parameter (:math:`a` | ``a``).</span>
+<span class="sd">        Optional if `cs` is provided.</span>
+<span class="sd">    thetab: xarray.DataArray</span>
+<span class="sd">        Bottom control parameter (:math:`b` | ``b``)</span>
+<span class="sd">        Optional if `cs` is provided.</span>
+<span class="sd">    cs: xarray.DataArray, None</span>
+<span class="sd">        Stretching curve, which defaults to the formula above</span>
+<span class="sd">        computed by :func:`get_cs` (:math:`C` | ``C``)</span>
+<span class="sd">    cs_type: str, None</span>
+<span class="sd">        Stretching type (see :func:`get_cs`)</span>
+<span class="sd">    cache: dict</span>
+<span class="sd">        Dict variable that stores intermediate results to be used</span>
+<span class="sd">        from call to call.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    xarray.DataArray</span>
+<span class="sd">        Negative depth below surface in m (:math:`z`)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">sig</span><span class="p">,</span> <span class="n">bathy</span>
+
+    <span class="c1"># Check cache first</span>
+    <span class="k">if</span> <span class="n">cache</span><span class="p">:</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">]</span>
+        <span class="n">hS</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;hS&#39;</span><span class="p">]</span>
+
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># Compute</span>
+
+        <span class="c1"># Stetching curve</span>
+        <span class="k">if</span> <span class="n">cs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="kc">None</span> <span class="ow">in</span> <span class="p">(</span><span class="n">thetas</span><span class="p">,</span> <span class="n">thetab</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="s2">&quot;thetas and thetas must be provided when &quot;</span>
+                                 <span class="s2">&quot;cs is not&quot;</span><span class="p">)</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="n">get_cs</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">thetab</span><span class="p">,</span> <span class="n">cs_type</span><span class="p">)</span>
+
+        <span class="c1"># Constant part of the formula</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="n">s</span> <span class="o">*</span> <span class="n">hc</span> <span class="o">+</span> <span class="n">cs</span> <span class="o">*</span> <span class="n">h</span>
+        <span class="n">S</span> <span class="o">/=</span> <span class="n">hc</span> <span class="o">+</span> <span class="n">h</span>
+        <span class="n">hS</span> <span class="o">=</span> <span class="n">S</span> <span class="o">*</span> <span class="n">h</span>
+
+        <span class="c1"># Store in cache</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cache</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">S</span><span class="o">=</span><span class="n">S</span><span class="p">,</span> <span class="n">hS</span><span class="o">=</span><span class="n">hS</span><span class="p">)</span>
+
+    <span class="c1"># Final computation</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">hS</span> <span class="o">+</span> <span class="p">(</span><span class="n">S</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">ssh</span>
 
     <span class="c1"># Format</span>
     <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">format_data_var</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="s2">&quot;depth&quot;</span><span class="p">,</span> <span class="n">format_coords</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
@@ -422,13 +572,13 @@
 <span class="sd">    str</span>
 <span class="sd">        Real name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">lname</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="s2">&quot;data_vars&quot;</span><span class="p">,</span> <span class="s2">&quot;coord&quot;</span><span class="p">:</span>
         <span class="n">pool</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">cat</span><span class="p">)</span>
-        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">nm</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">nm</span> <span class="ow">in</span> <span class="n">pool</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
-        <span class="n">lc_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">nm</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">nm</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">lc_names</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">names</span><span class="p">[</span><span class="n">lc_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">name</span><span class="p">)]</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">nm</span> <span class="k">for</span> <span class="n">nm</span> <span class="ow">in</span> <span class="n">pool</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+        <span class="n">lnames</span> <span class="o">=</span> <span class="p">[</span><span class="n">nm</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">nm</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">lname</span> <span class="ow">in</span> <span class="n">lnames</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">names</span><span class="p">[</span><span class="n">lnames</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">lname</span><span class="p">)]</span>
 
 
 <span class="n">_re_ft_split_terms</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\s+\b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span>
@@ -436,7 +586,7 @@
 <span class="n">_re_ft_split_item</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s*:\s*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span>
 
 
-<div class="viewcode-block" id="parse_formula_terms_attr"><a class="viewcode-back" href="../../api/xoa.sigma.parse_formula_terms_attr.html#xoa.sigma.parse_formula_terms_attr">[docs]</a><span class="k">def</span> <span class="nf">parse_formula_terms_attr</span><span class="p">(</span><span class="n">attr</span><span class="p">):</span>
+<div class="viewcode-block" id="decode_formula_terms"><a class="viewcode-back" href="../../api/xoa.sigma.decode_formula_terms.html#xoa.sigma.decode_formula_terms">[docs]</a><span class="k">def</span> <span class="nf">decode_formula_terms</span><span class="p">(</span><span class="n">attr</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parse the formula_terms attribute</span>
 
 <span class="sd">    Parameters</span>
@@ -453,8 +603,8 @@
 <span class="sd">    .. ipython:: python</span>
 
 <span class="sd">        @suppress</span>
-<span class="sd">        from xoa.sigma import parse_formula_terms_attr</span>
-<span class="sd">        parse_formula_terms_attr(</span>
+<span class="sd">        from xoa.sigma import decode_formula_terms</span>
+<span class="sd">        decode_formula_terms(</span>
 <span class="sd">            &#39;s: sc_r C: Cs_r eta: zeta depth: h depth_c: hc&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">terms</span> <span class="o">=</span> <span class="p">{}</span>
@@ -464,32 +614,6 @@
             <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="s2">&quot;Malformed formula_terms attribute: &quot;</span><span class="o">+</span><span class="n">attr</span><span class="p">)</span>
         <span class="n">terms</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">terms</span></div>
-
-
-<span class="c1"># class sigma_types(misc.IntEnumChoices, metaclass=misc.XEnumMeta):</span>
-<span class="c1">#     &quot;&quot;&quot;Supported sigma/s coordinates types&quot;&quot;&quot;</span>
-<span class="c1">#     #: Atmosphere sigma coordinate</span>
-<span class="c1">#     atmosphere_sigma = 1</span>
-<span class="c1">#     atmosphere_sigma_coordinate = 1</span>
-<span class="c1">#     #: Ocean sigma coordinate</span>
-<span class="c1">#     ocean_sigma = -1</span>
-<span class="c1">#     ocean_sigma_coordinate = -1</span>
-<span class="c1">#     #: Ocean s coordinate</span>
-<span class="c1">#     ocean_s = -2</span>
-<span class="c1">#     ocean_s_coordinate = -2</span>
-<span class="c1">#     #: Generic ocean s coordinate of form 1</span>
-<span class="c1">#     ocean_s_g1 = -3</span>
-<span class="c1">#     ocean_s_coordinate_g1 = -3</span>
-<span class="c1">#     #: Generic ocean s coordinate of form 2</span>
-<span class="c1">#     ocean_s_g2 = -4</span>
-<span class="c1">#     ocean_s_coordinate_g2 = -4</span>
-
-
-<span class="n">_STANDARD_NAME_TO_FUNC</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;atmosphere_sigma_coordinate&quot;</span><span class="p">:</span> <span class="n">atmosphere_sigma_to_pressures</span><span class="p">,</span>
-    <span class="s2">&quot;ocean_sigma_coordinate&quot;</span><span class="p">:</span> <span class="n">ocean_sigma_to_depths</span><span class="p">,</span>
-    <span class="s2">&quot;ocean_s_coordinate&quot;</span><span class="p">:</span> <span class="n">ocean_s_to_depths</span>
-    <span class="p">}</span>
 
 
 <div class="viewcode-block" id="get_sigma_terms"><a class="viewcode-back" href="../../api/xoa.sigma.get_sigma_terms.html#xoa.sigma.get_sigma_terms">[docs]</a><span class="k">def</span> <span class="nf">get_sigma_terms</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -516,6 +640,9 @@
 <span class="sd">        A dict is generated for a given sigma variable,</span>
 <span class="sd">        whose keys are array names, like ``&quot;sc_r&quot;``,</span>
 <span class="sd">        and values are :mod:`~xoa.cf` names, like ``&quot;sig&quot;``.</span>
+<span class="sd">        A special key is the ``&quot;type&quot;`` whose corresponding value</span>
+<span class="sd">        is the ``standard_name``, stripped from its potential staggered grid</span>
+<span class="sd">        location indicator.</span>
 <span class="sd">        If ``loc`` is ``&quot;any&quot;`` or ``None``,</span>
 <span class="sd">        each dict is embedded in a master dict</span>
 <span class="sd">        whose keys are staggered grid location. If no location is found,</span>
@@ -540,38 +667,38 @@
     <span class="n">terms</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">sig</span> <span class="ow">in</span> <span class="n">sigs</span><span class="p">:</span>
 
-        <span class="c1"># Check standard_name</span>
+        <span class="c1"># Check standard_name and get loc</span>
         <span class="k">if</span> <span class="s2">&quot;standard_name&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sig</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="s2">&quot;No standard_name attribute found in sigma/s &quot;</span>
                              <span class="s2">&quot;variable name: &quot;</span><span class="o">+</span><span class="n">sig</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">sig</span><span class="o">.</span><span class="n">standard_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_STANDARD_NAME_TO_FUNC</span><span class="p">:</span>
+        <span class="n">standard_name</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">parse_attr</span><span class="p">(</span>
+            <span class="s2">&quot;standard_name&quot;</span><span class="p">,</span> <span class="n">sig</span><span class="o">.</span><span class="n">standard_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">standard_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SIGMA_COORDINATE_TYPES</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="s2">&quot;Sigma/s coordinate not supported: &quot;</span> <span class="o">+</span>
-                             <span class="n">sig</span><span class="o">.</span><span class="n">standard_name</span> <span class="o">+</span> <span class="s2">&quot;. Supported coordinates: &quot;</span>
-                             <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_STANDARD_NAME_TO_FUNC</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
-
-        <span class="c1"># Get location</span>
-        <span class="n">loc</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">get_location</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+                             <span class="n">standard_name</span> <span class="o">+</span> <span class="s2">&quot;. Supported coordinates: &quot;</span>
+                             <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SIGMA_COORDINATE_TYPES</span><span class="p">))</span>
 
         <span class="c1"># Get formula terms</span>
         <span class="k">if</span> <span class="s2">&quot;formula_terms&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sig</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sigma/s type variable </span><span class="si">{</span><span class="n">sig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> &quot;</span>
                              <span class="s2">&quot;has no formula_term attribute&quot;</span><span class="p">)</span>
-        <span class="n">formula_terms</span> <span class="o">=</span> <span class="n">parse_formula_terms_attr</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">formula_terms</span><span class="p">)</span>
+        <span class="n">formula_terms</span> <span class="o">=</span> <span class="n">decode_formula_terms</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">formula_terms</span><span class="p">)</span>
 
         <span class="c1"># Check terms</span>
-        <span class="n">subterms</span> <span class="o">=</span> <span class="p">{</span><span class="n">sig</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="s2">&quot;sig&quot;</span><span class="p">}</span>
-        <span class="k">for</span> <span class="n">fname</span><span class="p">,</span> <span class="n">vname_</span> <span class="ow">in</span> <span class="n">formula_terms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">subterms</span> <span class="o">=</span> <span class="p">{</span><span class="n">sig</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="s2">&quot;sig&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">standard_name</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">fname</span><span class="p">,</span> <span class="n">fvname</span> <span class="ow">in</span> <span class="n">formula_terms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 
             <span class="c1"># Real name</span>
-            <span class="n">vname</span> <span class="o">=</span> <span class="n">_ds_search_ci_</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">vname_</span><span class="p">)</span>
+            <span class="n">vname</span> <span class="o">=</span> <span class="n">_ds_search_ci_</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">fvname</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">vname</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="s2">&quot;Formula array not found: &quot;</span><span class="o">+</span><span class="n">vname_</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="s2">&quot;Formula array not found: &quot;</span><span class="o">+</span><span class="n">fvname</span><span class="p">)</span>
 
             <span class="c1"># xoa.cf name</span>
+            <span class="c1"># TODO: handle mising cs and fallback with thetas and thetab</span>
             <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">FORMULA_TERMS_TO_CF_NAMES</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">XoaCFError</span><span class="p">(</span><span class="s2">&quot;Unknown formula term name: &quot;</span><span class="o">+</span><span class="n">fname</span><span class="p">)</span>
             <span class="n">cf_name</span> <span class="o">=</span> <span class="n">FORMULA_TERMS_TO_CF_NAMES</span><span class="p">[</span><span class="n">fname</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
-            <span class="n">terms</span><span class="p">[</span><span class="n">loc</span><span class="p">][</span><span class="n">vname</span><span class="p">]</span> <span class="o">=</span> <span class="n">cf_name</span>
+            <span class="n">subterms</span><span class="p">[</span><span class="n">vname</span><span class="p">]</span> <span class="o">=</span> <span class="n">cf_name</span>
 
         <span class="n">terms</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">subterms</span>
 
@@ -590,11 +717,15 @@
     <span class="c1"># return ds</span>
 
 
-<div class="viewcode-block" id="decode_cf"><a class="viewcode-back" href="../../api/xoa.sigma.decode_cf.html#xoa.sigma.decode_cf">[docs]</a><span class="k">def</span> <span class="nf">decode_cf</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="decode_cf_sigma"><a class="viewcode-back" href="../../api/xoa.sigma.decode_cf_sigma.html#xoa.sigma.decode_cf_sigma">[docs]</a><span class="k">def</span> <span class="nf">decode_cf_sigma</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;raise&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute heights from sigma-like variable in a dataset</span>
 
 <span class="sd">    If the dataset is not found to have sigma-like coordinates,</span>
 <span class="sd">    a simple copy of the dataset is returned.</span>
+
+<span class="sd">    When a data variable that have the same dimensions is found, the</span>
+<span class="sd">    the computed coordinate is transposed properly and assigned</span>
+<span class="sd">    to the variable as a a coordinate array.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -603,160 +734,89 @@
 <span class="sd">    rename: bool</span>
 <span class="sd">        Rename and format arrays ot make them compliant with</span>
 <span class="sd">        :mod:`xoa.cf`</span>
+<span class="sd">    errors: str</span>
+<span class="sd">        How to handle errors. Choices: ignore, warn, raise</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Init</span>
     <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">cfspecs</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_cf_specs</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">errors</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="s1">&#39;warn&#39;</span><span class="p">,</span> <span class="s1">&#39;raise&#39;</span><span class="p">)</span>
 
     <span class="c1"># Decode formula terms</span>
-    <span class="n">all_terms</span> <span class="o">=</span> <span class="n">get_sigma_terms</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">all_terms</span> <span class="o">=</span> <span class="n">get_sigma_terms</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">all_terms</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ds</span>
+    <span class="k">except</span> <span class="n">XoaCFError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">e</span>
+        <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;warn&quot;</span><span class="p">:</span>
+            <span class="n">xoa_warn</span><span class="p">(</span><span class="s2">&quot;Error while decoding sigma coords: </span><span class="si">{}</span><span class="s2">. Skipping...&quot;</span>
+                     <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">ds</span>
+    <span class="c1"># print(&#39;termssss&#39;, all_terms)</span>
 
     <span class="c1"># Loop on locations</span>
+    <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sigma</span> <span class="k">as</span> <span class="n">sigma_module</span>
     <span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">terms</span> <span class="ow">in</span> <span class="n">all_terms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 
         <span class="c1"># Args: keys are cf names, values ara dataarrays</span>
+        <span class="n">sigma_type</span> <span class="o">=</span> <span class="n">terms</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">vname</span><span class="p">,</span> <span class="n">cf_name</span> <span class="ow">in</span> <span class="n">terms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="n">cf_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">vname</span><span class="p">]</span>
 
         <span class="c1"># Compute depth/altitude/pressure</span>
-        <span class="n">func</span> <span class="o">=</span> <span class="n">_STANDARD_NAME_TO_FUNC</span><span class="p">[</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;sig&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">standard_name</span><span class="p">]</span>
+        <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sigma_module</span><span class="p">,</span> <span class="n">sigma_type</span><span class="p">)</span>
         <span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cache</span>
+        <span class="c1"># print(&#39;kwargs&#39;, kwargs.keys())</span>
         <span class="n">height</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="c1"># Format</span>
-        <span class="n">height</span> <span class="o">=</span> <span class="n">cfspecs</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">format_datarray</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">cfspecs</span><span class="o">.</span><span class="n">sglocator</span><span class="o">.</span><span class="n">format_dataarray</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
 
-        <span class="c1"># Transpose if approriate</span>
+        <span class="c1"># Transpose if approriate and set as coordinate</span>
+        <span class="n">transposed</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">as_coord</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">da</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-            <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
-                <span class="n">height</span> <span class="o">=</span> <span class="n">xcoords</span><span class="o">.</span><span class="n">transpose_compat</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">da</span><span class="p">)</span>
-                <span class="k">break</span>
+            <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">height</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">set</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">transposed</span><span class="p">:</span>
+                    <span class="n">height</span> <span class="o">=</span> <span class="n">xcoords</span><span class="o">.</span><span class="n">transpose_compat</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">da</span><span class="p">)</span>
+                    <span class="n">transposed</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">ds</span><span class="p">[</span><span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="n">height</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">height</span><span class="p">})</span>
+                <span class="n">as_coord</span> <span class="o">=</span> <span class="kc">True</span>
 
-        <span class="n">ds</span><span class="p">[</span><span class="n">height</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="c1"># Make sure it is in the dataset</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">as_coord</span><span class="p">:</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">height</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">height</span>
 
     <span class="k">return</span> <span class="n">ds</span></div>
 
 
-<span class="k">def</span> <span class="nf">_sigma2coord_</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">zremote</span><span class="p">,</span> <span class="n">zref</span><span class="p">,</span> <span class="n">sigma_type</span><span class="p">,</span>
-                  <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thetas</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thetab</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                  <span class="n">zerolid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Conversion from sigma-like coordinates to depths</span>
+<div class="viewcode-block" id="SigmaAccessor"><a class="viewcode-back" href="../../api/xoa.sigma.SigmaAccessor.html#xoa.sigma.SigmaAccessor">[docs]</a><span class="k">class</span> <span class="nc">SigmaAccessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-<span class="sd">    :Params:</span>
+<div class="viewcode-block" id="SigmaAccessor.__init__"><a class="viewcode-back" href="../../api/xoa.sigma.SigmaAccessor.html#xoa.sigma.SigmaAccessor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ds</span><span class="p">):</span>
 
-<span class="sd">        - **sigma**: Sigma levels (abs(sigma)&lt;1) as an 1D array.</span>
-<span class="sd">        - **depth**: Bottom depth.</span>
-<span class="sd">        - **eta**, optional: Sea surface elevation (with a time axis or not).</span>
-<span class="sd">        - **stype**, optional: Sigma coordinates type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span> <span class="o">=</span> <span class="n">ds</span></div>
 
-<span class="sd">            - ``&quot;standard&quot;`` or ``0``: Standard.</span>
-<span class="sd">            - ``&quot;ocean&quot;`` or ``1``: Ocean standard.</span>
-<span class="sd">            - ``&quot;generalized&quot;`` or ``2``: Generalized (s) coordinates.</span>
+<div class="viewcode-block" id="SigmaAccessor.decode"><a class="viewcode-back" href="../../api/xoa.sigma.SigmaAccessor.decode.html#xoa.sigma.SigmaAccessor.decode">[docs]</a>    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;raise&quot;</span><span class="p">):</span>
 
-<span class="sd">        - **cs**, optional: Stretching function (s coords only).</span>
-<span class="sd">          If not provided, it is computed from stretching parameters.</span>
-<span class="sd">        - **depth_c**, optional: Surface limit depth (s coords only).</span>
-<span class="sd">        - **a**, optional: Surface control parameter (s coords only).</span>
-<span class="sd">        - **b**, optional: Bottom control parameter (s coords only).</span>
-<span class="sd">        - **zerolid**, optional: The surface is put at a zero depth to simulate</span>
-<span class="sd">          observed depths. This makes the bottom to change with time if</span>
-<span class="sd">          the sea level is varying.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">decode_cf_sigma</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ds</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="n">rename</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SigmaAccessor.get_sigma_terms"><a class="viewcode-back" href="../../api/xoa.sigma.SigmaAccessor.get_sigma_terms.html#xoa.sigma.SigmaAccessor.get_sigma_terms">[docs]</a>    <span class="k">def</span> <span class="nf">get_sigma_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">get_sigma_terms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ds</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="n">rename</span><span class="p">)</span></div></div>
 
 
-
-    <span class="c1"># Init depths</span>
-    <span class="k">if</span> <span class="n">ref</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">eta</span> <span class="o">=</span> <span class="mf">0.</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-        <span class="n">eta</span> <span class="o">=</span> <span class="n">etam</span> <span class="o">=</span> <span class="n">N</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
-        <span class="n">withtime</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">withtime</span> <span class="o">=</span> <span class="n">eta</span><span class="o">.</span><span class="n">getTime</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-        <span class="n">etam</span> <span class="o">=</span> <span class="n">eta</span><span class="o">.</span><span class="n">asma</span><span class="p">()</span>
-    <span class="n">nt</span> <span class="o">=</span> <span class="n">eta</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">withtime</span> <span class="k">else</span> <span class="mi">1</span>
-    <span class="n">nz</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">nt</span><span class="p">,</span> <span class="n">nz</span><span class="p">)</span> <span class="o">+</span> <span class="n">depth</span><span class="o">.</span><span class="n">shape</span>
-    <span class="c1"># shape = (nt, nz) + depth.shape[-2:] # cval devrait etre cela je pense</span>
-    <span class="c1"># pour que tous les cas soient pris en compte</span>
-    <span class="n">depths</span> <span class="o">=</span> <span class="n">MV2</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">eta</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-    <span class="n">depths</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s1">&#39;Depths&#39;</span>
-    <span class="n">depths</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s1">&#39;m&#39;</span>
-    <span class="n">depths</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;depths&#39;</span>
-<span class="c1">#    sigman = sigma.filled() if N.ma.isMA(sigma) else sigma</span>
-    <span class="n">etam</span> <span class="o">=</span> <span class="n">N</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">etam</span><span class="p">)</span>
-<span class="c1">#    if not withtime:</span>
-<span class="c1">#        etam = N.ma.resize(etam, (1, )+eta.shape)</span>
-
-    <span class="c1"># Compute it</span>
-    <span class="n">stype</span> <span class="o">=</span> <span class="n">_check_sigma_type_</span><span class="p">(</span><span class="n">stype</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">stype</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">cs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-            <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">depth_c</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">SigmaError</span><span class="p">(</span><span class="s1">&#39;You must prodive depth_c, and b &#39;</span>
-                                 <span class="s1">&#39;parameters for sigma generalized coordinates conversions&#39;</span><span class="p">)</span>
-
-            <span class="n">cs</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">N</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="n">b</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">+</span> <span class="o">.</span><span class="mi">5</span><span class="p">))</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span> <span class="o">*</span> <span class="n">a</span><span class="p">))</span> <span class="o">/</span>
-                  <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span> <span class="o">*</span> <span class="n">a</span><span class="p">)))</span>
-
-        <span class="n">dd</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">-</span> <span class="n">depth_c</span>
-
-    <span class="c1"># Time loop</span>
-    <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nt</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">iz</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nz</span><span class="p">):</span>
-
-            <span class="c1"># Sigma generalized</span>
-            <span class="k">if</span> <span class="n">stype</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-
-                <span class="n">depths</span><span class="p">[</span><span class="n">it</span><span class="p">,</span> <span class="n">iz</span><span class="p">]</span> <span class="o">=</span> <span class="n">etam</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">sigma</span><span class="p">[</span><span class="n">iz</span><span class="p">])</span>
-                <span class="n">depths</span><span class="p">[</span><span class="n">it</span><span class="p">,</span> <span class="n">iz</span><span class="p">]</span> <span class="o">+=</span> <span class="n">depth_c</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">[</span><span class="n">iz</span><span class="p">]</span>
-                <span class="n">depths</span><span class="p">[</span><span class="n">it</span><span class="p">,</span> <span class="n">iz</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dd</span> <span class="o">*</span> <span class="n">cs</span><span class="p">[</span><span class="n">iz</span><span class="p">]</span>
-
-                <span class="k">if</span> <span class="n">zerolid</span><span class="p">:</span>
-                    <span class="n">depths</span><span class="p">[</span><span class="n">it</span><span class="p">,</span> <span class="n">iz</span><span class="p">]</span> <span class="o">-=</span> <span class="n">etam</span><span class="p">[</span><span class="n">it</span><span class="p">]</span>
-
-            <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># Common base</span>
-                <span class="n">depths</span><span class="p">[</span><span class="n">it</span><span class="p">,</span> <span class="n">iz</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="n">iz</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">etam</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">+</span> <span class="n">depth</span><span class="p">)</span>
-
-                <span class="c1"># Sigma type</span>
-                <span class="k">if</span> <span class="n">stype</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">depths</span><span class="p">[</span><span class="n">it</span><span class="p">,</span> <span class="n">iz</span><span class="p">]</span> <span class="o">-=</span> <span class="n">depth</span>  <span class="c1"># ocean</span>
-                <span class="k">elif</span> <span class="ow">not</span> <span class="n">zerolid</span><span class="p">:</span>
-                    <span class="n">depths</span><span class="p">[</span><span class="n">it</span><span class="p">,</span> <span class="n">iz</span><span class="p">]</span> <span class="o">+=</span> <span class="n">etam</span><span class="p">[</span><span class="n">it</span><span class="p">]</span>  <span class="c1"># standard</span>
-
-                <span class="n">altitudes</span><span class="p">[</span><span class="n">it</span><span class="p">,</span> <span class="n">iz</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="n">iz</span><span class="p">]</span> <span class="o">/</span> <span class="n">height</span> <span class="o">*</span> \
-                    <span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="n">orom</span><span class="p">[</span><span class="n">it</span><span class="p">])</span> <span class="o">+</span> <span class="n">orom</span><span class="p">[</span><span class="n">it</span><span class="p">]</span>
-
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">withtime</span><span class="p">:</span>
-            <span class="n">depths</span> <span class="o">=</span> <span class="n">depths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-    <span class="c1"># Format axes</span>
-    <span class="k">if</span> <span class="n">copyaxes</span><span class="p">:</span>
-        <span class="n">axes</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="n">withtime</span><span class="p">:</span>  <span class="c1"># Time axis</span>
-            <span class="n">axes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">eta</span><span class="o">.</span><span class="n">getTime</span><span class="p">())</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">cdms2</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">AbstractAxis</span><span class="p">):</span>  <span class="c1"># Vertical axis</span>
-            <span class="n">axes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">cdms2</span><span class="o">.</span><span class="n">isVariable</span><span class="p">(</span><span class="n">sigma</span><span class="p">):</span>
-            <span class="n">axes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sigma</span><span class="o">.</span><span class="n">getAxis</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">zaxis</span> <span class="o">=</span> <span class="n">depths</span><span class="o">.</span><span class="n">getAxis</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">withtime</span><span class="p">))</span>
-            <span class="n">zaxis</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>
-            <span class="n">zaxis</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s1">&#39;Vertical levels&#39;</span>
-            <span class="n">axes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">zaxis</span><span class="p">)</span>
-        <span class="n">axes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">depth</span><span class="o">.</span><span class="n">getAxisList</span><span class="p">())</span>  <span class="c1"># Horizontal axes</span>
-        <span class="n">depths</span><span class="o">.</span><span class="n">setAxisList</span><span class="p">(</span><span class="n">axes</span><span class="p">)</span>  <span class="c1"># Set axes</span>
-        <span class="n">grid</span> <span class="o">=</span> <span class="n">depth</span><span class="o">.</span><span class="n">getGrid</span><span class="p">()</span>  <span class="c1"># Grid</span>
-        <span class="k">if</span> <span class="n">grid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">depths</span><span class="o">.</span><span class="n">setGrid</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">depths</span>
+<div class="viewcode-block" id="register_sigma_accessors"><a class="viewcode-back" href="../../api/xoa.sigma.register_sigma_accessors.html#xoa.sigma.register_sigma_accessors">[docs]</a><span class="k">def</span> <span class="nf">register_sigma_accessors</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sig&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Register xarray accessors&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span>
+            <span class="s2">&quot;ignore&quot;</span><span class="p">,</span>
+            <span class="n">xr</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">extensions</span><span class="o">.</span><span class="n">AccessorRegistrationWarning</span><span class="p">)</span>
+        <span class="n">xr</span><span class="o">.</span><span class="n">register_dataset_accessor</span><span class="p">(</span><span class="n">name</span><span class="p">)(</span><span class="n">SigmaAccessor</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

@@ -10,17 +10,27 @@ xoa.sigma
    .. autosummary::
       :toctree:
    
-      atmosphere_sigma_to_pressures
-      decode_cf
+      atmosphere_sigma_coordinate
+      decode_cf_sigma
+      decode_formula_terms
       get_cs
       get_sigma_terms
-      ocean_s_to_depths
-      ocean_sigma_to_depths
-      parse_formula_terms_attr
+      ocean_s_coordinate
+      ocean_s_coordinate_g1
+      ocean_s_coordinate_g2
+      ocean_sigma_coordinate
+      register_sigma_accessors
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+   
+      SigmaAccessor
    
    
 

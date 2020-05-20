@@ -1,0 +1,6 @@
+xoa.cf.CFSpecs.get\_category
+============================
+
+.. currentmodule:: xoa.cf
+
+.. automethod:: CFSpecs.get_category

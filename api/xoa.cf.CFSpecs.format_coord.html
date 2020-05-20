@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -84,11 +84,20 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configure.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usages.html">Usages</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usages.cf.html">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Practical examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#python">Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="xoa.html">xoa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
@@ -121,8 +130,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../api.html#fortran-wrappers">Fortran wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../cli.html">Commandline interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Development roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendices</a></li>
 </ul>
 
@@ -169,7 +178,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../api.html">API</a> &raquo;</li>
+          <li><a href="../api.html">API Reference</a> &raquo;</li>
         
           <li><a href="xoa.cf.html">xoa.cf</a> &raquo;</li>
         
@@ -220,15 +229,15 @@
 </style>
 <div class="section" id="xoa-cf-cfspecs-format-coord">
 <h1>xoa.cf.CFSpecs.format_coord<a class="headerlink" href="#xoa-cf-cfspecs-format-coord" title="Permalink to this headline">¶</a></h1>
-<dl class="method">
+<dl class="py method">
 <dt id="xoa.cf.CFSpecs.format_coord">
-<code class="sig-prename descclassname">CFSpecs.</code><code class="sig-name descname">format_coord</code><span class="sig-paren">(</span><em class="sig-param">da</em>, <em class="sig-param">name=None</em>, <em class="sig-param">loc=None</em>, <em class="sig-param">copy=True</em>, <em class="sig-param">standardize=True</em>, <em class="sig-param">rename=True</em>, <em class="sig-param">rename_dim=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cf.html#CFSpecs.format_coord"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cf.CFSpecs.format_coord" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">CFSpecs.</code><code class="sig-name descname">format_coord</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">da</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">loc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">standardize</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">rename</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">rename_dim</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/cf.html#CFSpecs.format_coord"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.cf.CFSpecs.format_coord" title="Permalink to this definition">¶</a></dt>
 <dd><p>Format a coordinate array</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>da</strong> (<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.0)"><em>xarray.DataArray</em></a>) – </p></li>
-<li><p><strong>name</strong> (<em>str</em><em>, </em><em>None</em>) – A CF name. If not provided, it guessed with <code class="xref py py-meth docutils literal notranslate"><span class="pre">match()</span></code>.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>None</em>) – A CF name. If not provided, it guessed with <a class="reference internal" href="xoa.cf.CFSpecs.match.html#xoa.cf.CFSpecs.match" title="xoa.cf.CFSpecs.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match()</span></code></a>.</p></li>
 <li><p><strong>loc</strong> (<em>str</em><em>, </em><em>{&quot;any&quot;</em><em>, </em><em>None}</em><em>, </em><em>{&quot;&quot;</em><em>, </em><em>False}</em>) – <ul>
 <li><p>str: one of these locations</p></li>
 <li><p>None or “any”: any</p></li>

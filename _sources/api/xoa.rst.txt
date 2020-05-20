@@ -13,6 +13,7 @@ xoa
       get_data_sample
       get_option
       load_options
+      register_accessors
       reset_options
       set_option
       show_data_samples

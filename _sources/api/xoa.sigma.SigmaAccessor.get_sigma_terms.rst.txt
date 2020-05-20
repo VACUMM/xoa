@@ -1,0 +1,6 @@
+xoa.sigma.SigmaAccessor.get\_sigma\_terms
+=========================================
+
+.. currentmodule:: xoa.sigma
+
+.. automethod:: SigmaAccessor.get_sigma_terms

@@ -1,0 +1,6 @@
+xoa.sigma.atmosphere\_sigma\_coordinate
+=======================================
+
+.. currentmodule:: xoa.sigma
+
+.. autofunction:: atmosphere_sigma_coordinate

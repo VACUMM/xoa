@@ -1,0 +1,6 @@
+xoa.register\_accessors
+=======================
+
+.. currentmodule:: xoa
+
+.. autofunction:: register_accessors

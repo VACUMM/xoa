@@ -22,12 +22,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -83,20 +83,22 @@
               
             
             
-              <p class="caption"><span class="caption-text">Setup</span></p>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configure.html">Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Help and reference</span></p>
+<p class="caption"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="usages.html">Usages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usages.cf.html">Using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code> module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Commandline interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Practical examples</a></li>
 </ul>
-<p class="caption"><span class="caption-text">More</span></p>
+<p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">Development roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendices</a></li>
 </ul>
 
@@ -232,6 +234,8 @@
 </li>
         <li><a href="api/xoa.set_options.html#xoa.set_options.__init__">(xoa.set_options method)</a>
 </li>
+        <li><a href="api/xoa.sigma.SigmaAccessor.html#xoa.sigma.SigmaAccessor.__init__">(xoa.sigma.SigmaAccessor method)</a>
+</li>
       </ul></li>
   </ul></td>
 </tr></table>
@@ -264,7 +268,9 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/xoa.misc.ArgTuple.html#xoa.misc.ArgTuple">ArgTuple (class in xoa.misc)</a>
 </li>
-      <li><a href="api/xoa.sigma.atmosphere_sigma_to_pressures.html#xoa.sigma.atmosphere_sigma_to_pressures">atmosphere_sigma_to_pressures() (in module xoa.sigma)</a>
+      <li><a href="api/xoa.sigma.atmosphere_sigma_coordinate.html#xoa.sigma.atmosphere_sigma_coordinate">atmosphere_sigma_coordinate() (in module xoa.sigma)</a>
+</li>
+      <li><a href="api/xoa.cf.DataArrayCFAccessor.attrs.html#xoa.cf.DataArrayCFAccessor.attrs">attrs() (xoa.cf.DataArrayCFAccessor property)</a>
 </li>
       <li><a href="api/xoa.cf.CFCoordSpecs.attrs_exclude.html#xoa.cf.CFCoordSpecs.attrs_exclude">attrs_exclude (xoa.cf.CFCoordSpecs attribute)</a>
 
@@ -388,8 +394,12 @@
 </li>
       <li><a href="api/xoa.cfgm.cfgargparse.html#xoa.cfgm.cfgargparse">cfgargparse() (in module xoa.cfgm)</a>
 </li>
-      <li><a href="api/xoa.cfgm.ConfigManager.cfgspecs.html#xoa.cfgm.ConfigManager.cfgspecs">cfgspecs() (xoa.cfgm.ConfigManager property)</a>
+      <li><a href="api/xoa.cf.CFSpecs.cfgspecs.html#xoa.cf.CFSpecs.cfgspecs">cfgspecs() (xoa.cf.CFSpecs property)</a>
+
+      <ul>
+        <li><a href="api/xoa.cfgm.ConfigManager.cfgspecs.html#xoa.cfgm.ConfigManager.cfgspecs">(xoa.cfgm.ConfigManager property)</a>
 </li>
+      </ul></li>
       <li><a href="api/xoa.cf.CFSpecs.html#xoa.cf.CFSpecs">CFSpecs (class in xoa.cf)</a>
 </li>
       <li><a href="api/xoa.cf.CFVarSpecs.html#xoa.cf.CFVarSpecs">CFVarSpecs (class in xoa.cf)</a>
@@ -498,7 +508,11 @@
 </li>
       <li><a href="api/xoa.cf.DatasetCFAccessor.html#xoa.cf.DatasetCFAccessor">DatasetCFAccessor (class in xoa.cf)</a>
 </li>
-      <li><a href="api/xoa.sigma.decode_cf.html#xoa.sigma.decode_cf">decode_cf() (in module xoa.sigma)</a>
+      <li><a href="api/xoa.sigma.SigmaAccessor.decode.html#xoa.sigma.SigmaAccessor.decode">decode() (xoa.sigma.SigmaAccessor method)</a>
+</li>
+      <li><a href="api/xoa.sigma.decode_cf_sigma.html#xoa.sigma.decode_cf_sigma">decode_cf_sigma() (in module xoa.sigma)</a>
+</li>
+      <li><a href="api/xoa.sigma.decode_formula_terms.html#xoa.sigma.decode_formula_terms">decode_formula_terms() (in module xoa.sigma)</a>
 </li>
       <li><a href="api/xoa.misc.DefaultEnumMeta.default.html#xoa.misc.DefaultEnumMeta.default">default (xoa.misc.DefaultEnumMeta attribute)</a>
 
@@ -536,14 +550,14 @@
 </li>
       <li><a href="api/xoa.coords.DimFlusher1D.html#xoa.coords.DimFlusher1D">DimFlusher1D (class in xoa.coords)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/xoa.cf.CFCoordSpecs.dims.html#xoa.cf.CFCoordSpecs.dims">dims() (xoa.cf.CFCoordSpecs property)</a>
 
       <ul>
         <li><a href="api/xoa.cf.CFVarSpecs.dims.html#xoa.cf.CFVarSpecs.dims">(xoa.cf.CFVarSpecs property)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     dlat
 
@@ -732,6 +746,8 @@
 </li>
       <li><a href="api/xoa.coords.DimFlusher1D.get_back.html#xoa.coords.DimFlusher1D.get_back">get_back() (xoa.coords.DimFlusher1D method)</a>
 </li>
+      <li><a href="api/xoa.cf.CFSpecs.get_category.html#xoa.cf.CFSpecs.get_category">get_category() (xoa.cf.CFSpecs static method)</a>
+</li>
       <li><a href="api/xoa.cf.get_cf_specs.html#xoa.cf.get_cf_specs">get_cf_specs() (in module xoa.cf)</a>
 </li>
       <li><a href="api/xoa.cfgm.get_cfg_path.html#xoa.cfgm.get_cfg_path">get_cfg_path() (in module xoa.cfgm)</a>
@@ -766,8 +782,6 @@
 </li>
       <li><a href="api/xoa.grid.get_edges_2d.html#xoa.grid.get_edges_2d">get_edges_2d() (in module xoa.grid)</a>
 </li>
-      <li><a href="api/xoa.coords.get_height.html#xoa.coords.get_height">get_height() (in module xoa.coords)</a>
-</li>
       <li><a href="api/xoa.coords.get_lat.html#xoa.coords.get_lat">get_lat() (in module xoa.coords)</a>
 </li>
       <li><a href="api/xoa.coords.get_level.html#xoa.coords.get_level">get_level() (in module xoa.coords)</a>
@@ -791,7 +805,11 @@
       <li><a href="api/xoa.cfgm.get_sec_names.html#xoa.cfgm.get_sec_names">get_sec_names() (in module xoa.cfgm)</a>
 </li>
       <li><a href="api/xoa.sigma.get_sigma_terms.html#xoa.sigma.get_sigma_terms">get_sigma_terms() (in module xoa.sigma)</a>
+
+      <ul>
+        <li><a href="api/xoa.sigma.SigmaAccessor.get_sigma_terms.html#xoa.sigma.SigmaAccessor.get_sigma_terms">(xoa.sigma.SigmaAccessor method)</a>
 </li>
+      </ul></li>
       <li><a href="api/xoa.cfgm.get_spec.html#xoa.cfgm.get_spec">get_spec() (in module xoa.cfgm)</a>
 
       <ul>
@@ -805,6 +823,8 @@
 </li>
       </ul></li>
       <li><a href="api/xoa.cfgm.get_validator.html#xoa.cfgm.get_validator">get_validator() (in module xoa.cfgm)</a>
+</li>
+      <li><a href="api/xoa.coords.get_vertical.html#xoa.coords.get_vertical">get_vertical() (in module xoa.coords)</a>
 </li>
       <li>
     ghf
@@ -1021,6 +1041,8 @@
       <li><a href="api/xoa.cf.CFCoordSpecs.match.html#xoa.cf.CFCoordSpecs.match">match() (xoa.cf.CFCoordSpecs method)</a>
 
       <ul>
+        <li><a href="api/xoa.cf.CFSpecs.match.html#xoa.cf.CFSpecs.match">(xoa.cf.CFSpecs method)</a>
+</li>
         <li><a href="api/xoa.cf.CFVarSpecs.match.html#xoa.cf.CFVarSpecs.match">(xoa.cf.CFVarSpecs method)</a>
 </li>
       </ul></li>
@@ -1043,8 +1065,6 @@
       </ul></li>
       <li><a href="api/xoa.cf.SGLocator.merge_attr.html#xoa.cf.SGLocator.merge_attr">merge_attr() (xoa.cf.SGLocator method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     mke
 
@@ -1066,6 +1086,35 @@
 
       <ul>
         <li><a href="gencfspecs/data_vars/mlw.html#cfdatavar-mlw">xoacf CFSpecs.data_vars item</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    module
+
+      <ul>
+        <li><a href="api/xoa.html#module-xoa">xoa</a>
+</li>
+        <li><a href="genfortran/xoa._interp/index.html#module-xoa._interp">xoa._interp</a>
+</li>
+        <li><a href="api/xoa.cf.html#module-xoa.cf">xoa.cf</a>
+</li>
+        <li><a href="api/xoa.cfgm.html#module-xoa.cfgm">xoa.cfgm</a>
+</li>
+        <li><a href="api/xoa.cli.html#module-xoa.cli">xoa.cli</a>
+</li>
+        <li><a href="api/xoa.color.html#module-xoa.color">xoa.color</a>
+</li>
+        <li><a href="api/xoa.coords.html#module-xoa.coords">xoa.coords</a>
+</li>
+        <li><a href="api/xoa.grid.html#module-xoa.grid">xoa.grid</a>
+</li>
+        <li><a href="api/xoa.misc.html#module-xoa.misc">xoa.misc</a>
+</li>
+        <li><a href="api/xoa.regrid.html#module-xoa.regrid">xoa.regrid</a>
+</li>
+        <li><a href="api/xoa.sigma.html#module-xoa.sigma">xoa.sigma</a>
 </li>
       </ul></li>
       <li><a href="api/xoa.misc.DefaultEnumMeta.mro.html#xoa.misc.DefaultEnumMeta.mro">mro() (xoa.misc.DefaultEnumMeta method)</a>
@@ -1145,9 +1194,13 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/xoa.sigma.ocean_s_to_depths.html#xoa.sigma.ocean_s_to_depths">ocean_s_to_depths() (in module xoa.sigma)</a>
+      <li><a href="api/xoa.sigma.ocean_s_coordinate.html#xoa.sigma.ocean_s_coordinate">ocean_s_coordinate() (in module xoa.sigma)</a>
 </li>
-      <li><a href="api/xoa.sigma.ocean_sigma_to_depths.html#xoa.sigma.ocean_sigma_to_depths">ocean_sigma_to_depths() (in module xoa.sigma)</a>
+      <li><a href="api/xoa.sigma.ocean_s_coordinate_g1.html#xoa.sigma.ocean_s_coordinate_g1">ocean_s_coordinate_g1() (in module xoa.sigma)</a>
+</li>
+      <li><a href="api/xoa.sigma.ocean_s_coordinate_g2.html#xoa.sigma.ocean_s_coordinate_g2">ocean_s_coordinate_g2() (in module xoa.sigma)</a>
+</li>
+      <li><a href="api/xoa.sigma.ocean_sigma_coordinate.html#xoa.sigma.ocean_sigma_coordinate">ocean_sigma_coordinate() (in module xoa.sigma)</a>
 </li>
       <li>
     ohc
@@ -1156,10 +1209,10 @@
         <li><a href="gencfspecs/data_vars/ohc.html#cfdatavar-ohc">xoacf CFSpecs.data_vars item</a>
 </li>
       </ul></li>
-      <li><a href="api/xoa.cfgm.opt2rst.html#xoa.cfgm.opt2rst">opt2rst() (in module xoa.cfgm)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/xoa.cfgm.opt2rst.html#xoa.cfgm.opt2rst">opt2rst() (in module xoa.cfgm)</a>
+</li>
       <li>
     oro
 
@@ -1195,8 +1248,6 @@
 </li>
       </ul></li>
       <li><a href="api/xoa.cf.SGLocator.parse_attr.html#xoa.cf.SGLocator.parse_attr">parse_attr() (xoa.cf.SGLocator method)</a>
-</li>
-      <li><a href="api/xoa.sigma.parse_formula_terms_attr.html#xoa.sigma.parse_formula_terms_attr">parse_formula_terms_attr() (in module xoa.sigma)</a>
 </li>
       <li><a href="api/xoa.cfgm.ConfigManager.patch.html#xoa.cfgm.ConfigManager.patch">patch() (xoa.cfgm.ConfigManager method)</a>
 </li>
@@ -1312,16 +1363,20 @@
       </ul></li>
       <li><a href="api/xoa.cf.SGLocator.re_match.html#xoa.cf.SGLocator.re_match">re_match (xoa.cf.SGLocator attribute)</a>
 </li>
+      <li><a href="api/xoa.register_accessors.html#xoa.register_accessors">register_accessors() (in module xoa)</a>
+</li>
       <li><a href="api/xoa.cf.register_cf_accessors.html#xoa.cf.register_cf_accessors">register_cf_accessors() (in module xoa.cf)</a>
 </li>
       <li><a href="api/xoa.cfgm.register_config_validator.html#xoa.cfgm.register_config_validator">register_config_validator() (in module xoa.cfgm)</a>
 </li>
-      <li><a href="api/xoa.regrid.regrid1d.html#xoa.regrid.regrid1d">regrid1d() (in module xoa.regrid)</a>
+      <li><a href="api/xoa.sigma.register_sigma_accessors.html#xoa.sigma.register_sigma_accessors">register_sigma_accessors() (in module xoa.sigma)</a>
 </li>
-      <li><a href="api/xoa.regrid.regrid1d_methods.html#xoa.regrid.regrid1d_methods">regrid1d_methods (class in xoa.regrid)</a>
+      <li><a href="api/xoa.regrid.regrid1d.html#xoa.regrid.regrid1d">regrid1d() (in module xoa.regrid)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/xoa.regrid.regrid1d_methods.html#xoa.regrid.regrid1d_methods">regrid1d_methods (class in xoa.regrid)</a>
+</li>
       <li><a href="api/xoa.cfgm.remove_defaults.html#xoa.cfgm.remove_defaults">remove_defaults() (in module xoa.cfgm)</a>
 </li>
       <li><a href="api/xoa.cfgm.ConfigManager.reset.html#xoa.cfgm.ConfigManager.reset">reset() (xoa.cfgm.ConfigManager method)</a>
@@ -1484,6 +1539,8 @@
         <li><a href="gencfspecs/data_vars/sigma4.html#cfdatavar-sigma4">xoacf CFSpecs.data_vars item</a>
 </li>
       </ul></li>
+      <li><a href="api/xoa.sigma.SigmaAccessor.html#xoa.sigma.SigmaAccessor">SigmaAccessor (class in xoa.sigma)</a>
+</li>
       <li>
     sigmat
 
@@ -2063,8 +2120,13 @@
 </li>
       <li><a href="api/xoa.misc.XEnumMeta.html#xoa.misc.XEnumMeta">XEnumMeta (class in xoa.misc)</a>
 </li>
-      <li><a href="api/xoa.html#module-xoa">xoa (module)</a>
+      <li>
+    xoa
+
+      <ul>
+        <li><a href="api/xoa.html#module-xoa">module</a>
 </li>
+      </ul></li>
       <li>
     xoa flat configuration option
 
@@ -2082,26 +2144,76 @@
         <li><a href="appendix.options.html#xoaoption-plot.cmappos">plot.cmappos</a>
 </li>
       </ul></li>
-      <li><a href="genfortran/xoa._interp/index.html#module-xoa._interp">xoa._interp (module)</a>
+      <li>
+    xoa._interp
+
+      <ul>
+        <li><a href="genfortran/xoa._interp/index.html#module-xoa._interp">module</a>
 </li>
-      <li><a href="api/xoa.cf.html#module-xoa.cf">xoa.cf (module)</a>
+      </ul></li>
+      <li>
+    xoa.cf
+
+      <ul>
+        <li><a href="api/xoa.cf.html#module-xoa.cf">module</a>
 </li>
-      <li><a href="api/xoa.cfgm.html#module-xoa.cfgm">xoa.cfgm (module)</a>
+      </ul></li>
+      <li>
+    xoa.cfgm
+
+      <ul>
+        <li><a href="api/xoa.cfgm.html#module-xoa.cfgm">module</a>
 </li>
-      <li><a href="api/xoa.cli.html#module-xoa.cli">xoa.cli (module)</a>
+      </ul></li>
+      <li>
+    xoa.cli
+
+      <ul>
+        <li><a href="api/xoa.cli.html#module-xoa.cli">module</a>
 </li>
-      <li><a href="api/xoa.color.html#module-xoa.color">xoa.color (module)</a>
+      </ul></li>
+      <li>
+    xoa.color
+
+      <ul>
+        <li><a href="api/xoa.color.html#module-xoa.color">module</a>
 </li>
-      <li><a href="api/xoa.coords.html#module-xoa.coords">xoa.coords (module)</a>
+      </ul></li>
+      <li>
+    xoa.coords
+
+      <ul>
+        <li><a href="api/xoa.coords.html#module-xoa.coords">module</a>
 </li>
-      <li><a href="api/xoa.grid.html#module-xoa.grid">xoa.grid (module)</a>
+      </ul></li>
+      <li>
+    xoa.grid
+
+      <ul>
+        <li><a href="api/xoa.grid.html#module-xoa.grid">module</a>
 </li>
-      <li><a href="api/xoa.misc.html#module-xoa.misc">xoa.misc (module)</a>
+      </ul></li>
+      <li>
+    xoa.misc
+
+      <ul>
+        <li><a href="api/xoa.misc.html#module-xoa.misc">module</a>
 </li>
-      <li><a href="api/xoa.regrid.html#module-xoa.regrid">xoa.regrid (module)</a>
+      </ul></li>
+      <li>
+    xoa.regrid
+
+      <ul>
+        <li><a href="api/xoa.regrid.html#module-xoa.regrid">module</a>
 </li>
-      <li><a href="api/xoa.sigma.html#module-xoa.sigma">xoa.sigma (module)</a>
+      </ul></li>
+      <li>
+    xoa.sigma
+
+      <ul>
+        <li><a href="api/xoa.sigma.html#module-xoa.sigma">module</a>
 </li>
+      </ul></li>
       <li><a href="api/xoa.xoa_warn.html#xoa.xoa_warn">xoa_warn() (in module xoa)</a>
 </li>
       <li>

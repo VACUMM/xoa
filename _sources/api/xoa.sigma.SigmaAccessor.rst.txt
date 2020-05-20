@@ -1,0 +1,29 @@
+xoa.sigma.SigmaAccessor
+=======================
+
+.. currentmodule:: xoa.sigma
+
+.. autoclass:: SigmaAccessor
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+         ~SigmaAccessor.decode
+      
+      
+         ~SigmaAccessor.get_sigma_terms
+      
+   
+   
+
+   
+   
+   

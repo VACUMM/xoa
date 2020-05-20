@@ -40,6 +40,7 @@ xoa.cf.DataArrayCFAccessor
    .. autosummary::
       :toctree:
    
+      ~DataArrayCFAccessor.attrs
       ~DataArrayCFAccessor.coords
       ~DataArrayCFAccessor.data_vars
       ~DataArrayCFAccessor.dim

@@ -1,0 +1,6 @@
+xoa.sigma.SigmaAccessor.decode
+==============================
+
+.. currentmodule:: xoa.sigma
+
+.. automethod:: SigmaAccessor.decode

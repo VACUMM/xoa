@@ -6,11 +6,11 @@
 	.. list-table::
 
 	    * - **name**
-	      - ``'level'`` ``'ocean_s_coordinate'`` ``'s'`` ``'ocean_sigma_coordinate'`` ``'atmosphere_s_coordinate'`` ``'sig'`` ``'sigma'`` ``'model_level'`` ``'sigma_level'`` ``'ocean_s_coordinate_g2'`` ``'s_level'`` ``'ocean_s_coordinate_g1'`` ``'atmosphere_sigma_coordinate'`` ``'model_level_number'``
+	      - ``'level'`` ``'ocean_s_coordinate'`` ``'s_level'`` ``'atmosphere_s_coordinate'`` ``'ocean_s_coordinate_g1'`` ``'sigma'`` ``'ocean_sigma_coordinate'`` ``'sig'`` ``'atmosphere_sigma_coordinate'`` ``'ocean_s_coordinate_g2'`` ``'s'`` ``'model_level'`` ``'sigma_level'`` ``'model_level_number'``
 	    * - **standard_name**
-	      - ``'model_level_number'`` ``'ocean_s_coordinate'`` ``'ocean_sigma_coordinate'`` ``'atmosphere_s_coordinate'`` ``'ocean_s_coordinate_g2'`` ``'ocean_s_coordinate_g1'`` ``'atmosphere_sigma_coordinate'``
+	      - ``'ocean_s_coordinate'`` ``'atmosphere_s_coordinate'`` ``'ocean_s_coordinate_g1'`` ``'ocean_sigma_coordinate'`` ``'model_level_number'`` ``'atmosphere_sigma_coordinate'`` ``'ocean_s_coordinate_g2'``
 	    * - **long_name**
-	      - ``'Model level number'`` ``'Sigma level'`` ``'Sig'``
+	      - ``'Sig'`` ``'Model level number'`` ``'Sigma level'``
 	    * - **axis**
 	      - ``'Z'``
 	    * - **units**

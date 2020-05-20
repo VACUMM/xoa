@@ -8,7 +8,7 @@
 	    * - **name**
 	      - ``'speed'`` ``'cspd'`` ``'sea_water_speed'``
 	    * - **long_name**
-	      - ``'Sea water speed'`` ``'Speed'``
+	      - ``'Speed'`` ``'Sea water speed'``
 	    * - **standard_name**
 	      - ``'sea_water_speed'``
 	    * - **units**

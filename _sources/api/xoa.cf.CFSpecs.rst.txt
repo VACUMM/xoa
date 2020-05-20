@@ -34,7 +34,13 @@ xoa.cf.CFSpecs
          ~CFSpecs.get
       
       
+         ~CFSpecs.get_category
+      
+      
          ~CFSpecs.load_cfg
+      
+      
+         ~CFSpecs.match
       
       
          ~CFSpecs.match_coord
@@ -77,6 +83,7 @@ xoa.cf.CFSpecs
       :toctree:
    
       ~CFSpecs.categories
+      ~CFSpecs.cfgspecs
       ~CFSpecs.dict
       ~CFSpecs.sglocator
    
