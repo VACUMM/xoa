@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="xoa.sigma.SigmaAccessor.decode" href="xoa.sigma.SigmaAccessor.decode.html" />
-    <link rel="prev" title="xoa.sigma.register_sigma_accessors" href="xoa.sigma.register_sigma_accessors.html" /> 
+    <link rel="prev" title="xoa.sigma.register_sigma_accessor" href="xoa.sigma.register_sigma_accessor.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -114,7 +114,7 @@
 <li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_s_coordinate_g1.html">xoa.sigma.ocean_s_coordinate_g1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_s_coordinate_g2.html">xoa.sigma.ocean_s_coordinate_g2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_sigma_coordinate.html">xoa.sigma.ocean_sigma_coordinate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.register_sigma_accessors.html">xoa.sigma.register_sigma_accessors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.register_sigma_accessor.html">xoa.sigma.register_sigma_accessor</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.sigma.SigmaAccessor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.sigma.XoaCFError.html">xoa.sigma.XoaCFError</a></li>
 </ul>
@@ -228,7 +228,16 @@
 <dl class="py class">
 <dt id="xoa.sigma.SigmaAccessor">
 <em class="property">class </em><code class="sig-prename descclassname">xoa.sigma.</code><code class="sig-name descname">SigmaAccessor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ds</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/sigma.html#SigmaAccessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.sigma.SigmaAccessor" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
+<dd><p>Dataset accessor to compute depths from sigma-like coordinates</p>
+<p>This follows the CF cnventions.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;croco.nc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">decode_sigma</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<dl class="py method">
 <dt id="xoa.sigma.SigmaAccessor.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ds</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/sigma.html#SigmaAccessor.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.sigma.SigmaAccessor.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
@@ -242,10 +251,10 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="xoa.sigma.SigmaAccessor.decode.html#xoa.sigma.SigmaAccessor.decode" title="xoa.sigma.SigmaAccessor.decode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decode</span></code></a>([rename, errors])</p></td>
-<td><p></p></td>
+<td><p>Call <a class="reference internal" href="xoa.sigma.decode_cf_sigma.html#xoa.sigma.decode_cf_sigma" title="xoa.sigma.decode_cf_sigma"><code class="xref py py-func docutils literal notranslate"><span class="pre">decode_cf_sigma()</span></code></a> on the dataset</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="xoa.sigma.SigmaAccessor.get_sigma_terms.html#xoa.sigma.SigmaAccessor.get_sigma_terms" title="xoa.sigma.SigmaAccessor.get_sigma_terms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sigma_terms</span></code></a>([loc, rename])</p></td>
-<td><p></p></td>
+<td><p>Call <a class="reference internal" href="xoa.sigma.get_sigma_terms.html#xoa.sigma.get_sigma_terms" title="xoa.sigma.get_sigma_terms"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_sigma_terms()</span></code></a> on the dataset</p></td>
 </tr>
 </tbody>
 </table>
@@ -264,7 +273,7 @@
         <a href="xoa.sigma.SigmaAccessor.decode.html" class="btn btn-neutral float-right" title="xoa.sigma.SigmaAccessor.decode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="xoa.sigma.register_sigma_accessors.html" class="btn btn-neutral float-left" title="xoa.sigma.register_sigma_accessors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="xoa.sigma.register_sigma_accessor.html" class="btn btn-neutral float-left" title="xoa.sigma.register_sigma_accessor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

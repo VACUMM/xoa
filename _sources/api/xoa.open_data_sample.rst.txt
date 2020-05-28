@@ -1,0 +1,6 @@
+xoa.open\_data\_sample
+======================
+
+.. currentmodule:: xoa
+
+.. autofunction:: open_data_sample

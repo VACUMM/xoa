@@ -19,7 +19,7 @@ xoa.sigma
       ocean_s_coordinate_g1
       ocean_s_coordinate_g2
       ocean_sigma_coordinate
-      register_sigma_accessors
+      register_sigma_accessor
    
    
 

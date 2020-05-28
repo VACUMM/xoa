@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>xoa.sigma.get_sigma_terms &mdash; xoa 0.1.0 documentation</title>
+  <title>xoa.open_data_sample &mdash; xoa 0.1.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="xoa.sigma.ocean_s_coordinate" href="xoa.sigma.ocean_s_coordinate.html" />
-    <link rel="prev" title="xoa.sigma.get_cs" href="xoa.sigma.get_cs.html" /> 
+    <link rel="next" title="xoa.register_accessors" href="xoa.register_accessors.html" />
+    <link rel="prev" title="xoa.load_options" href="xoa.load_options.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,26 +99,31 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#python">Python</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="xoa.html">xoa</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="xoa.html">xoa</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="xoa.get_data_sample.html">xoa.get_data_sample</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.get_option.html">xoa.get_option</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.load_options.html">xoa.load_options</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.open_data_sample</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.register_accessors.html">xoa.register_accessors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.reset_options.html">xoa.reset_options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.set_option.html">xoa.set_option</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.show_data_samples.html">xoa.show_data_samples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.show_info.html">xoa.show_info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.show_options.html">xoa.show_options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.show_paths.html">xoa.show_paths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.show_versions.html">xoa.show_versions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.xoa_warn.html">xoa.xoa_warn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.set_options.html">xoa.set_options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.XoaConfigError.html">xoa.XoaConfigError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.XoaError.html">xoa.XoaError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.XoaWarning.html">xoa.XoaWarning</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.misc.html">xoa.misc</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.color.html">xoa.color</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.cf.html">xoa.cf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.coords.html">xoa.coords</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="xoa.sigma.html">xoa.sigma</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.atmosphere_sigma_coordinate.html">xoa.sigma.atmosphere_sigma_coordinate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.decode_cf_sigma.html">xoa.sigma.decode_cf_sigma</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.decode_formula_terms.html">xoa.sigma.decode_formula_terms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.get_cs.html">xoa.sigma.get_cs</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">xoa.sigma.get_sigma_terms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_s_coordinate.html">xoa.sigma.ocean_s_coordinate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_s_coordinate_g1.html">xoa.sigma.ocean_s_coordinate_g1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_s_coordinate_g2.html">xoa.sigma.ocean_s_coordinate_g2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.ocean_sigma_coordinate.html">xoa.sigma.ocean_sigma_coordinate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.register_sigma_accessor.html">xoa.sigma.register_sigma_accessor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.SigmaAccessor.html">xoa.sigma.SigmaAccessor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="xoa.sigma.XoaCFError.html">xoa.sigma.XoaCFError</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="xoa.sigma.html">xoa.sigma</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.grid.html">xoa.grid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.regrid.html">xoa.regrid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xoa.cfgm.html">xoa.cfgm</a></li>
@@ -178,15 +183,15 @@
         
           <li><a href="../api.html">API Reference</a> &raquo;</li>
         
-          <li><a href="xoa.sigma.html">xoa.sigma</a> &raquo;</li>
+          <li><a href="xoa.html">xoa</a> &raquo;</li>
         
-      <li>xoa.sigma.get_sigma_terms</li>
+      <li>xoa.open_data_sample</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/xoa.sigma.get_sigma_terms.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/xoa.open_data_sample.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -223,54 +228,34 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="xoa-sigma-get-sigma-terms">
-<h1>xoa.sigma.get_sigma_terms<a class="headerlink" href="#xoa-sigma-get-sigma-terms" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="xoa-open-data-sample">
+<h1>xoa.open_data_sample<a class="headerlink" href="#xoa-open-data-sample" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="xoa.sigma.get_sigma_terms">
-<code class="sig-prename descclassname">xoa.sigma.</code><code class="sig-name descname">get_sigma_terms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ds</span></em>, <em class="sig-param"><span class="n">loc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">rename</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa/sigma.html#get_sigma_terms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.sigma.get_sigma_terms" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get sigma terms from a dataset as another dataset</p>
-<p>It operates like this:</p>
-<ol class="arabic simple">
-<li><p>Search for the sigma variables.</p></li>
-<li><p>Parse their <code class="docutils literal notranslate"><span class="pre">formula_terms</span></code> attribute.</p></li>
-<li><p>Create a dict for each locations from names in datasets to
-<a class="reference internal" href="xoa.cf.html#module-xoa.cf" title="xoa.cf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xoa.cf</span></code></a> compliant names that are also used in conversion
-functions.</p></li>
-</ol>
+<dt id="xoa.open_data_sample">
+<code class="sig-prename descclassname">xoa.</code><code class="sig-name descname">open_data_sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xoa.html#open_data_sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xoa.open_data_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a data sample with <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html#xarray.open_dataset" title="(in xarray v0.15.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">xarray.open_dataset()</span></code></a></p>
+<p>A shortcut to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">get_data_sample</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ds</strong> (<a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v0.15.0)"><em>xarray.Dataset</em></a>) – </p></li>
-<li><p><strong>loc</strong> (<em>str</em><em>, </em><em>{&quot;any&quot;</em><em>, </em><em>None}</em>) – Staggered grid location.
-If any or None, results for all locations are returned.</p></li>
-</ul>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – File name of the sample</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A dict is generated for a given sigma variable,
-whose keys are array names, like <code class="docutils literal notranslate"><span class="pre">&quot;sc_r&quot;</span></code>,
-and values are <a class="reference internal" href="xoa.cf.html#module-xoa.cf" title="xoa.cf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cf</span></code></a> names, like <code class="docutils literal notranslate"><span class="pre">&quot;sig&quot;</span></code>.
-A special key is the <code class="docutils literal notranslate"><span class="pre">&quot;type&quot;</span></code> whose corresponding value
-is the <code class="docutils literal notranslate"><span class="pre">standard_name</span></code>, stripped from its potential staggered grid
-location indicator.
-If <code class="docutils literal notranslate"><span class="pre">loc</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;any&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code>,
-each dict is embedded in a master dict
-whose keys are staggered grid location. If no location is found,
-the key is set <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dd class="field-even"><p></p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict, dict of dict</p>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><a class="reference internal" href="xoa.cf.XoaCFError.html#xoa.cf.XoaCFError" title="xoa.cf.XoaCFError"><strong>XoaCFError</strong></a> – In case of:
-    
-    - inconsistent staggered grid location in dataarrays
-      as checked by <a class="reference internal" href="xoa.cf.SGLocator.get_location.html#xoa.cf.SGLocator.get_location" title="xoa.cf.SGLocator.get_location"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xoa.cf.SGLocator.get_location()</span></code></a>
-    - no standard_name in sigma/s variable
-    - a malformed formula
-    - a formula term variable that is not found in the dataset
-    - an unknown formula term name</p>
+<dd class="field-odd"><p><a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v0.15.0)">xarray.Dataset</a></p>
 </dd>
 </dl>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="xoa.get_data_sample.html#xoa.get_data_sample" title="xoa.get_data_sample"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_data_sample()</span></code></a>, <a class="reference internal" href="xoa.show_data_samples.html#xoa.show_data_samples" title="xoa.show_data_samples"><code class="xref py py-func docutils literal notranslate"><span class="pre">show_data_samples()</span></code></a></p>
+</div>
 </dd></dl>
 
 </div>
@@ -283,10 +268,10 @@ the key is set <code class="docutils literal notranslate"><span class="pre">None
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="xoa.sigma.ocean_s_coordinate.html" class="btn btn-neutral float-right" title="xoa.sigma.ocean_s_coordinate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="xoa.register_accessors.html" class="btn btn-neutral float-right" title="xoa.register_accessors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="xoa.sigma.get_cs.html" class="btn btn-neutral float-left" title="xoa.sigma.get_cs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="xoa.load_options.html" class="btn btn-neutral float-left" title="xoa.load_options" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

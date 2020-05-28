@@ -103,6 +103,7 @@
 <li class="toctree-l4"><a class="reference internal" href="xoa.get_data_sample.html">xoa.get_data_sample</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.get_option.html">xoa.get_option</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.load_options.html">xoa.load_options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xoa.open_data_sample.html">xoa.open_data_sample</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.register_accessors.html">xoa.register_accessors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.reset_options.html">xoa.reset_options</a></li>
 <li class="toctree-l4"><a class="reference internal" href="xoa.set_option.html">xoa.set_option</a></li>
@@ -245,31 +246,34 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="xoa.load_options.html#xoa.load_options" title="xoa.load_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_options</span></code></a>([cfgfile])</p></td>
 <td><p>Load specified options</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="xoa.register_accessors.html#xoa.register_accessors" title="xoa.register_accessors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_accessors</span></code></a>([cf, sigma])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.open_data_sample.html#xoa.open_data_sample" title="xoa.open_data_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_data_sample</span></code></a>(filename)</p></td>
+<td><p>Open a data sample with <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html#xarray.open_dataset" title="(in xarray v0.15.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">xarray.open_dataset()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.register_accessors.html#xoa.register_accessors" title="xoa.register_accessors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_accessors</span></code></a>([cf, sigma])</p></td>
 <td><p>Register xarray accessors</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="xoa.reset_options.html#xoa.reset_options" title="xoa.reset_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_options</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.reset_options.html#xoa.reset_options" title="xoa.reset_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_options</span></code></a>()</p></td>
 <td><p>Restore options to their default values in the current session</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="xoa.set_option.html#xoa.set_option" title="xoa.set_option"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_option</span></code></a>(option, value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.set_option.html#xoa.set_option" title="xoa.set_option"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_option</span></code></a>(option, value)</p></td>
 <td><p>Set a single option using the flat format, i.e <code class="docutils literal notranslate"><span class="pre">section.option</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="xoa.show_data_samples.html#xoa.show_data_samples" title="xoa.show_data_samples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_data_samples</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.show_data_samples.html#xoa.show_data_samples" title="xoa.show_data_samples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_data_samples</span></code></a>()</p></td>
 <td><p>Print the list of data samples</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="xoa.show_info.html#xoa.show_info" title="xoa.show_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_info</span></code></a>([opt_specs])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.show_info.html#xoa.show_info" title="xoa.show_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_info</span></code></a>([opt_specs])</p></td>
 <td><p>Print xoa related info</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="xoa.show_options.html#xoa.show_options" title="xoa.show_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_options</span></code></a>([specs])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.show_options.html#xoa.show_options" title="xoa.show_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_options</span></code></a>([specs])</p></td>
 <td><p>Print current xoa configuration</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="xoa.show_paths.html#xoa.show_paths" title="xoa.show_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_paths</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.show_paths.html#xoa.show_paths" title="xoa.show_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_paths</span></code></a>()</p></td>
 <td><p>Print some xoa paths</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="xoa.show_versions.html#xoa.show_versions" title="xoa.show_versions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_versions</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="xoa.show_versions.html#xoa.show_versions" title="xoa.show_versions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_versions</span></code></a>()</p></td>
 <td><p>Print the versions of xoa and of some dependencies</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="xoa.xoa_warn.html#xoa.xoa_warn" title="xoa.xoa_warn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa_warn</span></code></a>(message)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="xoa.xoa_warn.html#xoa.xoa_warn" title="xoa.xoa_warn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xoa_warn</span></code></a>(message)</p></td>
 <td><p>Issue a <a class="reference internal" href="xoa.XoaWarning.html#xoa.XoaWarning" title="xoa.XoaWarning"><code class="xref py py-class docutils literal notranslate"><span class="pre">XoaWarning</span></code></a> warning</p></td>
 </tr>
 </tbody>

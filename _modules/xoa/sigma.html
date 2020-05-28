@@ -770,7 +770,6 @@
         <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sigma_module</span><span class="p">,</span> <span class="n">sigma_type</span><span class="p">)</span>
         <span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cache</span>
-        <span class="c1"># print(&#39;kwargs&#39;, kwargs.keys())</span>
         <span class="n">height</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="c1"># Format</span>
@@ -795,21 +794,33 @@
 
 
 <div class="viewcode-block" id="SigmaAccessor"><a class="viewcode-back" href="../../api/xoa.sigma.SigmaAccessor.html#xoa.sigma.SigmaAccessor">[docs]</a><span class="k">class</span> <span class="nc">SigmaAccessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Dataset accessor to compute depths from sigma-like coordinates</span>
+
+<span class="sd">    This follows the CF cnventions.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; ds = xr.open_dataset(&#39;croco.nc&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; ds = ds.decode_sigma()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="SigmaAccessor.__init__"><a class="viewcode-back" href="../../api/xoa.sigma.SigmaAccessor.html#xoa.sigma.SigmaAccessor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ds</span><span class="p">):</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span> <span class="o">=</span> <span class="n">ds</span></div>
 
 <div class="viewcode-block" id="SigmaAccessor.decode"><a class="viewcode-back" href="../../api/xoa.sigma.SigmaAccessor.decode.html#xoa.sigma.SigmaAccessor.decode">[docs]</a>    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;raise&quot;</span><span class="p">):</span>
-
+        <span class="sd">&quot;&quot;&quot;Call :func:`decode_cf_sigma` on the dataset&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">decode_cf_sigma</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ds</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="n">rename</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="SigmaAccessor.get_sigma_terms"><a class="viewcode-back" href="../../api/xoa.sigma.SigmaAccessor.get_sigma_terms.html#xoa.sigma.SigmaAccessor.get_sigma_terms">[docs]</a>    <span class="k">def</span> <span class="nf">get_sigma_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Shortcut to :meth:`decode`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
 
+<div class="viewcode-block" id="SigmaAccessor.get_sigma_terms"><a class="viewcode-back" href="../../api/xoa.sigma.SigmaAccessor.get_sigma_terms.html#xoa.sigma.SigmaAccessor.get_sigma_terms">[docs]</a>    <span class="k">def</span> <span class="nf">get_sigma_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call :func:`get_sigma_terms` on the dataset&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">get_sigma_terms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ds</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="n">rename</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="register_sigma_accessors"><a class="viewcode-back" href="../../api/xoa.sigma.register_sigma_accessors.html#xoa.sigma.register_sigma_accessors">[docs]</a><span class="k">def</span> <span class="nf">register_sigma_accessors</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sig&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="register_sigma_accessor"><a class="viewcode-back" href="../../api/xoa.sigma.register_sigma_accessor.html#xoa.sigma.register_sigma_accessor">[docs]</a><span class="k">def</span> <span class="nf">register_sigma_accessor</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;decode_sigma&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Register xarray accessors&quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
     <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>

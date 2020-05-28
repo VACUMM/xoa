@@ -579,7 +579,7 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    filename: str, None</span>
-<span class="sd">        Sample name of the sample. If ommited, a list of available sample</span>
+<span class="sd">        Name of the sample. If ommited, a list of available samples</span>
 <span class="sd">        name is returned.</span>
 
 <span class="sd">    Returns</span>
@@ -594,6 +594,11 @@
 <span class="sd">        from xoa import get_data_sample</span>
 <span class="sd">        get_data_sample(&quot;croco.south-africa.nc&quot;)</span>
 <span class="sd">        get_data_sample()</span>
+
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    show_data_samples</span>
+<span class="sd">    open_data_sample</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">_SAMPLE_DIR</span><span class="p">):</span>
         <span class="n">filenames</span> <span class="o">=</span> <span class="p">[]</span>
@@ -606,6 +611,40 @@
     <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_SAMPLE_DIR</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="open_data_sample"><a class="viewcode-back" href="../api/xoa.open_data_sample.html#xoa.open_data_sample">[docs]</a><span class="k">def</span> <span class="nf">open_data_sample</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Open a data sample with :func:`xarray.open_dataset`</span>
+
+<span class="sd">    A shortcut to::</span>
+
+<span class="sd">        xr.open_dataset(get_data_sample(filename))</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename: str</span>
+<span class="sd">        File name of the sample</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    xarray.Dataset</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    .. .ipython:: python</span>
+
+<span class="sd">        @suppress</span>
+<span class="sd">        from xoa import open_data_sample</span>
+<span class="sd">        open_data_sample(&quot;croco.south-africa.nc&quot;)</span>
+
+
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    get_data_sample</span>
+<span class="sd">    show_data_samples</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+    <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">get_data_sample</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span></div>
+
+
 <div class="viewcode-block" id="show_data_samples"><a class="viewcode-back" href="../api/xoa.show_data_samples.html#xoa.show_data_samples">[docs]</a><span class="k">def</span> <span class="nf">show_data_samples</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Print the list of data samples</span>
 
@@ -616,6 +655,11 @@
 <span class="sd">        @suppress</span>
 <span class="sd">        from xoa import show_data_samples</span>
 <span class="sd">        show_data_samples()</span>
+
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    get_data_samples</span>
+<span class="sd">    open_data_sample</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_data_sample</span><span class="p">()))</span></div>
 
@@ -628,7 +672,7 @@
 <span class="sd">    cf: bool, str</span>
 <span class="sd">        Register the :mod:`xoa.cf` accessors</span>
 <span class="sd">    sigma: bool, str</span>
-<span class="sd">        Register the :mod:`xoa.sigma` accessor</span>
+<span class="sd">        Register the :mod:`xoa.decode_sigma` accessor</span>
 
 <span class="sd">    See also</span>
 <span class="sd">    --------</span>
