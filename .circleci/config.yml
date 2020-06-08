@@ -26,9 +26,12 @@ deps-run: &deps-install
     conda install -n test-environment --quiet \
         appdirs \
         cartopy \
+        cmocean \
         configobj \
         gfortran_linux-64 \
         ipython \
+        ipykernel \
+        jupyter_client \
         matplotlib \
         nbsphinx \
         pandas \

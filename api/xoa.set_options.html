@@ -247,13 +247,13 @@ is overwritten.</p></li>
 <p class="admonition-title">Example</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># Classic: for the session</span>
 <span class="gp">In [1]: </span><span class="n">set_options</span><span class="p">(</span><span class="s1">&#39;plot&#39;</span><span class="p">,</span> <span class="n">cmapdiv</span><span class="o">=</span><span class="s1">&#39;cmo.balance&#39;</span><span class="p">,</span> <span class="n">cmappos</span><span class="o">=</span><span class="s1">&#39;cmo.amp&#39;</span><span class="p">)</span>
-<span class="gh">Out[1]: </span><span class="go">&lt;xoa.set_options at 0x7f551dd3fb90&gt;</span>
+<span class="gh">Out[1]: </span><span class="go">&lt;xoa.set_options at 0x7f94261f9a50&gt;</span>
 
 <span class="go"># With dict</span>
 <span class="gp">In [2]: </span><span class="n">opts</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;plot.cmapdiv&quot;</span><span class="p">:</span> <span class="s2">&quot;cmo.balance&quot;</span><span class="p">}</span>
 
 <span class="gp">In [3]: </span><span class="n">set_options</span><span class="p">(</span><span class="o">**</span><span class="n">opts</span><span class="p">)</span>
-<span class="gh">Out[3]: </span><span class="go">&lt;xoa.set_options at 0x7f551dd3f810&gt;</span>
+<span class="gh">Out[3]: </span><span class="go">&lt;xoa.set_options at 0x7f94261f9550&gt;</span>
 
 <span class="go"># Context: temporary</span>
 <span class="gp">In [4]: </span><span class="k">with</span> <span class="n">set_options</span><span class="p">(</span><span class="s1">&#39;plot&#39;</span><span class="p">,</span> <span class="n">cmapdiv</span><span class="o">=</span><span class="s1">&#39;cmo.delta&#39;</span><span class="p">):</span>
